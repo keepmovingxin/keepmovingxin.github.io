@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux常用命令学习 | KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
+$ rdate -s time.nist.gov">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令学习">
+<meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/index.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
+$ rdate -s time.nist.gov">
+<meta property="og:updated_time" content="2016-04-28T08:35:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令学习">
+<meta name="twitter:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
+$ rdate -s time.nist.gov">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux-Commond" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/28/Linux-Commond/" class="article-date">
+  <time datetime="2016-04-28T08:02:52.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux常用命令学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h3><p>以管理员身份执行如下命令，可以自动与网络时间同步：<br>time.nist.gov 是一个时间服务器</p>
+<p><code>$ rdate -s time.nist.gov</code></p>
+<a id="more"></a>
+<h3 id="管道符："><a href="#管道符：" class="headerlink" title="管道符： |"></a>管道符： |</h3><p>就是把前面的命令运行的要放入标准输出的结果丢给后面的命令</p>
+<p><code>cat 1.txt | cat</code></p>
+<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>-n    打印语句后不会换行。</p>
+<p>-e 开启转义，即可以打印后面的 \t,\r 等转义字符</p>
+<p>可以打印彩色文本。</p>
+<h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><p>用于格式化输出，使用的参数和C语言中的printf函数一样</p>
+<p>eg：printf “%-5s %-10s %-4.2f\n” 1 James 80.9968</p>
+<p>-：表示左对齐，默认为右对齐</p>
+<p>s：表示打印的是字符串</p>
+<p>f：表示打印一个浮点数，其中4表示宽度，.2表示保留2位小数</p>
+<p>printf默认不带换行，需要手动添加</p>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件</p>
+<p>-n：为每行前面加上行号。-n会为空白行也加上行号，-b选项则会跳过空白行。</p>
+<p>-s：压缩相邻的空白行，即连续的空白行将压缩为一行。</p>
+<p>-T：用^I符号表示制表符\t</p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>由一般字符和特殊字符（meta字符）组成</p>
+<p>meta元字符</p>
+<p>\ 通常用于打开或关闭后续字符的特殊含义，如(…)与{…}</p>
+<p>. 匹配任何单个字符（除NULL）</p>
+<p>* 匹配前面的子表达式任意次，例：a* 匹配任意多个a</p>
+<p>? 匹配前面的子表达式零次或一次匹配前面的子表达式一次或多次。</p>
+<p>+ 匹配前面的子表达式一次或多次</p>
+<p>^ 匹配输入字符串的开始位置</p>
+<p>$ 匹配输入字符串的结束位置</p>
+<p>[] 匹配方括号内的任一字符，其中可用连字符（-）指的连续字符的范围；^符号若出现在方括号的第一个位置，则表示匹配不在列表中的任一字符</p>
+<p>(x|y) 匹配x或y，比如：(g|f)ood，匹配good或food</p>
+<h3 id="文件通配符"><a href="#文件通配符" class="headerlink" title="文件通配符"></a>文件通配符</h3><p>* 匹配文件名中的任何字符串，包括空字符串。</p>
+<p>? 匹配文件名中的任何单个字符。</p>
+<p>[…] 匹配[ ]中所包含的任何字符。可以用 – 连接，表示范围</p>
+<p>[!…] 匹配[ ]中非 感叹号！之后的字符。</p>
+<p>如：</p>
+<p>5* 5开头的所有字符串</p>
+<p>*5 5结尾的所有字符串</p>
+<p>*5? 以5为倒数第二个字符的字符串</p>
+<p>[0－9] 所有以数字的字符</p>
+<p>[1,2] 1或者2</p>
+<p>[!0-9] 不是数字的字符</p>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>grep [options] [表达式]</p>
+<p>1)    [options]列表：</p>
+<pre><code>-c    ：只输出匹配行的统计数
+
+-n    ：显示匹配行及行号
+
+-A2    ：列出匹配行及下面2行
+
+-B2    ：列出匹配行及上面2行
+
+-C2    ：列出匹配行及上下2行
+
+-I    ：不区分大小写(只适用于单字符)
+
+-h    ：查询多文件时不显示文件名
+
+-H    ：查询多文件时显示文件名（默认）
+
+-l    ：查询多文件时只输出包含匹配字符的文件名
+
+-o    : 每行只输出匹配部分
+
+-s    ：不显示不存在或无匹配文本的错误信息
+
+-v    ：显示不包含匹配文本的所有行
+
+-r    ：递归匹配目录下所有文件及目录
+
+-E    : 扩展grep，增加了额外的正则表达式元字符集
+
+-e    ：指定多个匹配样式，样式间“或”的关系
+
+-f pattern_file    ：    样式文件pattern_file中逐行存放要匹配的样式，可匹配多个样式，样式之间是“或”的关系
+
+--color    ：    为匹配项显示不同颜色
+</code></pre><p>2)    grep –E “pattern1|pattern2” files ：显示匹配 pattern1 或 pattern2 的行</p>
+<p>3)    grep –e pattern1 –e pattern2 files : 匹配pattern1或pattern2</p>
+<p>4)    grep pattern1 files | grep pattern2 ：显示既匹配 pattern1 又匹配 pattern2 的行</p>
+<p>5)    egrep “t_hero|t_item”   匹配t_hero或者t_item的项</p>
+<p>6)    grep “t_hero|t_item”    可以实现与上面同样的功能</p>
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p>sed [options] ‘command’ file(s) 或sed [options] -f scriptfile file(s)</p>
+<p>一次处理一行内容 不改变文件内容</p>
+<p>[options]列表：</p>
+<pre><code>-n    :    取消默认的输出,使用安静(silent)模式。
+
+-r    :    使用正则表达式，及表达式中不需要进行转义
+
+-f filename :    指定sed脚本的文件名filename
+
+-e &apos;&apos; :    允许多重编辑·  
+
+-i    :    将替换结果应用于源文件
+</code></pre><p>1)    替换字符串</p>
+<p><code>sed &#39;s/pattern/string/&#39; file</code></p>
+<p>或者</p>
+<p><code>cat file | sed &#39;s/pattern/string/&#39;</code></p>
+<p>2)    替换文件中所有匹配内容，使用参数g</p>
+<p><code>sed &#39;s/pattern/string/g&#39; file</code></p>
+<p>但如果你想从第N处匹配开始替换，可以使用参数/Ng</p>
+<p><code>$ echo thisthisthisthis | sed &#39;s/this/THIS/2g&#39;
+thisTHISTHISTHIS</code></p>
+<p>3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义</p>
+<p><code>$ echo a/b | sed &#39;s/a\/b/a*b/&#39;
+a*b</code></p>
+<p>为了避免转义字符造成的理解困难，我们可以使用其它定界符，比如|,:,@,#,$,%,+等等</p>
+<p><code>$ echo a/b | sed &#39;s:a/b:a*b:&#39;
+a*b</code></p>
+<p>4)    移除匹配样式行  <code>sed &#39;/pattern/d&#39; file</code></p>
+<p><code>$ sed -r &#39;/^ *$/d&#39; args.txt        #移除空白行，含有一个或多个空格的行</code></p>
+<p>5)    组合多个表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo abd | sed &apos;s/a/A/&apos; | sed &apos;s/d/D/&apos;  #用管道组合$ echo abd | sed &apos;s/a/A/;s/d/D/&apos;           #用分号组合$ echo abd | sed -e &apos;s/a/A/&apos; -e &apos;s/d/D/&apos;  #用-e选项组合</span><br></pre></td></tr></table></figure>
+<p>6)    已匹配字符串标记（&amp;）</p>
+<p>&amp;代表匹配给定样式的字符串，常用于对给定样式增加[]，{}等不需要改变样式的情况</p>
+<pre><code>$ echo &quot;this is an example&quot; | sed &apos;s/\w\+/[&amp;]/g&apos;   #\w\+ 匹配每个单词
+[this] [is] [an] [example]
+</code></pre><p>7)    子串匹配标记（\1）</p>
+<p>有时我们希望对匹配给定的样式标记出一些子串来，方便后续引用</p>
+<p>(pattern) 用于匹配子串pattern</p>
+<p>\1 用于引用第一个匹配到的子串，\n 对应第n个匹配到的子串。</p>
+<pre><code>$ echo 123 asd | sed &apos;s/\([0-9]\+\) \([a-z]\+\)/\2+\1/&apos; 
+asd+123
+</code></pre><p>其中\1对应数字123，\2对应字母asd</p>
+<p>对于子串的引用，在样式里一定要用()括起来，如果加上-r选项，则不需要转义：</p>
+<pre><code>$ echo 123 asd | sed -r &apos;s/([0-9]+) ([a-z]+)/\2+\1/&apos;
+asd+123
+</code></pre><p>8)    引用</p>
+<p>在脚本中有用的一点，用双引号引用的sed表达式，会对表达式求值来进行扩展，如使用前面定义的变量等</p>
+<pre><code>$ text=hello
+$ echo hello world | sed &quot;s/$text/HELLO/&quot;
+HELLO world
+</code></pre><h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件</p>
+<p>主要参数</p>
+<pre><code>-f ：    循环读取   #可以用在监控线上有没有报错信息
+
+-q ：    不显示处理信息
+
+-v ：    显示详细的处理信息
+
+-c&lt;数目&gt; ：    显示的字节数
+
+-n&lt;行数&gt; ：    显示行数
+
+--pid=PID ：    与-f合用,表示在进程ID,PID死掉之后结束. 
+
+-q, --quiet, --silent ：    从不输出给出文件名的首部
+</code></pre><h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="cink1o74w0001uhw8vpbw5b0x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/27/cocos2d-x-GraySprite/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Cocos2d-x使用CCGLProgram和Shader文件实现精灵置灰</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/28/Linux-Commond/">Linux常用命令学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/cocos2d-x-GraySprite/">Cocos2d-x使用CCGLProgram和Shader文件实现精灵置灰</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/Git-Config/">Git Config命令查看配置文件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
