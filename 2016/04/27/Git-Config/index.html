@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="git config命令的基本使用
 配置文件如何生效对于 git 来说，配置文件的权重是仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的各">
-<meta property="og:updated_time" content="2016-04-28T07:02:24.000Z">
+<meta property="og:updated_time" content="2016-04-29T03:15:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Config命令查看配置文件">
 <meta name="twitter:description" content="git config命令的基本使用
@@ -97,6 +97,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件如何生效"><span class="toc-number">1.</span> <span class="toc-text">配置文件如何生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-git-config-命令查看配置文件"><span class="toc-number">2.</span> <span class="toc-text">使用 git config 命令查看配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-git-config-命令编辑配置文件"><span class="toc-number">3.</span> <span class="toc-text">使用 git config 命令编辑配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加一个配置项"><span class="toc-number">4.</span> <span class="toc-text">增加一个配置项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取一个配置项"><span class="toc-number">5.</span> <span class="toc-text">获取一个配置项</span></a></li></ol>
+          </div>
+        
         <p>git config命令的基本使用</p>
 <h3 id="配置文件如何生效"><a href="#配置文件如何生效" class="headerlink" title="配置文件如何生效"></a>配置文件如何生效</h3><p>对于 git 来说，配置文件的权重是仓库&gt;全局&gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的各个库中Git目录下的配置文件 .git/config（仓库级），该文件中的值只对当前所属仓库有效。以上阐述的三 层配置从一般到特殊层层推进，如果定义的值有冲突，以后面层中定义的为准，例如：.git/config 和 /etc/gitconfig 的较量中， .git/config 取得了胜利。</p>
 <a id="more"></a>
@@ -117,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="cink4uwxr000126w8hso42cx4" class="article-share-link">Share</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="cinl5fl1o0000w5w8oogicplb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
