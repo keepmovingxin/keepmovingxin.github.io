@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.keepmovingxin.com/about/index.html</loc>
+    
+    <lastmod>2016-05-03T03:19:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/05/02/Learn-shell/</loc>
+    
+    <lastmod>2016-05-03T02:24:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
+    
+    <lastmod>2016-05-03T02:10:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
     
     <lastmod>2016-04-29T09:09:57.000Z</lastmod>

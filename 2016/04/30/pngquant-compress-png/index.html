@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vi/vim显示中文字符并且去掉^M的方法 | KeepMoving</title>
+  <title>利用pngquant压缩png图片 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。">
+  <meta name="description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
+安装并配置全局变量安装：
+去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
+也可以使用HomeBrew安装：brew install pngquant
+配置全局变量(使用HomeBrew安装请忽略)：
+ln –s /下载的位置/pngq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vi/vim显示中文字符并且去掉^M的方法">
-<meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/index.html">
+<meta property="og:title" content="利用pngquant压缩png图片">
+<meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/index.html">
 <meta property="og:site_name" content="KeepMoving">
-<meta property="og:description" content="处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。">
-<meta property="og:updated_time" content="2016-04-29T09:09:57.000Z">
+<meta property="og:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
+安装并配置全局变量安装：
+去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
+也可以使用HomeBrew安装：brew install pngquant
+配置全局变量(使用HomeBrew安装请忽略)：
+ln –s /下载的位置/pngq">
+<meta property="og:updated_time" content="2016-05-03T02:10:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vi/vim显示中文字符并且去掉^M的方法">
-<meta name="twitter:description" content="处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。">
+<meta name="twitter:title" content="利用pngquant压缩png图片">
+<meta name="twitter:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
+安装并配置全局变量安装：
+去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
+也可以使用HomeBrew安装：brew install pngquant
+配置全局变量(使用HomeBrew安装请忽略)：
+ln –s /下载的位置/pngq">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -93,10 +108,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vi-vim-delete-M" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-pngquant-compress-png" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/29/vi-vim-delete-M/" class="article-date">
-  <time datetime="2016-04-29T05:39:31.000Z" itemprop="datePublished">2016-04-29</time>
+    <a href="/2016/04/30/pngquant-compress-png/" class="article-date">
+  <time datetime="2016-04-30T13:11:28.000Z" itemprop="datePublished">2016-04-30</time>
 </a>
     
   <div class="article-category">
@@ -111,7 +126,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      vi/vim显示中文字符并且去掉^M的方法
+      利用pngquant压缩png图片
     </h1>
   
 
@@ -123,40 +138,51 @@ var _hmt = _hmt || [];
         
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户目录下创建-vimrc文件"><span class="toc-number">1.</span> <span class="toc-text">用户目录下创建.vimrc文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种去除-M的方法"><span class="toc-number">2.</span> <span class="toc-text">几种去除^M的方法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息："><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例："><span class="toc-number">3.</span> <span class="toc-text">使用示例：</span></a></li></ol>
           </div>
         
-        <ul>
-<li>处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。</li>
-</ul>
+        <p>项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。</p>
+<h3 id="安装并配置全局变量"><a href="#安装并配置全局变量" class="headerlink" title="安装并配置全局变量"></a>安装并配置全局变量</h3><p>安装：</p>
+<p>去官网下载压缩包 或者 源码: <code>git clone git://github.com/pornel/pngquant.git</code></p>
+<p>也可以使用HomeBrew安装：<code>brew install pngquant</code></p>
+<p>配置全局变量(使用HomeBrew安装请忽略)：</p>
+<p><code>ln –s /下载的位置/pngquant /usr/local/bin/pngquant</code></p>
+<p>pngquant 可以愉快的玩耍啦！</p>
 <a id="more"></a>
-<h3 id="用户目录下创建-vimrc文件"><a href="#用户目录下创建-vimrc文件" class="headerlink" title="用户目录下创建.vimrc文件"></a>用户目录下创建.vimrc文件</h3><p>加入</p>
-<pre><code>set fileencodings=utf-8,gb2312,gbk,gb18030
-set termencoding=utf-8
-set fileformats=unix
-set encoding=prc
-</code></pre><p>fileencodings中utf-8要在前面</p>
-<p>这样就能正常显示中文了，配合pietty，可以完全正常显示、编辑中文了。</p>
-<h3 id="几种去除-M的方法"><a href="#几种去除-M的方法" class="headerlink" title="几种去除^M的方法"></a>几种去除^M的方法</h3><p>1、<code>cat filename1 | tr -d &quot;\r&quot; &gt; newfile</code></p>
-<p>2、 <code>sed -e &quot;s/^V^M//&quot; filename &gt; outputfilename</code></p>
-<p>3、vi： 用vi打开文件</p>
-<p>(1) 按ESC键</p>
-<p>(2) 输入 :%s/^M//g</p>
-<p>确定 ^M是使用 “CTRL-V CTRL-M” 而不是字面上的 ^M。</p>
-<p>这个正则式将替换所有回车符前的 ^M为空($是为了保证^M出现在行尾)</p>
-<p>4、用 vim 输入 :<code>set notextmode</code></p>
-<p>可惜，经过上面的处理以后，^M是不存在了，但是换行不成功。所有的东西都在一行上面，看着很费劲。这说明处理的时候文件缺少”\n”，可以在替换的时候添加上即可：</p>
-<p><code>cat filename | tr &quot;\r&quot; &quot;\n&quot; &gt; newfile</code></p>
-<p>注: ^M 可以用Sublime Text编辑器查看</p>
-<p>一些linux版本有 dos2unix 程序，可以用来祛除^M</p>
+<h3 id="查看帮助信息："><a href="#查看帮助信息：" class="headerlink" title="查看帮助信息："></a>查看帮助信息：</h3><p>执行 pngquant -h 查看完整选项</p>
+<pre><code>--ext new.png
+设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。
+
+--quality min-max
+使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。
+min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。
+pngquant --quality=65-80 image.png
+
+--speed N, -sN
+速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。
+
+--iebug
+在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。
+
+--version
+输出版本信息。
+
+-
+从标准输入读取图像并输出到标准输出。
+
+--
+不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:
+</code></pre><p><code>pngquant $OPTIONS -- &quot;$FILE&quot;</code></p>
+<h3 id="使用示例："><a href="#使用示例：" class="headerlink" title="使用示例："></a>使用示例：</h3><p>压缩Downloads目录下所有的png，并替换当前图片</p>
+<p><code>find /Users/mac/Downloads/ -name &quot;*.png&quot; | while read line; do pngquant --ext .png --force $line; done</code>————-<br><strong>版权声明</strong><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com/">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/">http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/" data-id="cinqwezxj000npkw85ckpa3p8" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="cinqwezx40007pkw8hzpiwvrm" class="article-share-link">分享到</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pngquant/">pngquant</a></li></ul>
 
     </footer>
   </div>
@@ -164,19 +190,19 @@ set encoding=prc
     
 <nav id="article-nav">
   
-    <a href="/2016/04/30/pngquant-compress-png/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/02/Learn-shell/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          利用pngquant压缩png图片
+          shell学习笔记
         
       </div>
     </a>
   
   
-    <a href="/2016/04/28/Linux-Commond/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/29/vi-vim-delete-M/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Linux常用命令学习</div>
+      <div class="article-nav-title">vi/vim显示中文字符并且去掉^M的方法</div>
     </a>
   
 </nav>
@@ -187,7 +213,7 @@ set encoding=prc
 
  <section id="comments">
    <!-- 多说评论框 start -->
-   <div class="ds-thread" data-thread-key="post-vi-vim-delete-M" data-title="vi/vim显示中文字符并且去掉^M的方法" data-url="http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/"></div>
+   <div class="ds-thread" data-thread-key="post-pngquant-compress-png" data-title="利用pngquant压缩png图片" data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/"></div>
    <!-- 多说评论框 end -->
    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
    <script type="text/javascript">
