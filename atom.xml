@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-05-03T02:24:29.000Z</updated>
+  <updated>2016-05-03T06:01:57.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/"/>
     <id>http://blog.keepmovingxin.com/2016/05/02/Learn-shell/</id>
     <published>2016-05-02T08:50:52.000Z</published>
-    <updated>2016-05-03T02:24:29.000Z</updated>
+    <updated>2016-05-03T06:01:57.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;1-Shell脚本&quot;&gt;&lt;a href=&quot;#1-Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;1.Shell脚本&quot;&gt;&lt;/a&gt;1.Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;1-1-格式&quot;&gt;&lt;a href=&quot;#1-1-格式&quot; class=&quot;headerlink&quot; title=&quot;1.1 格式&quot;&gt;&lt;/a&gt;1.1 格式&lt;/h4&gt;&lt;p&gt;首行        #!/bin/bash    指定解释器&lt;/p&gt;
 &lt;h4 id=&quot;1-2-注释&quot;&gt;&lt;a href=&quot;#1-2-注释&quot; class=&quot;headerlink&quot; title=&quot;1.2 注释&quot;&gt;&lt;/a&gt;1.2 注释&lt;/h4&gt;&lt;p&gt;‘#’开头的行，’#!’是例外&lt;/p&gt;
@@ -77,7 +77,7 @@ while :
 
 case语句: case语句可以用户处理自定义参数。
 
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;case $num in1) echo &amp;quot;January&amp;quot;;;     			#双分号结束2) echo &amp;quot;Feburary&amp;quot;;;5) echo &amp;quot;may&amp;quot;          				#每个case可以有多条命令          echo &amp;quot;sdfd&amp;quot;   echo &amp;quot;sdf&amp;quot;;;       				#但最后一条命令一定是双分号结束*) echo &amp;quot;not correct input&amp;quot;;;   	#*）是其他值、default的意思esac&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```#### 1.7 while read line&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;case $num in1) echo &amp;quot;January&amp;quot;;;     			#双分号结束2) echo &amp;quot;Feburary&amp;quot;;;5) echo &amp;quot;may&amp;quot;          				#每个case可以有多条命令          echo &amp;quot;sdfd&amp;quot;   echo &amp;quot;sdf&amp;quot;;;       				#但最后一条命令一定是双分号结束*) echo &amp;quot;not correct input&amp;quot;;;   	#*）是其他值、default的意思esac&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```#### 1.7 while read line&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 while read line; do something ; done
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;1-8-参数处理&quot;&gt;&lt;a href=&quot;#1-8-参数处理&quot; class=&quot;headerlink&quot; title=&quot;1.8    参数处理&quot;&gt;&lt;/a&gt;1.8    参数处理&lt;/h4&gt;&lt;p&gt;a)    “$*”将所有的参数解释成一个字符串，而”$@”是一个参数数组。&lt;/p&gt;
