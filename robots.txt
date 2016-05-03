@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /css
+Disallow: /fancybox
+Disallow: /js
+Sitemap: http://blog.keepmovingxin.com/sitemap.xml
