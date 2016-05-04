@@ -1342,7 +1342,7 @@ pre .javascript .function {
   z-index: 2;
   position: fixed;
   _position: absolute;
-  bottom: 90%;
+  bottom: 10%;
   right: 2%;
   width: 36px;
 }
