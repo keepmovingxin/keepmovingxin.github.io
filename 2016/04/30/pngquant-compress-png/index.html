@@ -138,7 +138,9 @@ var _hmt = _hmt || [];
         
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息："><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例："><span class="toc-number">3.</span> <span class="toc-text">使用示例：</span></a></li></ol>
+            
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息："><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例："><span class="toc-number">3.</span> <span class="toc-text">使用示例：</span></a></li></ol>
+		        
           </div>
         
         <p>项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。</p>
@@ -179,7 +181,7 @@ pngquant --quality=65-80 image.png
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="cinr1i8lz00081pw8wlqk5ofq" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="cins7rjbc000514w87tyktew9" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pngquant/">pngquant</a></li></ul>
@@ -433,40 +435,15 @@ jQuery(document).ready(function() {
 });
 </script>
 
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
-<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+<div class="bottom-btn">
+
+	<a class="icon-gotop" href="javascript:void(0)" title="返回顶部"></a>
+	<script src="/js/gotop.js"></script>
+	<!--
+	<script src="/js/gotop.js"></script>
+	-->
+
 </div>
-
-<script>
-(function($) { 
-	// When to show the scroll link
-	// higher number = scroll link appears further down the page   
-	var upperLimit = 1000;
-	
-	// Our scroll link element
-	var scrollElem = $('#totop');
-   
-	// Scroll to top speed
-	var scrollSpeed = 500;
-   
-	// Show and hide the scroll to top link based on scroll position   
-	scrollElem.hide();
-	$(window).scroll(function () {            
-		var scrollTop = $(document).scrollTop();       
-		if ( scrollTop > upperLimit ) {
-			$(scrollElem).stop().fadeTo(300, 1); // fade back in           
-		}else{       
-			$(scrollElem).stop().fadeTo(300, 0); // fade out
-		}
-	});
-
-	// Scroll to top animation on click
-	$(scrollElem).click(function(){
-		$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
-	});
-})(jQuery);
-</script>
-<script src="/js/totop.js"></script>
   </div>
 </body>
 </html>
