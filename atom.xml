@@ -334,7 +334,7 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-04-29T03:15:44.000Z</updated>
+    <updated>2016-05-06T02:02:40.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
@@ -481,6 +481,57 @@ HELLO world
 --pid=PID ：    与-f合用,表示在进程ID,PID死掉之后结束. 
 
 -q, --quiet, --silent ：    从不输出给出文件名的首部
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;find&quot;&gt;&lt;a href=&quot;#find&quot; class=&quot;headerlink&quot; title=&quot;find&quot;&gt;&lt;/a&gt;find&lt;/h3&gt;&lt;p&gt;&lt;code&gt;find dir [option] &amp;#39;command&amp;#39;&lt;/code&gt;&lt;br&gt;&lt;code&gt;dir&lt;/code&gt;: 目录名，用空格隔开多个目录&lt;br&gt;1) [option]列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-name wildcard 文件名，wildcard表示通配符，并非正则式
+    find dir1 dir2 -name &amp;apos;*.c&amp;apos; –print  在目录dir1和dir2中查找文件，并打印路径
+    如果在-name后面紧跟一个-prune，则表示此目录应被修剪
+    find . \( -name &amp;quot;.svn&amp;quot; -prune \) -o –print 表示对于查找的目录，要么修剪掉（.svn），要么打印出来（其他）。
+-iname 忽略名字大小写
+-path 指定目录，如果在-path前面加上 ！ ，则表示忽略此目录，目录名可以使用通配符匹配。
+-type 文件类型
+    f:普通文件 d:目录 l:符号连接文件 c:字符设备文件 b:块设备文件 p:管道文件
+-size ±nc 查找大于（+）或小于（-）n字节的文件，注意c（charter）
+-mtime ±ndays 文件最近修改时间
+-user,-nouser 文件所有者
+-group,-nogroup 指定文件用户组
+多条件的与（-a）/或（-o）/非（！）
+    find . \( -name &amp;quot;*.txt&amp;quot; –o –name &amp;quot;*.sh&amp;quot; \) –print
+    括号两边应该有空格
+-maxdepth n 指定最大目录深度，n=1表示最大为当前目录
+-mindepth n 指定最小目录深度，n=2表示不打印当前目录下的文件
+  -maxdepth和-mindepth应作为find的第三个参数出现，以提高效率
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2) ‘command’命令列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-print  打印路径名
+-delete 对找到的文件进行删除 
+-exec   对查找到的目标执行某一命令。
+    find ${workdir} -name &amp;quot;$filename&amp;quot; -exec  |grep $uid
+    -exec 参数后面跟的是bash命令，但只能跟一个命令，如果想执行多个命令，那么可以将多个命令放进一个shell脚本，然后执行这个脚本。
+    bash命令的终止，使用 &amp;apos;;&amp;apos; (分号）来判定，在后面必须有一个 &amp;apos;;&amp;apos;在分号前应该加上转义字符&amp;apos;\&amp;apos;
+    &amp;apos;{}&amp;apos;，使用{}来表示文件名，也就是find前面处理过程中过滤出来的文件，用于bash命令进行处理
+-ok     与-exec类似，只是对查找到符合条件的目标执行一个命令前需要经过确认
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;cut&quot;&gt;&lt;a href=&quot;#cut&quot; class=&quot;headerlink&quot; title=&quot;cut&quot;&gt;&lt;/a&gt;cut&lt;/h3&gt;&lt;p&gt;&lt;code&gt;cut&lt;/code&gt; 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出，必须指定 &lt;code&gt;-b&lt;/code&gt;、&lt;code&gt;-c&lt;/code&gt; 或&lt;code&gt;-f&lt;/code&gt; 标志之一。&lt;br&gt;主要参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-b: 以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。
+-c: 以字符为单位进行分割。（单个字母等）
+    cut –c2-5 file    ，表示将文件file每行的第2-5个字符作为一列显示出来。
+-d: 自定义分隔符，默认为制表符。
+-f: 与-d一起使用，指定显示哪个区域。
+    例子：cat file.txt | cut -d&amp;apos;]&amp;apos; -f7；
+        cat file.txt | cut -d&amp;apos;]&amp;apos; –f4,7；//打印4和7列
+        cat file.txt | cut -d&amp;apos;]&amp;apos; –f4-7；//打印4到7列
+-n: 取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&amp;lt;br /&amp;gt;范围之内，该字符将被写出；否则，该字符将被排除。
+--complement: 与-f一起使用，指定显示哪个区域的补集。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;sort-排序&quot;&gt;&lt;a href=&quot;#sort-排序&quot; class=&quot;headerlink&quot; title=&quot;sort  排序&quot;&gt;&lt;/a&gt;sort  排序&lt;/h3&gt;&lt;p&gt;&lt;code&gt;sort&lt;/code&gt;将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按&lt;code&gt;ASCII&lt;/code&gt;码值进行比较，最后将他们按升序输出。&lt;br&gt;主要参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-u: 去除重复行
+-r: sort默认的排序方式是升序，如果想改成降序，用此参数
+-o file: 把排序结果输出到文件file，file可以是原文件
+-n: 以数值排序
+-t: 指定间隔符
+-k: 指定域排序，常与-t连用。sort –t &amp;apos;:&amp;apos; –k 2
+    在指定域的时候还可细分，比如指定第二个域的第3个字符开始比较，用-k 2.3;
+    比如指定第二个域的第3个字符到第二个域的第5个字符进行排序，用-k 2.3,2.5
+    比如只指定第二个域的第3个字符进行排序，用-k 2.3,2.3
+-b: 忽略每一行前面的所有空白部分，从第一个可见字符开始比较
+-f: 忽略大小写进行排序
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&quot;&gt;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&lt;/a&gt;&lt;/p&gt;
 </content>

@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</loc>
+        <lastmod>2016-05-06T02:02:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.keepmovingxin.com/2016/05/02/Learn-shell/</loc>
         <lastmod>2016-05-03T06:01:57.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
         <lastmod>2016-04-29T09:09:57.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</loc>
-        <lastmod>2016-04-29T03:15:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
