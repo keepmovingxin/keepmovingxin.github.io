@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-05-03T06:01:57.000Z</updated>
+  <updated>2016-05-12T13:08:30.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cocos2d-x中动态纹理CCRenderTexture的使用</title>
+    <link href="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/"/>
+    <id>http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</id>
+    <published>2016-05-09T14:31:28.000Z</published>
+    <updated>2016-05-12T13:08:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等&lt;/p&gt;
+&lt;h3 id=&quot;截取当前屏幕图片&quot;&gt;&lt;a href=&quot;#截取当前屏幕图片&quot; class=&quot;headerlink&quot; title=&quot;截取当前屏幕图片&quot;&gt;&lt;/a&gt;截取当前屏幕图片&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--[[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @des:截取当前屏幕图片&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @ret:截取的图片路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function getScreenshots()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local size = CCDirector:sharedDirector():getWinSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local in_texture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:getSprite():setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:setPosition( ccp(size.width/2, size.height/2) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local runingScene = CCDirector:sharedDirector():getRunningScene()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:begin()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    runingScene:visit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:endToLua()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local picPath = CCFileUtils:sharedFileUtils():getWritablePath() .. &amp;quot;shareTempScreenshots.jpg&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&amp;quot;截屏图片:&amp;quot;,in_texture:saveToFile(picPath))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return picPath&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;绘制精灵的影子&quot;&gt;&lt;a href=&quot;#绘制精灵的影子&quot; class=&quot;headerlink&quot; title=&quot;绘制精灵的影子&quot;&gt;&lt;/a&gt;绘制精灵的影子&lt;/h3&gt;&lt;h3 id=&quot;绘制动态精灵————&quot;&gt;&lt;a href=&quot;#绘制动态精灵————&quot; class=&quot;headerlink&quot; title=&quot;绘制动态精灵————-&quot;&gt;&lt;/a&gt;绘制动态精灵————-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/&quot;&gt;http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等&lt;/p&gt;
+&lt;h3 id=&quot;截取当前屏幕图片&quot;&gt;&lt;a href=&quot;#截取当前屏幕图片&quot; class=&quot;headerlink&quot; title=&quot;截取当前屏幕图片&quot;&gt;&lt;/a&gt;截取当前屏幕图片&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--[[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @des:截取当前屏幕图片&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @ret:截取的图片路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function getScreenshots()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local size = CCDirector:sharedDirector():getWinSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local in_texture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:getSprite():setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:setPosition( ccp(size.width/2, size.height/2) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local runingScene = CCDirector:sharedDirector():getRunningScene()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:begin()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    runingScene:visit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    in_texture:endToLua()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local picPath = CCFileUtils:sharedFileUtils():getWritablePath() .. &amp;quot;shareTempScreenshots.jpg&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&amp;quot;截屏图片:&amp;quot;,in_texture:saveToFile(picPath))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return picPath&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Cocos2d-x" scheme="http://blog.keepmovingxin.com/tags/Cocos2d-x/"/>
+    
+  </entry>
   
   <entry>
     <title>shell学习笔记</title>
@@ -202,7 +231,9 @@ ass_array[index2]=val2
 &lt;h3 id=&quot;7-临时文件或目录&quot;&gt;&lt;a href=&quot;#7-临时文件或目录&quot; class=&quot;headerlink&quot; title=&quot;7.临时文件或目录&quot;&gt;&lt;/a&gt;7.临时文件或目录&lt;/h3&gt;&lt;p&gt;在shell脚本中经常要保存临时的数据，如果使用认为创建临时文件用户保存临时数据，则有可能出现重名的情况，导致覆盖原来的数据。&lt;/p&gt;
 &lt;p&gt;mktemp prefile.xxx    创建以prefile开头的随机文件文件，并返回文件名，指定前缀时必须包含至少3个xxx。&lt;/p&gt;
 &lt;p&gt;主要参数：&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-d	：	创建一个目录，dirname=`mktemp -d`-u	:	仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/05/02/Learn-shell/&quot;&gt;http://blog.keepmovingxin.com/2016/05/02/Learn-shell/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-d	：	创建一个目录，dirname=`mktemp -d`-u	:	仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/05/02/Learn-shell/&quot;&gt;http://blog.keepmovingxin.com/2016/05/02/Learn-shell/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -260,7 +291,9 @@ pngquant --quality=65-80 image.png
 不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pngquant $OPTIONS -- &amp;quot;$FILE&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;使用示例：&quot;&gt;&lt;a href=&quot;#使用示例：&quot; class=&quot;headerlink&quot; title=&quot;使用示例：&quot;&gt;&lt;/a&gt;使用示例：&lt;/h3&gt;&lt;p&gt;压缩Downloads目录下所有的png，并替换当前图片&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/&quot;&gt;http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/&quot;&gt;http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -533,7 +566,9 @@ HELLO world
 -b: 忽略每一行前面的所有空白部分，从第一个可见字符开始比较
 -f: 忽略大小写进行排序
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&quot;&gt;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&quot;&gt;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -555,7 +590,7 @@ HELLO world
     <link href="http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/"/>
     <id>http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/</id>
     <published>2016-04-27T09:47:46.000Z</published>
-    <updated>2016-04-29T03:15:32.000Z</updated>
+    <updated>2016-05-12T13:08:30.000Z</updated>
     
     <content type="html">&lt;h4 id=&quot;1-实现方法：CCGraySprite-继承自-CCSprite-覆盖initWithTexture和draw方法实现置灰。&quot;&gt;&lt;a href=&quot;#1-实现方法：CCGraySprite-继承自-CCSprite-覆盖initWithTexture和draw方法实现置灰。&quot; class=&quot;headerlink&quot; title=&quot;1. 实现方法：CCGraySprite 继承自 CCSprite 覆盖initWithTexture和draw方法实现置灰。&quot;&gt;&lt;/a&gt;1. 实现方法：&lt;code&gt;CCGraySprite&lt;/code&gt; 继承自 &lt;code&gt;CCSprite&lt;/code&gt; 覆盖&lt;code&gt;initWithTexture&lt;/code&gt;和&lt;code&gt;draw&lt;/code&gt;方法实现置灰。&lt;/h4&gt;&lt;h5 id=&quot;方法和属性声明：&quot;&gt;&lt;a href=&quot;#方法和属性声明：&quot; class=&quot;headerlink&quot; title=&quot;方法和属性声明：&quot;&gt;&lt;/a&gt;方法和属性声明：&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class CCGraySprite : public CCSprite&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual ~CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* create(const char* pszFileName);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool initWithTexture(CCTexture2D* pTexture, const CCRect&amp;amp; tRect);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithSprite(CCSprite *pSprite);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithNodeAndItChild(CCNode *pNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    void setGray(bool isGray);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual void draw();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool m_isGray;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGLProgram* pProgram;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -574,7 +609,9 @@ HELLO world
 &lt;/ul&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local nameBgSp = CCGraySprite:create(&amp;quot;images/namebg.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local normalSp = CCSprite:create(&amp;quot;images/namebg.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local graySp = CCGraySprite:createWithNodeAndItChild(normalSp)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local frameSp = CCGraySprite:create(&amp;quot;images/frame.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;frameSp:setGray(isGray)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/&quot;&gt;http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local frameSp = CCGraySprite:create(&amp;quot;images/frame.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;frameSp:setGray(isGray)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;————-&lt;br&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/&quot;&gt;http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -587,7 +624,7 @@ HELLO world
     
     </summary>
     
-      <category term="技术" scheme="http://blog.keepmovingxin.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
     
       <category term="Cocos2d-x" scheme="http://blog.keepmovingxin.com/tags/Cocos2d-x/"/>
@@ -618,7 +655,9 @@ HELLO world
 &lt;p&gt;命令参数 –get&lt;/p&gt;
 &lt;p&gt;格式：&lt;code&gt;git config [–local|–global|–system] –get section.key&lt;/code&gt; (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 &lt;code&gt;git config –get man.name&lt;/code&gt; 看看得到的是什么&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com/&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/27/Git-Config/&quot;&gt;http://blog.keepmovingxin.com/2016/04/27/Git-Config/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/27/Git-Config/&quot;&gt;http://blog.keepmovingxin.com/2016/04/27/Git-Config/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
