@@ -13,7 +13,7 @@ $ rdate -s time.nist.gov">
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
 $ rdate -s time.nist.gov">
-<meta property="og:updated_time" content="2016-05-06T02:02:40.000Z">
+<meta property="og:updated_time" content="2016-05-16T03:50:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令学习">
 <meta name="twitter:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
             
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同步时间"><span class="toc-number">1.</span> <span class="toc-text">同步时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道符："><span class="toc-number">2.</span> <span class="toc-text">管道符： |</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo"><span class="toc-number">3.</span> <span class="toc-text">echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printf"><span class="toc-number">4.</span> <span class="toc-text">printf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">5.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式"><span class="toc-number">6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件通配符"><span class="toc-number">7.</span> <span class="toc-text">文件通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">8.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed"><span class="toc-number">9.</span> <span class="toc-text">sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tail"><span class="toc-number">10.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-number">11.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cut"><span class="toc-number">12.</span> <span class="toc-text">cut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-排序"><span class="toc-number">13.</span> <span class="toc-text">sort  排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完待续…"><span class="toc-number">14.</span> <span class="toc-text">未完待续…</span></a></li></ol>
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同步时间"><span class="toc-number">1.</span> <span class="toc-text">同步时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道符："><span class="toc-number">2.</span> <span class="toc-text">管道符： |</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo"><span class="toc-number">3.</span> <span class="toc-text">echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printf"><span class="toc-number">4.</span> <span class="toc-text">printf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">5.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式"><span class="toc-number">6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件通配符"><span class="toc-number">7.</span> <span class="toc-text">文件通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">8.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed"><span class="toc-number">9.</span> <span class="toc-text">sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tail"><span class="toc-number">10.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-number">11.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cut"><span class="toc-number">12.</span> <span class="toc-text">cut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-排序"><span class="toc-number">13.</span> <span class="toc-text">sort  排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniq-去重"><span class="toc-number">14.</span> <span class="toc-text">uniq 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-统计"><span class="toc-number">15.</span> <span class="toc-text">wc 统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seq"><span class="toc-number">16.</span> <span class="toc-text">seq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir-创建目录"><span class="toc-number">17.</span> <span class="toc-text">mkdir 创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date"><span class="toc-number">18.</span> <span class="toc-text">date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5sum"><span class="toc-number">19.</span> <span class="toc-text">md5sum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ln-链接"><span class="toc-number">20.</span> <span class="toc-text">ln 链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split-大文件切割"><span class="toc-number">21.</span> <span class="toc-text">split 大文件切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alias-别名"><span class="toc-number">22.</span> <span class="toc-text">alias 别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完待续…"><span class="toc-number">23.</span> <span class="toc-text">未完待续…</span></a></li></ol>
 		        
           </div>
         
@@ -327,15 +327,74 @@ HELLO world
     比如只指定第二个域的第3个字符进行排序，用-k 2.3,2.3
 -b: 忽略每一行前面的所有空白部分，从第一个可见字符开始比较
 -f: 忽略大小写进行排序
-</code></pre><h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3><hr>
-<p><strong>版权声明</strong></p>
-<p><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a></p>
-<p>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/">http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</a></p>
+</code></pre><h3 id="uniq-去重"><a href="#uniq-去重" class="headerlink" title="uniq 去重"></a>uniq 去重</h3><pre><code>-c : 统计重复的行数
+-u : 只显示不重复的那些行
+-d : 只显示重复的那些行
+-s n : 指定跳过前n个字符
+-w n : 指定用于比较的最大字符数
+</code></pre><h3 id="wc-统计"><a href="#wc-统计" class="headerlink" title="wc 统计"></a>wc 统计</h3><p>使用wc的各种选项来统计行数、单词数和字符数。<br>主要参数：</p>
+<pre><code>-l ：行数
+-w ：单词数
+-c ：字符数
+</code></pre><h3 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h3><p><code>seq A B</code>: 用于产生从某个数到另外一个数之间的所有整数<br>主要参数：</p>
+<pre><code>-f：指定格式。默认是&quot;%g&quot;，表示按宽度为1输出。可以在g的前面加入一些字符，表示不同的含义，如：
+   %2g：表示按宽度为2右对齐。
+   %02g：表示按宽度为2右对齐，不足的部分用0补足。
+</code></pre><p>可用于构造日志文件名</p>
+<pre><code>for i in `seq -f &quot;log.20160407&quot;%02g 5 12`; do echo $i; done
+   str%03g：表示按宽度为3右对齐，补足的位数用0补，并在前面加上str子串。
+    %-3g：表示按宽度为3左对齐。
+</code></pre><h3 id="mkdir-创建目录"><a href="#mkdir-创建目录" class="headerlink" title="mkdir 创建目录"></a>mkdir 创建目录</h3><p>常用参数：</p>
+<pre><code>-p: 可以是一个路径名称。此时若路径中的某些目录尚不存在，加上此选项后,系统将自动建立好那些尚不存在的目录，即一次可以建立多个目录;
+-m &lt;777&gt;: 模式，设定权限&lt;模式&gt;
+-v: 在创建目录的同时输出信息。
+</code></pre><h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p>1) 显示时间</p>
+<pre><code>date [OPTION]... [+FORMAT]
+date &quot;+%Y-%m-%d %H:%M:%S&quot;  #显示当前的年月日时分秒
+</code></pre><p>2) 设置时间</p>
+<pre><code>date -s //设置当前时间，只有root权限才能设置，其他只能查看。
+date -s 20080523 //设置成20080523，这样会把具体时间设置成空00:00:00
+date -s 15:20:30 //设置时间
+date +%s //当前时间时间戳
+</code></pre><p>3) 转换时间<br>把linux下的时间戳转换成现实中的年月日时分秒</p>
+<pre><code>date –d @timestamp
+eg:$date -d @1433087999
+ 2015年 05月 31日 星期日 23:59:59 CST
+</code></pre><h3 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h3><p>MD5全称是报文摘要算法（Message-Digest Algorithm 5），此算法对任意长度的信息逐位进行计算，产生一个二进制长度为128位（十六进制长度32位）的“指纹”（或称“报文摘要”），即使两个文件只相差一个字符，产生的校验和也完全不同。<br>1) 使用md5sum来产生指纹（报文摘要）命令如下：</p>
+<pre><code>md5sum file &gt; file.md5
+</code></pre><p>若不指定文件名，则从标准输入读取，也可输出到标准输出设备，因此可与管道符“|”连用。<br> 可以使用文件通配符，将多个文件的md5值输出到同一个文件。<br>文件file.md5的内容如下：</p>
+<pre><code>c0e207c045c344ebf363c3e9a6de1076  file
+</code></pre><p> 第一列是md5校验和，第二列是对应文件名。<br>2) 使用md5报文摘要验证文件。<br>将生成的file.md5文件放在对应file文件的同一目录下。使用如下命令验证：</p>
+<pre><code>md5sum -c file.md5
+</code></pre><p>若验证成功，输出“file: 确定”；验证失败则输出“file: 失败”，并打印警告信息：“md5sum: 警告：1/1 生成的校验和不匹配”。</p>
+<h3 id="ln-链接"><a href="#ln-链接" class="headerlink" title="ln 链接"></a>ln 链接</h3><p>主要参数：</p>
+<pre><code>-f : 链结时先将与 dist 同档名的档案删除
+-d : 允许系统管理者硬链结自己的目录
+-i : 在删除与 dist 同档名的档案时先进行询问
+-n : 在进行软连结时，将 dist 视为一般的档案
+-s : 进行软链结(symbolic link)
+     ln –s target new
+     为target文件建立一个软链接new指向target
+-v : 在连结之前显示其档名
+-b : 将在链结时会被覆写或删除的档案进行备份
+-S SUFFIX : 将备份的档案都加上 SUFFIX 的字尾
+-V METHOD : 指定备份的方式
+--help : 显示辅助说明
+--version : 显示版本
+</code></pre><h3 id="split-大文件切割"><a href="#split-大文件切割" class="headerlink" title="split 大文件切割"></a>split 大文件切割</h3><p> <code>split -b 500m file newfile_prefix</code></p>
+<pre><code>-l：行数，指定每多少行切成一个小文件。
+-b：指定每多少字就要切成一个小文件。支持单位:m,k
+-C：与-b参数类似，但切割时尽量维持每行的完整性。
+-d：指定切割后的文件名以数字作为后缀
+</code></pre><p>合并： <code>cat newfile_prefix* &gt; newfile</code></p>
+<h3 id="alias-别名"><a href="#alias-别名" class="headerlink" title="alias 别名"></a>alias 别名</h3><p><code>alias myssh=’sh filename.sh’</code></p>
+<h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3><hr>
+<p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/">http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="cio5dvjfb0007k2w85v960n4k" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="cio9h7a030003lcw80o73qauw" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
@@ -403,7 +462,7 @@ HELLO world
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2dx/">Cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
     </div>
   </div>
 
@@ -413,7 +472,7 @@ HELLO world
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a>
+      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Cocos2dx/" style="font-size: 10px;">Cocos2dx</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
     </div>
   </div>
 
@@ -435,6 +494,10 @@ HELLO world
       <ul>
         
           <li>
+            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
+          </li>
+        
+          <li>
             <a href="/2016/05/09/Cocos2dx-CCRenderTexture/">Cocos2d-x中动态纹理CCRenderTexture的使用</a>
           </li>
         
@@ -448,10 +511,6 @@ HELLO world
         
           <li>
             <a href="/2016/04/29/vi-vim-delete-M/">vi/vim显示中文字符并且去掉^M的方法</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/28/Linux-Commond/">Linux常用命令学习</a>
           </li>
         
       </ul>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>(译)tolua参考手册--accessing C/C++ code from Lua | KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。
+tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具。在面向C++方面，tolua++包含了一些新的特性比如：
+
+支持std::string作为基本类型（这个可以由一个命令行选项关闭）
+支持类模板
+
+tolua这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(译)tolua参考手册--accessing C/C++ code from Lua">
+<meta property="og:url" content="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/index.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。
+tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具。在面向C++方面，tolua++包含了一些新的特性比如：
+
+支持std::string作为基本类型（这个可以由一个命令行选项关闭）
+支持类模板
+
+tolua这">
+<meta property="og:updated_time" content="2016-05-16T04:04:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(译)tolua参考手册--accessing C/C++ code from Lua">
+<meta name="twitter:description" content="项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。
+tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具。在面向C++方面，tolua++包含了一些新的特性比如：
+
+支持std::string作为基本类型（这个可以由一个命令行选项关闭）
+支持类模板
+
+tolua这">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Cocos2dx-tolua++" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/14/Cocos2dx-tolua++/" class="article-date">
+  <time datetime="2016-05-14T14:09:28.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/游戏开发/">游戏开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (译)tolua参考手册--accessing C/C++ code from Lua
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tolua如何工作-How-tolua-works"><span class="toc-number">1.</span> <span class="toc-text">tolua如何工作 (How tolua works)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tolua的使用-How-to-use-toLua"><span class="toc-number">2.</span> <span class="toc-text">tolua的使用 (How to use toLua)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tolua的一些基本概念-Basic-Concepts"><span class="toc-number">3.</span> <span class="toc-text">tolua的一些基本概念 (Basic Concepts)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件包含"><span class="toc-number">3.1.</span> <span class="toc-text">文件包含</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本类型-Basic-types"><span class="toc-number">3.2.</span> <span class="toc-text">基本类型 (Basic types)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户定义的类型-User-defined-types"><span class="toc-number">3.3.</span> <span class="toc-text">用户定义的类型 (User defined types)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NULL和nil-NULL-and-nil"><span class="toc-number">3.4.</span> <span class="toc-text">NULL和nil (NULL and nil)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#宏定义类型-Typedefs"><span class="toc-number">3.5.</span> <span class="toc-text">宏定义类型 (Typedefs)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定常量-Binding-constants"><span class="toc-number">4.</span> <span class="toc-text">绑定常量 (Binding constants)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定外部变量-Binding-external-variables"><span class="toc-number">5.</span> <span class="toc-text">绑定外部变量 (Binding external variables)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定函数-Binding-functions"><span class="toc-number">6.</span> <span class="toc-text">绑定函数 (Binding functions)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Arrays-数组"><span class="toc-number">6.1.</span> <span class="toc-text">Arrays (数组)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Overloaded-functions-重载函数"><span class="toc-number">6.2.</span> <span class="toc-text">Overloaded functions (重载函数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Default-parameter-values-默认参数值"><span class="toc-number">6.3.</span> <span class="toc-text">Default parameter values (默认参数值)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiple-returned-values-多个返回值"><span class="toc-number">6.4.</span> <span class="toc-text">Multiple returned values (多个返回值)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定结构体-Binding-struct-fields"><span class="toc-number">7.</span> <span class="toc-text">绑定结构体 (Binding struct fields)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定类和方法-Binding-classes-and-methods"><span class="toc-number">8.</span> <span class="toc-text">绑定类和方法 (Binding classes and methods)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-inheritance-指定继承"><span class="toc-number">8.1.</span> <span class="toc-text">Specifying inheritance (指定继承)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-exported-members-and-methods-指定导出成员和方法"><span class="toc-number">8.2.</span> <span class="toc-text">Specifying exported members and methods (指定导出成员和方法)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Overloaded-operators（重载的运算符）"><span class="toc-number">8.3.</span> <span class="toc-text">Overloaded operators（重载的运算符）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块定义-Module-definition"><span class="toc-number">9.</span> <span class="toc-text">模块定义 (Module definition)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命名常量、变量和函数-Renaming-constants-variables-and-functions"><span class="toc-number">10.</span> <span class="toc-text">命名常量、变量和函数 (Renaming constants, variables and functions)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储额外字段-Storing-additional-fields"><span class="toc-number">11.</span> <span class="toc-text">存储额外字段 (Storing additional fields)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导出工具函数-Exported-utility-functions"><span class="toc-number">12.</span> <span class="toc-text">导出工具函数 (Exported utility functions)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-using-table"><span class="toc-number">12.1.</span> <span class="toc-text">tolua.using (table)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-type-var"><span class="toc-number">12.2.</span> <span class="toc-text">tolua.type (var)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-tag-“type”"><span class="toc-number">12.3.</span> <span class="toc-text">tolua.tag (“type”)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-foreach-object"><span class="toc-number">12.4.</span> <span class="toc-text">tolua.foreach (object)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-cast-object-“typename”"><span class="toc-number">12.5.</span> <span class="toc-text">tolua.cast (object, “typename”)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-takeownership-object"><span class="toc-number">12.6.</span> <span class="toc-text">tolua.takeownership (object)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-class-table-base-nil"><span class="toc-number">12.7.</span> <span class="toc-text">tolua.class (table, base=nil)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tolua-instance-table-class"><span class="toc-number">12.8.</span> <span class="toc-text">tolua.instance (table, class)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua嵌入代码-Embedded-Lua-code"><span class="toc-number">13.</span> <span class="toc-text">Lua嵌入代码 (Embedded Lua code)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本步骤"><span class="toc-number">14.</span> <span class="toc-text">基本步骤</span></a></li></ol>
+		        
+          </div>
+        
+        <p>项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。</p>
+<p>tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具。在面向C++方面，tolua++包含了一些新的特性比如：</p>
+<ul>
+<li>支持<code>std::string</code>作为基本类型（这个可以由一个命令行选项关闭）</li>
+<li>支持类模板</li>
+</ul>
+<p><a href="http://www.tecgraf.puc-rio.br/~celes/tolua/" target="_blank" rel="external">tolua</a>这款工具，极大的简化了C/C++代码与lua代码的集成。基于一个干净的头文件（或者从实际头文件中提取），tolua会自动生成从lua访问C/C++功能的绑定代码。使用Lua API和标记方法设施，tolua解析C/C++常数，外部变量、函数、类和方法绑定到Lua。</p>
+<p><a href="http://webserver2.tecgraf.puc-rio.br/~celes/tolua/" target="_blank" rel="external">官网</a><br><a href="http://webserver2.tecgraf.puc-rio.br/~celes/tolua/tolua-3.2.html" target="_blank" rel="external">官网文档</a></p>
+<a id="more"></a>
+<h3 id="tolua如何工作-How-tolua-works"><a href="#tolua如何工作-How-tolua-works" class="headerlink" title="tolua如何工作 (How tolua works)"></a>tolua如何工作 (How tolua works)</h3><p>使用tolua，我们需要创建一个package文件（译者注：pkg文件），即一个从C/C++实际头文件整理后的头文件，列举出我们想导出到lua环境中的那些常量、变量、函数、类以及方法，然后tolua会解析该文件并且创建自动绑定C/C++代码到lua的C/C++文件，如果将创建的文件同我们的应用链接起来，我们就可以从lua中访问指定的C/C++代码。</p>
+<p>让我们先看一些例子。如果我们指定下面的c头文件作为输入到tolua:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#define FALSE 0</span><br><span class="line">#define TRUE 1</span><br><span class="line"></span><br><span class="line">enum &#123; </span><br><span class="line"> POINT = 100, </span><br><span class="line"> LINE, </span><br><span class="line"> POLYGON</span><br><span class="line">&#125;</span><br><span class="line">Object* createObejct (int type);</span><br><span class="line">void drawObject (Object* obj, double red, double green, double blue);</span><br><span class="line">int isSelected (Object* obj);</span><br></pre></td></tr></table></figure>
+<p>会自动生成一个绑定上面代码到Lua层的C文件。这样，我们在lua代码里就可以访问C代码。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">myLine = createObject(LINE)</span><br><span class="line">...</span><br><span class="line">if isSelected(myLine) == TRUE then</span><br><span class="line">  drawObject(myLine, 1.0, 0.0, 0.0);</span><br><span class="line">else</span><br><span class="line">  drawObject(myLine, 1.0, 1.0, 1.0);</span><br><span class="line">end</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>此外，考虑下面类似C++头文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#define FALSE 0</span><br><span class="line">#define TRUE 1</span><br><span class="line">class Shape</span><br><span class="line">&#123;</span><br><span class="line">  void draw (void);</span><br><span class="line">  void draw (double red, double green, double blue);</span><br><span class="line">  int isSelected (void);</span><br><span class="line">&#125;;</span><br><span class="line">class Line : public Shape</span><br><span class="line">&#123;</span><br><span class="line"> Line (double x1, double y1, double x2, double y2);</span><br><span class="line"> ~Line (void);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果将上面的C++头文件输入给tolua，会自定生成一个Lua层访问C++代码的C++文件。这样，就可以使用如下Lua代码访问C++:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">myLine = Line:new (0,0,1,1)</span><br><span class="line">...</span><br><span class="line">if myLine:isSelected() == TRUE then</span><br><span class="line"> myLine:draw(1.0,0.0,0.0)</span><br><span class="line">else</span><br><span class="line"> myLine:draw()</span><br><span class="line">end</span><br><span class="line">...</span><br><span class="line">myLine:delete()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>传给tolua的package文件(.pkg)不是原本的C/C++头文件，而是手动处理过的版本。例如，外部代码访问的C++方法应该是public的，但并没有public修饰。tolua并没有实现对C/C++代码的完全解析，但它能够导出一些声明用于描述的功能到Lua层。因此，tolua将会提取出用户指定的代码以用于解析头文件。</p>
+<h3 id="tolua的使用-How-to-use-toLua"><a href="#tolua的使用-How-to-use-toLua" class="headerlink" title="tolua的使用 (How to use toLua)"></a>tolua的使用 (How to use toLua)</h3><p>tolua由两部分代码组成：可执行程序和静态库（an executable and a library）。可执行程序用于解析，读入package文件，然后输出C/C++代码，该代码提供了从lua层访问C/C++层的绑定。如果package文件是与C++类似的代码（例如包括类的定义），就会生成一份C++代码。如果package文件是与C类似的代码（例如不包括类），就会生成一份C代码。tolua可接受一些选项。运行<code>tolua -h</code>显示当前可接受的选项。例如，要解析一个名为<code>myfile.pkg</code>生成一个名为<code>myfile.c</code>的绑定代码，我们需要输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tolua -o myfile.c myfile.pkg</span><br></pre></td></tr></table></figure>
+<p>生成的代码必须编译并和应用程序链接，才能提供给Lua进行访问。每个被解析的文件代表导出到Lua的package。默认情况下，package的名称就是输入文件的根名称（例子中为<code>myfile</code>），用户可以指定一个不同的名称给package：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tolua -n pkgname -o myfile.c myfile.pkg</span><br></pre></td></tr></table></figure>
+<p>package还应该明确的初始化。为了从C/C++代码中初始化package，我们必须声明和调用初始化函数。初始化函数被定义为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int tolua_pkgname_open (void);</span><br></pre></td></tr></table></figure>
+<p>其中pkgname表示绑定的package名称。如果我们使用C++，我们可以选择自动初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tolua -a -n pkgname -o myfile.c myfile.pkg</span><br></pre></td></tr></table></figure>
+<p>当前tolua版本还导出绑定的关闭功能，可称为解绑定package：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void tolua_pkgname_close (void);</span><br></pre></td></tr></table></figure>
+<p>还有，<code>open</code>和<code>close</code>功能的原型可以输出一个头文件，通过<code>-H</code>选项设置。</p>
+<p>tolua生成的绑定代码使用了一系列tolua库里面的函数。因此，这个库同样需要被链接到应用程序中。<code>tolua.h</code>也是有必须要编译生成的代码。。</p>
+<p>应用程序无需绑定任何package文件也可以使用tolua的面向对象框架。在这种情况下，应用程序必须调用tolua初始化函数（此函数被任何package文件初始化函数调用）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int tolua_open (void);</span><br></pre></td></tr></table></figure>
+<p>如果要使用多个Lua状态(<code>Lua state</code>)，设置一个Lua状态(<code>Lua state</code>)后，我们需要调用一个函数来恢复tolua内部状态:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void tolua_restorestate (void);</span><br></pre></td></tr></table></figure>
+<h3 id="tolua的一些基本概念-Basic-Concepts"><a href="#tolua的一些基本概念-Basic-Concepts" class="headerlink" title="tolua的一些基本概念 (Basic Concepts)"></a>tolua的一些基本概念 (Basic Concepts)</h3><p>使用tolua的第一步就是创建package文件。我们从真正的头文件入手，将想要暴露给lua的特性转换成tolua可以理解的格式。tolua能够理解的格式就是一些简单的C/C++声明。我们从下面几个方面来讨论：</p>
+<h4 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h4><p>一个package文件可以包含另外的package文件。一般格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&lt;include_file&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="基本类型-Basic-types"><a href="#基本类型-Basic-types" class="headerlink" title="基本类型 (Basic types)"></a>基本类型 (Basic types)</h4><p>tolua会自动映射C/C++的基本类型到lua的基本类型。</p>
+<ul>
+<li><code>char</code>,<code>int</code>,<code>float</code>和<code>double</code>类型被映射为lua中的<code>number</code></li>
+<li><code>char*</code>被映射为lua中的<code>string</code></li>
+<li><code>void*</code>被映射为lua中的<code>userdata</code></li>
+</ul>
+<p>C/C++中的数据类型前面可能有修饰语（如unsigned, static, short, const等等）。然而我们要注意到tolua会忽略基本类型前面的修饰语const。因此，我们给lua传递一个基本类型常量然后再从lua中传递回给C/C++代码，常量到非常量的转换会被悄悄的完成。</p>
+<p>C/C++函数也可以对lua对象进行明确的操作。<code>lua_Object</code>被认为是一个基本类型，任何lua值都符合。</p>
+<p>tolua++新特性：C++中的<code>string</code>类型同样被认为是基本类型，会被当作值传递给lua(使用c_str()方法)。这个功能可以使用命令行选项<code>-S</code>进行关闭。</p>
+<h4 id="用户定义的类型-User-defined-types"><a href="#用户定义的类型-User-defined-types" class="headerlink" title="用户定义的类型 (User defined types)"></a>用户定义的类型 (User defined types)</h4><p>在package文件里的所有其他类型都会被认为是用户自定义类型。它们会映射到lua的userdata类型。lua只能存储指向用户自定义类型的指针；但是，tolua会自动采取措施来处理引用和值。例如，如果一个函数或方法返回一个用户定义类型的值，当这个值返回给lua的时候，tolua会分配一个克隆对象，同时会设置垃圾收集标记，以便在lua不再使用该对象时会自动释放。</p>
+<p>对于用户定义类型，常量是被保留的，因此将用户自定义类型的非常量作为常量传递给一个函数时，会产生类型不匹配的错误。</p>
+<h4 id="NULL和nil-NULL-and-nil"><a href="#NULL和nil-NULL-and-nil" class="headerlink" title="NULL和nil (NULL and nil)"></a>NULL和nil (NULL and nil)</h4><p>C/C++的NULL或0指针映射到lua中的nil类型。反之，nil却可以被指定为任何C/C++指针类型。这对任何类型都有效：<code>char*</code>, <code>void*</code>以及用户自定义类型指针。</p>
+<h4 id="宏定义类型-Typedefs"><a href="#宏定义类型-Typedefs" class="headerlink" title="宏定义类型 (Typedefs)"></a>宏定义类型 (Typedefs)</h4><p>tolua还接受简单类型定义的package文件。任何发生的一种定义是由tolua映射后的基类型。他们是非常有用的，因为几个包定义基本的C/C++类型自己的类型。例如，可以定义一个真正代表两个类型。在这种情况下,真正的可以用来指定变量类型package文件由tolua解释，但前提是我们包括以下定义之前使用的实际类型<code>real</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef double real;</span><br></pre></td></tr></table></figure>
+<p>否则，<code>real</code>将被解释为一个用户定义的类型和不会被映射到Lua数字(<code>numbers</code>)。<br>包含<code>real</code>的头文件(Including real header files)</p>
+<p>在package文件中，我们必须指定哪个是真正(<code>real</code>)的头文件,应包含生成的代码可以访问常量,变量,函数,类具有约束。package文件中的任意行开始<code>$ (except $&lt;...&gt;, $[ , and $] lines)</code>插入到生成绑定C/C++代码没有任何变化，但 <code>$</code> 本身的消除。我们使用这个特性，包括真正(<code>real</code>)的头文件。所以，我们的package文件通常会入手一套 <code>$</code> 开始行指定的文件必须包括在内，也就是说，这些文件是基于package文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* specify the files to be included */</span><br><span class="line">$#include &quot;header1.h&quot;                 // include first header</span><br><span class="line">$#include &quot;header2.h&quot;                 // include second header</span><br></pre></td></tr></table></figure>
+<p>额外说明，tolua还接受注释，使用C或C++惯例,包内的文件。也可以使用嵌套C注释。</p>
+<p>在下面几节中,我们描述了如何指定C/C++代码绑定到Lua。格式是简单有效的C/C++语句。它非常简单的将是一个真正的C/C++头文件转换成package文件。</p>
+<h3 id="绑定常量-Binding-constants"><a href="#绑定常量-Binding-constants" class="headerlink" title="绑定常量 (Binding constants)"></a>绑定常量 (Binding constants)</h3><p>绑定常量，tolua支持两种绑定常量的方式：<code>define</code>和 <code>enum</code>。<br><code>define</code>通常的格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define NAME [ VALUE ]</span><br></pre></td></tr></table></figure>
+<p>上面的VALUE是可选的。如果这样的代码出现在被解析的文件中，tolua会将<code>NAME</code>作为lua的全局变量，该全局变量是C/C++的常量，值为VALUE。这里只接受数字常量。</p>
+<p>tolua++新特性：所有的其他预处理指令会被忽略。</p>
+<p><code>enum</code>的一般格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum &#123;</span><br><span class="line">  NAME1 [ = VALUE1 ] ,</span><br><span class="line">  NAME2 [ = VALUE2 ] ,</span><br><span class="line">  ...</span><br><span class="line">  NAMEn [ = VALUEn ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>同样的，tolua会创建一系列全局变量，命名为<code>NAMEi</code>，对应着各自的值。</p>
+<h3 id="绑定外部变量-Binding-external-variables"><a href="#绑定外部变量-Binding-external-variables" class="headerlink" title="绑定外部变量 (Binding external variables)"></a>绑定外部变量 (Binding external variables)</h3><p>全局的外部变量也可以被导出。在package头文件指定为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[extern] type var;</span><br></pre></td></tr></table></figure>
+<p>tolua绑定这样的声明Lua全局变量。因此，在Lua中，我们自然地可以访问C/C++变量。如果非恒定的变量，我们也可以从Lua变量分配一个新值。全局变量表示数组的值也可以绑定到Lua。数组可以是任何类型的。相应的Lua对象数组是Lua表与数值索引；然而，请注意，指数1在Lua中映射到索引0 C/C++数组。数组必须预先设置长度。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double v[10];</span><br></pre></td></tr></table></figure>
+<h3 id="绑定函数-Binding-functions"><a href="#绑定函数-Binding-functions" class="headerlink" title="绑定函数 (Binding functions)"></a>绑定函数 (Binding functions)</h3><p>Functions are also specified as conventional C/C++ declarations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type funcname (type1 par1[, type2 par2[,...typeN parN]]);</span><br></pre></td></tr></table></figure>
+<p>The returned type can be void, meaning no value is returned. A function can also have no parameter. In that case, void may be specified in the place of the list of parameters. The parameter types must follow the rules already posted. tolua creates a Lua function binding the C/C++ function. When calling a function from Lua, the parameter types must match the corresponding C/C++ types, otherwise, tolua generates an error and reports which parameter is wrongly specified. If a parameter name is omitted, tolua names it automatically, but its type should be a basic type or user type previously used.</p>
+<h4 id="Arrays-数组"><a href="#Arrays-数组" class="headerlink" title="Arrays (数组)"></a>Arrays (数组)</h4><p>tolua also deals with function or method parameters that represent arrays of values. The nice thing about arrays is that the corresponding Lua tables have their values updated if the C/C++ function changes the array contents.<br>The arrays must be pre dimensioned. For instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (double a[3]);</span><br></pre></td></tr></table></figure>
+<p>is a valid function declaration for tolua and calling this function from Lua would be done by, for instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = &#123;1.0,1.5,8.6&#125; </span><br><span class="line">func (p)</span><br></pre></td></tr></table></figure>
+<p>The array dimension need not be a constant expression; the dimension can also be specified by any expression that can be evaluated in run time. For instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (int n, int m, double image[n*m]);</span><br></pre></td></tr></table></figure>
+<p>is also valid since the expression <code>n*m</code> is valid in the binding function scope. However, be aware that tolua uses dynamic allocation for binding this function, what can degrade the performance.</p>
+<p>Despite the dimension specification, it is important to know that all arrays passed to the actual C/C++ function are in the local scope of the binding function. So, if the C/C++ function being called needs to hold the array pointer for later use, the binding code will not work properly.</p>
+<h4 id="Overloaded-functions-重载函数"><a href="#Overloaded-functions-重载函数" class="headerlink" title="Overloaded functions (重载函数)"></a>Overloaded functions (重载函数)</h4><p>Overloaded functions are accepted. Remember that the distinction between two functions with the same name is made based on the parameter types that are mapped to Lua. So, although</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void func (int a); </span><br><span class="line">void func (double a);</span><br></pre></td></tr></table></figure>
+<p>represent two different functions in C++, they are the same function for tolua, because both int and double are mapped to the same Lua type: number.</p>
+<p>Another tricky situation occurs when expecting pointers. Suppose:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void func (char* s);</span><br><span class="line">void func (void* p);</span><br><span class="line">void func (Object1* ptr);</span><br><span class="line">void func (Object2* prt);</span><br></pre></td></tr></table></figure>
+<p>Although these four functions represent different functions in C++, a Lua statement like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func(nil)</span><br></pre></td></tr></table></figure>
+<p>matches all of them.</p>
+<p>It is important to know that tolua decides which function will be called in run-time, trying to match each provided function. tolua first tries to call the last specified function; if it fails, tolua then tries the previous one. This process is repeated until one function matches the calling code or the first function is reached. For that reason, the mismatching error message, when it occurs, is based on the first function specification. When performance is important, we can specify the most used function as the last one, because it will be tried first.</p>
+<p>tolua allows the use of overloaded functions in C, see <a href="http://webserver2.tecgraf.puc-rio.br/~celes/tolua/tolua-3.2.html#renaming" target="_blank" rel="external">Renaming</a> for details.</p>
+<h4 id="Default-parameter-values-默认参数值"><a href="#Default-parameter-values-默认参数值" class="headerlink" title="Default parameter values (默认参数值)"></a>Default parameter values (默认参数值)</h4><p>The last function parameters can have associated default values. In that case, if the function is called with fewer parameters, the default values are assumed. The format to specify the default values is the same as the one used in C++ code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type funcname (..., typeN-1 parN-1 [= valueN-1], typeN parN [= valueN]);</span><br></pre></td></tr></table></figure>
+<p>toLua implements this feature without using any C++ mechanism; so, it can be used also to bind C functions.</p>
+<p>We can also specify default values for the elements of an array (there is no way to specify a default value for the array itself, though). For instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (int a[5]=0);</span><br></pre></td></tr></table></figure>
+<p>sets the default element values to zero, thus the function can be called from Lua with an uninitialized table.</p>
+<p>For Lua object types (lua_Object), tolua defines a constant that can be used to specify nil as default value:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (lua_Object lo = TOLUA_NIL);</span><br></pre></td></tr></table></figure>
+<h4 id="Multiple-returned-values-多个返回值"><a href="#Multiple-returned-values-多个返回值" class="headerlink" title="Multiple returned values (多个返回值)"></a>Multiple returned values (多个返回值)</h4><p>In Lua, a function may return any number of values. tolua uses this feature to simulate values passed by reference. If a function parameter is specified as a pointer to or reference of a basic type or a pointer to or reference of a pointer to an user defined type, tolua accepts the corresponding type as input and returns, besides the conventional function returned value, if any, the updated parameter value.</p>
+<p>For instance, consider a C function that swaps two values:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void swap (double* x, double* y);</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void swap (double&amp; x, double&amp; y);</span><br></pre></td></tr></table></figure>
+<p>If such a function is declared in the package file, tolua binds it as a function receiving two numbers as input and returning two numbers. So, a valid Lua code would be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x,y = swap(x,y)</span><br></pre></td></tr></table></figure>
+<p>If the input values are not used, the use of default parameter value allows calling the function from Lua without specifying them:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void getBox (double* xmin=0, double* xmax=0, double* ymin=0, double* ymax=0);</span><br></pre></td></tr></table></figure>
+<p>In Lua:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmin, xmax, ymin, ymax = getBox()</span><br></pre></td></tr></table></figure>
+<p>With user defined types, we would have for instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void update (Point** p);</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void update (Point*&amp; p);</span><br></pre></td></tr></table></figure>
+<h3 id="绑定结构体-Binding-struct-fields"><a href="#绑定结构体-Binding-struct-fields" class="headerlink" title="绑定结构体 (Binding struct fields)"></a>绑定结构体 (Binding struct fields)</h3><p>User defined types are nicely bound by tolua. For each variable or function type that does not correspond to a basic type, tolua automatically creates a tagged userdata to represent the C/C++ type. If the type corresponds to a struct, the struct fields can be directly accessed from Lua, indexing a variable that holds an object of such a type. In C code, these types are commonly defined using typedef’s:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct [name] &#123;</span><br><span class="line">   type1 fieldname1;</span><br><span class="line">   type2 fieldname2;</span><br><span class="line">   ...</span><br><span class="line">   typeN fieldnameN;</span><br><span class="line">&#125; typename;</span><br></pre></td></tr></table></figure>
+<p>If such a code is inserted in the package file being processed, tolua allows any variable that holds an object of type typename to access any listed field indexing the variable by the field name. For instance, if var holds a such object, <code>var.fieldnamei</code> accesses the field named fieldnamei.</p>
+<p>Fields that represent arrays of values can also be mapped:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123; </span><br><span class="line">  int x[10]; </span><br><span class="line">  int y[10]; </span><br><span class="line">&#125; Example;</span><br></pre></td></tr></table></figure>
+<h3 id="绑定类和方法-Binding-classes-and-methods"><a href="#绑定类和方法-Binding-classes-and-methods" class="headerlink" title="绑定类和方法 (Binding classes and methods)"></a>绑定类和方法 (Binding classes and methods)</h3><p>C++ class definitions are also supported by tolua. Actually, the tolua deals with single inheritance and polymorphism in a natural way. The subsections below describe what can be exported by a class definition.</p>
+<h4 id="Specifying-inheritance-指定继承"><a href="#Specifying-inheritance-指定继承" class="headerlink" title="Specifying inheritance (指定继承)"></a>Specifying inheritance (指定继承)</h4><p>If var is a Lua variable that holds an object of a derived class, var can be used wherever its base class type is expected and var can access any method of its base class. For this mechanism to take effect, we must indicate that the derived class actually inherits the base class. This is done in the conventional way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class classname : public basename</span><br><span class="line">&#123;</span><br><span class="line"> /* class definition */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Specifying-exported-members-and-methods-指定导出成员和方法"><a href="#Specifying-exported-members-and-methods-指定导出成员和方法" class="headerlink" title="Specifying exported members and methods (指定导出成员和方法)"></a>Specifying exported members and methods (指定导出成员和方法)</h4><p>As for struct fields, class fields, static or not, can be exported. Class methods and class static methods can also be exported. Of course, they must be declared as public in the actual C++ code (although the public: keyword may not appear in the package files).<br>For each bound class, tolua creates a Lua table and stores it at a global variable which name is the name of the C++ class. Static exported fields are accessed by indexing this table with the field names (similar to struct fields). Non static exported fields are accessed by indexing the variable that holds the object. Class methods follow the format of the function declaration showed above. They can be accessed from Lua code using the conventional way Lua uses to call methods, applied of course to a variable that holds the appropriate object or to the class table, for static methods.</p>
+<p>There are a few special methods that are also supported by tolua. Constructors are called as static methods, named new. Destructors are called as a conventional method called delete.</p>
+<p>Note that tolua does support overload. This applies even for constructors. Also note that the virtual keyword has no effect in the package file.</p>
+<p>The following code exemplifies class definitions that can be interpreted by tolua.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Point &#123;</span><br><span class="line">   static int n;    // represents the total number of created Points</span><br><span class="line"></span><br><span class="line">   double x;        // represents the x coordinate</span><br><span class="line">   double y;        // represents the y coordinate</span><br><span class="line">   static char* className (void);   // returns the name of the class</span><br><span class="line">   Point (void);                          // constructor 1</span><br><span class="line">   Point (double px, double py);          // constructor 2</span><br><span class="line">   ~Point (void);                         // destructor</span><br><span class="line">   Point add (Point&amp; other);              // add points, returning another one</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class ColorPoint : public Color &#123;</span><br><span class="line">   int red;      // red color component [0 - 255]</span><br><span class="line">   int green;    // green color component [0 - 255]</span><br><span class="line">   int blue;     // blue color component [0 - 255]</span><br><span class="line">   ColorPoint (double px, double py, int r, int g, int b);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>If this segment of code is processed by tolua, we would be able to write the following Lua statements:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">p1 = Point:new(0.0,1.0)</span><br><span class="line">p2 = ColorPoint:new(1.5,2.2,0,0,255)</span><br><span class="line">print(Point.n)                     -- would print 2</span><br><span class="line">p3 = p1:add(p2)</span><br><span class="line">print(p3.x,p3.y)                   -- would print 1.5 and 3.2</span><br><span class="line">print(p2.red,p2.green,p2.blue)     -- would print 0, 0, and 255</span><br><span class="line">print(</span><br><span class="line">p1:delete()                        -- call destructor</span><br><span class="line">p2:delete()                        -- call destructor</span><br></pre></td></tr></table></figure>
+<p>Note that we can only explicitly delete objects that we explicitly create. In the example above, the point p3 will be garbage-collected by tolua automatically; we cannot delete it.<br>Of course, we need to specify only the methods and members we want to access from Lua. Sometimes, it will be necessary to declare a class with no member or method just for the sake of not breaking a chain of inheritances.</p>
+<h4 id="Overloaded-operators（重载的运算符）"><a href="#Overloaded-operators（重载的运算符）" class="headerlink" title="Overloaded operators（重载的运算符）"></a>Overloaded operators（重载的运算符）</h4><p>tolua automatically binds the following binary operators:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">operator+   operator-   operator*   operator/ </span><br><span class="line">operator&lt;   operator&gt;   operator&lt;=  operator&gt;=</span><br></pre></td></tr></table></figure>
+<p>For the relational operators, toLua also automatically converts a returned 0 value into nil, so false in C becomes false in Lua.<br>As an example, suppose that in the code above, instead of having:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point add (Point&amp; other);              // add points, returning another one</span><br></pre></td></tr></table></figure>
+<p>we had:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point operator+ (Point&amp; other);        // add points, returning another one</span><br></pre></td></tr></table></figure>
+<p>In that case, in Lua, we could simply write:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p3 = p1 + p2</span><br></pre></td></tr></table></figure>
+<p>The indexing operator (<code>operator[]</code>) when receiving a numeric parameter can also be exported to Lua. In this case, tolua accepts reference as returned value, even for basic types. Then if a reference is returned, from Lua, the programmer can either get or set the value. If the returned value is not a reference, the programmer can only get the value. An example may clarify: suppose we have a vector class and bind the following operator:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double&amp; operator[] (int index);</span><br></pre></td></tr></table></figure>
+<p>In this case, in Lua, we would be able to write: <code>value = myVector[i]</code> and also <code>myVector[i] = value</code>, what updates the C++ object. However, if the bound operator was:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double operator[] (int index);</span><br></pre></td></tr></table></figure>
+<p>we would only be able to write: <code>value = myVector[i]</code>.<br>Free functions (i.e., not class members) that overload operators are not supported.</p>
+<h3 id="模块定义-Module-definition"><a href="#模块定义-Module-definition" class="headerlink" title="模块定义 (Module definition)"></a>模块定义 (Module definition)</h3><p>tolua allows us to group constants, variables, and functions in a module. The module itself is mapped to a table in Lua, and its constants, variables, and functions are mapped to fields in that table. The general format to specify a module is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">module name </span><br><span class="line">&#123; </span><br><span class="line">      ... // constant, variable, and function declarations </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Thus, if we bound the following module declaration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module mod </span><br><span class="line">&#123; </span><br><span class="line"> #define N </span><br><span class="line"> extern int var; </span><br><span class="line"> int func (...): </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In Lua we would be able to access such features by indexing the module: <code>mod.N, mod.var, mod.func</code>.</p>
+<h3 id="命名常量、变量和函数-Renaming-constants-variables-and-functions"><a href="#命名常量、变量和函数-Renaming-constants-variables-and-functions" class="headerlink" title="命名常量、变量和函数 (Renaming constants, variables and functions)"></a>命名常量、变量和函数 (Renaming constants, variables and functions)</h3><p>When exporting constants, variable, and functions (members of a class or not), we can rename them, such that they will be bound with a different name from their C/C++ counterparts. To do that, we write the name they will be referenced in Lua after the character <code>@</code>. For instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">extern int cvar @ lvar;</span><br><span class="line"></span><br><span class="line">#define CNAME @ LNAME</span><br><span class="line"></span><br><span class="line">enum &#123; </span><br><span class="line">  CITEM1 @ LITEM1, </span><br><span class="line">  CITEM2 @ LITEM2, </span><br><span class="line">  ... </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void cfunc @ lfunc (...);</span><br><span class="line"></span><br><span class="line">class T </span><br><span class="line">&#123; </span><br><span class="line">   double cfield @ lfield; </span><br><span class="line">   void cmeth @ lmeth (...); </span><br><span class="line">   ... </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>In such a case, the global variable <code>cvar</code> would be identified in Lua by <code>lvar</code>, the constant <code>CNAME</code> by <code>LNAME</code>, and so on. Note that class cannot be renamed, because they represent types in C.</p>
+<p>This renaming feature allows function overload in C, because we can choose to export two different C functions with a same Lua name:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void glVertex3d @ glVertex (double x, double y, double z=0.0); </span><br><span class="line">void glVertexdv @ glVertex (double v[3]=0.0);</span><br></pre></td></tr></table></figure>
+<h3 id="存储额外字段-Storing-additional-fields"><a href="#存储额外字段-Storing-additional-fields" class="headerlink" title="存储额外字段 (Storing additional fields)"></a>存储额外字段 (Storing additional fields)</h3><p>Finally, it is important to know that even though the variables that hold C/C++ objects are actually tagged userdata for Lua, tolua creates a mechanism that allows us to store any additional field attached to these objects. That is, these objects can be seen as conventional Lua tables.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj = ClassName:new()</span><br><span class="line">obj.myfield = 1  -- even though &quot;myfield&quot; does not represent a field of ClassName</span><br></pre></td></tr></table></figure>
+<p>Such a construction is possible because, if needed, tolua automatically creates a Lua table and associates it with the object. So that, the object can store additional fields not mapped to C/C++, but actually stored in the conjugate table. The Lua programmer accesses the C/C++ features and these additional fields in an uniform way. Note that, in fact, these additional fields overwrite C/C++ fields or methods when the names are the same.</p>
+<h3 id="导出工具函数-Exported-utility-functions"><a href="#导出工具函数-Exported-utility-functions" class="headerlink" title="导出工具函数 (Exported utility functions)"></a>导出工具函数 (Exported utility functions)</h3><p>tolua uses itself to export some utility functions to Lua, including its object-oriented framework. The package file used by tolua is shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">module tolua </span><br><span class="line">&#123; </span><br><span class="line"> void tolua_using @ using (lua_Table module); </span><br><span class="line"> char* tolua_type @ type (lua_Object lo); </span><br><span class="line"> void tolua_foreach @ foreach (lua_Object lo, lua_Function f); </span><br><span class="line"> void tolua_class @ class (lua_Table derived, lua_Table base=TOLUA_NIL); </span><br><span class="line"> void tolua_instance @ instance (lua_Table instance, lua_Table classobj); </span><br><span class="line"> lua_Object tolua_base @ base (lua_Object lo); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="tolua-using-table"><a href="#tolua-using-table" class="headerlink" title="tolua.using (table)"></a>tolua.using (table)</h4><p>This functions receives a table and maps all its fields to the global environment. Thus we can map an entire module and access its features without the module prefix. For instance, if in our Lua code we do:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tolua.using(tolua)</span><br></pre></td></tr></table></figure>
+<p>all tolua utility functions are mapped to the global environment.</p>
+<h4 id="tolua-type-var"><a href="#tolua-type-var" class="headerlink" title="tolua.type (var)"></a>tolua.type (var)</h4><p>Returns a string representing the object type. For instance, <code>tolua.type(tolua)</code> returns the string <code>generic module</code> and <code>tolua.type(tolua.type)</code> returns <code>cfunction</code>. Similarly, if <code>var</code> is a variable holding a user defined type <code>T, tolua.type(var)</code> would return const <code>T</code> or <code>T</code>, depending whether it is a constant reference.</p>
+<h4 id="tolua-tag-“type”"><a href="#tolua-tag-“type”" class="headerlink" title="tolua.tag (“type”)"></a>tolua.tag (“type”)</h4><p>Returns type corresponding tag number.</p>
+<h4 id="tolua-foreach-object"><a href="#tolua-foreach-object" class="headerlink" title="tolua.foreach (object)"></a>tolua.foreach (object)</h4><p>Allows us to traverse the conjugate table of an user defined instance. If applied to conventional table, it has a similar behavior as the Lua built-in <code>foreach</code> function. The difference is that this function filters all fields starting with a dot, not passing them to the provided callback function. This filter is need because tolua adds “hidden” fields to the tables it manipulates, and all its “hidden” fields start with a dot.</p>
+<h4 id="tolua-cast-object-“typename”"><a href="#tolua-cast-object-“typename”" class="headerlink" title="tolua.cast (object, “typename”)"></a>tolua.cast (object, “typename”)</h4><p>Returns the object “casted” to the given type. The object must represent an user type, otherwise the function returns <code>nil</code>.</p>
+<h4 id="tolua-takeownership-object"><a href="#tolua-takeownership-object" class="headerlink" title="tolua.takeownership (object)"></a>tolua.takeownership (object)</h4><p>Asks tolua to take the ownership of the given object. This means the C/C++ object will be freed/ destructed when garbage-collected by Lua.  The object must represent an user type, otherwise an execution error is generated.</p>
+<h4 id="tolua-class-table-base-nil"><a href="#tolua-class-table-base-nil" class="headerlink" title="tolua.class (table, base=nil)"></a>tolua.class (table, base=nil)</h4><p>Creates a class by setting the appropriate tag methods to the given table. The created class can inherit from a base class, previously created.</p>
+<h4 id="tolua-instance-table-class"><a href="#tolua-instance-table-class" class="headerlink" title="tolua.instance (table, class)"></a>tolua.instance (table, class)</h4><p>Sets the given table to be an instance of the given class. This and the previous utility functions allow object-oriented programming in Lua. As an example consider:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- define a Point class </span><br><span class="line">classPoint = &#123; x=0, y=0 &#125; </span><br><span class="line">tolua.class(classPoint) -- set as a class</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- define print method </span><br><span class="line">function classPoint:print () </span><br><span class="line">   print(self.x,self.y) </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- define add method </span><br><span class="line">function classPoint:add (p2) </span><br><span class="line">   return Point&#123;x=self.x+p2.x,y=self.y+p2.y&#125; </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- define a Point constructor </span><br><span class="line">function Point (p) </span><br><span class="line">   tolua.instance(p,classPoint) -- set as an instance of classPoint </span><br><span class="line">return p end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- define a Color Point class </span><br><span class="line">classColorPoint = &#123; color = &apos;black&apos; &#125; </span><br><span class="line">tolua.class(classColorPoint,classPoint) -- set as class inheriting from classPoint</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- define class methods </span><br><span class="line">function classColorPoint:print () </span><br><span class="line">   print(self.x,self.y,self.color) </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- define Color Point constructor </span><br><span class="line">function ColorPoint (p) </span><br><span class="line">   tolua.instance(p,classColorPoint) -- set as an instance of classColorPoint </span><br><span class="line">   return p </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- Some valid codes would then be </span><br><span class="line">p = Point&#123;x=1&#125; </span><br><span class="line">q = ColorPoint&#123;x=2,y=3,color=2&#125; </span><br><span class="line">r = p:add(q) </span><br><span class="line">r:print() --&gt; would print &quot;3 3&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Lua嵌入代码-Embedded-Lua-code"><a href="#Lua嵌入代码-Embedded-Lua-code" class="headerlink" title="Lua嵌入代码 (Embedded Lua code)"></a>Lua嵌入代码 (Embedded Lua code)</h3><p>tolua allows us to embed Lua code in the C/C++ generated code. To do that, it compiles the specified Lua code and creates a C constant string, storing the corresponding bytecodes, in the generated code.  When the package is opened, such a string is executed. The format to embed Lua code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$[</span><br><span class="line"></span><br><span class="line">embedded Lua code </span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$]</span><br></pre></td></tr></table></figure>
+<p>As an example consider the following .pkg excerpt:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/* Bind a Point class */ </span><br><span class="line">class Point </span><br><span class="line">&#123; </span><br><span class="line"> Point (int x, int y); </span><br><span class="line"> ~Point (); </span><br><span class="line"> void print (); </span><br><span class="line"> ... </span><br><span class="line">&#125; CPoint;</span><br><span class="line"></span><br><span class="line">$[</span><br><span class="line"></span><br><span class="line">-- Create a Point constructor </span><br><span class="line">function Point (self) </span><br><span class="line"> local cobj = CPoint:new(self.x or 0, self.y or 0) </span><br><span class="line"> tolua.takeownership(cobj) </span><br><span class="line"> return cobj </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">$]</span><br></pre></td></tr></table></figure>
+<p>Binding such a code would allow us to write the following Lua code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = Point&#123; x=2, y=3 &#125; </span><br><span class="line">p:print() </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ul>
+<li>添加自定义类</li>
+<li>按照tolua改写规则，改写头文件(也可以在头文件加tolua能够识别的代码)生成tolua文件，这里分为两个方式，一是生成单独对应的tolua文件，二是追加到已有的tolua文件中</li>
+<li>运行脚本，生成绑定文件，根据第二步tolua生成方式的不同，生成的绑定也是两个方式：一是生成单独对应的绑定文件.h/.cpp，而是生成的内容分别追加到已有的绑定文件.h/.cpp中</li>
+<li>载入luabinding接口文件</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/" data-id="cio9hh0j80000mcw81m9ro3ge" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2dx/">Cocos2dx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/09/Cocos2dx-CCRenderTexture/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Cocos2d-x中动态纹理CCRenderTexture的使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="post-Cocos2dx-tolua++" data-title="(译)tolua参考手册--accessing C/C++ code from Lua" data-url="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2dx/">Cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Cocos2dx/" style="font-size: 10px;">Cocos2dx</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/09/Cocos2dx-CCRenderTexture/">Cocos2d-x中动态纹理CCRenderTexture的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/02/Learn-shell/">shell学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/pngquant-compress-png/">利用pngquant压缩png图片</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/29/vi-vim-delete-M/">vi/vim显示中文字符并且去掉^M的方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://www.dtgames.top/" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://keepmovingxin.com/" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").append('<div id="backtoTop" data-action="gototop"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+<div class="bottom-btn">
+
+	<a class="icon-gotop" href="javascript:void(0)" title="返回顶部"></a>
+	<script src="/js/gotop.js"></script>
+	<!--
+	<script src="/js/gotop.js"></script>
+	-->
+
+</div>
+  </div>
+</body>
+</html>

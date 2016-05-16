@@ -6,18 +6,27 @@
   <title>Cocos2d-x中动态纹理CCRenderTexture的使用 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等
-截取当前屏幕图片1234567891011121314151617181920--[[    @des:截取当前屏幕图片    @ret:截取的图片路径--]]function getScreenshots()    local size = CCDirector:sharedDirector():g">
+使用CCRenderTexture需要做以下5步:
+
+创建一个新的CCRenderTexture. 这里，你可以指定将要创建的纹理的宽度和高度。
+调用 CCRenderTexture:begin. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到CCRenderTexture里面去，而">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cocos2d-x中动态纹理CCRenderTexture的使用">
 <meta property="og:url" content="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/index.html">
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等
-截取当前屏幕图片1234567891011121314151617181920--[[    @des:截取当前屏幕图片    @ret:截取的图片路径--]]function getScreenshots()    local size = CCDirector:sharedDirector():g">
-<meta property="og:updated_time" content="2016-05-12T13:08:30.000Z">
+使用CCRenderTexture需要做以下5步:
+
+创建一个新的CCRenderTexture. 这里，你可以指定将要创建的纹理的宽度和高度。
+调用 CCRenderTexture:begin. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到CCRenderTexture里面去，而">
+<meta property="og:updated_time" content="2016-05-16T03:50:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocos2d-x中动态纹理CCRenderTexture的使用">
 <meta name="twitter:description" content="记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等
-截取当前屏幕图片1234567891011121314151617181920--[[    @des:截取当前屏幕图片    @ret:截取的图片路径--]]function getScreenshots()    local size = CCDirector:sharedDirector():g">
+使用CCRenderTexture需要做以下5步:
+
+创建一个新的CCRenderTexture. 这里，你可以指定将要创建的纹理的宽度和高度。
+调用 CCRenderTexture:begin. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到CCRenderTexture里面去，而">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -127,21 +136,35 @@ var _hmt = _hmt || [];
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
             
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#截取当前屏幕图片"><span class="toc-number">1.</span> <span class="toc-text">截取当前屏幕图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制精灵的影子"><span class="toc-number">2.</span> <span class="toc-text">绘制精灵的影子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制动态精灵————"><span class="toc-number">3.</span> <span class="toc-text">绘制动态精灵————-</span></a></li></ol>
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#截取当前屏幕图片"><span class="toc-number">1.</span> <span class="toc-text">截取当前屏幕图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制精灵的影子"><span class="toc-number">2.</span> <span class="toc-text">绘制精灵的影子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制动态精灵"><span class="toc-number">3.</span> <span class="toc-text">绘制动态精灵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接："><span class="toc-number">4.</span> <span class="toc-text">参考链接：</span></a></li></ol>
 		        
           </div>
         
-        <p>记录一下Cocos2d-x中动态纹理CCRenderTexture的各种应用，实现截屏、阴影等等</p>
-<h3 id="截取当前屏幕图片"><a href="#截取当前屏幕图片" class="headerlink" title="截取当前屏幕图片"></a>截取当前屏幕图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">--[[</span><br><span class="line">    @des:截取当前屏幕图片</span><br><span class="line">    @ret:截取的图片路径</span><br><span class="line">--]]</span><br><span class="line">function getScreenshots()</span><br><span class="line">    local size = CCDirector:sharedDirector():getWinSize()</span><br><span class="line">    local in_texture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)</span><br><span class="line">    in_texture:getSprite():setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line">    in_texture:setPosition( ccp(size.width/2, size.height/2) )</span><br><span class="line">    in_texture:setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line"></span><br><span class="line">    local runingScene = CCDirector:sharedDirector():getRunningScene()</span><br><span class="line">    in_texture:begin()</span><br><span class="line">    runingScene:visit()</span><br><span class="line">    in_texture:endToLua()</span><br><span class="line"></span><br><span class="line">    local picPath = CCFileUtils:sharedFileUtils():getWritablePath() .. &quot;shareTempScreenshots.jpg&quot;</span><br><span class="line">    print(&quot;截屏图片:&quot;,in_texture:saveToFile(picPath))</span><br><span class="line">    return picPath</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+        <p>记录一下Cocos2d-x中动态纹理<code>CCRenderTexture</code>的各种应用，实现截屏、阴影等等</p>
+<p>使用<code>CCRenderTexture</code>需要做以下5步:</p>
+<ol>
+<li>创建一个新的<code>CCRenderTexture</code>. 这里，你可以指定将要创建的纹理的宽度和高度。</li>
+<li>调用 <code>CCRenderTexture:begin</code>. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到<code>CCRenderTexture</code>里面去，而不是画到屏幕上。</li>
+<li>绘制纹理. 你可以使用原始的<code>OpenGL</code>调用来绘图，或者你也可以使用cocos2d对象里面已经定义好的<code>visit</code>方法。（这个visit方法就会调用一些opengl命令来绘制cocos2d对象）</li>
+<li>调用 <code>CCRenderTexture:end</code>. 这个方法会渲染纹理，并且会关闭渲染至<code>CCRenderTexture</code>的通道。</li>
+<li>从生成的纹理中创建一个<code>sprite</code>. 你现在可以用<code>CCRenderTexture</code>的<code>sprite.texture</code>属性来轻松创建新的精灵了。</li>
+</ol>
 <a id="more"></a>
-<h3 id="绘制精灵的影子"><a href="#绘制精灵的影子" class="headerlink" title="绘制精灵的影子"></a>绘制精灵的影子</h3><h3 id="绘制动态精灵————"><a href="#绘制动态精灵————" class="headerlink" title="绘制动态精灵————-"></a>绘制动态精灵————-</h3><p><strong>版权声明</strong></p>
-<p><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a></p>
-<p>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/">http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</a></p>
+<h3 id="截取当前屏幕图片"><a href="#截取当前屏幕图片" class="headerlink" title="截取当前屏幕图片"></a>截取当前屏幕图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">--[[</span><br><span class="line">    @des:截取当前屏幕图片</span><br><span class="line">    @ret:截取的图片路径</span><br><span class="line">--]]</span><br><span class="line">function getScreenshots()</span><br><span class="line">    local size = CCDirector:sharedDirector():getWinSize()</span><br><span class="line">    local renderTexture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)</span><br><span class="line">    renderTexture:getSprite():setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line">    renderTexture:setPosition( ccp(size.width/2, size.height/2) )</span><br><span class="line">    renderTexture:setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line"></span><br><span class="line">    local runingScene = CCDirector:sharedDirector():getRunningScene()</span><br><span class="line">    renderTexture:begin()</span><br><span class="line">    runingScene:visit()</span><br><span class="line">    renderTexture:endToLua()</span><br><span class="line"></span><br><span class="line">    local picPath = CCFileUtils:sharedFileUtils():getWritablePath() .. &quot;tempScreenshots.jpg&quot;</span><br><span class="line">    print(&quot;截屏图片:&quot;,renderTexture:saveToFile(picPath))</span><br><span class="line">    return picPath</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="绘制精灵的影子"><a href="#绘制精灵的影子" class="headerlink" title="绘制精灵的影子"></a>绘制精灵的影子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">--[[</span><br><span class="line">    @des:根据精灵绘制影子</span><br><span class="line">    @par:pSprite 精灵</span><br><span class="line">    @ret:shadowSprite 精灵影子</span><br><span class="line">--]]</span><br><span class="line">function getShadowSprite( pSprite )</span><br><span class="line">    local size = pSprite:getContentSize()</span><br><span class="line">    local renderTexture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)</span><br><span class="line">    renderTexture:getSprite():setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line">    renderTexture:setPosition( ccp(size.width/2, size.height/2) )</span><br><span class="line">    renderTexture:setAnchorPoint( ccp(0.5,0.5) )</span><br><span class="line">    </span><br><span class="line">    renderTexture:beginWithClear(0,0,0,0)</span><br><span class="line">    pSprite:visit()</span><br><span class="line">    renderTexture:endToLua()</span><br><span class="line">    </span><br><span class="line">    local shadowSprite = CCSprite:createWithTexture(renderTexture:getSprite():getTexture())</span><br><span class="line">    return shadowSprite</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="绘制动态精灵"><a href="#绘制动态精灵" class="headerlink" title="绘制动态精灵"></a>绘制动态精灵</h3><p>　　注意，我们这里不是调用的<code>CCRenderTexture:begin</code>方法，而是调用另外一个较方便的方法<code>beginWithClear:g:b:a:</code>，这个方法可以用给定的颜色来清除纹理的背景，相当于设置画布的颜色。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">-(CCSprite *)spriteWithColor:(ccColor4F)bgColor textureSize:(float)textureSize &#123;</span><br><span class="line"></span><br><span class="line">// 1: Create new CCRenderTexture</span><br><span class="line">CCRenderTexture *rt = [CCRenderTexture renderTextureWithWidth:textureSize height:textureSize];</span><br><span class="line"></span><br><span class="line">// 2: Call CCRenderTexture:begin</span><br><span class="line">[rt beginWithClear:bgColor.r g:bgColor.g b:bgColor.b a:bgColor.a];</span><br><span class="line"></span><br><span class="line">// 3: Draw into the texture</span><br><span class="line">// We&apos;ll add this later</span><br><span class="line"></span><br><span class="line">// 4: Call CCRenderTexture:end</span><br><span class="line">[rt end];</span><br><span class="line"></span><br><span class="line">// 5: Create a new Sprite from the texture</span><br><span class="line">return [CCSprite spriteWithTexture:rt.sprite.texture];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (ccColor4F)randomBrightColor &#123;</span><br><span class="line"> </span><br><span class="line">    while (true) &#123;</span><br><span class="line">        float requiredBrightness = 192;</span><br><span class="line">        ccColor4B randomColor = </span><br><span class="line">            ccc4(arc4random() % 255,</span><br><span class="line">                 arc4random() % 255, </span><br><span class="line">                 arc4random() % 255, </span><br><span class="line">                 255);</span><br><span class="line">        if (randomColor.r &gt; requiredBrightness || </span><br><span class="line">            randomColor.g &gt; requiredBrightness ||</span><br><span class="line">            randomColor.b &gt; requiredBrightness) &#123;</span><br><span class="line">            return ccc4FFromccc4B(randomColor);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (void)genBackground &#123;</span><br><span class="line"> </span><br><span class="line">    [_background removeFromParentAndCleanup:YES];</span><br><span class="line"> </span><br><span class="line">    ccColor4F bgColor = [self randomBrightColor];</span><br><span class="line">    _background = [self spriteWithColor:bgColor textureWidth:IS_IPHONE_5 ? 1024:512 textureHeight:512];</span><br><span class="line"> </span><br><span class="line">    CGSize winSize = [CCDirector sharedDirector].winSize;</span><br><span class="line">    _background.position = ccp(winSize.width/2, winSize.height/2);        </span><br><span class="line">    [self addChild:_background z:-1];</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (void) onEnter &#123;</span><br><span class="line">    [super onEnter];</span><br><span class="line">    [self genBackground];</span><br><span class="line">    [self setTouchEnabled:YES];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &#123;</span><br><span class="line">    [self genBackground];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　<code>randomBrightColor</code>方法是一个辅助方法，用来创建一种随机颜色。注意，这里使用ccc4B（因此，我们能够在0-255的范围内指定R/G/B/A值），同时确保至少有一个颜色分量是大于192的，这样的话，我们就不会得到较暗的颜色。</p>
+<p>　　然后，<code>genBackground</code>调用我们之前写的<code>spriteWithColor</code>方法，同时把它加屏幕中央。</p>
+<p>　　至于<code>init</code>函数，它调用<code>genBackground</code>方法，同时激活<code>touches</code>事件，这样的话，你就可以通过点击屏幕来获得另外的随机背景了。</p>
+<p>　　编译并运行，这样你每一次点击屏幕，你都可以得到一张不同的单色背景图片啦！</p>
+<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p><a href="http://www.cnblogs.com/andyque/archive/2011/07/01/2095479.html" target="_blank" rel="external">(译)如何使用CCRenderTexture来创建动态纹理</a></p>
+<p><a href="https://www.raywenderlich.com/33266/how-to-create-dynamic-textures-with-ccrendertexture-in-cocos2d-2-x" target="_blank" rel="external">How To Create Dynamic Textures with CCRenderTexture in Cocos2D 2.X</a>———–<br><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/">http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/" data-id="cio5dvjf90006k2w8b304tz5e" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/" data-id="cio9h79zr0001lcw801ye78mm" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li></ul>
@@ -151,6 +174,15 @@ var _hmt = _hmt || [];
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/05/14/Cocos2dx-tolua++/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (译)tolua参考手册--accessing C/C++ code from Lua
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/02/Learn-shell/" id="article-nav-older" class="article-nav-link-wrap">
@@ -200,7 +232,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2dx/">Cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
     </div>
   </div>
 
@@ -210,7 +242,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a>
+      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Cocos2dx/" style="font-size: 10px;">Cocos2dx</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
     </div>
   </div>
 
@@ -232,6 +264,10 @@ var _hmt = _hmt || [];
       <ul>
         
           <li>
+            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
+          </li>
+        
+          <li>
             <a href="/2016/05/09/Cocos2dx-CCRenderTexture/">Cocos2d-x中动态纹理CCRenderTexture的使用</a>
           </li>
         
@@ -245,10 +281,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/04/29/vi-vim-delete-M/">vi/vim显示中文字符并且去掉^M的方法</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/28/Linux-Commond/">Linux常用命令学习</a>
           </li>
         
       </ul>
