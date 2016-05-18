@@ -13,7 +13,7 @@ $ rdate -s time.nist.gov">
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
 $ rdate -s time.nist.gov">
-<meta property="og:updated_time" content="2016-05-18T10:27:39.000Z">
+<meta property="og:updated_time" content="2016-05-18T10:45:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令学习">
 <meta name="twitter:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
             
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同步时间"><span class="toc-number">1.</span> <span class="toc-text">同步时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道符："><span class="toc-number">2.</span> <span class="toc-text">管道符： |</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo"><span class="toc-number">3.</span> <span class="toc-text">echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printf"><span class="toc-number">4.</span> <span class="toc-text">printf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">5.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式"><span class="toc-number">6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件通配符"><span class="toc-number">7.</span> <span class="toc-text">文件通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">8.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed"><span class="toc-number">9.</span> <span class="toc-text">sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tail"><span class="toc-number">10.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-number">11.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cut"><span class="toc-number">12.</span> <span class="toc-text">cut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-排序"><span class="toc-number">13.</span> <span class="toc-text">sort  排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniq-去重"><span class="toc-number">14.</span> <span class="toc-text">uniq 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-统计"><span class="toc-number">15.</span> <span class="toc-text">wc 统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seq"><span class="toc-number">16.</span> <span class="toc-text">seq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir-创建目录"><span class="toc-number">17.</span> <span class="toc-text">mkdir 创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date"><span class="toc-number">18.</span> <span class="toc-text">date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5sum"><span class="toc-number">19.</span> <span class="toc-text">md5sum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ln-链接"><span class="toc-number">20.</span> <span class="toc-text">ln 链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split-大文件切割"><span class="toc-number">21.</span> <span class="toc-text">split 大文件切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alias-别名"><span class="toc-number">22.</span> <span class="toc-text">alias 别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chmod-权限"><span class="toc-number">23.</span> <span class="toc-text">chmod 权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim-文本编辑工具"><span class="toc-number">24.</span> <span class="toc-text">vim 文本编辑工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paste"><span class="toc-number">25.</span> <span class="toc-text">paste</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出目录"><span class="toc-number">26.</span> <span class="toc-text">列出目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jps"><span class="toc-number">27.</span> <span class="toc-text">jps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完待续…"><span class="toc-number">28.</span> <span class="toc-text">未完待续…</span></a></li></ol>
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同步时间"><span class="toc-number">1.</span> <span class="toc-text">同步时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道符："><span class="toc-number">2.</span> <span class="toc-text">管道符： |</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式"><span class="toc-number">3.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件通配符"><span class="toc-number">4.</span> <span class="toc-text">文件通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo-打印"><span class="toc-number">5.</span> <span class="toc-text">echo 打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printf-格式化输出"><span class="toc-number">6.</span> <span class="toc-text">printf 格式化输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat-查看文件"><span class="toc-number">7.</span> <span class="toc-text">cat 查看文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep-匹配"><span class="toc-number">8.</span> <span class="toc-text">grep 匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-处理内容"><span class="toc-number">9.</span> <span class="toc-text">sed 处理内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tail-查看文件"><span class="toc-number">10.</span> <span class="toc-text">tail 查看文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-查找"><span class="toc-number">11.</span> <span class="toc-text">find 查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cut-剪切"><span class="toc-number">12.</span> <span class="toc-text">cut 剪切</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-排序"><span class="toc-number">13.</span> <span class="toc-text">sort 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniq-去重"><span class="toc-number">14.</span> <span class="toc-text">uniq 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-统计"><span class="toc-number">15.</span> <span class="toc-text">wc 统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seq-产生整数"><span class="toc-number">16.</span> <span class="toc-text">seq 产生整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir-创建目录"><span class="toc-number">17.</span> <span class="toc-text">mkdir 创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date-时间"><span class="toc-number">18.</span> <span class="toc-text">date 时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5sum-MD5"><span class="toc-number">19.</span> <span class="toc-text">md5sum MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ln-链接"><span class="toc-number">20.</span> <span class="toc-text">ln 链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split-大文件切割"><span class="toc-number">21.</span> <span class="toc-text">split 大文件切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alias-别名"><span class="toc-number">22.</span> <span class="toc-text">alias 别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chmod-权限"><span class="toc-number">23.</span> <span class="toc-text">chmod 权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim-文本编辑工具"><span class="toc-number">24.</span> <span class="toc-text">vim 文本编辑工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paste-拼接"><span class="toc-number">25.</span> <span class="toc-text">paste 拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-列出目录"><span class="toc-number">26.</span> <span class="toc-text">ls 列出目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jps-显示java进程"><span class="toc-number">27.</span> <span class="toc-text">jps 显示java进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完待续…"><span class="toc-number">28.</span> <span class="toc-text">未完待续…</span></a></li></ol>
 		        
           </div>
         
@@ -136,20 +136,7 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h3 id="管道符："><a href="#管道符：" class="headerlink" title="管道符： |"></a>管道符： |</h3><p>就是把前面的命令运行的要放入标准输出的结果丢给后面的命令</p>
 <p><code>cat 1.txt | cat</code></p>
-<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><pre><code>-n    打印语句后不会换行。
--e 开启转义，即可以打印后面的 \t,\r 等转义字符
-可以打印彩色文本。
-</code></pre><h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><p>用于格式化输出，使用的参数和C语言中的printf函数一样<br>eg：printf “%-5s %-10s %-4.2f\n” 1 James 80.9968</p>
-<pre><code>-：表示左对齐，默认为右对齐
-s：表示打印的是字符串
-f：表示打印一个浮点数，其中4表示宽度，.2表示保留2位小数
-</code></pre><p>printf默认不带换行，需要手动添加</p>
-<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件</p>
-<pre><code>-n：为每行前面加上行号。-n会为空白行也加上行号，-b选项则会跳过空白行。
--s：压缩相邻的空白行，即连续的空白行将压缩为一行。
--T：用^I符号表示制表符\t
-</code></pre><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>由一般字符和特殊字符（meta字符）组成</p>
-<p>meta元字符</p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>由一般字符和特殊字符（meta字符）组成<br>meta元字符</p>
 <pre><code>\ 通常用于打开或关闭后续字符的特殊含义，如\(...\)与\{...\}
 . 匹配任何单个字符（除NULL）
 \* 匹配前面的子表达式任意次，例：a* 匹配任意多个a
@@ -163,10 +150,25 @@ $ 匹配输入字符串的结束位置
 ? 匹配文件名中的任何单个字符。
 [...] 匹配[ ]中所包含的任何字符。可以用 – 连接，表示范围
 [!...] 匹配[ ]中非 感叹号！之后的字符。
-</code></pre><p>如：<br>5<em> 5开头的所有字符串
-</em>5 5结尾的所有字符串<br>*5? 以5为倒数第二个字符的字符串<br>[0－9] 所有以数字的字符<br>[1,2] 1或者2<br>[!0-9] 不是数字的字符</p>
-<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>grep [options] [表达式]</p>
-<p>1)    [options]列表：</p>
+</code></pre><p>如：</p>
+<pre><code>5* 5开头的所有字符串
+*5 5结尾的所有字符串
+*5? 以5为倒数第二个字符的字符串
+[0－9] 所有以数字的字符
+[1,2] 1或者2
+[!0-9] 不是数字的字符
+</code></pre><h3 id="echo-打印"><a href="#echo-打印" class="headerlink" title="echo 打印"></a>echo 打印</h3><pre><code>-n    打印语句后不会换行。
+-e 开启转义，即可以打印后面的 \t,\r 等转义字符
+可以打印彩色文本。
+</code></pre><h3 id="printf-格式化输出"><a href="#printf-格式化输出" class="headerlink" title="printf 格式化输出"></a>printf 格式化输出</h3><p>用于格式化输出，使用的参数和C语言中的printf函数一样<br>eg：printf “%-5s %-10s %-4.2f\n” 1 James 80.9968</p>
+<pre><code>-：表示左对齐，默认为右对齐
+s：表示打印的是字符串
+f：表示打印一个浮点数，其中4表示宽度，.2表示保留2位小数
+</code></pre><p>printf默认不带换行，需要手动添加</p>
+<h3 id="cat-查看文件"><a href="#cat-查看文件" class="headerlink" title="cat 查看文件"></a>cat 查看文件</h3><pre><code>-n：为每行前面加上行号。-n会为空白行也加上行号，-b选项则会跳过空白行。
+-s：压缩相邻的空白行，即连续的空白行将压缩为一行。
+-T：用^I符号表示制表符\t
+</code></pre><h3 id="grep-匹配"><a href="#grep-匹配" class="headerlink" title="grep 匹配"></a>grep 匹配</h3><p>grep [options] [表达式]<br>1)    [options]列表：</p>
 <pre><code>-c    ：只输出匹配行的统计数
 -n    ：显示匹配行及行号
 -A2    ：列出匹配行及下面2行
@@ -185,20 +187,18 @@ $ 匹配输入字符串的结束位置
 -f pattern_file    ：    样式文件pattern_file中逐行存放要匹配的样式，可匹配多个样式，样式之间是“或”的关系
 --color    ：    为匹配项显示不同颜色
 </code></pre><p>2)    <code>grep –E &quot;pattern1|pattern2&quot; files</code> ：显示匹配 pattern1 或 pattern2 的行<br>3)    <code>grep –e pattern1 –e pattern2 files</code> : 匹配pattern1或pattern2<br>4)    <code>grep pattern1 files | grep pattern2</code> ：显示既匹配 pattern1 又匹配 pattern2 的行<br>5)    <code>egrep &quot;t_hero|t_item&quot;</code>   匹配t_hero或者t_item的项<br>6)    <code>grep &quot;t_hero\|t_item&quot;</code>    可以实现与上面同样的功能</p>
-<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p><code>sed [options] &#39;command&#39; file(s) 或sed [options] -f scriptfile file(s)</code></p>
+<h3 id="sed-处理内容"><a href="#sed-处理内容" class="headerlink" title="sed 处理内容"></a>sed 处理内容</h3><p><code>sed [options] &#39;command&#39; file(s) 或sed [options] -f scriptfile file(s)</code></p>
 <p>一次处理一行内容 不改变文件内容<br>[options]列表：</p>
 <pre><code>-n    :    取消默认的输出,使用安静(silent)模式。
 -r    :    使用正则表达式，及表达式中不需要进行转义
 -f filename :    指定sed脚本的文件名filename
 -e &apos;&apos; :    允许多重编辑·  
 -i    :    将替换结果应用于源文件
-</code></pre><p>1)    替换字符串<br><code>sed &#39;s/pattern/string/&#39; file</code></p>
-<p>或者<br><code>cat file | sed &#39;s/pattern/string/&#39;</code></p>
+</code></pre><p>1)    替换字符串<br><code>sed &#39;s/pattern/string/&#39; file</code><br>或者<br><code>cat file | sed &#39;s/pattern/string/&#39;</code></p>
 <p>2)    替换文件中所有匹配内容，使用参数g<br><code>sed &#39;s/pattern/string/g&#39; file</code><br>但如果你想从第N处匹配开始替换，可以使用参数/Ng<br><code>$ echo thisthisthisthis | sed &#39;s/this/THIS/2g&#39;
 thisTHISTHISTHIS</code></p>
 <p>3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义<br><code>$ echo a/b | sed &#39;s/a\/b/a*b/&#39;
-a*b</code></p>
-<p>为了避免转义字符造成的理解困难，我们可以使用其它定界符，比如|,:,@,#,$,%,+等等<br><code>$ echo a/b | sed &#39;s:a/b:a*b:&#39;
+a*b</code><br>为了避免转义字符造成的理解困难，我们可以使用其它定界符，比如|,:,@,#,$,%,+等等<br><code>$ echo a/b | sed &#39;s:a/b:a*b:&#39;
 a*b</code></p>
 <p>4)    移除匹配样式行  <code>sed &#39;/pattern/d&#39; file</code><br><code>$ sed -r &#39;/^ *$/d&#39; args.txt        #移除空白行，含有一个或多个空格的行</code></p>
 <p>5)    组合多个表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo abd | sed &apos;s/a/A/&apos; | sed &apos;s/d/D/&apos;  #用管道组合$ echo abd | sed &apos;s/a/A/;s/d/D/&apos;           #用分号组合$ echo abd | sed -e &apos;s/a/A/&apos; -e &apos;s/d/D/&apos;  #用-e选项组合</span><br></pre></td></tr></table></figure></p>
@@ -215,7 +215,7 @@ asd+123
 <pre><code>$ text=hello
 $ echo hello world | sed &quot;s/$text/HELLO/&quot;
 HELLO world
-</code></pre><h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件<br>主要参数</p>
+</code></pre><h3 id="tail-查看文件"><a href="#tail-查看文件" class="headerlink" title="tail 查看文件"></a>tail 查看文件</h3><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件<br>主要参数</p>
 <pre><code>-f ：    循环读取   #可以用在监控线上有没有报错信息
 -q ：    不显示处理信息
 -v ：    显示详细的处理信息
@@ -223,7 +223,7 @@ HELLO world
 -n&lt;行数&gt; ：    显示行数
 --pid=PID ：    与-f合用,表示在进程ID,PID死掉之后结束. 
 -q, --quiet, --silent ：    从不输出给出文件名的首部
-</code></pre><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p><code>find dir [option] &#39;command&#39;</code><br><code>dir</code>: 目录名，用空格隔开多个目录<br>1) [option]列表：</p>
+</code></pre><h3 id="find-查找"><a href="#find-查找" class="headerlink" title="find 查找"></a>find 查找</h3><p><code>find dir [option] &#39;command&#39;</code><br><code>dir</code>: 目录名，用空格隔开多个目录<br>1) [option]列表：</p>
 <pre><code>-name wildcard 文件名，wildcard表示通配符，并非正则式
     find dir1 dir2 -name &apos;*.c&apos; –print  在目录dir1和dir2中查找文件，并打印路径
     如果在-name后面紧跟一个-prune，则表示此目录应被修剪
@@ -251,7 +251,7 @@ HELLO world
     bash命令的终止，使用 &apos;;&apos; (分号）来判定，在后面必须有一个 &apos;;&apos;在分号前应该加上转义字符&apos;\&apos;
     &apos;{}&apos;，使用{}来表示文件名，也就是find前面处理过程中过滤出来的文件，用于bash命令进行处理
 -ok     与-exec类似，只是对查找到符合条件的目标执行一个命令前需要经过确认
-</code></pre><h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p><code>cut</code> 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出，必须指定 <code>-b</code>、<code>-c</code> 或<code>-f</code> 标志之一。<br>主要参数</p>
+</code></pre><h3 id="cut-剪切"><a href="#cut-剪切" class="headerlink" title="cut 剪切"></a>cut 剪切</h3><p><code>cut</code> 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出，必须指定 <code>-b</code>、<code>-c</code> 或<code>-f</code> 标志之一。<br>主要参数</p>
 <pre><code>-b: 以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。
 -c: 以字符为单位进行分割。（单个字母等）
     cut –c2-5 file    ，表示将文件file每行的第2-5个字符作为一列显示出来。
@@ -262,7 +262,7 @@ HELLO world
         cat file.txt | cut -d&apos;]&apos; –f4-7；//打印4到7列
 -n: 取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除。
 --complement: 与-f一起使用，指定显示哪个区域的补集。
-</code></pre><h3 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort  排序"></a>sort  排序</h3><p><code>sort</code>将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按<code>ASCII</code>码值进行比较，最后将他们按升序输出。<br>主要参数：</p>
+</code></pre><h3 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort 排序"></a>sort 排序</h3><p><code>sort</code>将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按<code>ASCII</code>码值进行比较，最后将他们按升序输出。<br>主要参数：</p>
 <pre><code>-u: 去除重复行
 -r: sort默认的排序方式是升序，如果想改成降序，用此参数
 -o file: 把排序结果输出到文件file，file可以是原文件
@@ -283,7 +283,7 @@ HELLO world
 <pre><code>-l ：行数
 -w ：单词数
 -c ：字符数
-</code></pre><h3 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h3><p><code>seq A B</code>: 用于产生从某个数到另外一个数之间的所有整数<br>主要参数：</p>
+</code></pre><h3 id="seq-产生整数"><a href="#seq-产生整数" class="headerlink" title="seq 产生整数"></a>seq 产生整数</h3><p><code>seq A B</code>: 用于产生从某个数到另外一个数之间的所有整数<br>主要参数：</p>
 <pre><code>-f：指定格式。默认是&quot;%g&quot;，表示按宽度为1输出。可以在g的前面加入一些字符，表示不同的含义，如：
    %2g：表示按宽度为2右对齐。
    %02g：表示按宽度为2右对齐，不足的部分用0补足。
@@ -295,7 +295,7 @@ HELLO world
 <pre><code>-p: 可以是一个路径名称。此时若路径中的某些目录尚不存在，加上此选项后,系统将自动建立好那些尚不存在的目录，即一次可以建立多个目录;
 -m &lt;777&gt;: 模式，设定权限&lt;模式&gt;
 -v: 在创建目录的同时输出信息。
-</code></pre><h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p>1) 显示时间</p>
+</code></pre><h3 id="date-时间"><a href="#date-时间" class="headerlink" title="date 时间"></a>date 时间</h3><p>1) 显示时间</p>
 <pre><code>date [OPTION]... [+FORMAT]
 date &quot;+%Y-%m-%d %H:%M:%S&quot;  #显示当前的年月日时分秒
 </code></pre><p>2) 设置时间</p>
@@ -307,7 +307,7 @@ date +%s //当前时间时间戳
 <pre><code>date –d @timestamp
 eg:$date -d @1433087999
  2015年 05月 31日 星期日 23:59:59 CST
-</code></pre><h3 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h3><p>MD5全称是报文摘要算法（Message-Digest Algorithm 5），此算法对任意长度的信息逐位进行计算，产生一个二进制长度为128位（十六进制长度32位）的“指纹”（或称“报文摘要”），即使两个文件只相差一个字符，产生的校验和也完全不同。<br>1) 使用md5sum来产生指纹（报文摘要）命令如下：<br>     <code>md5sum file &gt; file.md5</code><br>若不指定文件名，则从标准输入读取，也可输出到标准输出设备，因此可与管道符“|”连用。<br> 可以使用文件通配符，将多个文件的md5值输出到同一个文件。<br>文件file.md5的内容如下：<br>      <code>c0e207c045c344ebf363c3e9a6de1076  file</code><br> 第一列是md5校验和，第二列是对应文件名。<br>2) 使用md5报文摘要验证文件。<br>将生成的file.md5文件放在对应file文件的同一目录下。使用如下命令验证：<br>     <code>md5sum -c file.md5</code><br>若验证成功，输出“file: 确定”；验证失败则输出“file: 失败”，并打印警告信息：“md5sum: 警告：1/1 生成的校验和不匹配”。</p>
+</code></pre><h3 id="md5sum-MD5"><a href="#md5sum-MD5" class="headerlink" title="md5sum MD5"></a>md5sum MD5</h3><p>MD5全称是报文摘要算法（Message-Digest Algorithm 5），此算法对任意长度的信息逐位进行计算，产生一个二进制长度为128位（十六进制长度32位）的“指纹”（或称“报文摘要”），即使两个文件只相差一个字符，产生的校验和也完全不同。<br>1) 使用md5sum来产生指纹（报文摘要）命令如下：<br>     <code>md5sum file &gt; file.md5</code><br>若不指定文件名，则从标准输入读取，也可输出到标准输出设备，因此可与管道符“|”连用。<br> 可以使用文件通配符，将多个文件的md5值输出到同一个文件。<br>文件file.md5的内容如下：<br>      <code>c0e207c045c344ebf363c3e9a6de1076  file</code><br> 第一列是md5校验和，第二列是对应文件名。<br>2) 使用md5报文摘要验证文件。<br>将生成的file.md5文件放在对应file文件的同一目录下。使用如下命令验证：<br>     <code>md5sum -c file.md5</code><br>若验证成功，输出“file: 确定”；验证失败则输出“file: 失败”，并打印警告信息：“md5sum: 警告：1/1 生成的校验和不匹配”。</p>
 <h3 id="ln-链接"><a href="#ln-链接" class="headerlink" title="ln 链接"></a>ln 链接</h3><p>主要参数：</p>
 <pre><code>-f : 链结时先将与 dist 同档名的档案删除
 -d : 允许系统管理者硬链结自己的目录
@@ -352,13 +352,13 @@ do(diff get) 另一个文件的内容复制到当前行中
 :diffupdate 手工来刷新比较结果
 zo(folding open) 展开被折叠的相同的文本行
 zc(folding close) 重新折叠
-</code></pre><h3 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h3><p>用paste命令实现按列拼接。<br><code>$ paste file1 file2 file3...</code><br>参数：<br><code>-d：指定定界符</code></p>
-<h3 id="列出目录"><a href="#列出目录" class="headerlink" title="列出目录"></a>列出目录</h3><p>以下是几种方法列出当前路径下的目录。</p>
+</code></pre><h3 id="paste-拼接"><a href="#paste-拼接" class="headerlink" title="paste 拼接"></a>paste 拼接</h3><p>用paste命令实现按列拼接。<br><code>$ paste file1 file2 file3...</code><br>参数：<br><code>-d：指定定界符</code></p>
+<h3 id="ls-列出目录"><a href="#ls-列出目录" class="headerlink" title="ls 列出目录"></a>ls 列出目录</h3><p>以下是几种方法列出当前路径下的目录。</p>
 <pre><code>ls –d */
 ls –F | grep &quot;/$&quot;
 ls –l | grep &quot;^d&quot;
 find . –type d –maxdepth 1 –print
-</code></pre><h3 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h3><p>显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。<br>主要参数：</p>
+</code></pre><h3 id="jps-显示java进程"><a href="#jps-显示java进程" class="headerlink" title="jps 显示java进程"></a>jps 显示java进程</h3><p>显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。<br>主要参数：</p>
 <pre><code>-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数
 -m 输出传递给main 方法的参数，在嵌入式jvm上可能是null
 -l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名
@@ -369,7 +369,7 @@ find . –type d –maxdepth 1 –print
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="ciocq66yl0008xew81acnng38" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="ciocqpte90009yzw8j3fpnjus" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
