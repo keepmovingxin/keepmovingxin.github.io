@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-05-16T04:04:28.000Z</updated>
+  <updated>2016-05-17T03:34:38.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/"/>
     <id>http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/</id>
     <published>2016-05-14T14:09:28.000Z</published>
-    <updated>2016-05-16T04:04:28.000Z</updated>
+    <updated>2016-05-17T03:34:38.000Z</updated>
     
     <content type="html">&lt;p&gt;项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。&lt;/p&gt;
 &lt;p&gt;tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具。在面向C++方面，tolua++包含了一些新的特性比如：&lt;/p&gt;
@@ -600,7 +600,7 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-05-16T03:50:15.000Z</updated>
+    <updated>2016-05-18T06:02:40.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
@@ -859,7 +859,41 @@ eg:$date -d @1433087999
 -d：指定切割后的文件名以数字作为后缀
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;合并： &lt;code&gt;cat newfile_prefix* &amp;gt; newfile&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;alias-别名&quot;&gt;&lt;a href=&quot;#alias-别名&quot; class=&quot;headerlink&quot; title=&quot;alias 别名&quot;&gt;&lt;/a&gt;alias 别名&lt;/h3&gt;&lt;p&gt;&lt;code&gt;alias myssh=’sh filename.sh’&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
+&lt;h3 id=&quot;chmod-权限&quot;&gt;&lt;a href=&quot;#chmod-权限&quot; class=&quot;headerlink&quot; title=&quot;chmod 权限&quot;&gt;&lt;/a&gt;chmod 权限&lt;/h3&gt;&lt;p&gt;使用chmod命令设置文件权限。&lt;br&gt;&lt;code&gt;chmod a+x file&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;u ： 指定用户权限
+g ： 指定用户组权限
+o ： 指定其他用户权限
+a ： 指定所有类别
++ ： 增加权限
+- ： 删除权限
+r ： 可读
+w ： 可写
+x ： 可执行，对目录文件来说表示可访问目录中的文件和子目录
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;vim-文本编辑工具&quot;&gt;&lt;a href=&quot;#vim-文本编辑工具&quot; class=&quot;headerlink&quot; title=&quot;vim 文本编辑工具&quot;&gt;&lt;/a&gt;vim 文本编辑工具&lt;/h3&gt;&lt;p&gt;&lt;code&gt;vimdiff&lt;/code&gt; 文本差异对比&lt;br&gt;&lt;code&gt;vimdiff  FILE_LEFT  FILE_RIGHT&lt;/code&gt;&lt;br&gt;常用命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Ctrl-w K 把当前窗口移到最上边
+Ctrl-w H 把当前窗口移到最左边
+Ctrl-w J 把当前窗口移到最下边
+Ctrl-w L 把当前窗口移到最右边
+Ctrl-w,w  在两个文件之间来回跳转
+]c   跳转到下一差异点
+[c   跳转到上一差异点，可在前面加上数字，表示跳转多少个差异
+dp(diff put) 把一个差异点中当前文件的内容复制到另一个文件中
+do(diff get) 另一个文件的内容复制到当前行中
+:diffupdate 手工来刷新比较结果
+zo(folding open) 展开被折叠的相同的文本行
+zc(folding close) 重新折叠
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;paste&quot;&gt;&lt;a href=&quot;#paste&quot; class=&quot;headerlink&quot; title=&quot;paste&quot;&gt;&lt;/a&gt;paste&lt;/h3&gt;&lt;p&gt;用paste命令实现按列拼接。&lt;br&gt;&lt;code&gt;$ paste file1 file2 file3...&lt;/code&gt;&lt;br&gt;参数：&lt;br&gt;&lt;code&gt;-d：指定定界符&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;列出目录&quot;&gt;&lt;a href=&quot;#列出目录&quot; class=&quot;headerlink&quot; title=&quot;列出目录&quot;&gt;&lt;/a&gt;列出目录&lt;/h3&gt;&lt;p&gt;以下是几种方法列出当前路径下的目录。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls –d */
+ls –F | grep &amp;quot;/$&amp;quot;
+ls –l | grep &amp;quot;^d&amp;quot;
+find . –type d –maxdepth 1 –print
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;jps&quot;&gt;&lt;a href=&quot;#jps&quot; class=&quot;headerlink&quot; title=&quot;jps&quot;&gt;&lt;/a&gt;jps&lt;/h3&gt;&lt;p&gt;显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。&lt;br&gt;主要参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数
+-m 输出传递给main 方法的参数，在嵌入式jvm上可能是null
+-l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名
+-v 输出传递给JVM的参数
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&quot;&gt;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&lt;/a&gt;&lt;/p&gt;
 </content>
     
