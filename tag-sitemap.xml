@@ -16,50 +16,43 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/tags/pngquant/</loc>
-        <lastmod>2016-05-03T02:10:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.keepmovingxin.com/tags/shell/</loc>
-        <lastmod>2016-05-03T06:01:57.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.keepmovingxin.com/tags/Cocos2d-x/</loc>
-        <lastmod>2016-05-16T04:56:26.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.keepmovingxin.com/tags/Cocos2dx/</loc>
-        <lastmod>2016-05-17T03:34:38.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.keepmovingxin.com/tags/Lua/</loc>
-        <lastmod>2016-05-17T03:34:38.000Z</lastmod>
+        <lastmod>2016-05-18T10:02:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.keepmovingxin.com/tags/tolua/</loc>
-        <lastmod>2016-05-17T03:34:38.000Z</lastmod>
+        <lastmod>2016-05-18T10:02:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.keepmovingxin.com/tags/Cocos2d-x/</loc>
+        <lastmod>2016-05-18T10:03:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.keepmovingxin.com/tags/pngquant/</loc>
+        <lastmod>2016-05-18T10:04:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.keepmovingxin.com/tags/shell/</loc>
+        <lastmod>2016-05-18T10:05:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.keepmovingxin.com/tags/Linux/</loc>
-        <lastmod>2016-05-18T06:02:40.000Z</lastmod>
+        <lastmod>2016-05-18T10:27:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
