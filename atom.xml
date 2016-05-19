@@ -604,7 +604,7 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-05-18T10:45:17.000Z</updated>
+    <updated>2016-05-19T07:57:21.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
@@ -838,6 +838,24 @@ find . –type d –maxdepth 1 –print
 -m 输出传递给main 方法的参数，在嵌入式jvm上可能是null
 -l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名
 -v 输出传递给JVM的参数
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;xargs-参数传递&quot;&gt;&lt;a href=&quot;#xargs-参数传递&quot; class=&quot;headerlink&quot; title=&quot;xargs 参数传递&quot;&gt;&lt;/a&gt;xargs 参数传递&lt;/h3&gt;&lt;p&gt;&lt;code&gt;xargs [-0opt] [-E eofstr] [-I replstr [-R replacements]] [-J replstr] [-L number] [-n number [-x]] [-P maxprocs] [-s size] [utility [argument ...]]&lt;/code&gt;&lt;br&gt;给其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。&lt;br&gt;最经典应用模式：  &lt;code&gt;somecommand | xargs -item  command&lt;/code&gt;&lt;br&gt;不带&lt;code&gt;command&lt;/code&gt;，默认的使用&lt;code&gt;echo&lt;/code&gt;输出&lt;/p&gt;
+&lt;p&gt;用途：&lt;br&gt;1.构造参数列表并运行命令，即将接收的参数传递给后面的&lt;code&gt;command&lt;/code&gt;命令执行&lt;br&gt;2.将多行输入转换为单行（特殊功效）&lt;/p&gt;
+&lt;p&gt;优点：&lt;br&gt;1.将输入参数整理后，去除&lt;code&gt;&amp;lt;newline&amp;gt;&lt;/code&gt;换行符，以一个列表形式处理&lt;br&gt;2.避免参数过长引发的问题，使用&lt;code&gt;xargs -n&lt;/code&gt; 参数适当控制，对于经常产生大量输出的命令如&lt;code&gt;find&lt;/code&gt;、&lt;code&gt;locate&lt;/code&gt;和&lt;code&gt;grep&lt;/code&gt;来说非常有用&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-item&lt;/code&gt; 代表选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-0      当sdtin含有特殊字元时候，将其当成一般字符，想/&amp;apos;空格等
+-a file 从文件中读入作为sdtin
+-e flag 注意有的时候可能会是-E，flag必须是一个以空格分隔的标志，当xargs分析到含有flag这个标志的时候就停止。
+-E EOF  指定输入结束符
+-n num  后面加次数，表示命令在执行的时候一次用的argument的个数，默认是用所有的。
+-p      操作具有可交互性，每次执行comand都交互式提示用户选择，当每次执行一个argument的时候询问一次用户
+-t      表示先打印命令，然后再执行。
+-i      或者是-I，这得看linux支持了，将xargs的每项名称，一般是一行一行赋值给{}，可以用{}代替。
+-r      no-run-if-empty 如果没有要处理的参数传递给xargs，xargs 默认是带 空参数运行一次，如果你希望无参数时，停止 xargs，直接退出，使用 -r 选项即可，其可以防止xargs 后面命令带空参数运行报错。
+-s      num xargs后面那个命令的最大命令行字符数(含空格) 
+-L      从标准输入一次读取num行送给Command命令 ，-l和-L功能一样
+-d delim 分隔符，默认的xargs分隔符是回车，argument的分隔符是空格，这里修改的是xargs的分隔符
+-x      exit的意思，如果有任何 Command 行大于 -s Size 标志指定的字节数，停止运行 xargs 命令，-L -I -n 默认打开-x参数，主要是配合-s使用
+-P      修改最大的进程数，默认是1，为0时候为as many as it can.
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&quot;&gt;http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/&lt;/a&gt;&lt;/p&gt;
 </content>
