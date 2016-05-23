@@ -23,7 +23,7 @@ tolua++是tolua的扩展版本，是一款能够集成C/C++与lua代码的工具
 支持类模板
 
 tolua这">
-<meta property="og:updated_time" content="2016-05-18T10:02:50.000Z">
+<meta property="og:updated_time" content="2016-05-23T02:40:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(译)tolua参考手册--accessing C/C++ code from Lua">
 <meta name="twitter:description" content="项目使用Cocos2dx+lua框架做的，用到luabinding实现C++代码绑定到lua层使用，所以学习一下tolua++工具的原理和使用，在这做个记录。
@@ -214,35 +214,28 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[extern] type var;</span><br></pre></td></tr></table></figure>
 <p>tolua绑定这样的声明Lua全局变量。因此，在Lua中，我们自然地可以访问C/C++变量。如果非恒定的变量，我们也可以从Lua变量分配一个新值。全局变量表示数组的值也可以绑定到Lua。数组可以是任何类型的。相应的Lua对象数组是Lua表与数值索引；然而，请注意，指数1在Lua中映射到索引0 C/C++数组。数组必须预先设置长度。例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double v[10];</span><br></pre></td></tr></table></figure>
-<h3 id="绑定函数-Binding-functions"><a href="#绑定函数-Binding-functions" class="headerlink" title="绑定函数 (Binding functions)"></a>绑定函数 (Binding functions)</h3><p>Functions are also specified as conventional C/C++ declarations:</p>
+<h3 id="绑定函数-Binding-functions"><a href="#绑定函数-Binding-functions" class="headerlink" title="绑定函数 (Binding functions)"></a>绑定函数 (Binding functions)</h3><p>函数也指传统C/C++声明:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type funcname (type1 par1[, type2 par2[,...typeN parN]]);</span><br></pre></td></tr></table></figure>
-<p>The returned type can be void, meaning no value is returned. A function can also have no parameter. In that case, void may be specified in the place of the list of parameters. The parameter types must follow the rules already posted. tolua creates a Lua function binding the C/C++ function. When calling a function from Lua, the parameter types must match the corresponding C/C++ types, otherwise, tolua generates an error and reports which parameter is wrongly specified. If a parameter name is omitted, tolua names it automatically, but its type should be a basic type or user type previously used.</p>
-<h4 id="Arrays-数组"><a href="#Arrays-数组" class="headerlink" title="Arrays (数组)"></a>Arrays (数组)</h4><p>tolua also deals with function or method parameters that represent arrays of values. The nice thing about arrays is that the corresponding Lua tables have their values updated if the C/C++ function changes the array contents.<br>The arrays must be pre dimensioned. For instance:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (double a[3]);</span><br></pre></td></tr></table></figure>
-<p>is a valid function declaration for tolua and calling this function from Lua would be done by, for instance:</p>
+<p>返回类型可以为空(void)，这意味着没有返回值。一个函数也可以没有参数。在这种情况下，void可能的列表中指定的参数。参数类型必须遵守已经发布的规则。tolua会创建一个Lua函数绑定C/C++函数。从Lua调用一个函数时，参数类型必须匹配相应的C/C++类型，否则，tolua会生成一个错误报告指定的参数是错误的。如果省略参数名称，tolua会自动命名，但类型应该是基本类型(basic type)或之前使用过的用户类型(user type)。</p>
+<h4 id="Arrays-数组"><a href="#Arrays-数组" class="headerlink" title="Arrays (数组)"></a>Arrays (数组)</h4><p>tolua也处理函数或方法参数表示数组的值。阵列的优点是，它们的值更新相应的Lua表如果C/C++函数改变数组的内容。<br>数组必须指定大小。例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (double a[3]);</span><br></pre></td></tr></table></figure></p>
+<p>是一个有效的函数声明为tolua和从Lua不调用这个函数，例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = &#123;1.0,1.5,8.6&#125; </span><br><span class="line">func (p)</span><br></pre></td></tr></table></figure>
-<p>The array dimension need not be a constant expression; the dimension can also be specified by any expression that can be evaluated in run time. For instance:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (int n, int m, double image[n*m]);</span><br></pre></td></tr></table></figure>
-<p>is also valid since the expression <code>n*m</code> is valid in the binding function scope. However, be aware that tolua uses dynamic allocation for binding this function, what can degrade the performance.</p>
-<p>Despite the dimension specification, it is important to know that all arrays passed to the actual C/C++ function are in the local scope of the binding function. So, if the C/C++ function being called needs to hold the array pointer for later use, the binding code will not work properly.</p>
-<h4 id="Overloaded-functions-重载函数"><a href="#Overloaded-functions-重载函数" class="headerlink" title="Overloaded functions (重载函数)"></a>Overloaded functions (重载函数)</h4><p>Overloaded functions are accepted. Remember that the distinction between two functions with the same name is made based on the parameter types that are mapped to Lua. So, although</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void func (int a); </span><br><span class="line">void func (double a);</span><br></pre></td></tr></table></figure>
-<p>represent two different functions in C++, they are the same function for tolua, because both int and double are mapped to the same Lua type: number.</p>
-<p>Another tricky situation occurs when expecting pointers. Suppose:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void func (char* s);</span><br><span class="line">void func (void* p);</span><br><span class="line">void func (Object1* ptr);</span><br><span class="line">void func (Object2* prt);</span><br></pre></td></tr></table></figure>
-<p>Although these four functions represent different functions in C++, a Lua statement like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func(nil)</span><br></pre></td></tr></table></figure>
-<p>matches all of them.</p>
-<p>It is important to know that tolua decides which function will be called in run-time, trying to match each provided function. tolua first tries to call the last specified function; if it fails, tolua then tries the previous one. This process is repeated until one function matches the calling code or the first function is reached. For that reason, the mismatching error message, when it occurs, is based on the first function specification. When performance is important, we can specify the most used function as the last one, because it will be tried first.</p>
-<p>tolua allows the use of overloaded functions in C, see <a href="http://webserver2.tecgraf.puc-rio.br/~celes/tolua/tolua-3.2.html#renaming" target="_blank" rel="external">Renaming</a> for details.</p>
-<h4 id="Default-parameter-values-默认参数值"><a href="#Default-parameter-values-默认参数值" class="headerlink" title="Default parameter values (默认参数值)"></a>Default parameter values (默认参数值)</h4><p>The last function parameters can have associated default values. In that case, if the function is called with fewer parameters, the default values are assumed. The format to specify the default values is the same as the one used in C++ code:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type funcname (..., typeN-1 parN-1 [= valueN-1], typeN parN [= valueN]);</span><br></pre></td></tr></table></figure>
-<p>toLua implements this feature without using any C++ mechanism; so, it can be used also to bind C functions.</p>
-<p>We can also specify default values for the elements of an array (there is no way to specify a default value for the array itself, though). For instance:</p>
+<p>数组维数不需要一个常数表达式，指定的大小也可以由任何表达式，可以在运行时进行。例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (int n, int m, double image[n*m]);</span><br></pre></td></tr></table></figure></p>
+<p>也有效的自表达式<code>n * m</code>绑定函数范围是有效的。然而，请注意，tolua使用动态分配绑定这个函数，能降低性能。</p>
+<p>尽管大小规范，重要的是要知道所有数组传递给实际的C/C++函数在本地绑定函数的范围。所以，如果C/C++函数被称为需要保存数组指针以备后用，绑定的代码将无法正常工作。</p>
+<h4 id="Overloaded-functions-重载函数"><a href="#Overloaded-functions-重载函数" class="headerlink" title="Overloaded functions (重载函数)"></a>Overloaded functions (重载函数)</h4><p>函数重载是支持的。记住名称相同的两个函数之间的区别是基于映射到Lua的参数类型。所以，尽管<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void func (int a); </span><br><span class="line">void func (double a);</span><br></pre></td></tr></table></figure></p>
+<p>代表两个不同的函数在C++中，他们是tolua相同的函数，因为int和double映射到相同的Lua类型:数字。</p>
+<p>另一个棘手的情况发生在导出指针。假设:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void func (char* s);</span><br><span class="line">void func (void* p);</span><br><span class="line">void func (Object1* ptr);</span><br><span class="line">void func (Object2* prt);</span><br></pre></td></tr></table></figure></p>
+<p>虽然这四个函数代表不同的函数在C++中,Lua声明:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func(nil)</span><br></pre></td></tr></table></figure></p>
+<p>匹配所有的函数。</p>
+<p>重要的是要知道tolua决定函数将调用在运行时，试图匹配每个提供的函数。tolua首先试图调用指定的函数;如果失败了，tolua然后试之前一个。重复这个过程，直到一个函数调用代码匹配或第一个函数。出于这个原因，失配误差信息，当它发生时，是基于第一个函数规范。当然性能是很重要的，我们可以指定最常用函数作为最后一个，因为它将放在第一位。</p>
+<p>tolua允许使用重载函数在C语言中，查看详细<a href="http://webserver2.tecgraf.puc-rio.br/~celes/tolua/tolua-3.2.html#renaming" target="_blank" rel="external">Renaming</a></p>
+<h4 id="Default-parameter-values-默认参数值"><a href="#Default-parameter-values-默认参数值" class="headerlink" title="Default parameter values (默认参数值)"></a>Default parameter values (默认参数值)</h4><p>最后一个函数参数可以有相关联的默认值。在这种情况下，如果用更少的参数，函数被调用的默认值。格式指定默认值是一样的一个用于C++代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type funcname (..., typeN-1 parN-1 [= valueN-1], typeN parN [= valueN]);</span><br></pre></td></tr></table></figure></p>
+<p>toLua实现这个功能没有使用任何C++机制;因此，它也可以使用绑定C函数。</p>
+<p>我们也可以指定数组的元素的默认值(没有办法为数组本身，指定一个默认值)。例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (int a[5]=0);</span><br></pre></td></tr></table></figure>
-<p>sets the default element values to zero, thus the function can be called from Lua with an uninitialized table.</p>
-<p>For Lua object types (lua_Object), tolua defines a constant that can be used to specify nil as default value:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (lua_Object lo = TOLUA_NIL);</span><br></pre></td></tr></table></figure>
+<p>设置默认元素值为零，因此，从Lua函数可以调用未初始化表。</p>
+<p>Lua对象类型(lua_Object)，tolua定义一个常数，可用于指定空值作为默认值:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func (lua_Object lo = TOLUA_NIL);</span><br></pre></td></tr></table></figure></p>
 <h4 id="Multiple-returned-values-多个返回值"><a href="#Multiple-returned-values-多个返回值" class="headerlink" title="Multiple returned values (多个返回值)"></a>Multiple returned values (多个返回值)</h4><p>In Lua, a function may return any number of values. tolua uses this feature to simulate values passed by reference. If a function parameter is specified as a pointer to or reference of a basic type or a pointer to or reference of a pointer to an user defined type, tolua accepts the corresponding type as input and returns, besides the conventional function returned value, if any, the updated parameter value.</p>
 <p>For instance, consider a C function that swaps two values:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void swap (double* x, double* y);</span><br></pre></td></tr></table></figure>
@@ -337,7 +330,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/" data-id="cioe6bbn3000b9jw8fw73frbk" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/14/Cocos2dx-tolua++/" data-id="ciojerhuq0001now8kzsfeafl" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
@@ -347,6 +340,15 @@ var _hmt = _hmt || [];
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/05/20/SVN-Workflow/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SVN命令用法：程序员的场景
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/09/Cocos2dx-CCRenderTexture/" id="article-nav-older" class="article-nav-link-wrap">
@@ -396,7 +398,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SVN/">SVN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pngquant/">pngquant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tolua/">tolua</a></li></ul>
     </div>
   </div>
 
@@ -406,7 +408,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
     </div>
   </div>
 
@@ -428,6 +430,14 @@ var _hmt = _hmt || [];
       <ul>
         
           <li>
+            <a href="/2016/05/20/Git-Workflow/">Git 常用命令用法：程序员的场景</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/SVN-Workflow/">SVN命令用法：程序员的场景</a>
+          </li>
+        
+          <li>
             <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
           </li>
         
@@ -437,14 +447,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/05/02/Learn-shell/">shell学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/30/pngquant-compress-png/">利用pngquant压缩png图片</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/29/vi-vim-delete-M/">vi/vim显示中文字符并且去掉^M的方法</a>
           </li>
         
       </ul>
