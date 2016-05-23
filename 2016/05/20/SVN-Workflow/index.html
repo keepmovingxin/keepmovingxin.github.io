@@ -6,21 +6,18 @@
   <title>SVN命令用法：程序员的场景 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="SVN有不少命令，其实常用的也就那么几个，可以结合下实际的使用场景，来说明下SVN的命令用法。当然可能对很多人来说，最实用的熟悉方式，就是直接运行1svn help (?, h)
-就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。
-“新人报道”你刚入职一家公司，或新加入某个团队，立马参与到一个项目中，项目代号Nor">
+就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVN命令用法：程序员的场景">
 <meta property="og:url" content="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/index.html">
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="SVN有不少命令，其实常用的也就那么几个，可以结合下实际的使用场景，来说明下SVN的命令用法。当然可能对很多人来说，最实用的熟悉方式，就是直接运行1svn help (?, h)
-就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。
-“新人报道”你刚入职一家公司，或新加入某个团队，立马参与到一个项目中，项目代号Nor">
-<meta property="og:updated_time" content="2016-05-23T02:40:50.000Z">
+就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。">
+<meta property="og:updated_time" content="2016-05-23T02:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVN命令用法：程序员的场景">
 <meta name="twitter:description" content="SVN有不少命令，其实常用的也就那么几个，可以结合下实际的使用场景，来说明下SVN的命令用法。当然可能对很多人来说，最实用的熟悉方式，就是直接运行1svn help (?, h)
-就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。
-“新人报道”你刚入职一家公司，或新加入某个团队，立马参与到一个项目中，项目代号Nor">
+就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -135,7 +132,7 @@ var _hmt = _hmt || [];
           </div>
         
         <p>SVN有不少命令，其实常用的也就那么几个，可以结合下实际的使用场景，来说明下SVN的命令用法。<br>当然可能对很多人来说，最实用的熟悉方式，就是直接运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn help (?, h)</span><br></pre></td></tr></table></figure></p>
-<p>就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。<br>注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。</p>
+<p>就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。<br>注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。<br><a id="more"></a></p>
 <h3 id="“新人报道”"><a href="#“新人报道”" class="headerlink" title="“新人报道”"></a>“新人报道”</h3><p>你刚入职一家公司，或新加入某个团队，立马参与到一个项目中，项目代号Norther，那么就得获取项目代码，开始你的项目生涯。这个时候一般你需要签出项目代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout (co) https://scms.ship.it/svn/norther/trunk norther</span><br></pre></td></tr></table></figure></p>
 <p>确认工作目录的SVN信息，说明已经纳入版本控制了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/projects/norther</span><br><span class="line">svn info</span><br></pre></td></tr></table></figure></p>
 <p>确认没问题了，就运行项目中的构建脚本，然后就可以熟悉代码，展开具体工作了。<br>当然，有的时候，有一个新项目是由你发起的，你要将初始化的项目工程放到SVN版本仓库中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn import souther https://scms.ship.it/svn</span><br></pre></td></tr></table></figure></p>
@@ -214,13 +211,11 @@ var _hmt = _hmt || [];
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="http://www.subversion.org.cn/svnbook/1.4/" target="_blank" rel="external">http://www.subversion.org.cn/svnbook/1.4/</a></li>
 </ul>
-<hr>
-<p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/">http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/" data-id="ciojerhvi0009now8ghj9asvs" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/" data-id="ciojf19l1000aonw8tqzvxwjw" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVN/">SVN</a></li></ul>
