@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="Git 相比 Subversion，无论概念上还是使用上，复杂度其实是高出一个等级的。为什么这么说？分别看下 git help -a 和 svn help 命令清单的对比，单按这个来看，就如果要掌握所有命令的用法，Git 的学习曲线绝对是比 Subversion 高的。尽管如此，但还是有越来越多项目开始用 Git 来做源码管理了。
 实际中，我们用到的的 Git 命令还是很有限的，可能也就 git">
-<meta property="og:updated_time" content="2016-05-23T02:48:43.000Z">
+<meta property="og:updated_time" content="2016-05-23T02:52:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常用命令用法：程序员的场景">
 <meta name="twitter:description" content="Git 相比 Subversion，无论概念上还是使用上，复杂度其实是高出一个等级的。为什么这么说？分别看下 git help -a 和 svn help 命令清单的对比，单按这个来看，就如果要掌握所有命令的用法，Git 的学习曲线绝对是比 Subversion 高的。尽管如此，但还是有越来越多项目开始用 Git 来做源码管理了。
@@ -131,8 +131,8 @@ var _hmt = _hmt || [];
 		        
           </div>
         
-        <p>Git 相比 Subversion，无论概念上还是使用上，复杂度其实是高出一个等级的。为什么这么说？分别看下 git help -a 和 svn help 命令清单的对比，单按这个来看，就如果要掌握所有命令的用法，Git 的学习曲线绝对是比 Subversion 高的。尽管如此，但还是有越来越多项目开始用 Git 来做源码管理了。</p>
-<p>实际中，我们用到的的 Git 命令还是很有限的，可能也就 git help 中那些而已。下面就类似 SVN命令用法：程序员的场景 一样，结合实际场景说下 Git 的常用命令用法。<br><a id="more"></a></p>
+        <p>Git 相比 Subversion，无论概念上还是使用上，复杂度其实是高出一个等级的。为什么这么说？分别看下 <code>git help -a</code> 和 <code>svn help</code> 命令清单的对比，单按这个来看，就如果要掌握所有命令的用法，Git 的学习曲线绝对是比 Subversion 高的。尽管如此，但还是有越来越多项目开始用 Git 来做源码管理了。</p>
+<p>实际中，我们用到的的 Git 命令还是很有限的，可能也就 <code>git help</code> 中那些而已。下面就类似 <a href="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/">SVN命令用法：程序员的场景</a> 一样，结合实际场景说下 Git 的常用命令用法。<br><a id="more"></a></p>
 <h3 id="“新人报道”"><a href="#“新人报道”" class="headerlink" title="“新人报道”"></a>“新人报道”</h3><p>你刚入职一家公司，或新加入某个团队，立马参与到一个项目中，那么就得获取项目代码，开始你的项目生涯。这个时候一般你需要克隆一份项目代码，下面都以 GitHub 上的项目地址为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:akun/pm.git</span><br></pre></td></tr></table></figure></p>
 <p>之后就进入项目目录，运行项目中的构建脚本，然后就可以熟悉代码，展开具体工作了。<br>当然，有的时候，有一个新项目是由你发起的，你要将初始化的项目工程放到 Git 版本仓库中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir pm</span><br><span class="line">$ cd pm</span><br><span class="line">$ git init</span><br><span class="line">$ touch README.md</span><br><span class="line">$ git add README.md</span><br><span class="line">$ git commit</span><br></pre></td></tr></table></figure></p>
 <p>Git 是分布式的版本控制系统，所以刚才的操作，算是已经在你本地版本控制起来了，为了推送本地仓库到远程仓库，就还得执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:akun/pm.git</span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure></p>
@@ -231,7 +231,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/" data-id="ciojf19ky0008onw8orvwz428" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/" data-id="ciojfd0rl0008pbw807t0i4ag" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
