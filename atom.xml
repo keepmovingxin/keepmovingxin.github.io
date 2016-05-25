@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-05-23T05:09:11.000Z</updated>
+  <updated>2016-05-25T08:11:32.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>了解Lua metatable 元表</title>
+    <link href="http://blog.keepmovingxin.com/2016/05/25/Lua-metable/"/>
+    <id>http://blog.keepmovingxin.com/2016/05/25/Lua-metable/</id>
+    <published>2016-05-25T07:30:05.000Z</published>
+    <updated>2016-05-25T08:11:32.000Z</updated>
+    
+    <content type="html">&lt;p&gt;参考lua手册，&lt;code&gt;metatable&lt;/code&gt;是被译作元表，Lua 中的每个值都可以用一个 &lt;code&gt;metatable&lt;/code&gt;。这个 &lt;code&gt;metatable&lt;/code&gt; 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。&lt;/p&gt;
+&lt;h3 id=&quot;metatable&quot;&gt;&lt;a href=&quot;#metatable&quot; class=&quot;headerlink&quot; title=&quot;metatable&quot;&gt;&lt;/a&gt;&lt;code&gt;metatable&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;一个 &lt;code&gt;metatable&lt;/code&gt; 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 &lt;code&gt;userdata&lt;/code&gt; 作垃圾收集时调用它。对于这些操作，Lua 都将其关联上一个被称作事件的指定健。当 Lua 需要对一个值发起这些操作中的一个时，它会去检查值中 metatable 中是否有对应事件。如果有的话，键名对应的值（元方法）将控制 Lua 怎样做这个操作。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;函数（元方法）&quot;&gt;&lt;a href=&quot;#函数（元方法）&quot; class=&quot;headerlink&quot; title=&quot;函数（元方法）&quot;&gt;&lt;/a&gt;函数（元方法）&lt;/h3&gt;&lt;p&gt;metatable通过其包含的函数来给所挂接的table定义一些特殊的操作，包括:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__add&lt;/code&gt;: 定义所挂接table的加法操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__mul&lt;/code&gt;: 定义乘法操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__div&lt;/code&gt;: 定义除法操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__sub&lt;/code&gt;: 定义减法操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__unm&lt;/code&gt;: 定义负操作, 即: -table的含义&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__tostring&lt;/code&gt;: 定义当table作为tostring()函式之参数被呼叫时的行为(例如: &lt;code&gt;print(table)&lt;/code&gt;时将呼叫&lt;code&gt;tostring(table)&lt;/code&gt;作为输出结果)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__concat&lt;/code&gt;: 定义连接操作(“..”运算符)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__index&lt;/code&gt;: 定义当table中不存在的key值被试图获取时的行为&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__newindex&lt;/code&gt;: 定义在table中产生新key值时的行为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;index-metamethod&quot;&gt;&lt;a href=&quot;#index-metamethod&quot; class=&quot;headerlink&quot; title=&quot;__index metamethod&quot;&gt;&lt;/a&gt;&lt;code&gt;__index&lt;/code&gt; metamethod&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在我们访问 table 的不存在的域时，Lua 会尝试调用 &lt;code&gt;__index&lt;/code&gt; metamethod。&lt;code&gt;__index&lt;/code&gt; metamethod 接受两个参数 table 和 key，代码如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local mt = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mt.__index = function(table, key)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&amp;apos;table -- &amp;apos; .. tostring(table))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&amp;apos;key -- &amp;apos; .. key)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local t = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;setmetatable(t, mt)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local v = t.a&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;__index&lt;/code&gt; 域也可以是一个 table，那么 Lua 会尝试在 &lt;code&gt;__index&lt;/code&gt; table 中访问对应的域，代码如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local mt = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mt.__index = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a = &amp;apos;Hello World&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local t = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;setmetatable(t, mt)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(t.a) --&amp;gt; Hello World&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们通过 &lt;code&gt;__index&lt;/code&gt; 可以容易的实现单继承（类似于 JavaScrpit 通过 prototype 实现单继承），如果 &lt;code&gt;__index&lt;/code&gt; 是一个函数，则可以实现更加复杂的功能：多重继承、caching 等。我们可以通过 &lt;code&gt;rawget(t, i)&lt;/code&gt; 来访问 &lt;code&gt;table t&lt;/code&gt; 的域 &lt;code&gt;i&lt;/code&gt;，而不会访问 &lt;code&gt;__index&lt;/code&gt; metamethod，注意的是，不要太指望通过 &lt;code&gt;rawget&lt;/code&gt; 来提高对 &lt;code&gt;table&lt;/code&gt; 的访问速度（Lua 中函数的调用开销远远大于对表的访问的开销）&lt;/p&gt;
+&lt;h4 id=&quot;newindex-metamethod&quot;&gt;&lt;a href=&quot;#newindex-metamethod&quot; class=&quot;headerlink&quot; title=&quot;__newindex metamethod&quot;&gt;&lt;/a&gt;&lt;code&gt;__newindex&lt;/code&gt; metamethod&lt;/h4&gt;&lt;p&gt;如果对 table 的一个不存在的域赋值时，Lua 将检查 &lt;code&gt;__newindex&lt;/code&gt; metamethod：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果 &lt;code&gt;__newindex&lt;/code&gt; 为函数，Lua 将调用函数而不是进行赋值&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;__newindex&lt;/code&gt; 为一个 table，Lua 将对此 table 进行赋值&lt;br&gt;如果 &lt;code&gt;__newindex&lt;/code&gt; 为一个函数，它可以接受三个参数 table key value。如果希望忽略 &lt;code&gt;__newindex&lt;/code&gt; 方法对 table 的域进行赋值，可以调用 &lt;code&gt;rawset(t, k, v)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;结合 &lt;code&gt;__index&lt;/code&gt; 和 &lt;code&gt;__newindex&lt;/code&gt; 可以实现很多功能，例如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;OOP&lt;/li&gt;
+&lt;li&gt;Read-only table&lt;/li&gt;
+&lt;li&gt;Tables with default values&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Read-only table 代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function readOnly(t)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local proxy = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local mt = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        __index = t,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        __newindex = function(t, k, v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            error(&amp;apos;attempt to update a read-only table&amp;apos;, 2)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    setmetatable(proxy, mt)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return proxy&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;days = readOnly&amp;#123;&amp;apos;Sun&amp;apos;, &amp;apos;Mon&amp;apos;, &amp;apos;Tues&amp;apos;, &amp;apos;Wed&amp;apos;, &amp;apos;Thur&amp;apos;, &amp;apos;Fri&amp;apos;, &amp;apos;Sat&amp;apos;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(days[1])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;days[2] = &amp;apos;Noday&amp;apos; --&amp;gt; stdin:1: attempt to update a read-only table&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;有时候，我们需要为 table 设定一个唯一的 key，那么可以使用这样的技巧，代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local key = &amp;#123;&amp;#125; -- unique key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local t = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;t[key] = value&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考lua手册，&lt;code&gt;metatable&lt;/code&gt;是被译作元表，Lua 中的每个值都可以用一个 &lt;code&gt;metatable&lt;/code&gt;。这个 &lt;code&gt;metatable&lt;/code&gt; 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。&lt;/p&gt;
+&lt;h3 id=&quot;metatable&quot;&gt;&lt;a href=&quot;#metatable&quot; class=&quot;headerlink&quot; title=&quot;metatable&quot;&gt;&lt;/a&gt;&lt;code&gt;metatable&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;一个 &lt;code&gt;metatable&lt;/code&gt; 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 &lt;code&gt;userdata&lt;/code&gt; 作垃圾收集时调用它。对于这些操作，Lua 都将其关联上一个被称作事件的指定健。当 Lua 需要对一个值发起这些操作中的一个时，它会去检查值中 metatable 中是否有对应事件。如果有的话，键名对应的值（元方法）将控制 Lua 怎样做这个操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+  </entry>
   
   <entry>
     <title>Git 常用命令用法：程序员的场景</title>

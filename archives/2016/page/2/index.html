@@ -3,33 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>利用pngquant压缩png图片 | KeepMoving</title>
+  <title>归档: 2016 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
-安装并配置全局变量安装：
-去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
-也可以使用HomeBrew安装：brew install pngquant
-配置全局变量(使用HomeBrew安装请忽略)：
-ln –s /下载的位置/pngq">
-<meta property="og:type" content="article">
-<meta property="og:title" content="利用pngquant压缩png图片">
-<meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/index.html">
+  <meta name="description" content="tech blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/archives/2016/page/2/index.html">
 <meta property="og:site_name" content="KeepMoving">
-<meta property="og:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
-安装并配置全局变量安装：
-去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
-也可以使用HomeBrew安装：brew install pngquant
-配置全局变量(使用HomeBrew安装请忽略)：
-ln –s /下载的位置/pngq">
-<meta property="og:updated_time" content="2016-05-18T10:04:16.000Z">
+<meta property="og:description" content="tech blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用pngquant压缩png图片">
-<meta name="twitter:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
-安装并配置全局变量安装：
-去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git
-也可以使用HomeBrew安装：brew install pngquant
-配置全局变量(使用HomeBrew安装请忽略)：
-ln –s /下载的位置/pngq">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="tech blog">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -108,132 +92,45 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-pngquant-compress-png" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/30/pngquant-compress-png/" class="article-date">
-  <time datetime="2016-04-30T13:11:28.000Z" itemprop="datePublished">2016-04-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      利用pngquant压缩png图片
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/04/27/Git-Config/" class="archive-article-date">
+  <time datetime="2016-04-27T08:31:28.000Z" itemprop="datePublished">4月 27</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/04/27/Git-Config/">Git Config命令查看配置文件</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">文章目录</strong>
-            
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息："><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例："><span class="toc-number">3.</span> <span class="toc-text">使用示例：</span></a></li></ol>
-		        
-          </div>
-        
-        <p>项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。</p>
-<h3 id="安装并配置全局变量"><a href="#安装并配置全局变量" class="headerlink" title="安装并配置全局变量"></a>安装并配置全局变量</h3><p>安装：</p>
-<p>去官网下载压缩包 或者 源码: <code>git clone git://github.com/pornel/pngquant.git</code></p>
-<p>也可以使用HomeBrew安装：<code>brew install pngquant</code></p>
-<p>配置全局变量(使用HomeBrew安装请忽略)：</p>
-<p><code>ln –s /下载的位置/pngquant /usr/local/bin/pngquant</code></p>
-<p>pngquant 可以愉快的玩耍啦！</p>
-<a id="more"></a>
-<h3 id="查看帮助信息："><a href="#查看帮助信息：" class="headerlink" title="查看帮助信息："></a>查看帮助信息：</h3><p>执行 pngquant -h 查看完整选项</p>
-<pre><code>--ext new.png
-设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。
-
---quality min-max
-使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。
-min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。
-pngquant --quality=65-80 image.png
-
---speed N, -sN
-速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。
-
---iebug
-在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。
-
---version
-输出版本信息。
-
--
-从标准输入读取图像并输出到标准输出。
-
---
-不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:
-</code></pre><p><code>pngquant $OPTIONS -- &quot;$FILE&quot;</code></p>
-<h3 id="使用示例："><a href="#使用示例：" class="headerlink" title="使用示例："></a>使用示例：</h3><p>压缩Downloads目录下所有的png，并替换当前图片</p>
-<p><code>find /Users/mac/Downloads/ -name &quot;*.png&quot; | while read line; do pngquant --ext .png --force $line; done</code></p>
-<hr>
-<p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/">http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="ciomkwfzq000m99w8axh51jq7" class="article-share-link">分享到</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pngquant/">pngquant</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/05/02/Learn-shell/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          shell学习笔记
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/04/29/vi-vim-delete-M/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">vi/vim显示中文字符并且去掉^M的方法</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 
- <section id="comments">
-   <!-- 多说评论框 start -->
-   <div class="ds-thread" data-thread-key="post-pngquant-compress-png" data-title="利用pngquant压缩png图片" data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/"></div>
-   <!-- 多说评论框 end -->
-   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-   <script type="text/javascript">
-   var duoshuoQuery = {short_name:'keepmovingxin'};
-     (function() {
-       var ds = document.createElement('script');
-       ds.type = 'text/javascript';ds.async = true;
-       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-       ds.charset = 'UTF-8';
-       (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-     })();
-     </script>
-   <!-- 多说公共JS代码 end -->
- </section>
- </section>
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; __('prev')</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
         
           <aside id="sidebar">
   
