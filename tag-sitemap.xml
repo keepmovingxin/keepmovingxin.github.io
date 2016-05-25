@@ -37,13 +37,6 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/tags/Lua/</loc>
-        <lastmod>2016-05-23T02:40:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.keepmovingxin.com/tags/tolua/</loc>
         <lastmod>2016-05-23T02:40:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -60,6 +53,13 @@
     <url>
         <loc>http://blog.keepmovingxin.com/tags/SVN/</loc>
         <lastmod>2016-05-24T02:34:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.keepmovingxin.com/tags/Lua/</loc>
+        <lastmod>2016-05-25T08:11:32.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
