@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://blog.keepmovingxin.com/2016/05/27/Lua-global/</loc>
+        <lastmod>2016-05-30T09:40:59.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.keepmovingxin.com/2016/05/25/Lua-metable/</loc>
         <lastmod>2016-05-25T08:11:32.000Z</lastmod>
         <changefreq>weekly</changefreq>

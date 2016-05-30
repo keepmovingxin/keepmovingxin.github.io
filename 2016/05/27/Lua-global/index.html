@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Lua 全局变量的那些事儿 | KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近项目查了一个问题，最后发现和_G[moduleName]这个置为nil有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。
+全局环境表 _GLua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意_G._G == _G。由于_G是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。
+如_G[varname] = value，更一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua 全局变量的那些事儿">
+<meta property="og:url" content="http://blog.keepmovingxin.com/2016/05/27/Lua-global/index.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="最近项目查了一个问题，最后发现和_G[moduleName]这个置为nil有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。
+全局环境表 _GLua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意_G._G == _G。由于_G是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。
+如_G[varname] = value，更一">
+<meta property="og:updated_time" content="2016-05-30T09:40:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua 全局变量的那些事儿">
+<meta name="twitter:description" content="最近项目查了一个问题，最后发现和_G[moduleName]这个置为nil有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。
+全局环境表 _GLua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意_G._G == _G。由于_G是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。
+如_G[varname] = value，更一">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Lua-global" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/27/Lua-global/" class="article-date">
+  <time datetime="2016-05-27T14:30:12.000Z" itemprop="datePublished">2016-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/游戏开发/">游戏开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lua 全局变量的那些事儿
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局环境表-G"><span class="toc-number">1.</span> <span class="toc-text">全局环境表 _G</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量声明"><span class="toc-number">2.</span> <span class="toc-text">全局变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非全局变量-ENV"><span class="toc-number">3.</span> <span class="toc-text">非全局变量 _ENV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量与环境"><span class="toc-number">4.</span> <span class="toc-text">全局变量与环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#require"><span class="toc-number">4.1.</span> <span class="toc-text">require</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解-ENV-和-G"><span class="toc-number">5.</span> <span class="toc-text">理解 _ENV 和 _G</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+		        
+          </div>
+        
+        <p>最近项目查了一个问题，最后发现和<code>_G[moduleName]</code>这个置为<code>nil</code>有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。</p>
+<h3 id="全局环境表-G"><a href="#全局环境表-G" class="headerlink" title="全局环境表 _G"></a>全局环境表 <code>_G</code></h3><p>Lua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意<code>_G._G == _G</code>。<br>由于<code>_G</code>是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。</p>
+<p>如<code>_G[varname] = value</code>，更一般的问题是允许使用动态字段名，如_G[“read.io”]默认是不会取出read模块的io字段的，但是使用下面这样实现：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function getfield(f)  </span><br><span class="line">    local v = _G</span><br><span class="line">    for w in string.gmatch(f, &quot;[%w_]+&quot;) do</span><br><span class="line">        v = v[w]</span><br><span class="line">    end</span><br><span class="line">    return v</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function setfield(t, v)  </span><br><span class="line">    local t = _G</span><br><span class="line">    for w, d in string.gmatch(f, &quot;([%w_]+)(%.?)&quot;) do</span><br><span class="line">        if d == &quot;.&quot; then</span><br><span class="line">            t[w] = t[w] or &#123;&#125;</span><br><span class="line">            t = t[w]</span><br><span class="line">        else</span><br><span class="line">            t[w] = v</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="全局变量声明"><a href="#全局变量声明" class="headerlink" title="全局变量声明"></a>全局变量声明</h3><p>全局变量不需要声明，虽然这对一些小程序来说很方便，但程序很大时，一个简单的拼写错误可能引起bug并且很难发现。然而，如果我们喜欢，我们可以改变这种行为。因为Lua所有的全局变量都保存在一个普通的表中，我们可以使用metatables来改变访问全局变量的行为。<br>第一个方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setmetatable(_G, &#123;</span><br><span class="line">    __newindex = function (_, n)</span><br><span class="line">       error(&quot;attempt to write to undeclared variable &quot;..n, 2)</span><br><span class="line">    end,</span><br><span class="line">   </span><br><span class="line">    __index = function (_, n)</span><br><span class="line">       error(&quot;attempt to read undeclared variable &quot;..n, 2)</span><br><span class="line">    end,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样一来，任何企图访问一个不存在的全局变量的操作都会引起错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = 1</span><br><span class="line">stdin:1: attempt to write to undeclared variable a</span><br></pre></td></tr></table></figure>
+<p>但是我们如何声明一个新的变量呢？使用rawset，可以绕过metamethod：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function declare (name, initval)</span><br><span class="line">    rawset(_G, name, initval or false)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>or 带有 false 是为了保证新的全局变量不会为 nil。注意：你应该在安装访问控制以前（before installing the access control）定义这个函数，否则将得到错误信息：毕竟你是在企图创建一个新的全局声明。只要刚才那个函数在正确的地方，你就可以控制你的全局变量了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = 1</span><br><span class="line">stdin:1: attempt to write to undeclared variable a</span><br><span class="line">&gt; declare &quot;a&quot;</span><br><span class="line">&gt; a = 1       -- OK</span><br></pre></td></tr></table></figure>
+<p>但是现在，为了测试一个变量是否存在，我们不能简单的比较他是否为nil。如果他是nil访问将抛出错误。所以，我们使用rawget绕过metamethod：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if rawget(_G, var) == nil then</span><br><span class="line">    -- &apos;var&apos; is undeclared</span><br><span class="line">    ...</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>改变控制允许全局变量可以为nil也不难，所有我们需要的是创建一个辅助表用来保存所有已经声明的变量的名字。不管什么时候metamethod被调用的时候，他会检查这张辅助表看变量是否已经存在。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">local declaredNames = &#123;&#125;</span><br><span class="line">function declare (name, initval)</span><br><span class="line">    rawset(_G, name, initval)</span><br><span class="line">    declaredNames[name] = true</span><br><span class="line">end</span><br><span class="line">setmetatable(_G, &#123;</span><br><span class="line">    __newindex = function (t, n, v)</span><br><span class="line">    if not declaredNames[n] then</span><br><span class="line">       error(&quot;attempt to write to undeclared var. &quot;..n, 2)</span><br><span class="line">    else</span><br><span class="line">       rawset(t, n, v)   -- do the actual set</span><br><span class="line">    end</span><br><span class="line">end,</span><br><span class="line">    __index = function (_, n)</span><br><span class="line">    if not declaredNames[n] then</span><br><span class="line">       error(&quot;attempt to read undeclared var. &quot;..n, 2)</span><br><span class="line">    else</span><br><span class="line">       return nil</span><br><span class="line">    end</span><br><span class="line">end,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>两种实现方式，代价都很小可以忽略不计的。第一种解决方法：<code>metamethods</code>在平常操作中不会被调用。第二种解决方法：他们可能被调用，不过当且仅当访问一个值为nil的变量时。</p>
+<h3 id="非全局变量-ENV"><a href="#非全局变量-ENV" class="headerlink" title="非全局变量 _ENV"></a>非全局变量 <code>_ENV</code></h3><p>Lua中其实没有真正的全局变量，一个chunk会编译类似下面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local _ENV = the global environment  </span><br><span class="line">function  (...)  </span><br><span class="line">    _ENV.var1 = _ENV.var2 + 3</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>也就是说Lua5.2中，会这样处理全局变量： </p>
+<ol>
+<li>在一个名为<code>_ENV</code>的<code>upvalue</code>作用域中编译<code>chunk</code> </li>
+<li>将所有的自由名称转换成<code>_ENV.var</code></li>
+<li>load或loadfile函数用全局环境初始化<code>_ENV</code></li>
+</ol>
+<p>也可以通过显式使用<code>_EVN</code>来访问被遮蔽的全局变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = 13  </span><br><span class="line">local a = 12  </span><br><span class="line">print(a)      --&gt; 12  </span><br><span class="line">print(_ENV.a) --&gt; 13</span><br></pre></td></tr></table></figure>
+<p><code>_ENV</code>最大的作用就是修改代码片的环境。如使用_ENV可以限制代码对全局变量的访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local print, sin = print, math.sin  </span><br><span class="line">_ENV = nil  </span><br><span class="line">print(1) --&gt; 1  </span><br><span class="line">print(math.cos(13)) -- error</span><br></pre></td></tr></table></figure>
+<p>想要修改环境的同时还能访问全局变量，通常说方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = 1  </span><br><span class="line">local newgt = ()  </span><br><span class="line">setmetatable(newgt, &#123;__index = _G&#125;)  </span><br><span class="line">_ENV = newgt  </span><br><span class="line">print(a)    --&gt; 1  </span><br><span class="line">a = 10  </span><br><span class="line">print(a)    --&gt; 10  </span><br><span class="line">print(_G.a) --&gt; 1  </span><br><span class="line">_G.a = 20  </span><br><span class="line">print(_G.a) --&gt; 20</span><br></pre></td></tr></table></figure>
+<p>我们还可以为函数定义私有执行环境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function factory (_ENV)  </span><br><span class="line">   return function ()</span><br><span class="line">      return a</span><br><span class="line">   end</span><br><span class="line">end  </span><br><span class="line">print(factory&#123;a = 6&#125;()) -&gt; 6  </span><br><span class="line">print(factory&#123;a = 7&#125;()) -&gt; 7</span><br></pre></td></tr></table></figure>
+<p>load函数有一个可选参数，可以由用户指定_ENV，这样就可以限制外部的运行环境。如果一个chunk加载后要以不同的环境多次运行，这时就不能通过参数在加载时指定环境了，这时可以每次都使用debug.setupvalue函数指定运行环境，另外，为了避免使用debug库，还可以像下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = loadwithprefix(&quot;local _ENV = ...&quot;, io.lines(filename, &quot;*L&quot;)) -- 因为Lua会把chunk编译成可参数函数，所以前面的这一句相当于把chunk的第一个参数赋值给_ENV  </span><br><span class="line">...</span><br><span class="line">env = &#123;&#125;  </span><br><span class="line">f(env)  -- 使用env作为环境调用chunk</span><br></pre></td></tr></table></figure>
+<h3 id="全局变量与环境"><a href="#全局变量与环境" class="headerlink" title="全局变量与环境"></a>全局变量与环境</h3><p>lua中真正存储全局变量的地方不是在_G里面，而是在<code>setfenv（i,table）</code>的table中，所有当前的全局变量都在这里面找，只不过在程序开始时lua会默认先设置一个变量<br><code>_G</code>=这个里面的table而已。所以在新设置环境后，如果还想找到之前的全局变量，通常需要附加上为新的table设置元表<code>{_index=_G}</code></p>
+<p>下面的几个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=1</span><br><span class="line">print(a)</span><br><span class="line">print(_G.a)</span><br></pre></td></tr></table></figure></p>
+<p>正常情况，输出1,1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=1</span><br><span class="line">setfenv(1,&#123;&#125;)</span><br><span class="line">print(a)</span><br><span class="line">print(_G.a)</span><br></pre></td></tr></table></figure></p>
+<p>这时会出错说找不到<code>print</code>，因为当前的全局变量表示空的，啥也找不到的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=1</span><br><span class="line">setfenv(1,&#123;_G=_G&#125;)</span><br><span class="line">_G.print(_G.a)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure></p>
+<p>这时<code>_G.print(_G.a)</code>可以正常吗，因为可以在新的table中找到一个叫<code>_G</code>的表，这个<code>_G</code>有之前的奈尔全局变量，但是下面的<code>print(a)</code>则找不到<code>print</code>，因为当前的<code>table{_G=_G}</code>没有一个叫<code>print</code>的东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">local mt=&#123;__index=_G&#125;</span><br><span class="line">local t=&#123;&#125;</span><br><span class="line">setmetatable(t,mt)</span><br><span class="line">setfenv(1,t)</span><br><span class="line">print(a)</span><br><span class="line">print(_G.a)</span><br></pre></td></tr></table></figure>
+<p>这是正确输出，因为新的全局表采用之前的表做找不到时的索引，原先的表里面存在<code>print</code> 、<code>_G</code>、 <code>a</code>这些东西<br><code>setfenv</code>的第一个参数可以是当前的堆栈层次，如1代表当前代码块，2表调用当前的上一层，也可以是具体的那个函数名，表示在那个函数里。<br>每个新创建的函数都将继承创建它的那个函数的全局环境</p>
+<h4 id="require"><a href="#require" class="headerlink" title="require"></a>require</h4><p><code>require</code>的意义就是导入一堆可用的名称，这些名称（非local的）都包含在一个table中，这个table再被包含在当前的全局表（“通常的那个<code>_G</code>”）中，这样访问一个模块中的变量就可以使用<code>_G.table.**</code>了，（刚开始学习lua时还以为模块里的名称在导入后直接就是在<code>_G</code>中的）<br><code>a=require(&quot;&quot;)</code>的a取决于这个导入的文件的返回值，没有返回值时<code>true</code>，所以在标准的情况下模块的结尾应该<code>return</code>这个模块的名字，这样a就是这个模块的table了（当然不这样做也ok，只是a就不是这个模块名了）</p>
+<h3 id="理解-ENV-和-G"><a href="#理解-ENV-和-G" class="headerlink" title="理解 _ENV 和 _G"></a>理解 <code>_ENV</code> 和 <code>_G</code></h3><p>5.1之前, 全局变量存储在<code>_G</code>这个table中, 这样的操作:<br><code>a = 1</code><br>相当于：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_G[&apos;a&apos;] = 1</span><br></pre></td></tr></table></figure></p>
+<p>但在5.2之后， 引入了<code>_ENV</code>叫做环境，与<code>_G</code>全局变量表产生了一些混淆，需要从原理上做一个理解。<br>在5.2中，<br>操作<code>a = 1</code><br>相当于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_ENV[&apos;a&apos;] = 1</span><br></pre></td></tr></table></figure>
+<p>这是一个最基础的认知改变，其次要格外注意<code>_ENV</code>不是全局变量，而是一个<code>upvalue</code>(非局部变量)。</p>
+<p>其次，<code>_ENV[&#39;_G&#39;]</code>指向了<code>_ENV</code>自身，这一目的是为了兼容5.1之前的版本，因为之前你也许会用到：</p>
+<p><code>_G[&#39;a&#39;] = 2</code> ， 在5.2中， 这相当于<code>_ENV[&#39;_G&#39;][&#39;a&#39;]</code>，为了避免5.1之前的老代码在5.2中运行错误，所以5.2设置了<code>_ENV[&#39;_G&#39;]=_ENV</code>来兼容这个问题。然而你不要忘记<code>_ENV[&#39;_G&#39;]=_ENV</code>，所以一切都顺理成章了。</p>
+<p>在5.1中，我们可以为一段代码块（或者函数）设置环境，使用函数<code>setfuncs</code>，这样会导致那一段代码/函数访问全局变量的时候使用了<code>setfuncs</code>指定的table，而不是全局的<code>_G</code>。</p>
+<p>在5.2中，<code>setfuncs</code>遭到了废弃，因为引入了<code>_ENV</code>。 通过在函数定义前覆盖<code>_ENV</code>变量即可为函数定义设置一个全新的环境，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = 3</span><br><span class="line">function get_echo()</span><br><span class="line">local _ENV=&#123;print=print, a = 2&#125;</span><br><span class="line">return function echo()</span><br><span class="line">print(a)</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">get_echo()()</span><br></pre></td></tr></table></figure>
+<p>会打印2，而不是3，因为<code>echo</code>函数的环境被修改为<code>{print=print, a=2}</code>，而<code>print(a)</code>相当于访问<code>_ENV[&#39;a&#39;]</code>（先忘掉那为了兼容而存在的<code>_G</code>）。<br>这就是<code>_ENV</code>的基本用法了。<br>另外，不得不提到lua的C支持中关于全局变量与环境的细节，只能简单描述，你必须自己试试才能记得清楚。</p>
+<p><code>lua_setglobal/lua_getglobal</code>都是操作<code>lua_State</code>注册表中<code>LUA_RIDX_GLOBALS</code>伪索引指向的全局变量表，与lua中访问<code>_ENV[&#39;a&#39;]</code>或者<code>a</code>是不同的。</p>
+<p><code>lua_load</code>加载lua代码后会返回一个函数，默认会给这个函数设置一个<code>upvalue</code>就叫<code>_ENV</code>，起值是<code>LUA_RIDX_GLOBALS</code>的全局变量表，你可以<code>lua_setupvalue</code>设置这个函数的<code>upvalue</code>，即下标1的<code>upvalue</code>，因为这个位置是这个函数的<code>_ENV</code>表存放位置（你可以通过<code>lua_setupvalue</code>的返回值印证这一点）</p>
+<p>这里巧妙的是，<code>lua_State</code>会在创建时保证<code>LUA_RIDX_GLOBALS</code>的全局变量表中包含一个指向自己的<code>_G</code>元素，这样就保证了在不调用<code>lua_setupvalue</code>的情况下该返回函数的<code>_ENV[&#39;_G&#39;]</code>是指向自己的，即<code>LUA_RIDX_GLOBALS</code>这个全局表。（其实你的lua解释器就是简单的<code>lua_load</code>后<code>pcall</code>的，对于一个刚启动<code>lua_State</code>来说是没有<code>_ENV</code>的，是lua解释器load你的代码时自动给带上的<code>_ENV</code>，其值是<code>lua_state</code>的<code>LUA_RIDX_GLOBALS</code>全局表。）</p>
+<p>一些有意思的东西是需要你自己摸索的，lua语言自身就很简练，并且所有东西都不是什么神秘的事情，可以通过读源码或者试验摸索得到。</p>
+<p>最后，提一下，<code>lua_state</code>启动后在注册表里<code>LUA_RIDX_GLOBALS</code>下标存放的全局表一定有一个元素是指向自己的，即<code>_G</code>.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.lua.org/manual/5.1/manual.html" target="_blank" rel="external">https://www.lua.org/manual/5.1/manual.html</a><br><a href="http://www.shouce.ren/api/lua/5/_88.htm" target="_blank" rel="external">http://www.shouce.ren/api/lua/5/_88.htm</a><br><a href="http://blog.csdn.net/leonwei/article/details/7739930" target="_blank" rel="external">http://blog.csdn.net/leonwei/article/details/7739930</a><br><a href="http://blog.aforget.net/shen-ru-luahe-czhi-si/" target="_blank" rel="external">http://blog.aforget.net/shen-ru-luahe-czhi-si/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/2016/05/27/Lua-global/" data-id="ciotpwtru000wkuw8qmyizz1d" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/25/Lua-metable/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">了解Lua metatable 元表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="post-Lua-global" data-title="Lua 全局变量的那些事儿" data-url="http://blog.keepmovingxin.com/2016/05/27/Lua-global/"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/27/Lua-global/">Lua 全局变量的那些事儿</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/25/Lua-metable/">了解Lua metatable 元表</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/Git-Workflow/">Git 常用命令用法：程序员的场景</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/SVN-Workflow/">SVN命令用法：程序员的场景</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://www.dtgames.top/" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://keepmovingxin.com/" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+  </div>
+</body>
+</html>
