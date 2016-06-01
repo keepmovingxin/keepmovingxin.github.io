@@ -22,7 +22,7 @@ ln –s /下载的位置/pngq">
 配置全局变量(使用HomeBrew安装请忽略)：
 ln –s /下载的位置/pngq">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2016-05-18T10:04:16.000Z">
+<meta property="og:updated_time" content="2016-06-01T03:42:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用pngquant压缩png图片">
 <meta name="twitter:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
@@ -141,7 +141,7 @@ var _hmt = _hmt || [];
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
             
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息："><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例："><span class="toc-number">3.</span> <span class="toc-text">使用示例：</span></a></li></ol>
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">安装并配置全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助信息"><span class="toc-number">2.</span> <span class="toc-text">查看帮助信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例"><span class="toc-number">3.</span> <span class="toc-text">使用示例</span></a></li></ol>
 		        
           </div>
         
@@ -153,7 +153,7 @@ var _hmt = _hmt || [];
 <p><code>ln –s /下载的位置/pngquant /usr/local/bin/pngquant</code></p>
 <p>pngquant 可以愉快的玩耍啦！</p>
 <a id="more"></a>
-<h3 id="查看帮助信息："><a href="#查看帮助信息：" class="headerlink" title="查看帮助信息："></a>查看帮助信息：</h3><p>执行 pngquant -h 查看完整选项</p>
+<h3 id="查看帮助信息"><a href="#查看帮助信息" class="headerlink" title="查看帮助信息"></a>查看帮助信息</h3><p>执行 pngquant -h 查看完整选项</p>
 <pre><code>--ext new.png
 设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。
 
@@ -177,17 +177,17 @@ pngquant --quality=65-80 image.png
 --
 不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:
 </code></pre><p><code>pngquant $OPTIONS -- &quot;$FILE&quot;</code></p>
-<h3 id="使用示例："><a href="#使用示例：" class="headerlink" title="使用示例："></a>使用示例：</h3><p>压缩Downloads目录下所有的png，并替换当前图片</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>压缩Downloads目录下所有的png，并替换当前图片</p>
 <p><code>find /Users/mac/Downloads/ -name &quot;*.png&quot; | while read line; do pngquant --ext .png --force $line; done</code></p>
 <hr>
-<p>欢迎关注微信公众号！扫描二维码或在微信中搜索KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 <hr>
 <p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.<br>原文链接：<a href="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/">http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="ciowag4z3000ti7w8s01dx36v" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="ciowbxk3g000qksw8isdbprhp" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pngquant/">pngquant</a></li></ul>
