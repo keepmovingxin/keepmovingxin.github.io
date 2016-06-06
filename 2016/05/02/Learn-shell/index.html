@@ -5,23 +5,20 @@
   
   <title>shell学习笔记 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.Shell脚本1.1 格式首行        #!/bin/bash    指定解释器
-1.2 注释‘#’开头的行，’#!’是例外
-此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。">
+  <meta name="description" content="Shell脚本格式首行        #!/bin/bash 指定解释器
+注释&amp;#39;#&amp;#39;开头的行，&amp;#39;#!&amp;#39;是例外此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘\#’也不会开启一个注释。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell学习笔记">
 <meta property="og:url" content="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/index.html">
 <meta property="og:site_name" content="KeepMoving">
-<meta property="og:description" content="1.Shell脚本1.1 格式首行        #!/bin/bash    指定解释器
-1.2 注释‘#’开头的行，’#!’是例外
-此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。">
+<meta property="og:description" content="Shell脚本格式首行        #!/bin/bash 指定解释器
+注释&amp;#39;#&amp;#39;开头的行，&amp;#39;#!&amp;#39;是例外此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘\#’也不会开启一个注释。">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2016-06-01T03:24:33.000Z">
+<meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell学习笔记">
-<meta name="twitter:description" content="1.Shell脚本1.1 格式首行        #!/bin/bash    指定解释器
-1.2 注释‘#’开头的行，’#!’是例外
-此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。">
+<meta name="twitter:description" content="Shell脚本格式首行        #!/bin/bash 指定解释器
+注释&amp;#39;#&amp;#39;开头的行，&amp;#39;#!&amp;#39;是例外此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘\#’也不会开启一个注释。">
 <meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
@@ -108,7 +105,7 @@ var _hmt = _hmt || [];
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>
+    <a class="article-category-link" href="/categories/工具-效率/">工具/效率</a>
   </div>
 
   </div>
@@ -132,180 +129,136 @@ var _hmt = _hmt || [];
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目录</strong>
             
-			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Shell脚本"><span class="toc-number">1.</span> <span class="toc-text">1.Shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-格式"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-注释"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-函数"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-正文部分"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 正文部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-执行：修改权限"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 执行：修改权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-流程控制"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 流程控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-参数处理"><span class="toc-number">1.7.</span> <span class="toc-text">1.8    参数处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-双括号结构"><span class="toc-number">2.</span> <span class="toc-text">4.双括号结构(())</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-数组"><span class="toc-number">3.</span> <span class="toc-text">5.数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-关联数组"><span class="toc-number">4.</span> <span class="toc-text">6.关联数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-临时文件或目录"><span class="toc-number">5.</span> <span class="toc-text">7.临时文件或目录</span></a></li></ol>
+			        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell脚本"><span class="toc-number">1.</span> <span class="toc-text">Shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注释"><span class="toc-number">1.2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-number">1.3.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文部分"><span class="toc-number">1.4.</span> <span class="toc-text">正文部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行：修改权限"><span class="toc-number">1.5.</span> <span class="toc-text">执行：修改权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#条件判断"><span class="toc-number">1.6.</span> <span class="toc-text">条件判断</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双括号结构"><span class="toc-number">2.</span> <span class="toc-text">双括号结构(())</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">3.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关联数组"><span class="toc-number">4.</span> <span class="toc-text">关联数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#临时文件或目录"><span class="toc-number">5.</span> <span class="toc-text">临时文件或目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
 		        
           </div>
         
-        <h3 id="1-Shell脚本"><a href="#1-Shell脚本" class="headerlink" title="1.Shell脚本"></a>1.Shell脚本</h3><h4 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h4><p>首行        #!/bin/bash    指定解释器</p>
-<h4 id="1-2-注释"><a href="#1-2-注释" class="headerlink" title="1.2 注释"></a>1.2 注释</h4><p>‘#’开头的行，’#!’是例外</p>
-<p>此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。</p>
+        <h3 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h3><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p>首行        <code>#!/bin/bash 指定解释器</code></p>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p><code>&#39;#&#39;</code>开头的行，<code>&#39;#!&#39;</code>是例外<br>此外，<code>#</code> 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。<code>‘\#’</code>也不会开启一个注释。</p>
 <a id="more"></a>
-<h4 id="1-3-函数"><a href="#1-3-函数" class="headerlink" title="1.3 函数"></a>1.3 函数</h4><pre><code>function funname(){…}
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>function funname(){…}
 </code></pre><p>或者</p>
 <pre><code>funname()
 {
     statements;
 }
-</code></pre><p>只需要使用函数名就可以调用某个函数：<code>funname</code></p>
-<p>参数可以传递给函数，使用方法就好像函数是个新脚本一样：</p>
-<p>funname arg1 arg2…;    #传递参数</p>
-<p>在函数中使用传入的参数：$1    第一个参数；$@ 所有参数。</p>
-<p>其中：”$@”被扩展成”$1””$2””$3”；</p>
-<p>“$*”被扩展成”$1c$2c$3”，即一个字符串。c为IFS的第一个字符。</p>
-<p>有时我们需要知道命令或者函数的执行状态，用$?可以查看前一个命令的返回值，如果命令成功退出，那么退出状态为0，否则非0。</p>
-<h4 id="1-4-正文部分"><a href="#1-4-正文部分" class="headerlink" title="1.4 正文部分"></a>1.4 正文部分</h4><p>流程控制+命令</p>
-<h4 id="1-5-执行：修改权限"><a href="#1-5-执行：修改权限" class="headerlink" title="1.5 执行：修改权限"></a>1.5 执行：修改权限</h4><p>转为可执行程序</p>
-<p>chmod +x ./test.sh  #使脚本具有执行权限</p>
-<p>./test.sh  #执行脚本</p>
-<h4 id="1-6-流程控制"><a href="#1-6-流程控制" class="headerlink" title="1.6 流程控制"></a>1.6 流程控制</h4><p>条件语句</p>
-<p>if :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then	command1 	command2	...	commandNfi</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if `ps -ef | grep ssh`;  </span><br><span class="line">then </span><br><span class="line">	echo hello; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<p>if else-if else :</p>
-<pre><code>if condition1
+</code></pre><p>只需要使用函数名就可以调用某个函数：<code>funname</code><br>参数可以传递给函数，使用方法就好像函数是个新脚本一样：<br><code>funname arg1 arg2...;    #传递参数</code><br>在函数中使用传入的参数：<code>$1</code> 第一个参数；<code>$@</code> 所有参数。<br>其中：<code>&quot;$@&quot;</code>被扩展成<code>&quot;$1&quot;&quot;$2&quot;&quot;$3&quot;</code>；<br><code>&quot;$*&quot;</code>被扩展成<code>&quot;$1c$2c$3&quot;</code>，即一个字符串。c为IFS的第一个字符。<br>有时我们需要知道命令或者函数的执行状态，用$?可以查看前一个命令的返回值，如果命令成功退出，那么退出状态为0，否则非0。</p>
+<h4 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h4><p>流程控制+命令</p>
+<h4 id="执行：修改权限"><a href="#执行：修改权限" class="headerlink" title="执行：修改权限"></a>执行：修改权限</h4><p>转为可执行程序</p>
+<pre><code>chmod +x ./test.sh  #使脚本具有执行权限
+./test.sh  #执行脚本
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#### 流程控制条件语句</span><br><span class="line"></span><br><span class="line">if :</span><br></pre></td></tr></table></figure>
+
+if condition
 then
-    command1
-elif condition2
-    command2
-else
-    commandN
-fi
-</code></pre><p>循环语句</p>
-<p>for :</p>
-<pre><code>for var in item1 item2 ... itemN
-do
-    command1
+    command1 
     command2
     ...
     commandN
+fi
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">if `ps -ef | grep ssh`;  </span><br><span class="line">then </span><br><span class="line">	echo hello; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+
+if else-if else :
+</code></pre><p>if condition1<br>then<br>    command1<br>elif condition2<br>    command2<br>else<br>    commandN<br>fi</p>
+<pre><code>
+循环语句
+for :
+</code></pre><p>for var in item1 item2 … itemN<br>do<br>    command1<br>    command2<br>    …<br>    commandN<br>done<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```for var in item1 item2 ... itemN; do command1; command2… done;</span><br></pre></td></tr></table></figure></p>
+<p>while :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i=1;total=0;while [ $i -le 10 ]do    let total+=i    let i++    echo $total,$idone</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=1; total=0;while((i&lt;=10))do    ((total+=i, i++))    echo $total,$idone</span><br><span class="line">```case语句: case语句可以用户处理自定义参数。</span><br></pre></td></tr></table></figure>
+<p>case $num in<br>1) echo “January”;;                 #双分号结束<br>2) echo “Feburary”;;<br>5) echo “may”                          #每个case可以有多条命令<br>   echo “sdfd”<br>   echo “sdf”;;                       #但最后一条命令一定是双分号结束<br><em>) echo “not correct input”;;       #</em>）是其他值、default的意思<br>esac</p>
+<pre><code>
+
+#### while read line
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while read line; do something ; done```#### 参数处理a)	`&quot;$*&quot;`将所有的参数解释成一个字符串，而`&quot;$@&quot;`是一个参数数组。b)	Shell内建函数`getopts “:a:bc” opt`主要变量：</span><br><span class="line">```$OPTIND	: 存储所处理的选项在参数列表中的位置$OPTARG	: 存储相应选项所带的参数</span><br><span class="line">```例子：</span><br></pre></td></tr></table></figure>
+
+while getopts &quot;:a:b:cef&quot; opt
+do
+    case $opt in
+        a)echo &quot;the $OPTIND has arg:$OPTARG&quot;;;#$OPTIND=3
+        b)echo &quot;the b has arg:$OPTARG&quot;;;
+        c | e | f)echo &quot;the $opt has no arg&quot;;;
+        \?)echo &quot;the $opt is invalid param&quot;;;
+    esac
 done
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```for var in item1 item2 ... itemN; do command1; command2… done;</span><br></pre></td></tr></table></figure>
+</code></pre><p>c)    <code>shift n</code>  将位置命令左移n个</p>
+<h4 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h4><p>条件判断应该放进方括号里，且方括号两边都应该留有空格。 <code>[  ]</code><br>a)    字符串判断<br>字符串比较时，最好用双中括号，因为有时候采用单中括号会产生错误，所以最好避开它们。<code>[[ $str1 = $str2 ]]</code></p>
+<pre><code>=    当两个串有相同内容、长度时为真
+!=    当串str1和str2不等时为真
+-n    当串的长度大于0时为真(串非空)
+-z    当串的长度为0时为真(空串)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b)	数值判断```-eq     两数相等为真 -ne     两数不等为真 -gt     int1大于int2为真 -ge     int1大于等于int2为真 -lt     int1小于int2为真 -le     int1小于等于int2为真</span><br></pre></td></tr></table></figure>
 
-while :
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i=1;total=0;while [ $i -le 10 ]do    let total+=i    let i++    echo $total,$idone</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i=1; total=0;while((i&lt;=10))do    ((total+=i, i++))    echo $total,$idone</span><br></pre></td></tr></table></figure>
-
-
-
-case语句: case语句可以用户处理自定义参数。
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">case $num in1) echo &quot;January&quot;;;     			#双分号结束2) echo &quot;Feburary&quot;;;5) echo &quot;may&quot;          				#每个case可以有多条命令          echo &quot;sdfd&quot;   echo &quot;sdf&quot;;;       				#但最后一条命令一定是双分号结束*) echo &quot;not correct input&quot;;;   	#*）是其他值、default的意思esac</span><br><span class="line">```#### 1.7 while read line</span><br></pre></td></tr></table></figure>
-
-while read line; do something ; done
-</code></pre><h4 id="1-8-参数处理"><a href="#1-8-参数处理" class="headerlink" title="1.8    参数处理"></a>1.8    参数处理</h4><p>a)    “$*”将所有的参数解释成一个字符串，而”$@”是一个参数数组。</p>
-<p>b)    Shell内建函数getopts “:a:bc” opt</p>
-<pre><code>主要变量：
-
-$OPTIND    :    存储所处理的选项在参数列表中的位置
-
-$OPTARG    ：    存储相应选项所带的参数
-</code></pre><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while getopts &quot;:a:b:cef&quot; optdo    case $opt in        a)echo &quot;the $OPTIND has arg:$OPTARG&quot;;;#$OPTIND=3        b)echo &quot;the b has arg:$OPTARG&quot;;;        c | e | f)echo &quot;the $opt has no arg&quot;;;        \?)echo &quot;the $opt is invalid param&quot;;;    esacdone```c)	shift n   将位置命令左移n个#### 1.9	条件判断条件判断应该放进方括号里，且方括号两边都应该留有空格。 [  ]a)	字符串判断字符串比较时，最好用双中括号，因为有时候采用单中括号会产生错误，所以最好避开它们。[[ $str1 = $str2 ]]	=			当两个串有相同内容、长度时为真	!=		　　当串str1和str2不等时为真	-n			当串的长度大于0时为真(串非空)	-z			当串的长度为0时为真(空串)</span><br><span class="line">b)	数值判断	-eq     两数相等为真 	-ne     两数不等为真 	-gt     int1大于int2为真 	-ge     int1大于等于int2为真 	-lt     int1小于int2为真 	-le     int1小于等于int2为真</span><br><span class="line">c)	文件判断	-e file         若文件存在，则为真 	-d file         若文件存在且是一个目录，则为真	-b file         若文件存在且是一个块特殊文件，则为真	-c file         若文件存在且是一个字符特殊文件，则为真	-f file         若文件存在且是一个规则文件，则为真	-g file         若文件存在且设置了SGID位的值，则为真	-h file         若文件存在且为一个符合链接，则为真	-k file         若文件存在且设置了&quot;sticky&quot;位的值	-p file         若文件存在且为一已命名管道，则为真	-r file         若文件存在且可读，则为真	-s file         若文件存在且其大小大于零，则为真	-u file         若文件存在且设置了SUID位，则为真	-w file         若文件存在且可写，则为真	-x file         若文件存在且可执行，则为真	-o file         若文件存在且被有效用户ID所拥有，则为真</span><br><span class="line">d)	逻辑判断	!      非	-a     与		&amp;&amp;	-o     或		||if [ $v –ne 0 –a $v –lt 2 ] 等价 if [ $v –ne 0 ] &amp;&amp; [ $v –lt 2 ]if [ $v –ne 0 –o $v –lt 2 ] 等价 if [ $v –ne 0 ] || [ $v –lt 2 ]条件判断部分可能会变得很长，一个优化的小技巧是利用&amp;&amp;和||运算符。</span><br></pre></td></tr></table></figure>
+c)    文件判断
+</code></pre><p>-e file         若文件存在，则为真<br>-d file         若文件存在且是一个目录，则为真<br>-b file         若文件存在且是一个块特殊文件，则为真<br>-c file         若文件存在且是一个字符特殊文件，则为真<br>-f file         若文件存在且是一个规则文件，则为真<br>-g file         若文件存在且设置了SGID位的值，则为真<br>-h file         若文件存在且为一个符合链接，则为真<br>-k file         若文件存在且设置了”sticky”位的值<br>-p file         若文件存在且为一已命名管道，则为真<br>-r file         若文件存在且可读，则为真<br>-s file         若文件存在且其大小大于零，则为真<br>-u file         若文件存在且设置了SUID位，则为真<br>-w file         若文件存在且可写，则为真<br>-x file         若文件存在且可执行，则为真<br>-o file         若文件存在且被有效用户ID所拥有，则为真<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d)	逻辑判断`! `  非`-a`  与 `&amp;&amp;``-o`  或	 `||``if [ $v –ne 0 –a $v –lt 2 ]` 等价 `if [ $v –ne 0 ] &amp;&amp; [ $v –lt 2 ]``if [ $v –ne 0 –o $v –lt 2 ]` 等价 `if [ $v –ne 0 ] || [ $v –lt 2 ]`条件判断部分可能会变得很长，一个优化的小技巧是利用`&amp;&amp;`和`||`运算符。</span><br></pre></td></tr></table></figure></p>
 <p>if condition<br>then<br>    command1<br>else<br>    command2<br>fi</p>
 <pre><code>
 </code></pre><p>[ condition ] &amp;&amp; command1 || command2</p>
 <pre><code>这样就用一行代替了上面的5行而实现的功能完全相同。
-
 如果命令有多个，可以用{}括起来，当做一个命令块。
-
 这样可以使判断语句变得非常简洁。
 
-#### 1.10 &amp;&amp;、||
-cmd1 &amp;&amp; cmd2
-
+#### &amp;&amp;、||
+`cmd1 &amp;&amp; cmd2`
 表示，当cmd1执行成功后，就执行cmd2，否则不执行。
-
-cmd1 || cmd2
-
+`cmd1 || cmd2`
 表示，当cmd1执行失败后，就执行cmd2，否则不执行。
 
-### 2.变量
-#### 2.1 系统变量
-$n      该变量与脚本被激活时所带的参数相对应。n是正整数，与参数位置相对应($1,$2...) 
+### 变量
+#### 系统变量
+$n 该变量与脚本被激活时所带的参数相对应。n是正整数，与参数位置相对应($1,$2...) 
+$? 前一个命令执行后的退出状态
+$# 提供脚本的参数号
+$* 所有这些参数都被双引号引住。若一个脚本接收两个参数，$*等于$1$2 
+$0 正在被执行命令的名字。对于shell脚本而言，这是被激活命令的路径
+$@ 所有这些参数都分别被双引号引住。若一个脚本接收到两个参数，$@等价于$1$2
+$$ 当前shell的进程号。对于shell脚本，这是其正在执行时的进程ID
+$! 前一个后台命令的进程号
 
-$?      前一个命令执行后的退出状态
-
-$#      提供脚本的参数号
-
-$*      所有这些参数都被双引号引住。若一个脚本接收两个参数，$*等于$1$2 
-
-$0      正在被执行命令的名字。对于shell脚本而言，这是被激活命令的路径
-
-$@      所有这些参数都分别被双引号引住。若一个脚本接收到两个参数，$@等价于$1$2
-
-$$      当前shell的进程号。对于shell脚本，这是其正在执行时的进程ID
-
-$!      前一个后台命令的进程号
-
-#### 2.2    普通变量
-
-1)    赋值：var=value
-
+#### 普通变量
+1)    赋值：`var=value`
 2)    #
-
-获取字符串的长度。len=${#var}
-
+获取字符串的长度。`len=${#var}`
 3)    数值运算：let
-
 let命令后面的变量不用带$，如：
-
-nu=10;
-
-let nu+=10;    #nu=20
-
+`nu=10;`
+`let nu+=10;    #nu=20`
 但这个命令不能进行浮点数的运算。
-
 4)    浮点数运算：bc
-
-echo &quot;4 * 0.6&quot; | bc
-
+`echo &quot;4 * 0.6&quot; | bc`
 bc是一个强大的计算器，还可以进项如下操作：
-
 设定小数精度，`scale=2,eg:echo &quot;scale=2;3 / 8&quot; | bc`
-
 \#.37  这是bc的特性，小于0的数，是不显示小数点前的0的。
-
-
 进制转换。用ibase设定输入数字的进制，obase设定输出数字的进制。
 </code></pre><p>no=10<br>echo “obase=2;ibase=10;$no” | bc   #1010</p>
 <pre><code>计算平方以及平方根。
 </code></pre><p>echo “10^4” | bc        #1000    平方<br>echo “sqrt(100)” | bc     #10        平方根</p>
-<pre><code>#### 2.3 IFS
+<pre><code>
+#### IFS
 全称是Internal Field Separtor，内部分隔符。
-
 Shell 的环境变量分为 set, env 两种，其中 set 变量可以通过 export 工具导入到 env 变量中。其中，set 是显示设置shell变量，仅在本 shell 中有效；env 是显示设置用户环境变量 ，仅在当前会话中有效。换句话说，set 变量里包含了 env 变量，但 set 变量不一定都是 env 变量。这两种变量不同之处在于变量的作用域不同。显然，env 变量的作用域要大些，它可以在 subshell 中使用。
-
 而 IFS 是一种 set 变量，当 shell 处理&quot;命令替换&quot;和&quot;参数替换&quot;时，shell 根据 IFS 的值，默认是 space, tab, newline 来拆解读入的变量，然后对特殊字符进行处理，最后重新组合赋值给该变量。
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg：$ cat test.txt123$ out=$(cat test.txt)$ echo $out1 2 3			#shell将(cat test.txt)的结果拆解，并用默认的分隔符（空格）重新组合，赋值给out，因此echo $out的结果不包含换行。```如果要保留cat test.txt中的换行符，一般情况下要做两步：1是，设定IFS为换行：IFS=&apos;\n&apos;2是，将$(cat test.txt)用双引号引起来，表示不用若指定IFS为换行符。#### 2.4 UID特殊的环境变量，如果UID=0，表示当前以root用户运行脚本。否则不是root### 3.自增Linux Shell中写循环时，常常要用到变量的自增，现在总结一下整型变量自增的方法。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg：$ cat test.txt123$ out=$(cat test.txt)$ echo $out1 2 3			#shell将(cat test.txt)的结果拆解，并用默认的分隔符（空格）重新组合，赋值给out，因此echo $out的结果不包含换行。```如果要保留`cat test.txt`中的换行符，一般情况下要做两步：1是，设定IFS为换行：`IFS=&apos;\n&apos;`2是，将`$(cat test.txt)`用双引号引起来，表示不用若指定IFS为换行符。#### UID特殊的环境变量，如果UID=0，表示当前以root用户运行脚本。否则不是root### 自增Linux Shell中写循环时，常常要用到变量的自增，现在总结一下整型变量自增的方法。</span><br></pre></td></tr></table></figure>
 
 1)    i=`expr $i + 1`;
 2)    let i+=1;
 3)    ((i++));    #双括号结构
-http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html
 4)    i=$[$i+1];
 5)    i=$(( $i + 1 ))
-</code></pre><h3 id="4-双括号结构"><a href="#4-双括号结构" class="headerlink" title="4.双括号结构(())"></a>4.双括号结构(())</h3><p>双括号结构是对shell中算数及赋值运算的扩展。</p>
-<p>语法：</p>
-<p>((表达式1,表达式2…))</p>
-<p>特点：</p>
-<p>1)    在双括号结构中，所有表达式可以像c语言一样，如：a++,b–等。</p>
-<p>2)    在双括号结构中，所有变量可以不加入：“$”符号前缀。</p>
-<p>3)    双括号可以进行逻辑运算，四则运算.eg. echo $((a&gt;1?2:3));注意四则运算中仍然不支持浮点数运算</p>
-<p>4)    支持多个表达式运算，各个表达式之间用“，”分开. eg:((a+1,b++,c++))</p>
-<p>5)    双括号结构 扩展了for，while,if条件测试运算</p>
-<h3 id="5-数组"><a href="#5-数组" class="headerlink" title="5.数组"></a>5.数组</h3><p>1)    取数组长度 – ‘#’</p>
+</code></pre><h3 id="双括号结构"><a href="#双括号结构" class="headerlink" title="双括号结构(())"></a>双括号结构(())</h3><p>双括号结构是对shell中算数及赋值运算的扩展。<br>语法：<br>((表达式1,表达式2…))</p>
+<p>特点：<br>1)    在双括号结构中，所有表达式可以像c语言一样，如：<code>a++</code>,<code>b--</code>等。<br>2)    在双括号结构中，所有变量可以不加入：“$”符号前缀。<br>3)    双括号可以进行逻辑运算，四则运算.eg. <code>echo $((a&gt;1?2:3))</code>;注意四则运算中仍然不支持浮点数运算<br>4)    支持多个表达式运算，各个表达式之间用“，”分开. eg:<code>((a+1,b++,c++))</code><br>5)    双括号结构 扩展了<code>for</code>，<code>while</code>,<code>if</code>条件测试运算</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>1)    取数组长度 – <code>&#39;#&#39;</code></p>
 <pre><code>arr=(1 2 3 4 5)
 len=${#arr[@]}
 </code></pre><p>2)    打印特定索引的数组元素</p>
 <pre><code>echo ${arr[2]}        #2
-</code></pre><p>3)    打印出数组中的所有值-‘*’、’@’</p>
+</code></pre><p>3)    打印出数组中的所有值-<code>&#39;*&#39;</code>、<code>&#39;@&#39;</code></p>
 <pre><code>echo ${arr[*]}
 echo ${arr[@]}
-</code></pre><h3 id="6-关联数组"><a href="#6-关联数组" class="headerlink" title="6.关联数组"></a>6.关联数组</h3><p>在关联数组中，可以用任意的文本作为数组索引。先声明才能使用</p>
-<p>1)    声明一个关联数组。</p>
+</code></pre><h3 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h3><p>在关联数组中，可以用任意的文本作为数组索引。先声明才能使用<br>1)    声明一个关联数组。</p>
 <pre><code>declare –A ass_array
 </code></pre><p>2)    赋值：</p>
 <pre><code>a)    ass_array=([index1]=val1 [index2]=val2)
@@ -313,10 +266,13 @@ b)    ass_array[index1]=val1
 ass_array[index2]=val2
 </code></pre><p>3)    <code>echo ${ass_array[index1]}</code></p>
 <p>4)    列出数组索引：<br><code>echo ${!ass_array[@]}</code></p>
-<h3 id="7-临时文件或目录"><a href="#7-临时文件或目录" class="headerlink" title="7.临时文件或目录"></a>7.临时文件或目录</h3><p>在shell脚本中经常要保存临时的数据，如果使用认为创建临时文件用户保存临时数据，则有可能出现重名的情况，导致覆盖原来的数据。</p>
-<p>mktemp prefile.xxx    创建以prefile开头的随机文件文件，并返回文件名，指定前缀时必须包含至少3个xxx。</p>
+<h3 id="临时文件或目录"><a href="#临时文件或目录" class="headerlink" title="临时文件或目录"></a>临时文件或目录</h3><p>在shell脚本中经常要保存临时的数据，如果使用认为创建临时文件用户保存临时数据，则有可能出现重名的情况，导致覆盖原来的数据。</p>
+<p><code>mktemp prefile.xxx</code> 创建以prefile开头的随机文件文件，并返回文件名，指定前缀时必须包含至少3个xxx。</p>
 <p>主要参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d	：	创建一个目录，dirname=`mktemp -d`-u	:	仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d : 创建一个目录，dirname=`mktemp -d`-u : 仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html" target="_blank" rel="external">linux shell “(())” 双括号运算符使用</a></li>
+</ul>
 <hr>
 <p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 <hr>
@@ -325,7 +281,7 @@ ass_array[index2]=val2
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/" data-id="cioz7i550000fpfw87ks908dn" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/" data-id="cip3eel3s0007j6w8aynb9aln" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -383,7 +339,7 @@ ass_array[index2]=val2
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -393,7 +349,7 @@ ass_array[index2]=val2
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+      <a href="/tags/Cocos2d-x/" style="font-size: 16.67px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 10px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
     </div>
   </div>
 
@@ -402,7 +358,7 @@ ass_array[index2]=val2
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -413,6 +369,10 @@ ass_array[index2]=val2
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/06/05/Lua-TValue/">Lua数据结构 —TValue（一）</a>
+          </li>
         
           <li>
             <a href="/2016/05/27/Lua-global/">Lua 全局变量的那些事儿</a>
@@ -428,10 +388,6 @@ ass_array[index2]=val2
         
           <li>
             <a href="/2016/05/20/SVN-Workflow/">SVN命令用法：程序员的场景</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
           </li>
         
       </ul>

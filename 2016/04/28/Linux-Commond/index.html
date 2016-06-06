@@ -5,20 +5,17 @@
   
   <title>Linux常用命令学习 | KeepMoving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
-$ rdate -s time.nist.gov">
+  <meta name="description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器$ rdate -s time.nist.gov">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令学习">
 <meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/index.html">
 <meta property="og:site_name" content="KeepMoving">
-<meta property="og:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
-$ rdate -s time.nist.gov">
+<meta property="og:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器$ rdate -s time.nist.gov">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2016-06-01T03:24:41.000Z">
+<meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令学习">
-<meta name="twitter:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器
-$ rdate -s time.nist.gov">
+<meta name="twitter:description" content="同步时间以管理员身份执行如下命令，可以自动与网络时间同步：time.nist.gov 是一个时间服务器$ rdate -s time.nist.gov">
 <meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
@@ -105,7 +102,7 @@ var _hmt = _hmt || [];
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>
+    <a class="article-category-link" href="/categories/工具-效率/">工具/效率</a>
   </div>
 
   </div>
@@ -133,11 +130,9 @@ var _hmt = _hmt || [];
 		        
           </div>
         
-        <h3 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h3><p>以管理员身份执行如下命令，可以自动与网络时间同步：<br>time.nist.gov 是一个时间服务器</p>
-<p><code>$ rdate -s time.nist.gov</code></p>
+        <h3 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h3><p>以管理员身份执行如下命令，可以自动与网络时间同步：<br>time.nist.gov 是一个时间服务器<br><code>$ rdate -s time.nist.gov</code></p>
 <a id="more"></a>
-<h3 id="管道符："><a href="#管道符：" class="headerlink" title="管道符： |"></a>管道符： |</h3><p>就是把前面的命令运行的要放入标准输出的结果丢给后面的命令</p>
-<p><code>cat 1.txt | cat</code></p>
+<h3 id="管道符："><a href="#管道符：" class="headerlink" title="管道符： |"></a>管道符： |</h3><p>就是把前面的命令运行的要放入标准输出的结果丢给后面的命令<br><code>cat 1.txt | cat</code></p>
 <h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>由一般字符和特殊字符（meta字符）组成<br>meta元字符</p>
 <pre><code>\ 通常用于打开或关闭后续字符的特殊含义，如\(...\)与\{...\}
 . 匹配任何单个字符（除NULL）
@@ -189,35 +184,17 @@ f：表示打印一个浮点数，其中4表示宽度，.2表示保留2位小数
 -f pattern_file    ：    样式文件pattern_file中逐行存放要匹配的样式，可匹配多个样式，样式之间是“或”的关系
 --color    ：    为匹配项显示不同颜色
 </code></pre><p>2)    <code>grep –E &quot;pattern1|pattern2&quot; files</code> ：显示匹配 pattern1 或 pattern2 的行<br>3)    <code>grep –e pattern1 –e pattern2 files</code> : 匹配pattern1或pattern2<br>4)    <code>grep pattern1 files | grep pattern2</code> ：显示既匹配 pattern1 又匹配 pattern2 的行<br>5)    <code>egrep &quot;t_hero|t_item&quot;</code>   匹配t_hero或者t_item的项<br>6)    <code>grep &quot;t_hero\|t_item&quot;</code>    可以实现与上面同样的功能</p>
-<h3 id="sed-处理内容"><a href="#sed-处理内容" class="headerlink" title="sed 处理内容"></a>sed 处理内容</h3><p><code>sed [options] &#39;command&#39; file(s) 或sed [options] -f scriptfile file(s)</code></p>
-<p>一次处理一行内容 不改变文件内容<br>[options]列表：</p>
+<h3 id="sed-处理内容"><a href="#sed-处理内容" class="headerlink" title="sed 处理内容"></a>sed 处理内容</h3><p><code>sed [options] &#39;command&#39; file(s) 或sed [options] -f scriptfile file(s)</code><br>一次处理一行内容 不改变文件内容<br>[options]列表：</p>
 <pre><code>-n    :    取消默认的输出,使用安静(silent)模式。
 -r    :    使用正则表达式，及表达式中不需要进行转义
 -f filename :    指定sed脚本的文件名filename
 -e &apos;&apos; :    允许多重编辑·  
 -i    :    将替换结果应用于源文件
-</code></pre><p>1)    替换字符串<br><code>sed &#39;s/pattern/string/&#39; file</code><br>或者<br><code>cat file | sed &#39;s/pattern/string/&#39;</code></p>
-<p>2)    替换文件中所有匹配内容，使用参数g<br><code>sed &#39;s/pattern/string/g&#39; file</code><br>但如果你想从第N处匹配开始替换，可以使用参数/Ng<br><code>$ echo thisthisthisthis | sed &#39;s/this/THIS/2g&#39;
-thisTHISTHISTHIS</code></p>
-<p>3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义<br><code>$ echo a/b | sed &#39;s/a\/b/a*b/&#39;
+</code></pre><p>1)    替换字符串<br><code>sed &#39;s/pattern/string/&#39; file</code><br>或者<br><code>cat file | sed &#39;s/pattern/string/&#39;</code><br>2)    替换文件中所有匹配内容，使用参数g<br><code>sed &#39;s/pattern/string/g&#39; file</code><br>但如果你想从第N处匹配开始替换，可以使用参数/Ng<br><code>$ echo thisthisthisthis | sed &#39;s/this/THIS/2g&#39;
+thisTHISTHISTHIS</code><br>3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义<br><code>$ echo a/b | sed &#39;s/a\/b/a*b/&#39;
 a*b</code><br>为了避免转义字符造成的理解困难，我们可以使用其它定界符，比如|,:,@,#,$,%,+等等<br><code>$ echo a/b | sed &#39;s:a/b:a*b:&#39;
-a*b</code></p>
-<p>4)    移除匹配样式行  <code>sed &#39;/pattern/d&#39; file</code><br><code>$ sed -r &#39;/^ *$/d&#39; args.txt        #移除空白行，含有一个或多个空格的行</code></p>
-<p>5)    组合多个表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo abd | sed &apos;s/a/A/&apos; | sed &apos;s/d/D/&apos;  #用管道组合$ echo abd | sed &apos;s/a/A/;s/d/D/&apos;           #用分号组合$ echo abd | sed -e &apos;s/a/A/&apos; -e &apos;s/d/D/&apos;  #用-e选项组合</span><br></pre></td></tr></table></figure></p>
-<p>6)    已匹配字符串标记（&amp;）<br>&amp;代表匹配给定样式的字符串，常用于对给定样式增加[]，{}等不需要改变样式的情况</p>
-<pre><code>$ echo &quot;this is an example&quot; | sed &apos;s/\w\+/[&amp;]/g&apos;   #\w\+ 匹配每个单词
-[this] [is] [an] [example]
-</code></pre><p>7)    子串匹配标记（\1）<br>有时我们希望对匹配给定的样式标记出一些子串来，方便后续引用<br>(pattern) 用于匹配子串pattern<br>\1 用于引用第一个匹配到的子串，\n 对应第n个匹配到的子串。</p>
-<pre><code>$ echo 123 asd | sed &apos;s/\([0-9]\+\) \([a-z]\+\)/\2+\1/&apos; 
-asd+123
-</code></pre><p>其中\1对应数字123，\2对应字母asd<br>对于子串的引用，在样式里一定要用()括起来，如果加上-r选项，则不需要转义：</p>
-<pre><code>$ echo 123 asd | sed -r &apos;s/([0-9]+) ([a-z]+)/\2+\1/&apos;
-asd+123
-</code></pre><p>8)    引用<br>在脚本中有用的一点，用双引号引用的sed表达式，会对表达式求值来进行扩展，如使用前面定义的变量等</p>
-<pre><code>$ text=hello
-$ echo hello world | sed &quot;s/$text/HELLO/&quot;
-HELLO world
-</code></pre><h3 id="tail-查看文件"><a href="#tail-查看文件" class="headerlink" title="tail 查看文件"></a>tail 查看文件</h3><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件<br>主要参数</p>
+a*b</code><br>4)    移除匹配样式行  <code>sed &#39;/pattern/d&#39; file</code><br><code>$ sed -r &#39;/^ *$/d&#39; args.txt        #移除空白行，含有一个或多个空格的行</code><br>5)    组合多个表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ echo abd | sed &apos;s/a/A/&apos; | sed &apos;s/d/D/&apos;  #用管道组合$ echo abd | sed &apos;s/a/A/;s/d/D/&apos;           #用分号组合$ echo abd | sed -e &apos;s/a/A/&apos; -e &apos;s/d/D/&apos;  #用-e选项组合```6)	已匹配字符串标记（&amp;）&amp;代表匹配给定样式的字符串，常用于对给定样式增加[]，&#123;&#125;等不需要改变样式的情况```$ echo &quot;this is an example&quot; | sed &apos;s/\w\+/[&amp;]/g&apos;   #\w\+ 匹配每个单词[this] [is] [an] [example]</span><br><span class="line">```7)	子串匹配标记（\1）有时我们希望对匹配给定的样式标记出一些子串来，方便后续引用\(pattern\) 用于匹配子串pattern\1 用于引用第一个匹配到的子串，\n 对应第n个匹配到的子串。```$ echo 123 asd | sed &apos;s/\([0-9]\+\) \([a-z]\+\)/\2+\1/&apos; asd+123</span><br><span class="line">```其中\1对应数字123，\2对应字母asd对于子串的引用，在样式里一定要用\(\)括起来，如果加上-r选项，则不需要转义：```$ echo 123 asd | sed -r &apos;s/([0-9]+) ([a-z]+)/\2+\1/&apos;asd+123```8)	引用在脚本中有用的一点，用双引号引用的sed表达式，会对表达式求值来进行扩展，如使用前面定义的变量等```$ text=hello$ echo hello world | sed &quot;s/$text/HELLO/&quot;HELLO world</span><br></pre></td></tr></table></figure></p>
+<h3 id="tail-查看文件"><a href="#tail-查看文件" class="headerlink" title="tail 查看文件"></a>tail 查看文件</h3><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件<br>主要参数</p>
 <pre><code>-f ：    循环读取   #可以用在监控线上有没有报错信息
 -q ：    不显示处理信息
 -v ：    显示详细的处理信息
@@ -391,7 +368,7 @@ find . –type d –maxdepth 1 –print
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="cioz7i55c000kpfw8gwjgvi75" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/" data-id="cip3eel40000cj6w8vi8df2xj" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
@@ -449,7 +426,7 @@ find . –type d –maxdepth 1 –print
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -459,7 +436,7 @@ find . –type d –maxdepth 1 –print
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cocos2d-x/" style="font-size: 20px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+      <a href="/tags/Cocos2d-x/" style="font-size: 16.67px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 10px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
     </div>
   </div>
 
@@ -468,7 +445,7 @@ find . –type d –maxdepth 1 –print
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -479,6 +456,10 @@ find . –type d –maxdepth 1 –print
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/06/05/Lua-TValue/">Lua数据结构 —TValue（一）</a>
+          </li>
         
           <li>
             <a href="/2016/05/27/Lua-global/">Lua 全局变量的那些事儿</a>
@@ -494,10 +475,6 @@ find . –type d –maxdepth 1 –print
         
           <li>
             <a href="/2016/05/20/SVN-Workflow/">SVN命令用法：程序员的场景</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/14/Cocos2dx-tolua++/">(译)tolua参考手册--accessing C/C++ code from Lua</a>
           </li>
         
       </ul>

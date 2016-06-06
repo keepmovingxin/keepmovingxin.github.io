@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-06-01T03:24:48.000Z</updated>
+  <updated>2016-06-06T02:18:06.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lua数据结构 —TValue（一）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</id>
+    <published>2016-06-05T14:06:28.000Z</published>
+    <updated>2016-06-06T02:18:06.000Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Lua 全局变量的那些事儿</title>
@@ -167,7 +195,7 @@
     <link href="http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/"/>
     <id>http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/</id>
     <published>2016-05-20T14:41:28.000Z</published>
-    <updated>2016-06-01T03:24:26.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
     <content type="html">&lt;p&gt;Git 相比 Subversion，无论概念上还是使用上，复杂度其实是高出一个等级的。为什么这么说？分别看下 &lt;code&gt;git help -a&lt;/code&gt; 和 &lt;code&gt;svn help&lt;/code&gt; 命令清单的对比，单按这个来看，就如果要掌握所有命令的用法，Git 的学习曲线绝对是比 Subversion 高的。尽管如此，但还是有越来越多项目开始用 Git 来做源码管理了。&lt;/p&gt;
 &lt;p&gt;实际中，我们用到的的 Git 命令还是很有限的，可能也就 &lt;code&gt;git help&lt;/code&gt; 中那些而已。下面就类似 &lt;a href=&quot;http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/&quot;&gt;SVN命令用法：程序员的场景&lt;/a&gt; 一样，结合实际场景说下 Git 的常用命令用法。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -277,7 +305,7 @@
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="Git" scheme="http://blog.keepmovingxin.com/tags/Git/"/>
@@ -289,7 +317,7 @@
     <link href="http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/"/>
     <id>http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</id>
     <published>2016-05-20T14:31:59.000Z</published>
-    <updated>2016-06-01T03:25:21.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
     <content type="html">&lt;p&gt;SVN有不少命令，其实常用的也就那么几个，可以结合下实际的使用场景，来说明下SVN的命令用法。&lt;br&gt;当然可能对很多人来说，最实用的熟悉方式，就是直接运行&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;svn help (?, h)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;就入门了，但为了更好的记忆，有个实际场景也是个不错的选择。&lt;br&gt;注解：括号中的是该命令的缩写或别名，有的可以少打几个字母，后面也有类似描述。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -383,7 +411,7 @@
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="SVN" scheme="http://blog.keepmovingxin.com/tags/SVN/"/>
@@ -610,9 +638,10 @@
     <link href="http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/"/>
     <id>http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</id>
     <published>2016-05-09T14:31:28.000Z</published>
-    <updated>2016-06-01T03:24:04.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
-    <content type="html">&lt;p&gt;记录一下Cocos2d-x中动态纹理&lt;code&gt;CCRenderTexture&lt;/code&gt;的各种应用，实现截屏、阴影等等&lt;br&gt;使用&lt;code&gt;CCRenderTexture&lt;/code&gt;需要做以下5步:&lt;/p&gt;
+    <content type="html">&lt;p&gt;记录一下Cocos2d-x中动态纹理&lt;code&gt;CCRenderTexture&lt;/code&gt;的各种应用，实现截屏、阴影等等&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;CCRenderTexture&lt;/code&gt;需要做以下5步:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;创建一个新的&lt;code&gt;CCRenderTexture&lt;/code&gt;. 这里，你可以指定将要创建的纹理的宽度和高度。&lt;/li&gt;
 &lt;li&gt;调用 &lt;code&gt;CCRenderTexture:begin&lt;/code&gt;. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到&lt;code&gt;CCRenderTexture&lt;/code&gt;里面去，而不是画到屏幕上。&lt;/li&gt;
@@ -620,7 +649,6 @@
 &lt;li&gt;调用 &lt;code&gt;CCRenderTexture:end&lt;/code&gt;. 这个方法会渲染纹理，并且会关闭渲染至&lt;code&gt;CCRenderTexture&lt;/code&gt;的通道。&lt;/li&gt;
 &lt;li&gt;从生成的纹理中创建一个&lt;code&gt;sprite&lt;/code&gt;. 你现在可以用&lt;code&gt;CCRenderTexture&lt;/code&gt;的&lt;code&gt;sprite.texture&lt;/code&gt;属性来轻松创建新的精灵了。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;截取当前屏幕图片&quot;&gt;&lt;a href=&quot;#截取当前屏幕图片&quot; class=&quot;headerlink&quot; title=&quot;截取当前屏幕图片&quot;&gt;&lt;/a&gt;截取当前屏幕图片&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--[[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @des:截取当前屏幕图片&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @ret:截取的图片路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function getScreenshots()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local size = CCDirector:sharedDirector():getWinSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local renderTexture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:getSprite():setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:setPosition( ccp(size.width/2, size.height/2) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local runingScene = CCDirector:sharedDirector():getRunningScene()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:begin()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    runingScene:visit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:endToLua()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local picPath = CCFileUtils:sharedFileUtils():getWritablePath() .. &amp;quot;tempScreenshots.jpg&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&amp;quot;截屏图片:&amp;quot;,renderTexture:saveToFile(picPath))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return picPath&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;绘制精灵的影子&quot;&gt;&lt;a href=&quot;#绘制精灵的影子&quot; class=&quot;headerlink&quot; title=&quot;绘制精灵的影子&quot;&gt;&lt;/a&gt;绘制精灵的影子&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--[[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @des:根据精灵绘制影子&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @par:pSprite 精灵&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @ret:shadowSprite 精灵影子&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function getShadowSprite( pSprite )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local size = pSprite:getContentSize()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local renderTexture = CCRenderTexture:create(size.width, size.height,kCCTexture2DPixelFormat_RGBA8888)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:getSprite():setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:setPosition( ccp(size.width/2, size.height/2) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:setAnchorPoint( ccp(0.5,0.5) )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:beginWithClear(0,0,0,0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pSprite:visit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    renderTexture:endToLua()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local shadowSprite = CCSprite:createWithTexture(renderTexture:getSprite():getTexture())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return shadowSprite&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;绘制动态精灵&quot;&gt;&lt;a href=&quot;#绘制动态精灵&quot; class=&quot;headerlink&quot; title=&quot;绘制动态精灵&quot;&gt;&lt;/a&gt;绘制动态精灵&lt;/h3&gt;&lt;p&gt;　　注意，我们这里不是调用的&lt;code&gt;CCRenderTexture:begin&lt;/code&gt;方法，而是调用另外一个较方便的方法&lt;code&gt;beginWithClear:g:b:a:&lt;/code&gt;，这个方法可以用给定的颜色来清除纹理的背景，相当于设置画布的颜色。&lt;/p&gt;
@@ -635,14 +663,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;记录一下Cocos2d-x中动态纹理&lt;code&gt;CCRenderTexture&lt;/code&gt;的各种应用，实现截屏、阴影等等&lt;br&gt;使用&lt;code&gt;CCRenderTexture&lt;/code&gt;需要做以下5步:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;创建一个新的&lt;code&gt;CCRenderTexture&lt;/code&gt;. 这里，你可以指定将要创建的纹理的宽度和高度。&lt;/li&gt;
-&lt;li&gt;调用 &lt;code&gt;CCRenderTexture:begin&lt;/code&gt;. 这个方法会启动OpenGL，并且接下来，任何绘图的命令都会渲染到&lt;code&gt;CCRenderTexture&lt;/code&gt;里面去，而不是画到屏幕上。&lt;/li&gt;
-&lt;li&gt;绘制纹理. 你可以使用原始的&lt;code&gt;OpenGL&lt;/code&gt;调用来绘图，或者你也可以使用cocos2d对象里面已经定义好的&lt;code&gt;visit&lt;/code&gt;方法。（这个visit方法就会调用一些opengl命令来绘制cocos2d对象）&lt;/li&gt;
-&lt;li&gt;调用 &lt;code&gt;CCRenderTexture:end&lt;/code&gt;. 这个方法会渲染纹理，并且会关闭渲染至&lt;code&gt;CCRenderTexture&lt;/code&gt;的通道。&lt;/li&gt;
-&lt;li&gt;从生成的纹理中创建一个&lt;code&gt;sprite&lt;/code&gt;. 你现在可以用&lt;code&gt;CCRenderTexture&lt;/code&gt;的&lt;code&gt;sprite.texture&lt;/code&gt;属性来轻松创建新的精灵了。&lt;/li&gt;
-&lt;/ol&gt;
+      &lt;p&gt;记录一下Cocos2d-x中动态纹理&lt;code&gt;CCRenderTexture&lt;/code&gt;的各种应用，实现截屏、阴影等等&lt;br&gt;
     
     </summary>
     
@@ -658,178 +679,134 @@
     <link href="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/"/>
     <id>http://blog.keepmovingxin.com/2016/05/02/Learn-shell/</id>
     <published>2016-05-02T08:50:52.000Z</published>
-    <updated>2016-06-01T03:24:33.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;1-Shell脚本&quot;&gt;&lt;a href=&quot;#1-Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;1.Shell脚本&quot;&gt;&lt;/a&gt;1.Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;1-1-格式&quot;&gt;&lt;a href=&quot;#1-1-格式&quot; class=&quot;headerlink&quot; title=&quot;1.1 格式&quot;&gt;&lt;/a&gt;1.1 格式&lt;/h4&gt;&lt;p&gt;首行        #!/bin/bash    指定解释器&lt;/p&gt;
-&lt;h4 id=&quot;1-2-注释&quot;&gt;&lt;a href=&quot;#1-2-注释&quot; class=&quot;headerlink&quot; title=&quot;1.2 注释&quot;&gt;&lt;/a&gt;1.2 注释&lt;/h4&gt;&lt;p&gt;‘#’开头的行，’#!’是例外&lt;/p&gt;
-&lt;p&gt;此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;Shell脚本&quot;&gt;&lt;a href=&quot;#Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;Shell脚本&quot;&gt;&lt;/a&gt;Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h4&gt;&lt;p&gt;首行        &lt;code&gt;#!/bin/bash 指定解释器&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;#39;#&amp;#39;&lt;/code&gt;开头的行，&lt;code&gt;&amp;#39;#!&amp;#39;&lt;/code&gt;是例外&lt;br&gt;此外，&lt;code&gt;#&lt;/code&gt; 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。&lt;code&gt;‘\#’&lt;/code&gt;也不会开启一个注释。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;1-3-函数&quot;&gt;&lt;a href=&quot;#1-3-函数&quot; class=&quot;headerlink&quot; title=&quot;1.3 函数&quot;&gt;&lt;/a&gt;1.3 函数&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;function funname(){…}
+&lt;h4 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;function funname(){…}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;funname()
 {
     statements;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;只需要使用函数名就可以调用某个函数：&lt;code&gt;funname&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;参数可以传递给函数，使用方法就好像函数是个新脚本一样：&lt;/p&gt;
-&lt;p&gt;funname arg1 arg2…;    #传递参数&lt;/p&gt;
-&lt;p&gt;在函数中使用传入的参数：$1    第一个参数；$@ 所有参数。&lt;/p&gt;
-&lt;p&gt;其中：”$@”被扩展成”$1””$2””$3”；&lt;/p&gt;
-&lt;p&gt;“$*”被扩展成”$1c$2c$3”，即一个字符串。c为IFS的第一个字符。&lt;/p&gt;
-&lt;p&gt;有时我们需要知道命令或者函数的执行状态，用$?可以查看前一个命令的返回值，如果命令成功退出，那么退出状态为0，否则非0。&lt;/p&gt;
-&lt;h4 id=&quot;1-4-正文部分&quot;&gt;&lt;a href=&quot;#1-4-正文部分&quot; class=&quot;headerlink&quot; title=&quot;1.4 正文部分&quot;&gt;&lt;/a&gt;1.4 正文部分&lt;/h4&gt;&lt;p&gt;流程控制+命令&lt;/p&gt;
-&lt;h4 id=&quot;1-5-执行：修改权限&quot;&gt;&lt;a href=&quot;#1-5-执行：修改权限&quot; class=&quot;headerlink&quot; title=&quot;1.5 执行：修改权限&quot;&gt;&lt;/a&gt;1.5 执行：修改权限&lt;/h4&gt;&lt;p&gt;转为可执行程序&lt;/p&gt;
-&lt;p&gt;chmod +x ./test.sh  #使脚本具有执行权限&lt;/p&gt;
-&lt;p&gt;./test.sh  #执行脚本&lt;/p&gt;
-&lt;h4 id=&quot;1-6-流程控制&quot;&gt;&lt;a href=&quot;#1-6-流程控制&quot; class=&quot;headerlink&quot; title=&quot;1.6 流程控制&quot;&gt;&lt;/a&gt;1.6 流程控制&lt;/h4&gt;&lt;p&gt;条件语句&lt;/p&gt;
-&lt;p&gt;if :&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if condition&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;then	command1 	command2	...	commandNfi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if `ps -ef | grep ssh`;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;then &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	echo hello; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;if else-if else :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;if condition1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;只需要使用函数名就可以调用某个函数：&lt;code&gt;funname&lt;/code&gt;&lt;br&gt;参数可以传递给函数，使用方法就好像函数是个新脚本一样：&lt;br&gt;&lt;code&gt;funname arg1 arg2...;    #传递参数&lt;/code&gt;&lt;br&gt;在函数中使用传入的参数：&lt;code&gt;$1&lt;/code&gt; 第一个参数；&lt;code&gt;$@&lt;/code&gt; 所有参数。&lt;br&gt;其中：&lt;code&gt;&amp;quot;$@&amp;quot;&lt;/code&gt;被扩展成&lt;code&gt;&amp;quot;$1&amp;quot;&amp;quot;$2&amp;quot;&amp;quot;$3&amp;quot;&lt;/code&gt;；&lt;br&gt;&lt;code&gt;&amp;quot;$*&amp;quot;&lt;/code&gt;被扩展成&lt;code&gt;&amp;quot;$1c$2c$3&amp;quot;&lt;/code&gt;，即一个字符串。c为IFS的第一个字符。&lt;br&gt;有时我们需要知道命令或者函数的执行状态，用$?可以查看前一个命令的返回值，如果命令成功退出，那么退出状态为0，否则非0。&lt;/p&gt;
+&lt;h4 id=&quot;正文部分&quot;&gt;&lt;a href=&quot;#正文部分&quot; class=&quot;headerlink&quot; title=&quot;正文部分&quot;&gt;&lt;/a&gt;正文部分&lt;/h4&gt;&lt;p&gt;流程控制+命令&lt;/p&gt;
+&lt;h4 id=&quot;执行：修改权限&quot;&gt;&lt;a href=&quot;#执行：修改权限&quot; class=&quot;headerlink&quot; title=&quot;执行：修改权限&quot;&gt;&lt;/a&gt;执行：修改权限&lt;/h4&gt;&lt;p&gt;转为可执行程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x ./test.sh  #使脚本具有执行权限
+./test.sh  #执行脚本
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#### 流程控制条件语句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if :&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+if condition
 then
-    command1
-elif condition2
-    command2
-else
-    commandN
-fi
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;循环语句&lt;/p&gt;
-&lt;p&gt;for :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;for var in item1 item2 ... itemN
-do
-    command1
+    command1 
     command2
     ...
     commandN
+fi
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;```&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if `ps -ef | grep ssh`;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;then &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	echo hello; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+if else-if else :
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;if condition1&lt;br&gt;then&lt;br&gt;    command1&lt;br&gt;elif condition2&lt;br&gt;    command2&lt;br&gt;else&lt;br&gt;    commandN&lt;br&gt;fi&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+循环语句
+for :
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;for var in item1 item2 … itemN&lt;br&gt;do&lt;br&gt;    command1&lt;br&gt;    command2&lt;br&gt;    …&lt;br&gt;    commandN&lt;br&gt;done&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;```for var in item1 item2 ... itemN; do command1; command2… done;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;while :&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i=1;total=0;while [ $i -le 10 ]do    let total+=i    let i++    echo $total,$idone&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i=1; total=0;while((i&amp;lt;=10))do    ((total+=i, i++))    echo $total,$idone&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```case语句: case语句可以用户处理自定义参数。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;case $num in&lt;br&gt;1) echo “January”;;                 #双分号结束&lt;br&gt;2) echo “Feburary”;;&lt;br&gt;5) echo “may”                          #每个case可以有多条命令&lt;br&gt;   echo “sdfd”&lt;br&gt;   echo “sdf”;;                       #但最后一条命令一定是双分号结束&lt;br&gt;&lt;em&gt;) echo “not correct input”;;       #&lt;/em&gt;）是其他值、default的意思&lt;br&gt;esac&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+#### while read line
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;while read line; do something ; done```#### 参数处理a)	`&amp;quot;$*&amp;quot;`将所有的参数解释成一个字符串，而`&amp;quot;$@&amp;quot;`是一个参数数组。b)	Shell内建函数`getopts “:a:bc” opt`主要变量：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```$OPTIND	: 存储所处理的选项在参数列表中的位置$OPTARG	: 存储相应选项所带的参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```例子：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+while getopts &amp;quot;:a:b:cef&amp;quot; opt
+do
+    case $opt in
+        a)echo &amp;quot;the $OPTIND has arg:$OPTARG&amp;quot;;;#$OPTIND=3
+        b)echo &amp;quot;the b has arg:$OPTARG&amp;quot;;;
+        c | e | f)echo &amp;quot;the $opt has no arg&amp;quot;;;
+        \?)echo &amp;quot;the $opt is invalid param&amp;quot;;;
+    esac
 done
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;```for var in item1 item2 ... itemN; do command1; command2… done;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;c)    &lt;code&gt;shift n&lt;/code&gt;  将位置命令左移n个&lt;/p&gt;
+&lt;h4 id=&quot;条件判断&quot;&gt;&lt;a href=&quot;#条件判断&quot; class=&quot;headerlink&quot; title=&quot;条件判断&quot;&gt;&lt;/a&gt;条件判断&lt;/h4&gt;&lt;p&gt;条件判断应该放进方括号里，且方括号两边都应该留有空格。 &lt;code&gt;[  ]&lt;/code&gt;&lt;br&gt;a)    字符串判断&lt;br&gt;字符串比较时，最好用双中括号，因为有时候采用单中括号会产生错误，所以最好避开它们。&lt;code&gt;[[ $str1 = $str2 ]]&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;=    当两个串有相同内容、长度时为真
+!=    当串str1和str2不等时为真
+-n    当串的长度大于0时为真(串非空)
+-z    当串的长度为0时为真(空串)
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;b)	数值判断```-eq     两数相等为真 -ne     两数不等为真 -gt     int1大于int2为真 -ge     int1大于等于int2为真 -lt     int1小于int2为真 -le     int1小于等于int2为真&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-while :
 
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i=1;total=0;while [ $i -le 10 ]do    let total+=i    let i++    echo $total,$idone&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i=1; total=0;while((i&amp;lt;=10))do    ((total+=i, i++))    echo $total,$idone&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-
-case语句: case语句可以用户处理自定义参数。
-
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;case $num in1) echo &amp;quot;January&amp;quot;;;     			#双分号结束2) echo &amp;quot;Feburary&amp;quot;;;5) echo &amp;quot;may&amp;quot;          				#每个case可以有多条命令          echo &amp;quot;sdfd&amp;quot;   echo &amp;quot;sdf&amp;quot;;;       				#但最后一条命令一定是双分号结束*) echo &amp;quot;not correct input&amp;quot;;;   	#*）是其他值、default的意思esac&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```#### 1.7 while read line&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-while read line; do something ; done
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;1-8-参数处理&quot;&gt;&lt;a href=&quot;#1-8-参数处理&quot; class=&quot;headerlink&quot; title=&quot;1.8    参数处理&quot;&gt;&lt;/a&gt;1.8    参数处理&lt;/h4&gt;&lt;p&gt;a)    “$*”将所有的参数解释成一个字符串，而”$@”是一个参数数组。&lt;/p&gt;
-&lt;p&gt;b)    Shell内建函数getopts “:a:bc” opt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;主要变量：
-
-$OPTIND    :    存储所处理的选项在参数列表中的位置
-
-$OPTARG    ：    存储相应选项所带的参数
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例子：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;while getopts &amp;quot;:a:b:cef&amp;quot; optdo    case $opt in        a)echo &amp;quot;the $OPTIND has arg:$OPTARG&amp;quot;;;#$OPTIND=3        b)echo &amp;quot;the b has arg:$OPTARG&amp;quot;;;        c | e | f)echo &amp;quot;the $opt has no arg&amp;quot;;;        \?)echo &amp;quot;the $opt is invalid param&amp;quot;;;    esacdone```c)	shift n   将位置命令左移n个#### 1.9	条件判断条件判断应该放进方括号里，且方括号两边都应该留有空格。 [  ]a)	字符串判断字符串比较时，最好用双中括号，因为有时候采用单中括号会产生错误，所以最好避开它们。[[ $str1 = $str2 ]]	=			当两个串有相同内容、长度时为真	!=		　　当串str1和str2不等时为真	-n			当串的长度大于0时为真(串非空)	-z			当串的长度为0时为真(空串)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b)	数值判断	-eq     两数相等为真 	-ne     两数不等为真 	-gt     int1大于int2为真 	-ge     int1大于等于int2为真 	-lt     int1小于int2为真 	-le     int1小于等于int2为真&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;c)	文件判断	-e file         若文件存在，则为真 	-d file         若文件存在且是一个目录，则为真	-b file         若文件存在且是一个块特殊文件，则为真	-c file         若文件存在且是一个字符特殊文件，则为真	-f file         若文件存在且是一个规则文件，则为真	-g file         若文件存在且设置了SGID位的值，则为真	-h file         若文件存在且为一个符合链接，则为真	-k file         若文件存在且设置了&amp;quot;sticky&amp;quot;位的值	-p file         若文件存在且为一已命名管道，则为真	-r file         若文件存在且可读，则为真	-s file         若文件存在且其大小大于零，则为真	-u file         若文件存在且设置了SUID位，则为真	-w file         若文件存在且可写，则为真	-x file         若文件存在且可执行，则为真	-o file         若文件存在且被有效用户ID所拥有，则为真&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;d)	逻辑判断	!      非	-a     与		&amp;amp;&amp;amp;	-o     或		||if [ $v –ne 0 –a $v –lt 2 ] 等价 if [ $v –ne 0 ] &amp;amp;&amp;amp; [ $v –lt 2 ]if [ $v –ne 0 –o $v –lt 2 ] 等价 if [ $v –ne 0 ] || [ $v –lt 2 ]条件判断部分可能会变得很长，一个优化的小技巧是利用&amp;amp;&amp;amp;和||运算符。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+c)    文件判断
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;-e file         若文件存在，则为真&lt;br&gt;-d file         若文件存在且是一个目录，则为真&lt;br&gt;-b file         若文件存在且是一个块特殊文件，则为真&lt;br&gt;-c file         若文件存在且是一个字符特殊文件，则为真&lt;br&gt;-f file         若文件存在且是一个规则文件，则为真&lt;br&gt;-g file         若文件存在且设置了SGID位的值，则为真&lt;br&gt;-h file         若文件存在且为一个符合链接，则为真&lt;br&gt;-k file         若文件存在且设置了”sticky”位的值&lt;br&gt;-p file         若文件存在且为一已命名管道，则为真&lt;br&gt;-r file         若文件存在且可读，则为真&lt;br&gt;-s file         若文件存在且其大小大于零，则为真&lt;br&gt;-u file         若文件存在且设置了SUID位，则为真&lt;br&gt;-w file         若文件存在且可写，则为真&lt;br&gt;-x file         若文件存在且可执行，则为真&lt;br&gt;-o file         若文件存在且被有效用户ID所拥有，则为真&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;d)	逻辑判断`! `  非`-a`  与 `&amp;amp;&amp;amp;``-o`  或	 `||``if [ $v –ne 0 –a $v –lt 2 ]` 等价 `if [ $v –ne 0 ] &amp;amp;&amp;amp; [ $v –lt 2 ]``if [ $v –ne 0 –o $v –lt 2 ]` 等价 `if [ $v –ne 0 ] || [ $v –lt 2 ]`条件判断部分可能会变得很长，一个优化的小技巧是利用`&amp;amp;&amp;amp;`和`||`运算符。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;if condition&lt;br&gt;then&lt;br&gt;    command1&lt;br&gt;else&lt;br&gt;    command2&lt;br&gt;fi&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;[ condition ] &amp;amp;&amp;amp; command1 || command2&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;这样就用一行代替了上面的5行而实现的功能完全相同。
-
 如果命令有多个，可以用{}括起来，当做一个命令块。
-
 这样可以使判断语句变得非常简洁。
 
-#### 1.10 &amp;amp;&amp;amp;、||
-cmd1 &amp;amp;&amp;amp; cmd2
-
+#### &amp;amp;&amp;amp;、||
+`cmd1 &amp;amp;&amp;amp; cmd2`
 表示，当cmd1执行成功后，就执行cmd2，否则不执行。
-
-cmd1 || cmd2
-
+`cmd1 || cmd2`
 表示，当cmd1执行失败后，就执行cmd2，否则不执行。
 
-### 2.变量
-#### 2.1 系统变量
-$n      该变量与脚本被激活时所带的参数相对应。n是正整数，与参数位置相对应($1,$2...) 
+### 变量
+#### 系统变量
+$n 该变量与脚本被激活时所带的参数相对应。n是正整数，与参数位置相对应($1,$2...) 
+$? 前一个命令执行后的退出状态
+$# 提供脚本的参数号
+$* 所有这些参数都被双引号引住。若一个脚本接收两个参数，$*等于$1$2 
+$0 正在被执行命令的名字。对于shell脚本而言，这是被激活命令的路径
+$@ 所有这些参数都分别被双引号引住。若一个脚本接收到两个参数，$@等价于$1$2
+$$ 当前shell的进程号。对于shell脚本，这是其正在执行时的进程ID
+$! 前一个后台命令的进程号
 
-$?      前一个命令执行后的退出状态
-
-$#      提供脚本的参数号
-
-$*      所有这些参数都被双引号引住。若一个脚本接收两个参数，$*等于$1$2 
-
-$0      正在被执行命令的名字。对于shell脚本而言，这是被激活命令的路径
-
-$@      所有这些参数都分别被双引号引住。若一个脚本接收到两个参数，$@等价于$1$2
-
-$$      当前shell的进程号。对于shell脚本，这是其正在执行时的进程ID
-
-$!      前一个后台命令的进程号
-
-#### 2.2    普通变量
-
-1)    赋值：var=value
-
+#### 普通变量
+1)    赋值：`var=value`
 2)    #
-
-获取字符串的长度。len=${#var}
-
+获取字符串的长度。`len=${#var}`
 3)    数值运算：let
-
 let命令后面的变量不用带$，如：
-
-nu=10;
-
-let nu+=10;    #nu=20
-
+`nu=10;`
+`let nu+=10;    #nu=20`
 但这个命令不能进行浮点数的运算。
-
 4)    浮点数运算：bc
-
-echo &amp;quot;4 * 0.6&amp;quot; | bc
-
+`echo &amp;quot;4 * 0.6&amp;quot; | bc`
 bc是一个强大的计算器，还可以进项如下操作：
-
 设定小数精度，`scale=2,eg:echo &amp;quot;scale=2;3 / 8&amp;quot; | bc`
-
 \#.37  这是bc的特性，小于0的数，是不显示小数点前的0的。
-
-
 进制转换。用ibase设定输入数字的进制，obase设定输出数字的进制。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;no=10&lt;br&gt;echo “obase=2;ibase=10;$no” | bc   #1010&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;计算平方以及平方根。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;echo “10^4” | bc        #1000    平方&lt;br&gt;echo “sqrt(100)” | bc     #10        平方根&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#### 2.3 IFS
+&lt;pre&gt;&lt;code&gt;
+#### IFS
 全称是Internal Field Separtor，内部分隔符。
-
 Shell 的环境变量分为 set, env 两种，其中 set 变量可以通过 export 工具导入到 env 变量中。其中，set 是显示设置shell变量，仅在本 shell 中有效；env 是显示设置用户环境变量 ，仅在当前会话中有效。换句话说，set 变量里包含了 env 变量，但 set 变量不一定都是 env 变量。这两种变量不同之处在于变量的作用域不同。显然，env 变量的作用域要大些，它可以在 subshell 中使用。
-
 而 IFS 是一种 set 变量，当 shell 处理&amp;quot;命令替换&amp;quot;和&amp;quot;参数替换&amp;quot;时，shell 根据 IFS 的值，默认是 space, tab, newline 来拆解读入的变量，然后对特殊字符进行处理，最后重新组合赋值给该变量。
 
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;eg：$ cat test.txt123$ out=$(cat test.txt)$ echo $out1 2 3			#shell将(cat test.txt)的结果拆解，并用默认的分隔符（空格）重新组合，赋值给out，因此echo $out的结果不包含换行。```如果要保留cat test.txt中的换行符，一般情况下要做两步：1是，设定IFS为换行：IFS=&amp;apos;\n&amp;apos;2是，将$(cat test.txt)用双引号引起来，表示不用若指定IFS为换行符。#### 2.4 UID特殊的环境变量，如果UID=0，表示当前以root用户运行脚本。否则不是root### 3.自增Linux Shell中写循环时，常常要用到变量的自增，现在总结一下整型变量自增的方法。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;eg：$ cat test.txt123$ out=$(cat test.txt)$ echo $out1 2 3			#shell将(cat test.txt)的结果拆解，并用默认的分隔符（空格）重新组合，赋值给out，因此echo $out的结果不包含换行。```如果要保留`cat test.txt`中的换行符，一般情况下要做两步：1是，设定IFS为换行：`IFS=&amp;apos;\n&amp;apos;`2是，将`$(cat test.txt)`用双引号引起来，表示不用若指定IFS为换行符。#### UID特殊的环境变量，如果UID=0，表示当前以root用户运行脚本。否则不是root### 自增Linux Shell中写循环时，常常要用到变量的自增，现在总结一下整型变量自增的方法。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 1)    i=`expr $i + 1`;
 2)    let i+=1;
 3)    ((i++));    #双括号结构
-http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html
 4)    i=$[$i+1];
 5)    i=$(( $i + 1 ))
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-双括号结构&quot;&gt;&lt;a href=&quot;#4-双括号结构&quot; class=&quot;headerlink&quot; title=&quot;4.双括号结构(())&quot;&gt;&lt;/a&gt;4.双括号结构(())&lt;/h3&gt;&lt;p&gt;双括号结构是对shell中算数及赋值运算的扩展。&lt;/p&gt;
-&lt;p&gt;语法：&lt;/p&gt;
-&lt;p&gt;((表达式1,表达式2…))&lt;/p&gt;
-&lt;p&gt;特点：&lt;/p&gt;
-&lt;p&gt;1)    在双括号结构中，所有表达式可以像c语言一样，如：a++,b–等。&lt;/p&gt;
-&lt;p&gt;2)    在双括号结构中，所有变量可以不加入：“$”符号前缀。&lt;/p&gt;
-&lt;p&gt;3)    双括号可以进行逻辑运算，四则运算.eg. echo $((a&amp;gt;1?2:3));注意四则运算中仍然不支持浮点数运算&lt;/p&gt;
-&lt;p&gt;4)    支持多个表达式运算，各个表达式之间用“，”分开. eg:((a+1,b++,c++))&lt;/p&gt;
-&lt;p&gt;5)    双括号结构 扩展了for，while,if条件测试运算&lt;/p&gt;
-&lt;h3 id=&quot;5-数组&quot;&gt;&lt;a href=&quot;#5-数组&quot; class=&quot;headerlink&quot; title=&quot;5.数组&quot;&gt;&lt;/a&gt;5.数组&lt;/h3&gt;&lt;p&gt;1)    取数组长度 – ‘#’&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;双括号结构&quot;&gt;&lt;a href=&quot;#双括号结构&quot; class=&quot;headerlink&quot; title=&quot;双括号结构(())&quot;&gt;&lt;/a&gt;双括号结构(())&lt;/h3&gt;&lt;p&gt;双括号结构是对shell中算数及赋值运算的扩展。&lt;br&gt;语法：&lt;br&gt;((表达式1,表达式2…))&lt;/p&gt;
+&lt;p&gt;特点：&lt;br&gt;1)    在双括号结构中，所有表达式可以像c语言一样，如：&lt;code&gt;a++&lt;/code&gt;,&lt;code&gt;b--&lt;/code&gt;等。&lt;br&gt;2)    在双括号结构中，所有变量可以不加入：“$”符号前缀。&lt;br&gt;3)    双括号可以进行逻辑运算，四则运算.eg. &lt;code&gt;echo $((a&amp;gt;1?2:3))&lt;/code&gt;;注意四则运算中仍然不支持浮点数运算&lt;br&gt;4)    支持多个表达式运算，各个表达式之间用“，”分开. eg:&lt;code&gt;((a+1,b++,c++))&lt;/code&gt;&lt;br&gt;5)    双括号结构 扩展了&lt;code&gt;for&lt;/code&gt;，&lt;code&gt;while&lt;/code&gt;,&lt;code&gt;if&lt;/code&gt;条件测试运算&lt;/p&gt;
+&lt;h3 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h3&gt;&lt;p&gt;1)    取数组长度 – &lt;code&gt;&amp;#39;#&amp;#39;&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;arr=(1 2 3 4 5)
 len=${#arr[@]}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2)    打印特定索引的数组元素&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;echo ${arr[2]}        #2
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3)    打印出数组中的所有值-‘*’、’@’&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3)    打印出数组中的所有值-&lt;code&gt;&amp;#39;*&amp;#39;&lt;/code&gt;、&lt;code&gt;&amp;#39;@&amp;#39;&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;echo ${arr[*]}
 echo ${arr[@]}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6-关联数组&quot;&gt;&lt;a href=&quot;#6-关联数组&quot; class=&quot;headerlink&quot; title=&quot;6.关联数组&quot;&gt;&lt;/a&gt;6.关联数组&lt;/h3&gt;&lt;p&gt;在关联数组中，可以用任意的文本作为数组索引。先声明才能使用&lt;/p&gt;
-&lt;p&gt;1)    声明一个关联数组。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;关联数组&quot;&gt;&lt;a href=&quot;#关联数组&quot; class=&quot;headerlink&quot; title=&quot;关联数组&quot;&gt;&lt;/a&gt;关联数组&lt;/h3&gt;&lt;p&gt;在关联数组中，可以用任意的文本作为数组索引。先声明才能使用&lt;br&gt;1)    声明一个关联数组。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;declare –A ass_array
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2)    赋值：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;a)    ass_array=([index1]=val1 [index2]=val2)
@@ -837,10 +814,13 @@ b)    ass_array[index1]=val1
 ass_array[index2]=val2
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3)    &lt;code&gt;echo ${ass_array[index1]}&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;4)    列出数组索引：&lt;br&gt;&lt;code&gt;echo ${!ass_array[@]}&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7-临时文件或目录&quot;&gt;&lt;a href=&quot;#7-临时文件或目录&quot; class=&quot;headerlink&quot; title=&quot;7.临时文件或目录&quot;&gt;&lt;/a&gt;7.临时文件或目录&lt;/h3&gt;&lt;p&gt;在shell脚本中经常要保存临时的数据，如果使用认为创建临时文件用户保存临时数据，则有可能出现重名的情况，导致覆盖原来的数据。&lt;/p&gt;
-&lt;p&gt;mktemp prefile.xxx    创建以prefile开头的随机文件文件，并返回文件名，指定前缀时必须包含至少3个xxx。&lt;/p&gt;
+&lt;h3 id=&quot;临时文件或目录&quot;&gt;&lt;a href=&quot;#临时文件或目录&quot; class=&quot;headerlink&quot; title=&quot;临时文件或目录&quot;&gt;&lt;/a&gt;临时文件或目录&lt;/h3&gt;&lt;p&gt;在shell脚本中经常要保存临时的数据，如果使用认为创建临时文件用户保存临时数据，则有可能出现重名的情况，导致覆盖原来的数据。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mktemp prefile.xxx&lt;/code&gt; 创建以prefile开头的随机文件文件，并返回文件名，指定前缀时必须包含至少3个xxx。&lt;/p&gt;
 &lt;p&gt;主要参数：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-d	：	创建一个目录，dirname=`mktemp -d`-u	:	仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-d : 创建一个目录，dirname=`mktemp -d`-u : 仅生成随机文件名，但不创建实际的文件或目录，tmpfile=`mktemp -u`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linux shell “(())” 双括号运算符使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -849,13 +829,12 @@ ass_array[index2]=val2
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1-Shell脚本&quot;&gt;&lt;a href=&quot;#1-Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;1.Shell脚本&quot;&gt;&lt;/a&gt;1.Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;1-1-格式&quot;&gt;&lt;a href=&quot;#1-1-格式&quot; class=&quot;headerlink&quot; title=&quot;1.1 格式&quot;&gt;&lt;/a&gt;1.1 格式&lt;/h4&gt;&lt;p&gt;首行        #!/bin/bash    指定解释器&lt;/p&gt;
-&lt;h4 id=&quot;1-2-注释&quot;&gt;&lt;a href=&quot;#1-2-注释&quot; class=&quot;headerlink&quot; title=&quot;1.2 注释&quot;&gt;&lt;/a&gt;1.2 注释&lt;/h4&gt;&lt;p&gt;‘#’开头的行，’#!’是例外&lt;/p&gt;
-&lt;p&gt;此外，# 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。‘#’也不会开启一个注释。&lt;/p&gt;
+      &lt;h3 id=&quot;Shell脚本&quot;&gt;&lt;a href=&quot;#Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;Shell脚本&quot;&gt;&lt;/a&gt;Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h4&gt;&lt;p&gt;首行        &lt;code&gt;#!/bin/bash 指定解释器&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;#39;#&amp;#39;&lt;/code&gt;开头的行，&lt;code&gt;&amp;#39;#!&amp;#39;&lt;/code&gt;是例外&lt;br&gt;此外，&lt;code&gt;#&lt;/code&gt; 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。&lt;code&gt;‘\#’&lt;/code&gt;也不会开启一个注释。&lt;/p&gt;
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="shell" scheme="http://blog.keepmovingxin.com/tags/shell/"/>
@@ -867,42 +846,14 @@ ass_array[index2]=val2
     <link href="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/"/>
     <id>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</id>
     <published>2016-04-30T13:11:28.000Z</published>
-    <updated>2016-06-01T03:42:01.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
     <content type="html">&lt;p&gt;项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。&lt;/p&gt;
-&lt;h3 id=&quot;安装并配置全局变量&quot;&gt;&lt;a href=&quot;#安装并配置全局变量&quot; class=&quot;headerlink&quot; title=&quot;安装并配置全局变量&quot;&gt;&lt;/a&gt;安装并配置全局变量&lt;/h3&gt;&lt;p&gt;安装：&lt;/p&gt;
-&lt;p&gt;去官网下载压缩包 或者 源码: &lt;code&gt;git clone git://github.com/pornel/pngquant.git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;也可以使用HomeBrew安装：&lt;code&gt;brew install pngquant&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;配置全局变量(使用HomeBrew安装请忽略)：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ln –s /下载的位置/pngquant /usr/local/bin/pngquant&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;pngquant 可以愉快的玩耍啦！&lt;/p&gt;
+&lt;h3 id=&quot;安装并配置全局变量&quot;&gt;&lt;a href=&quot;#安装并配置全局变量&quot; class=&quot;headerlink&quot; title=&quot;安装并配置全局变量&quot;&gt;&lt;/a&gt;安装并配置全局变量&lt;/h3&gt;&lt;p&gt;安装：&lt;br&gt;去官网下载压缩包 或者 源码: &lt;code&gt;git clone git://github.com/pornel/pngquant.git&lt;/code&gt;&lt;br&gt;也可以使用HomeBrew安装：&lt;code&gt;brew install pngquant&lt;/code&gt;&lt;br&gt;配置全局变量(使用HomeBrew安装请忽略)：&lt;br&gt;&lt;code&gt;ln –s /下载的位置/pngquant /usr/local/bin/pngquant&lt;/code&gt;&lt;br&gt;pngquant 可以愉快的玩耍啦！&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;查看帮助信息&quot;&gt;&lt;a href=&quot;#查看帮助信息&quot; class=&quot;headerlink&quot; title=&quot;查看帮助信息&quot;&gt;&lt;/a&gt;查看帮助信息&lt;/h3&gt;&lt;p&gt;执行 pngquant -h 查看完整选项&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;--ext new.png
-设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。
-
---quality min-max
-使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。
-min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。
-pngquant --quality=65-80 image.png
-
---speed N, -sN
-速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。
-
---iebug
-在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。
-
---version
-输出版本信息。
-
--
-从标准输入读取图像并输出到标准输出。
-
---
-不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pngquant $OPTIONS -- &amp;quot;$FILE&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用示例&quot;&gt;&lt;a href=&quot;#使用示例&quot; class=&quot;headerlink&quot; title=&quot;使用示例&quot;&gt;&lt;/a&gt;使用示例&lt;/h3&gt;&lt;p&gt;压缩Downloads目录下所有的png，并替换当前图片&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;查看帮助信息&quot;&gt;&lt;a href=&quot;#查看帮助信息&quot; class=&quot;headerlink&quot; title=&quot;查看帮助信息&quot;&gt;&lt;/a&gt;查看帮助信息&lt;/h3&gt;&lt;p&gt;执行 pngquant -h 查看完整选项&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--ext new.png&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--quality min-max&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pngquant --quality=65-80 image.png&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--speed N, -sN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--iebug&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出版本信息。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;从标准输入读取图像并输出到标准输出。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pngquant $OPTIONS -- &amp;quot;$FILE&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用示例&quot;&gt;&lt;a href=&quot;#使用示例&quot; class=&quot;headerlink&quot; title=&quot;使用示例&quot;&gt;&lt;/a&gt;使用示例&lt;/h3&gt;&lt;p&gt;压缩Downloads目录下所有的png，并替换当前图片&lt;br&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -912,16 +863,11 @@ pngquant --quality=65-80 image.png
     <summary type="html">
     
       &lt;p&gt;项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。&lt;/p&gt;
-&lt;h3 id=&quot;安装并配置全局变量&quot;&gt;&lt;a href=&quot;#安装并配置全局变量&quot; class=&quot;headerlink&quot; title=&quot;安装并配置全局变量&quot;&gt;&lt;/a&gt;安装并配置全局变量&lt;/h3&gt;&lt;p&gt;安装：&lt;/p&gt;
-&lt;p&gt;去官网下载压缩包 或者 源码: &lt;code&gt;git clone git://github.com/pornel/pngquant.git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;也可以使用HomeBrew安装：&lt;code&gt;brew install pngquant&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;配置全局变量(使用HomeBrew安装请忽略)：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ln –s /下载的位置/pngquant /usr/local/bin/pngquant&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;pngquant 可以愉快的玩耍啦！&lt;/p&gt;
+&lt;h3 id=&quot;安装并配置全局变量&quot;&gt;&lt;a href=&quot;#安装并配置全局变量&quot; class=&quot;headerlink&quot; title=&quot;安装并配置全局变量&quot;&gt;&lt;/a&gt;安装并配置全局变量&lt;/h3&gt;&lt;p&gt;安装：&lt;br&gt;去官网下载压缩包 或者 源码: &lt;code&gt;git clone git://github.com/pornel/pngquant.git&lt;/code&gt;&lt;br&gt;也可以使用HomeBrew安装：&lt;code&gt;brew install pngquant&lt;/code&gt;&lt;br&gt;配置全局变量(使用HomeBrew安装请忽略)：&lt;br&gt;&lt;code&gt;ln –s /下载的位置/pngquant /usr/local/bin/pngquant&lt;/code&gt;&lt;br&gt;pngquant 可以愉快的玩耍啦！&lt;/p&gt;
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="pngquant" scheme="http://blog.keepmovingxin.com/tags/pngquant/"/>
@@ -933,44 +879,28 @@ pngquant --quality=65-80 image.png
     <link href="http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/"/>
     <id>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</id>
     <published>2016-04-29T05:39:31.000Z</published>
-    <updated>2016-06-01T03:36:19.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。&lt;/li&gt;
-&lt;/ul&gt;
+    <content type="html">&lt;p&gt;处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;用户目录下创建-vimrc文件&quot;&gt;&lt;a href=&quot;#用户目录下创建-vimrc文件&quot; class=&quot;headerlink&quot; title=&quot;用户目录下创建.vimrc文件&quot;&gt;&lt;/a&gt;用户目录下创建.vimrc文件&lt;/h3&gt;&lt;p&gt;加入&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
 set fileformats=unix
 set encoding=prc
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fileencodings中utf-8要在前面&lt;/p&gt;
-&lt;p&gt;这样就能正常显示中文了，配合pietty，可以完全正常显示、编辑中文了。&lt;/p&gt;
-&lt;h3 id=&quot;几种去除-M的方法&quot;&gt;&lt;a href=&quot;#几种去除-M的方法&quot; class=&quot;headerlink&quot; title=&quot;几种去除^M的方法&quot;&gt;&lt;/a&gt;几种去除^M的方法&lt;/h3&gt;&lt;p&gt;1、&lt;code&gt;cat filename1 | tr -d &amp;quot;\r&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2、 &lt;code&gt;sed -e &amp;quot;s/^V^M//&amp;quot; filename &amp;gt; outputfilename&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;3、vi： 用vi打开文件&lt;/p&gt;
-&lt;p&gt;(1) 按ESC键&lt;/p&gt;
-&lt;p&gt;(2) 输入 :%s/^M//g&lt;/p&gt;
-&lt;p&gt;确定 ^M是使用 “CTRL-V CTRL-M” 而不是字面上的 ^M。&lt;/p&gt;
-&lt;p&gt;这个正则式将替换所有回车符前的 ^M为空($是为了保证^M出现在行尾)&lt;/p&gt;
-&lt;p&gt;4、用 vim 输入 :&lt;code&gt;set notextmode&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;可惜，经过上面的处理以后，^M是不存在了，但是换行不成功。所有的东西都在一行上面，看着很费劲。这说明处理的时候文件缺少”\n”，可以在替换的时候添加上即可：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cat filename | tr &amp;quot;\r&amp;quot; &amp;quot;\n&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;注: ^M 可以用Sublime Text编辑器查看&lt;/p&gt;
-&lt;p&gt;一些linux版本有 dos2unix 程序，可以用来祛除^M&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fileencodings中utf-8要在前面&lt;br&gt;这样就能正常显示中文了，配合pietty，可以完全正常显示、编辑中文了。&lt;/p&gt;
+&lt;h3 id=&quot;几种去除-M的方法&quot;&gt;&lt;a href=&quot;#几种去除-M的方法&quot; class=&quot;headerlink&quot; title=&quot;几种去除^M的方法&quot;&gt;&lt;/a&gt;几种去除^M的方法&lt;/h3&gt;&lt;p&gt;1、&lt;code&gt;cat filename1 | tr -d &amp;quot;\r&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;br&gt;2、 &lt;code&gt;sed -e &amp;quot;s/^V^M//&amp;quot; filename &amp;gt; outputfilename&lt;/code&gt;&lt;br&gt;3、vi： 用vi打开文件&lt;br&gt;(1) 按ESC键&lt;br&gt;(2) 输入 :&lt;code&gt;%s/^M//g&lt;/code&gt;&lt;br&gt;确定 &lt;code&gt;^M&lt;/code&gt;是使用 &lt;code&gt;&amp;quot;CTRL-V CTRL-M&amp;quot;&lt;/code&gt; 而不是字面上的 &lt;code&gt;^M&lt;/code&gt;。&lt;br&gt;这个正则式将替换所有回车符前的 ^M为空($是为了保证^M出现在行尾)&lt;br&gt;4、用 vim 输入 :&lt;code&gt;set notextmode&lt;/code&gt;&lt;br&gt;可惜，经过上面的处理以后，^M是不存在了，但是换行不成功。所有的东西都在一行上面，看着很费劲。这说明处理的时候文件缺少”\n”，可以在替换的时候添加上即可：&lt;br&gt;&lt;code&gt;cat filename | tr &amp;quot;\r&amp;quot; &amp;quot;\n&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;br&gt;注: ^M 可以用Sublime Text编辑器查看&lt;br&gt;一些linux版本有 dos2unix 程序，可以用来祛除^M&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;ul&gt;
-&lt;li&gt;处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。&lt;/p&gt;
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="Vim" scheme="http://blog.keepmovingxin.com/tags/Vim/"/>
@@ -982,13 +912,11 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-06-01T03:24:41.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;br&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;管道符：&quot;&gt;&lt;a href=&quot;#管道符：&quot; class=&quot;headerlink&quot; title=&quot;管道符： |&quot;&gt;&lt;/a&gt;管道符： |&lt;/h3&gt;&lt;p&gt;就是把前面的命令运行的要放入标准输出的结果丢给后面的命令&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cat 1.txt | cat&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;管道符：&quot;&gt;&lt;a href=&quot;#管道符：&quot; class=&quot;headerlink&quot; title=&quot;管道符： |&quot;&gt;&lt;/a&gt;管道符： |&lt;/h3&gt;&lt;p&gt;就是把前面的命令运行的要放入标准输出的结果丢给后面的命令&lt;br&gt;&lt;code&gt;cat 1.txt | cat&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h3&gt;&lt;p&gt;由一般字符和特殊字符（meta字符）组成&lt;br&gt;meta元字符&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;\ 通常用于打开或关闭后续字符的特殊含义，如\(...\)与\{...\}
 . 匹配任何单个字符（除NULL）
@@ -1040,35 +968,17 @@ f：表示打印一个浮点数，其中4表示宽度，.2表示保留2位小数
 -f pattern_file    ：    样式文件pattern_file中逐行存放要匹配的样式，可匹配多个样式，样式之间是“或”的关系
 --color    ：    为匹配项显示不同颜色
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2)    &lt;code&gt;grep –E &amp;quot;pattern1|pattern2&amp;quot; files&lt;/code&gt; ：显示匹配 pattern1 或 pattern2 的行&lt;br&gt;3)    &lt;code&gt;grep –e pattern1 –e pattern2 files&lt;/code&gt; : 匹配pattern1或pattern2&lt;br&gt;4)    &lt;code&gt;grep pattern1 files | grep pattern2&lt;/code&gt; ：显示既匹配 pattern1 又匹配 pattern2 的行&lt;br&gt;5)    &lt;code&gt;egrep &amp;quot;t_hero|t_item&amp;quot;&lt;/code&gt;   匹配t_hero或者t_item的项&lt;br&gt;6)    &lt;code&gt;grep &amp;quot;t_hero\|t_item&amp;quot;&lt;/code&gt;    可以实现与上面同样的功能&lt;/p&gt;
-&lt;h3 id=&quot;sed-处理内容&quot;&gt;&lt;a href=&quot;#sed-处理内容&quot; class=&quot;headerlink&quot; title=&quot;sed 处理内容&quot;&gt;&lt;/a&gt;sed 处理内容&lt;/h3&gt;&lt;p&gt;&lt;code&gt;sed [options] &amp;#39;command&amp;#39; file(s) 或sed [options] -f scriptfile file(s)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;一次处理一行内容 不改变文件内容&lt;br&gt;[options]列表：&lt;/p&gt;
+&lt;h3 id=&quot;sed-处理内容&quot;&gt;&lt;a href=&quot;#sed-处理内容&quot; class=&quot;headerlink&quot; title=&quot;sed 处理内容&quot;&gt;&lt;/a&gt;sed 处理内容&lt;/h3&gt;&lt;p&gt;&lt;code&gt;sed [options] &amp;#39;command&amp;#39; file(s) 或sed [options] -f scriptfile file(s)&lt;/code&gt;&lt;br&gt;一次处理一行内容 不改变文件内容&lt;br&gt;[options]列表：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-n    :    取消默认的输出,使用安静(silent)模式。
 -r    :    使用正则表达式，及表达式中不需要进行转义
 -f filename :    指定sed脚本的文件名filename
 -e &amp;apos;&amp;apos; :    允许多重编辑·  
 -i    :    将替换结果应用于源文件
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;1)    替换字符串&lt;br&gt;&lt;code&gt;sed &amp;#39;s/pattern/string/&amp;#39; file&lt;/code&gt;&lt;br&gt;或者&lt;br&gt;&lt;code&gt;cat file | sed &amp;#39;s/pattern/string/&amp;#39;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2)    替换文件中所有匹配内容，使用参数g&lt;br&gt;&lt;code&gt;sed &amp;#39;s/pattern/string/g&amp;#39; file&lt;/code&gt;&lt;br&gt;但如果你想从第N处匹配开始替换，可以使用参数/Ng&lt;br&gt;&lt;code&gt;$ echo thisthisthisthis | sed &amp;#39;s/this/THIS/2g&amp;#39;
-thisTHISTHISTHIS&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义&lt;br&gt;&lt;code&gt;$ echo a/b | sed &amp;#39;s/a\/b/a*b/&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;1)    替换字符串&lt;br&gt;&lt;code&gt;sed &amp;#39;s/pattern/string/&amp;#39; file&lt;/code&gt;&lt;br&gt;或者&lt;br&gt;&lt;code&gt;cat file | sed &amp;#39;s/pattern/string/&amp;#39;&lt;/code&gt;&lt;br&gt;2)    替换文件中所有匹配内容，使用参数g&lt;br&gt;&lt;code&gt;sed &amp;#39;s/pattern/string/g&amp;#39; file&lt;/code&gt;&lt;br&gt;但如果你想从第N处匹配开始替换，可以使用参数/Ng&lt;br&gt;&lt;code&gt;$ echo thisthisthisthis | sed &amp;#39;s/this/THIS/2g&amp;#39;
+thisTHISTHISTHIS&lt;/code&gt;&lt;br&gt;3)    sed的定界符’/‘.当匹配模式中含有’/‘字符时，我们需要用’\’对定界符’/‘进行转义&lt;br&gt;&lt;code&gt;$ echo a/b | sed &amp;#39;s/a\/b/a*b/&amp;#39;
 a*b&lt;/code&gt;&lt;br&gt;为了避免转义字符造成的理解困难，我们可以使用其它定界符，比如|,:,@,#,$,%,+等等&lt;br&gt;&lt;code&gt;$ echo a/b | sed &amp;#39;s:a/b:a*b:&amp;#39;
-a*b&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;4)    移除匹配样式行  &lt;code&gt;sed &amp;#39;/pattern/d&amp;#39; file&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ sed -r &amp;#39;/^ *$/d&amp;#39; args.txt        #移除空白行，含有一个或多个空格的行&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;5)    组合多个表达式&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ echo abd | sed &amp;apos;s/a/A/&amp;apos; | sed &amp;apos;s/d/D/&amp;apos;  #用管道组合$ echo abd | sed &amp;apos;s/a/A/;s/d/D/&amp;apos;           #用分号组合$ echo abd | sed -e &amp;apos;s/a/A/&amp;apos; -e &amp;apos;s/d/D/&amp;apos;  #用-e选项组合&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;6)    已匹配字符串标记（&amp;amp;）&lt;br&gt;&amp;amp;代表匹配给定样式的字符串，常用于对给定样式增加[]，{}等不需要改变样式的情况&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;this is an example&amp;quot; | sed &amp;apos;s/\w\+/[&amp;amp;]/g&amp;apos;   #\w\+ 匹配每个单词
-[this] [is] [an] [example]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;7)    子串匹配标记（\1）&lt;br&gt;有时我们希望对匹配给定的样式标记出一些子串来，方便后续引用&lt;br&gt;(pattern) 用于匹配子串pattern&lt;br&gt;\1 用于引用第一个匹配到的子串，\n 对应第n个匹配到的子串。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo 123 asd | sed &amp;apos;s/\([0-9]\+\) \([a-z]\+\)/\2+\1/&amp;apos; 
-asd+123
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中\1对应数字123，\2对应字母asd&lt;br&gt;对于子串的引用，在样式里一定要用()括起来，如果加上-r选项，则不需要转义：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo 123 asd | sed -r &amp;apos;s/([0-9]+) ([a-z]+)/\2+\1/&amp;apos;
-asd+123
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;8)    引用&lt;br&gt;在脚本中有用的一点，用双引号引用的sed表达式，会对表达式求值来进行扩展，如使用前面定义的变量等&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ text=hello
-$ echo hello world | sed &amp;quot;s/$text/HELLO/&amp;quot;
-HELLO world
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;tail-查看文件&quot;&gt;&lt;a href=&quot;#tail-查看文件&quot; class=&quot;headerlink&quot; title=&quot;tail 查看文件&quot;&gt;&lt;/a&gt;tail 查看文件&lt;/h3&gt;&lt;p&gt;用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件&lt;br&gt;主要参数&lt;/p&gt;
+a*b&lt;/code&gt;&lt;br&gt;4)    移除匹配样式行  &lt;code&gt;sed &amp;#39;/pattern/d&amp;#39; file&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ sed -r &amp;#39;/^ *$/d&amp;#39; args.txt        #移除空白行，含有一个或多个空格的行&lt;/code&gt;&lt;br&gt;5)    组合多个表达式&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ echo abd | sed &amp;apos;s/a/A/&amp;apos; | sed &amp;apos;s/d/D/&amp;apos;  #用管道组合$ echo abd | sed &amp;apos;s/a/A/;s/d/D/&amp;apos;           #用分号组合$ echo abd | sed -e &amp;apos;s/a/A/&amp;apos; -e &amp;apos;s/d/D/&amp;apos;  #用-e选项组合```6)	已匹配字符串标记（&amp;amp;）&amp;amp;代表匹配给定样式的字符串，常用于对给定样式增加[]，&amp;#123;&amp;#125;等不需要改变样式的情况```$ echo &amp;quot;this is an example&amp;quot; | sed &amp;apos;s/\w\+/[&amp;amp;]/g&amp;apos;   #\w\+ 匹配每个单词[this] [is] [an] [example]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```7)	子串匹配标记（\1）有时我们希望对匹配给定的样式标记出一些子串来，方便后续引用\(pattern\) 用于匹配子串pattern\1 用于引用第一个匹配到的子串，\n 对应第n个匹配到的子串。```$ echo 123 asd | sed &amp;apos;s/\([0-9]\+\) \([a-z]\+\)/\2+\1/&amp;apos; asd+123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```其中\1对应数字123，\2对应字母asd对于子串的引用，在样式里一定要用\(\)括起来，如果加上-r选项，则不需要转义：```$ echo 123 asd | sed -r &amp;apos;s/([0-9]+) ([a-z]+)/\2+\1/&amp;apos;asd+123```8)	引用在脚本中有用的一点，用双引号引用的sed表达式，会对表达式求值来进行扩展，如使用前面定义的变量等```$ text=hello$ echo hello world | sed &amp;quot;s/$text/HELLO/&amp;quot;HELLO world&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tail-查看文件&quot;&gt;&lt;a href=&quot;#tail-查看文件&quot; class=&quot;headerlink&quot; title=&quot;tail 查看文件&quot;&gt;&lt;/a&gt;tail 查看文件&lt;/h3&gt;&lt;p&gt;用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件&lt;br&gt;主要参数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-f ：    循环读取   #可以用在监控线上有没有报错信息
 -q ：    不显示处理信息
 -v ：    显示详细的处理信息
@@ -1242,12 +1152,11 @@ find . –type d –maxdepth 1 –print
     
     <summary type="html">
     
-      &lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;br&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="Linux" scheme="http://blog.keepmovingxin.com/tags/Linux/"/>
@@ -1259,15 +1168,14 @@ find . –type d –maxdepth 1 –print
     <link href="http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/"/>
     <id>http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/</id>
     <published>2016-04-27T09:47:46.000Z</published>
-    <updated>2016-06-01T03:43:08.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
-    <content type="html">&lt;h4 id=&quot;1-实现方法&quot;&gt;&lt;a href=&quot;#1-实现方法&quot; class=&quot;headerlink&quot; title=&quot;1. 实现方法&quot;&gt;&lt;/a&gt;1. 实现方法&lt;/h4&gt;&lt;p&gt;&lt;code&gt;CCGraySprite&lt;/code&gt; 继承自 &lt;code&gt;CCSprite&lt;/code&gt; 覆盖&lt;code&gt;initWithTexture&lt;/code&gt;和&lt;code&gt;draw&lt;/code&gt;方法实现置灰。&lt;/p&gt;
+    <content type="html">&lt;h4 id=&quot;1-实现方法&quot;&gt;&lt;a href=&quot;#1-实现方法&quot; class=&quot;headerlink&quot; title=&quot;1. 实现方法&quot;&gt;&lt;/a&gt;1. 实现方法&lt;/h4&gt;&lt;p&gt;&lt;code&gt;CCGraySprite&lt;/code&gt; 继承自 &lt;code&gt;CCSprite&lt;/code&gt; 覆盖&lt;code&gt;initWithTexture&lt;/code&gt;和&lt;code&gt;draw&lt;/code&gt;方法实现置灰。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id=&quot;方法和属性声明&quot;&gt;&lt;a href=&quot;#方法和属性声明&quot; class=&quot;headerlink&quot; title=&quot;方法和属性声明&quot;&gt;&lt;/a&gt;方法和属性声明&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class CCGraySprite : public CCSprite&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual ~CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* create(const char* pszFileName);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool initWithTexture(CCTexture2D* pTexture, const CCRect&amp;amp; tRect);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithSprite(CCSprite *pSprite);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithNodeAndItChild(CCNode *pNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    void setGray(bool isGray);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual void draw();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool m_isGray;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGLProgram* pProgram;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;m_isGray&lt;/code&gt; 是否置灰&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;pProgram&lt;/code&gt; 保存置灰的GL程序&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h4 id=&quot;2-shader字符串&quot;&gt;&lt;a href=&quot;#2-shader字符串&quot; class=&quot;headerlink&quot; title=&quot;2. shader字符串&quot;&gt;&lt;/a&gt;2. shader字符串&lt;/h4&gt;&lt;p&gt;可以像官方那样写在一个.h文件中&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GLchar* pszFragSource = (GLchar*)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;#ifdef GL_ES \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        precision mediump float; \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        #endif \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        uniform sampler2D u_texture; \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        varying vec2 v_texCoord; \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        varying vec4 v_fragmentColor; \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        void main(void) \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123; \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        // Convert to greyscale using NTSC weightings \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        vec4 col = texture2D(u_texture, v_texCoord); \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        float grey = dot(col.rgb, vec3(0.299, 0.587, 0.114)); \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gl_FragColor = vec4(grey, grey, grey, col.a); \n \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;3-核心代码&quot;&gt;&lt;a href=&quot;#3-核心代码&quot; class=&quot;headerlink&quot; title=&quot;3. 核心代码&quot;&gt;&lt;/a&gt;3. 核心代码&lt;/h4&gt;&lt;ul&gt;
@@ -1288,12 +1196,7 @@ find . –type d –maxdepth 1 –print
     
     <summary type="html">
     
-      &lt;h4 id=&quot;1-实现方法&quot;&gt;&lt;a href=&quot;#1-实现方法&quot; class=&quot;headerlink&quot; title=&quot;1. 实现方法&quot;&gt;&lt;/a&gt;1. 实现方法&lt;/h4&gt;&lt;p&gt;&lt;code&gt;CCGraySprite&lt;/code&gt; 继承自 &lt;code&gt;CCSprite&lt;/code&gt; 覆盖&lt;code&gt;initWithTexture&lt;/code&gt;和&lt;code&gt;draw&lt;/code&gt;方法实现置灰。&lt;/p&gt;
-&lt;h5 id=&quot;方法和属性声明&quot;&gt;&lt;a href=&quot;#方法和属性声明&quot; class=&quot;headerlink&quot; title=&quot;方法和属性声明&quot;&gt;&lt;/a&gt;方法和属性声明&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class CCGraySprite : public CCSprite&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual ~CCGraySprite();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* create(const char* pszFileName);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool initWithTexture(CCTexture2D* pTexture, const CCRect&amp;amp; tRect);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithSprite(CCSprite *pSprite);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static CCGraySprite* createWithNodeAndItChild(CCNode *pNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    void setGray(bool isGray);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    virtual void draw();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bool m_isGray;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CCGLProgram* pProgram;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;m_isGray&lt;/code&gt; 是否置灰&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pProgram&lt;/code&gt; 保存置灰的GL程序&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;h4 id=&quot;1-实现方法&quot;&gt;&lt;a href=&quot;#1-实现方法&quot; class=&quot;headerlink&quot; title=&quot;1. 实现方法&quot;&gt;&lt;/a&gt;1. 实现方法&lt;/h4&gt;&lt;p&gt;&lt;code&gt;CCGraySprite&lt;/code&gt; 继承自 &lt;code&gt;CCSprite&lt;/code&gt; 覆盖&lt;code&gt;initWithTexture&lt;/code&gt;和&lt;code&gt;draw&lt;/code&gt;方法实现置灰。&lt;br&gt;
     
     </summary>
     
@@ -1309,24 +1212,18 @@ find . –type d –maxdepth 1 –print
     <link href="http://blog.keepmovingxin.com/2016/04/27/Git-Config/"/>
     <id>http://blog.keepmovingxin.com/2016/04/27/Git-Config/</id>
     <published>2016-04-27T08:31:28.000Z</published>
-    <updated>2016-06-01T03:38:20.000Z</updated>
+    <updated>2016-06-06T02:18:06.000Z</updated>
     
     <content type="html">&lt;p&gt;git config命令的基本使用&lt;/p&gt;
-&lt;h3 id=&quot;配置文件如何生效&quot;&gt;&lt;a href=&quot;#配置文件如何生效&quot; class=&quot;headerlink&quot; title=&quot;配置文件如何生效&quot;&gt;&lt;/a&gt;配置文件如何生效&lt;/h3&gt;&lt;p&gt;对于 git 来说，配置文件的权重是仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的各个库中Git目录下的配置文件 .git/config（仓库级），该文件中的值只对当前所属仓库有效。以上阐述的三 层配置从一般到特殊层层推进，如果定义的值有冲突，以后面层中定义的为准，例如：.git/config 和 /etc/gitconfig 的较量中， .git/config 取得了胜利。&lt;/p&gt;
+&lt;h3 id=&quot;配置文件如何生效&quot;&gt;&lt;a href=&quot;#配置文件如何生效&quot; class=&quot;headerlink&quot; title=&quot;配置文件如何生效&quot;&gt;&lt;/a&gt;配置文件如何生效&lt;/h3&gt;&lt;p&gt;对于 &lt;code&gt;git&lt;/code&gt; 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。&lt;br&gt;&lt;code&gt;Git&lt;/code&gt; 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 &lt;code&gt;/etc/gitconfig&lt;/code&gt; 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。&lt;br&gt;接下来 &lt;code&gt;Git&lt;/code&gt; 会查找每个用户的 &lt;code&gt;~/.gitconfig&lt;/code&gt; 文件（全局级）。&lt;br&gt;最后 &lt;code&gt;Git&lt;/code&gt; 会查找由用户定义的各个库中&lt;code&gt;Git&lt;/code&gt;目录下的配置文件 &lt;code&gt;.git/config&lt;/code&gt;（仓库级），该文件中的值只对当前所属仓库有效。&lt;br&gt;以上阐述的三 层配置从一般到特殊层层推进，如果定义的值有冲突，以后面层中定义的为准，例如：&lt;code&gt;.git/config&lt;/code&gt; 和 &lt;code&gt;/etc/gitconfig&lt;/code&gt; 的较量中， &lt;code&gt;.git/config&lt;/code&gt; 取得了胜利。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;使用-git-config-命令查看配置文件&quot;&gt;&lt;a href=&quot;#使用-git-config-命令查看配置文件&quot; class=&quot;headerlink&quot; title=&quot;使用 git config 命令查看配置文件&quot;&gt;&lt;/a&gt;使用 git config 命令查看配置文件&lt;/h3&gt;&lt;p&gt;命令参数–list, 简写 -l&lt;/p&gt;
-&lt;p&gt;格式：&lt;code&gt;git config [–local|–global|–system] -l&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用-git-config-命令查看配置文件&quot;&gt;&lt;a href=&quot;#使用-git-config-命令查看配置文件&quot; class=&quot;headerlink&quot; title=&quot;使用 git config 命令查看配置文件&quot;&gt;&lt;/a&gt;使用 git config 命令查看配置文件&lt;/h3&gt;&lt;p&gt;命令参数–list, 简写 -l&lt;br&gt;格式：&lt;code&gt;git config [–local|–global|–system] -l&lt;/code&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;查看仓库级的 config，命令：git config –local -l&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查看全局级的 config，命令：git config –global -l&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查看系统级的 config，命令：git config –system -l&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查看当前生效的配置，  命令：git config -l&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;使用-git-config-命令编辑配置文件&quot;&gt;&lt;a href=&quot;#使用-git-config-命令编辑配置文件&quot; class=&quot;headerlink&quot; title=&quot;使用 git config 命令编辑配置文件&quot;&gt;&lt;/a&gt;使用 git config 命令编辑配置文件&lt;/h3&gt;&lt;p&gt;命令参数 –edit, 简写 -e&lt;/p&gt;
-&lt;p&gt;格式：&lt;code&gt;git config [–local|–global|–system] -e&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用-git-config-命令编辑配置文件&quot;&gt;&lt;a href=&quot;#使用-git-config-命令编辑配置文件&quot; class=&quot;headerlink&quot; title=&quot;使用 git config 命令编辑配置文件&quot;&gt;&lt;/a&gt;使用 git config 命令编辑配置文件&lt;/h3&gt;&lt;p&gt;命令参数 –edit, 简写 -e&lt;br&gt;格式：&lt;code&gt;git config [–local|–global|–system] -e&lt;/code&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;查看仓库级的config，命令：git config –local -e，与–list参数不同的是，git config -e默认是编辑仓库级的配置文件。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查看全局级的config，命令：git config –global -e&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;查看系统级的config，命令：git config –system -e&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;执行这个命令的时候，git 会用配置文件中设定的编辑器打开配置文件。&lt;/p&gt;
-&lt;h3 id=&quot;增加一个配置项&quot;&gt;&lt;a href=&quot;#增加一个配置项&quot; class=&quot;headerlink&quot; title=&quot;增加一个配置项&quot;&gt;&lt;/a&gt;增加一个配置项&lt;/h3&gt;&lt;p&gt;参数 –add&lt;/p&gt;
-&lt;p&gt;格式: &lt;code&gt;git config [–local|–global|–system] –add section.key value&lt;/code&gt; (默认是添加在 local 配置中)&lt;/p&gt;
-&lt;p&gt;注意 add 后面的 section,key,value 一项都不能少，否则添加失败。比如我们执行：&lt;code&gt;git config –add man.name jim&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;获取一个配置项&quot;&gt;&lt;a href=&quot;#获取一个配置项&quot; class=&quot;headerlink&quot; title=&quot;获取一个配置项&quot;&gt;&lt;/a&gt;获取一个配置项&lt;/h3&gt;&lt;p&gt;有时候，我们并不需要查看所有配置的值，而是查看某个配置项的值，怎么做呢？&lt;/p&gt;
-&lt;p&gt;命令参数 –get&lt;/p&gt;
-&lt;p&gt;格式：&lt;code&gt;git config [–local|–global|–system] –get section.key&lt;/code&gt; (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 &lt;code&gt;git config –get man.name&lt;/code&gt; 看看得到的是什么&lt;/p&gt;
+&lt;h3 id=&quot;增加一个配置项&quot;&gt;&lt;a href=&quot;#增加一个配置项&quot; class=&quot;headerlink&quot; title=&quot;增加一个配置项&quot;&gt;&lt;/a&gt;增加一个配置项&lt;/h3&gt;&lt;p&gt;参数 –add&lt;br&gt;格式: &lt;code&gt;git config [–local|–global|–system] –add section.key value&lt;/code&gt; (默认是添加在 local 配置中)&lt;br&gt;注意 add 后面的 section,key,value 一项都不能少，否则添加失败。比如我们执行：&lt;code&gt;git config –add man.name jim&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;获取一个配置项&quot;&gt;&lt;a href=&quot;#获取一个配置项&quot; class=&quot;headerlink&quot; title=&quot;获取一个配置项&quot;&gt;&lt;/a&gt;获取一个配置项&lt;/h3&gt;&lt;p&gt;有时候，我们并不需要查看所有配置的值，而是查看某个配置项的值，怎么做呢？&lt;br&gt;命令参数 –get&lt;br&gt;格式：&lt;code&gt;git config [–local|–global|–system] –get section.key&lt;/code&gt; (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 &lt;code&gt;git config –get man.name&lt;/code&gt; 看看得到的是什么&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
@@ -1334,11 +1231,11 @@ find . –type d –maxdepth 1 –print
     <summary type="html">
     
       &lt;p&gt;git config命令的基本使用&lt;/p&gt;
-&lt;h3 id=&quot;配置文件如何生效&quot;&gt;&lt;a href=&quot;#配置文件如何生效&quot; class=&quot;headerlink&quot; title=&quot;配置文件如何生效&quot;&gt;&lt;/a&gt;配置文件如何生效&lt;/h3&gt;&lt;p&gt;对于 git 来说，配置文件的权重是仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的各个库中Git目录下的配置文件 .git/config（仓库级），该文件中的值只对当前所属仓库有效。以上阐述的三 层配置从一般到特殊层层推进，如果定义的值有冲突，以后面层中定义的为准，例如：.git/config 和 /etc/gitconfig 的较量中， .git/config 取得了胜利。&lt;/p&gt;
+&lt;h3 id=&quot;配置文件如何生效&quot;&gt;&lt;a href=&quot;#配置文件如何生效&quot; class=&quot;headerlink&quot; title=&quot;配置文件如何生效&quot;&gt;&lt;/a&gt;配置文件如何生效&lt;/h3&gt;&lt;p&gt;对于 &lt;code&gt;git&lt;/code&gt; 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。&lt;br&gt;&lt;code&gt;Git&lt;/code&gt; 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 &lt;code&gt;/etc/gitconfig&lt;/code&gt; 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。&lt;br&gt;接下来 &lt;code&gt;Git&lt;/code&gt; 会查找每个用户的 &lt;code&gt;~/.gitconfig&lt;/code&gt; 文件（全局级）。&lt;br&gt;最后 &lt;code&gt;Git&lt;/code&gt; 会查找由用户定义的各个库中&lt;code&gt;Git&lt;/code&gt;目录下的配置文件 &lt;code&gt;.git/config&lt;/code&gt;（仓库级），该文件中的值只对当前所属仓库有效。&lt;br&gt;以上阐述的三 层配置从一般到特殊层层推进，如果定义的值有冲突，以后面层中定义的为准，例如：&lt;code&gt;.git/config&lt;/code&gt; 和 &lt;code&gt;/etc/gitconfig&lt;/code&gt; 的较量中， &lt;code&gt;.git/config&lt;/code&gt; 取得了胜利。&lt;/p&gt;
     
     </summary>
     
-      <category term="工具" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具/效率" scheme="http://blog.keepmovingxin.com/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/"/>
     
     
       <category term="Git" scheme="http://blog.keepmovingxin.com/tags/Git/"/>
