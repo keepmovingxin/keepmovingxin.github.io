@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-06-06T02:18:06.000Z</updated>
+  <updated>2016-06-01T03:24:48.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,34 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Lua数据结构 —TValue（一）</title>
-    <link href="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/"/>
-    <id>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</id>
-    <published>2016-06-05T14:06:28.000Z</published>
-    <updated>2016-06-06T02:18:06.000Z</updated>
-    
-    <content type="html">&lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
-    
-      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
   
   <entry>
     <title>Lua 全局变量的那些事儿</title>
