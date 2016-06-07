@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-06-01T03:24:48.000Z</updated>
+  <updated>2016-06-07T03:13:47.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lua数据结构 —TValue（一）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</id>
+    <published>2016-06-05T14:06:28.000Z</published>
+    <updated>2016-06-07T03:13:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;数据结构的设计，在一定程度上奠定了整个系统的设计，所以决定写一个对Lua主要数据结构的分析文章，本来打算写一篇就好了，但是每个数据类型其实都有点复杂，一篇的话篇幅太长，所以就拆开几篇来写了。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;为什么是从TValue说起，&lt;strong&gt;TValue是实现Lua弱数据类型的主要数据结构&lt;/strong&gt;，不但在脚本中的值使用了TValue，连Lua的实现中，很多数据结构也依赖于TValue，TValue一定程度上贯穿了整个Lua。先说一下Lua里面的&lt;strong&gt;数据类型&lt;/strong&gt;:（lua.h :69）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从上面的定义中可以看到，&lt;strong&gt;Lua的值类型有9种&lt;/strong&gt;，其中LUA_TNONE是用于判断这个变量是否等于为空使用的，这个是Lua内部使用的，后面再详细说明。现在来看Lua里面的&lt;strong&gt;TValue数据结构&lt;/strong&gt;:（lobject.h 71-75）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在Lua里面，一个变量使用TValue这个类型来存储的，int tt就是上面宏的类型值（4个字节），而Value则是一个union（8个字节）。在这个union中，其实分工也十分明确:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在Value中，void* p、lua_Number n、int b都是不用回收的值类型，而GCObject&lt;em&gt; gc则都是需要回收的对象，下面是&lt;em&gt;*GCObject数据结构&lt;/em&gt;&lt;/em&gt;:（lstate.h 133-145）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;GCObject也是一个union，存储了一个GCheader，这个GCHeader主要用于&lt;strong&gt;GC回收机制&lt;/strong&gt;使用，GC回收机制超出了这次讨论话题，暂时先忽略。真正存储值的结构是TString、Udata、Closure等等，每个存储数据的结构都会有GCheader，接下来几篇文章将会开始逐个数据类型进行解释。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/761&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/761&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数据结构的设计，在一定程度上奠定了整个系统的设计，所以决定写一个对Lua主要数据结构的分析文章，本来打算写一篇就好了，但是每个数据类型其实都有点复杂，一篇的话篇幅太长，所以就拆开几篇来写了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Lua 全局变量的那些事儿</title>
@@ -651,7 +690,7 @@
     <link href="http://blog.keepmovingxin.com/2016/05/02/Learn-shell/"/>
     <id>http://blog.keepmovingxin.com/2016/05/02/Learn-shell/</id>
     <published>2016-05-02T08:50:52.000Z</published>
-    <updated>2016-06-06T02:18:06.000Z</updated>
+    <updated>2016-06-07T03:11:28.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Shell脚本&quot;&gt;&lt;a href=&quot;#Shell脚本&quot; class=&quot;headerlink&quot; title=&quot;Shell脚本&quot;&gt;&lt;/a&gt;Shell脚本&lt;/h3&gt;&lt;h4 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h4&gt;&lt;p&gt;首行        &lt;code&gt;#!/bin/bash 指定解释器&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;#39;#&amp;#39;&lt;/code&gt;开头的行，&lt;code&gt;&amp;#39;#!&amp;#39;&lt;/code&gt;是例外&lt;br&gt;此外，&lt;code&gt;#&lt;/code&gt; 是特殊字符，可以出现在一些参数代换结构和在数值常量表达式中，具有特殊含义，而不会开启一个注释。&lt;code&gt;‘\#’&lt;/code&gt;也不会开启一个注释。&lt;/p&gt;
