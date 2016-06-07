@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaTValue/lua-tvalue-04.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaTValue/lua-tvalue-05.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2016-06-07T03:13:47.000Z">
+<meta property="og:updated_time" content="2016-06-07T08:51:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lua数据结构 —TValue（一）">
 <meta name="twitter:description" content="数据结构的设计，在一定程度上奠定了整个系统的设计，所以决定写一个对Lua主要数据结构的分析文章，本来打算写一篇就好了，但是每个数据类型其实都有点复杂，一篇的话篇幅太长，所以就拆开几篇来写了。">
@@ -136,7 +136,7 @@ var _hmt = _hmt || [];
 <p><img src="/images/luaTValue/lua-tvalue-02.png" alt=""></p>
 <p>在Lua里面，一个变量使用TValue这个类型来存储的，int tt就是上面宏的类型值（4个字节），而Value则是一个union（8个字节）。在这个union中，其实分工也十分明确:</p>
 <p><img src="/images/luaTValue/lua-tvalue-03.png" alt=""></p>
-<p>在Value中，void* p、lua_Number n、int b都是不用回收的值类型，而GCObject<em> gc则都是需要回收的对象，下面是<em>*GCObject数据结构</em></em>:（lstate.h 133-145）</p>
+<p>在Value中，void* p、lua_Number n、int b都是不用回收的值类型，而GCObject* gc则都是需要回收的对象，下面是<strong>GCObject数据结构</strong>:（lstate.h 133-145）</p>
 <p><img src="/images/luaTValue/lua-tvalue-04.png" alt=""></p>
 <p>GCObject也是一个union，存储了一个GCheader，这个GCHeader主要用于<strong>GC回收机制</strong>使用，GC回收机制超出了这次讨论话题，暂时先忽略。真正存储值的结构是TString、Udata、Closure等等，每个存储数据的结构都会有GCheader，接下来几篇文章将会开始逐个数据类型进行解释。</p>
 <p><img src="/images/luaTValue/lua-tvalue-05.png" alt=""></p>
@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/" data-id="cip4vh0j2000fv9w8ou8ep0qm" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/" data-id="cip57r23u0008kqw8u3br5il1" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua数据结构/">Lua数据结构</a></li></ul>

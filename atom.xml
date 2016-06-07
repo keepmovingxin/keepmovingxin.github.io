@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-06-07T03:13:47.000Z</updated>
+  <updated>2016-06-07T08:51:09.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/"/>
     <id>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</id>
     <published>2016-06-05T14:06:28.000Z</published>
-    <updated>2016-06-07T03:13:47.000Z</updated>
+    <updated>2016-06-07T08:51:09.000Z</updated>
     
     <content type="html">&lt;p&gt;数据结构的设计，在一定程度上奠定了整个系统的设计，所以决定写一个对Lua主要数据结构的分析文章，本来打算写一篇就好了，但是每个数据类型其实都有点复杂，一篇的话篇幅太长，所以就拆开几篇来写了。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -30,7 +30,7 @@
 &lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在Lua里面，一个变量使用TValue这个类型来存储的，int tt就是上面宏的类型值（4个字节），而Value则是一个union（8个字节）。在这个union中，其实分工也十分明确:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在Value中，void* p、lua_Number n、int b都是不用回收的值类型，而GCObject&lt;em&gt; gc则都是需要回收的对象，下面是&lt;em&gt;*GCObject数据结构&lt;/em&gt;&lt;/em&gt;:（lstate.h 133-145）&lt;/p&gt;
+&lt;p&gt;在Value中，void* p、lua_Number n、int b都是不用回收的值类型，而GCObject* gc则都是需要回收的对象，下面是&lt;strong&gt;GCObject数据结构&lt;/strong&gt;:（lstate.h 133-145）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;GCObject也是一个union，存储了一个GCheader，这个GCHeader主要用于&lt;strong&gt;GC回收机制&lt;/strong&gt;使用，GC回收机制超出了这次讨论话题，暂时先忽略。真正存储值的结构是TString、Udata、Closure等等，每个存储数据的结构都会有GCheader，接下来几篇文章将会开始逐个数据类型进行解释。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
