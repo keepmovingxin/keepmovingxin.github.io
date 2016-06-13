@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/06/06/Lua-TString/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</loc>
     
-    <lastmod>2016-06-08T01:08:27.000Z</lastmod>
+    <lastmod>2016-06-13T04:01:58.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</loc>
     
-    <lastmod>2016-06-07T11:27:43.000Z</lastmod>
+    <lastmod>2016-06-13T02:18:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/</loc>
+    
+    <lastmod>2016-06-13T02:18:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
+    
+    <lastmod>2016-06-13T02:18:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
+    
+    <lastmod>2016-06-13T02:18:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/06/06/Lua-TString/</loc>
+    
+    <lastmod>2016-06-08T01:08:27.000Z</lastmod>
     
   </url>
   
@@ -23,14 +51,7 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</loc>
-    
-    <lastmod>2016-06-06T02:18:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     
@@ -44,14 +65,7 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
-    
-    <lastmod>2016-06-06T02:18:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     
@@ -65,7 +79,14 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/05/20/Git-Workflow/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
+    
+    <lastmod>2016-06-06T02:18:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     
@@ -73,6 +94,13 @@
   
   <url>
     <loc>http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/</loc>
+    
+    <lastmod>2016-06-06T02:18:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     

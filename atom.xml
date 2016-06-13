@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.keepmovingxin.com/"/>
-  <updated>2016-06-08T01:08:27.000Z</updated>
+  <updated>2016-06-13T02:18:12.000Z</updated>
   <id>http://blog.keepmovingxin.com/</id>
   
   <author>
@@ -14,6 +14,448 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lua数据结构 — lua_State（六）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</id>
+    <published>2016-06-10T13:03:16.000Z</published>
+    <updated>2016-06-13T02:18:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;前面各种Lua的数据类型基本都说得差不多了，剩下最后一个数据类型：&lt;strong&gt;lua_State&lt;/strong&gt;，我们可以认为是&lt;strong&gt;”脚本上下文”&lt;/strong&gt;，主要是包括当前脚本环境的运行状态信息，还会有gc相关的信息。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;Lua这门语言考虑了多线程的情况，在脚本空间中能够开多个线程相关脚本上下文，而大家会共用一个全局脚本状态数据，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;全局数据global_state的数据结构如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;global_state主要是用于GC的数据链表，下面简要说明几个:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;stringtable strt：这个是在TString那章说到的全局字符串哈希表&lt;/li&gt;
+&lt;li&gt;TValue lregistry：对应LUAREGISTRYINDEX的全局table.&lt;/li&gt;
+&lt;li&gt;TString *tmname[TM_N]：元方法的名称字符串。&lt;/li&gt;
+&lt;li&gt;Table *mt[NUM_TAGS]：基本类型的元表，这是Lua5.0的特性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;mt成员在作者介绍文章中说到:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在上面代码中，我们看到a支持一个tostring的方法，a是数值类型，我们可以为数值类型添加任意的方法。Lua文章中说到一个用途，就是对于unicode和gbk的字符串的len方法能自己实现。&lt;/p&gt;
+&lt;p&gt;其它成员就不一一介绍了，下面来介绍与线程相关的脚本上下文lua_State：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我们看到，luaState也带有CommonHeader头，在第一章中也提到了GCObject中有luaState th这个成员，由此可见lua_State也会是被回收的对象之一。&lt;/p&gt;
+&lt;p&gt;考虑回一个线程中的脚本上下文，我们再来逐个分析每个成员：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lu_byte status：线程脚本的状态，线程可选状态如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;StkId top：指向当前线程栈的栈顶指针，typedef TValue *StkId&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;StkId base：指向当前函数运行的相对基位置，具体可参考第四章的闭包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;globalState *lG：指向全局状态的指针&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;CallInfo *ci：当前线程运行的函数调用信息&lt;/li&gt;
+&lt;li&gt;const Instruction *savedpc：函数调用前，记录上一个函数的pc位置&lt;/li&gt;
+&lt;li&gt;StkId stack_last：栈的实际最后一个位置（栈的长度是动态增长的）&lt;/li&gt;
+&lt;li&gt;StkId stack：栈底&lt;/li&gt;
+&lt;li&gt;CallInfo *end_ci：指向函数调用栈的栈顶&lt;/li&gt;
+&lt;li&gt;CallInfo *base_ci：指向函数调用栈的栈底&lt;/li&gt;
+&lt;li&gt;int stacksize：栈的大小&lt;/li&gt;
+&lt;li&gt;int size_ci：函数调用栈的大小&lt;/li&gt;
+&lt;li&gt;unsigned short nCcalls：当前C函数的调用的深度&lt;/li&gt;
+&lt;li&gt;unsigned short baseCcalls：用于记录每个线程状态的C函数调用深度的辅助成员&lt;/li&gt;
+&lt;li&gt;lu_byte hookmask：支持哪些hook能力，有下列可选的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-06.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lu_byte allowhook：是否允许hook&lt;/li&gt;
+&lt;li&gt;int basehookcount：用户设置的执行指令数(LUA_MASKCOUNT下有效)&lt;/li&gt;
+&lt;li&gt;int hookcount：运行时，跑了多少条指令（LUA_MASKCOUNT下有效）&lt;/li&gt;
+&lt;li&gt;lua_Hook：用户注册的hook回调函数&lt;/li&gt;
+&lt;li&gt;TValue l_gt：当前线程的全局的环境表&lt;/li&gt;
+&lt;li&gt;TValue env：当前运行的环境表&lt;/li&gt;
+&lt;li&gt;GCObject *openupval、gclist：用于gc，详细将会在GC一章细说&lt;/li&gt;
+&lt;li&gt;struct lua_longjmp *errorJmp：发生错误的长跳转位置，用于记录当函数发生错误时跳转出去的位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-07.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;本系列总结：&lt;/p&gt;
+&lt;p&gt;整个系列文章回答了我们对Lua中最基本的一个问题：“一个Lua变量究竟是什么？”。由此我们深入并引申出各种知识，在脚本中我们觉得弱类型变量用起来很痛快，而其实它的内部实现其实是如此的复杂。&lt;/p&gt;
+&lt;p&gt;对于实现一门脚本语言，必须实现的是解释器、虚拟机、上下文数据3大部分：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaState/lua-state-08.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上下文数据这一层是脚本最基础，最底层的东西，它决定了这门脚本究竟能做什么。抛开解释器和虚拟机，我们依然可以单纯地通过C接口，在C++这一层就能操作脚本的上下文数据。&lt;/p&gt;
+&lt;p&gt;有空再研究一下Lua的GC，解释器等等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/795&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/795&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面各种Lua的数据类型基本都说得差不多了，剩下最后一个数据类型：&lt;strong&gt;lua_State&lt;/strong&gt;，我们可以认为是&lt;strong&gt;”脚本上下文”&lt;/strong&gt;，主要是包括当前脚本环境的运行状态信息，还会有gc相关的信息。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lua数据结构 — Udata（五）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</id>
+    <published>2016-06-09T12:33:43.000Z</published>
+    <updated>2016-06-13T02:18:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;Udata负责存储userdata的数据&lt;/strong&gt;，这部分其实很简单，但是为了保证系列文章的完整性，还是写一篇出来补全。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;下面是Udata的数据结构：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaUdata/lua-udata-01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;意义：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommonHeader：和与TValue中的GCHeader能对应起来的部分&lt;/li&gt;
+&lt;li&gt;metatable：userdata的元表，和table的元表一样的&lt;/li&gt;
+&lt;li&gt;env：创建userdata时，会把当前执行语句的curenv赋给userdata的env，可修改&lt;/li&gt;
+&lt;li&gt;len：使用userdata的时候绑定对象申请的空间大小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;和TString类似，用户绑定的C对象或数据内存紧跟在Udata后面，在luaS_newudata中（lstring.c 96 – 110）有如下代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaUdata/lua-udata-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaUdata/lua-udata-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Udata元表-metable-的作用&quot;&gt;&lt;a href=&quot;#Udata元表-metable-的作用&quot; class=&quot;headerlink&quot; title=&quot;Udata元表(metable)的作用&quot;&gt;&lt;/a&gt;Udata元表(metable)的作用&lt;/h4&gt;&lt;p&gt;如果userdata没有元表，那是使用起来将会很麻烦，有元表，可以在脚本这样写：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaUdata/lua-udata-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从C语言层面来看，myuserdata这个变量其实只是个指针，不像table那样有子元素。但是因为有metatable，由此可以把成员\函数放到这个metatable中，在脚本中可以利用它来实现这个类似table的访问方法。&lt;/p&gt;
+&lt;h4 id=&quot;Udata环境-env-的作用&quot;&gt;&lt;a href=&quot;#Udata环境-env-的作用&quot; class=&quot;headerlink&quot; title=&quot;Udata环境(env)的作用&quot;&gt;&lt;/a&gt;Udata环境(env)的作用&lt;/h4&gt;&lt;p&gt;env这个成员，默认是存储创建userdata时的环境table，而参考Lua官方的文档后，其实这个env成员在Lua中并没有使用，它的值时什么并不影响Lua的运行。&lt;/p&gt;
+&lt;p&gt;这就说明这个成员目前来说是一个用户可以自由操作的table，在&lt;a href=&quot;http://lua-users.org/wiki/UserDataRefinement&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UserDataRefinement&lt;/a&gt;文章中，告诉了我们一些使用的手段。另外一篇文章&lt;a href=&quot;http://lua-users.org/lists/lua-l/2005-08/msg00709.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lua-users.org/lists/lua-l/2005-08/msg00709.html&lt;/a&gt;也对它的使用方法提出了一些建议。&lt;/p&gt;
+&lt;p&gt;我比较赞成后一篇文章的看法，对于Udata来说，metatable是一种静态的类型数据(type-common data)，而env则是实例相关的数据(instance-local data)。当然了，怎么用取决于使用者。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/789&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/789&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Udata负责存储userdata的数据&lt;/strong&gt;，这部分其实很简单，但是为了保证系列文章的完整性，还是写一篇出来补全。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lua数据结构 — 闭包（四）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/</id>
+    <published>2016-06-08T15:06:17.000Z</published>
+    <updated>2016-06-13T02:18:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;前面几篇文章已经说明了Lua里面很常用的几个数据结构，这次要分享的也是常用的数据结构之一 – &lt;strong&gt;函数的结构&lt;/strong&gt;。函数在Lua里也是一种变量，但是它却很特殊，能存储执行语句和被执行，本章主要描述Lua是怎么实现这种函数的。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;在脚本世界里，相信&lt;strong&gt;闭包&lt;/strong&gt;这个词大家也不陌生，闭包是由函数与其相关引用环境组成的实体。可能有点抽象，下面详细说明：&lt;/p&gt;
+&lt;h3 id=&quot;一、-闭包的组成&quot;&gt;&lt;a href=&quot;#一、-闭包的组成&quot; class=&quot;headerlink&quot; title=&quot;一、 闭包的组成&quot;&gt;&lt;/a&gt;一、 闭包的组成&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;闭包主要由以下2个元素组成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：上图意在表明是一段可执行代码。在Lua中可以是lua_CFunction，也可以是lua自身的虚拟机指令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上下文环境&lt;/strong&gt;：在Lua里主要是Upvalues和env，下面会有说明Upvalues和env。 在Lua里，我们也从闭包开始，逐步看出整个结构模型，下面是Closure的数据结构：(lobject.h 291-312)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;不难发现，Lua的闭包分成2类，一类是CClosure，即&lt;strong&gt;luaC函数的闭包&lt;/strong&gt;。另一类是LClosure，是&lt;strong&gt;Lua里面原生的函数的闭包&lt;/strong&gt;。下面先讨论2者都有相同部分ClosureHeader：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommonHeader：和与TValue中的GCHeader能对应起来的部分&lt;/li&gt;
+&lt;li&gt;isC：是否CClosure&lt;/li&gt;
+&lt;li&gt;nupvalues：外部对象个数&lt;/li&gt;
+&lt;li&gt;gclist：用于GC销毁，超出本章话题，在GC章节将详细说明&lt;/li&gt;
+&lt;li&gt;env：函数的运行环境，下面会有补充说明&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于CClosure数据结构：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;lua_CFunction f：函数指针，指向自定义的C函数&lt;/li&gt;
+&lt;li&gt;TValue upvalue[1]：C的闭包中，用户绑定的任意数量个upvalue&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于LClosure数据结构：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Proto *p：Lua的函数原型，在下面会有详细说明&lt;/li&gt;
+&lt;li&gt;UpVal *upvals：Lua的函数upvalue，这里的类型是UpVal，这个数据结构下面会详细说明，这里之所以不直接用TValue是因为具体实现需要一些额外数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;二、-闭包的UpVal实现&quot;&gt;&lt;a href=&quot;#二、-闭包的UpVal实现&quot; class=&quot;headerlink&quot; title=&quot;二、 闭包的UpVal实现&quot;&gt;&lt;/a&gt;二、 闭包的UpVal实现&lt;/h3&gt;&lt;p&gt;究竟什么是UpVal呢？先来看看代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;分析一下上面这段代码，最终testB的值显然是3+5+10=18。当调用testA(5)的时候，其实是在调用FuncB(5)，但是这个FuncB知道a = 3，这个是由&lt;strong&gt;FuncA调用时&lt;/strong&gt;，记录到FuncB的&lt;strong&gt;外部变量&lt;/strong&gt;，我们把a和c称为FuncB的upvalue。那么Lua是如何实现upvalue的呢？ 以上面这段代码为例，从虚拟机的角度去分析实现流程：&lt;/p&gt;
+&lt;p&gt;1) FuncA(3)执行流程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把3这个常量放到栈顶，执行FuncA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机操作：（帮助理解，与真实值有差别）&lt;/p&gt;
+&lt;p&gt;LOADK top 3                //把3这个常量放到栈顶&lt;br&gt;CALL  top FuncA nresults  //调用对应的FuncA函数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;虚拟机的&lt;strong&gt;pc已经在FuncA里面&lt;/strong&gt;了，FuncA中的&lt;strong&gt;局部变量都是放到栈中的&lt;/strong&gt;，所以第一句loacl c = 10是把10放到栈顶（这里假设先放到栈顶简化一些复杂细节问题，下同）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机操作：&lt;/p&gt;
+&lt;p&gt;LOADK top 10                //local c = 10&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遇到Function FuncB这个语句，会&lt;strong&gt;生成FuncB的闭包&lt;/strong&gt;，这个过程同时会绑定upval到这个闭包上，但这是值还在栈上，&lt;strong&gt;upval只是个指针&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-06.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面生成一个闭包之后，因为在Lua里，函数也是一个变量，上面的语句等价于&lt;strong&gt;local FuncB = function() … end&lt;/strong&gt;，所以也会生成一个临时的FuncB到栈顶。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-07.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-08.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最后return FuncB，就会把这个&lt;strong&gt;闭包关闭&lt;/strong&gt;并返回出去，同时会把所有的upval进行unlink操作，让&lt;strong&gt;upval本身保存值&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-09.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-10.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2) FuncB的执行过程&lt;/p&gt;
+&lt;p&gt;到了FuncB执行的时候，参数b=5已经放到栈顶，然后执行FuncB。语句比较简单和容易理解，return a+b+c 虚拟机操作如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-11.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;到这里UpVal的创建和使用也在上面给出事例说明，总结一下UpVal的实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UpVal是在函数&lt;strong&gt;闭包生成的时候（运行到function时）绑定&lt;/strong&gt;的。&lt;/li&gt;
+&lt;li&gt;UpVal在&lt;strong&gt;闭包还没关闭前&lt;/strong&gt;（即函数返回前），是&lt;strong&gt;对栈的引用&lt;/strong&gt;，这样做的目的是可以在函数里修改对应的值从而修改UpVal的值，比如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;lua code:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;闭包关闭后&lt;/strong&gt;（即函数退出后），UpVal不再是指针，而是&lt;strong&gt;值&lt;/strong&gt;。 知道UpVal的原理后，就只需要简要叙述一下UpVal的数据结构：（lobject.h 274 – 284）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-13.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommHeader： UpVal也是可回收的类型，一般有的CommHeader也会有&lt;/li&gt;
+&lt;li&gt;TValue* v：当函数打开时是指向对应stack位置值，当关闭后则指向自己&lt;/li&gt;
+&lt;li&gt;TValue value：函数关闭后保存的值&lt;/li&gt;
+&lt;li&gt;UpVal&lt;em&gt; prev、UpVal&lt;/em&gt; next：用于GC，全局绑定的一条UpVal回收链表&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;三、-函数原型&quot;&gt;&lt;a href=&quot;#三、-函数原型&quot; class=&quot;headerlink&quot; title=&quot;三、 函数原型&quot;&gt;&lt;/a&gt;三、 函数原型&lt;/h3&gt;&lt;p&gt;之前说的，函数原型是表明一段可执行的代码或者操作指令。在绑定到Lua空间的C函数，&lt;strong&gt;函数原型就是lua_CFunction的一个函数指针&lt;/strong&gt;，指向用户绑定的C函数。下面描述一下&lt;strong&gt;Lua中的原生函数的函数原型&lt;/strong&gt;，即&lt;strong&gt;Proto数据结构&lt;/strong&gt;（lobject.h 231-253）：&lt;/p&gt;
+&lt;p&gt;引用内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-14.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommonHeader：Proto也是需要回收的对象，也会有与GCHeader对应的CommonHeader&lt;/li&gt;
+&lt;li&gt;TValue* k：函数使用的常量数组，比如local d = 10，则会有一个10的数值常量&lt;/li&gt;
+&lt;li&gt;Instruction *code：虚拟机指令码数组&lt;/li&gt;
+&lt;li&gt;Proto **p：函数里定义的函数的函数原型，比如funcA里定义了funcB，在funcA的5. Proto中，这个指针的[0]会指向funcB的Proto&lt;/li&gt;
+&lt;li&gt;int *lineinfo：主要用于调试，每个操作码所对应的行号&lt;/li&gt;
+&lt;li&gt;LocVar *locvars：主要用于调试，记录每个本地变量的名称和作用范围&lt;/li&gt;
+&lt;li&gt;TString **upvalues：一来用于调试，二来用于给API使用，记录所有upvalues的名称&lt;/li&gt;
+&lt;li&gt;TString *source：用于调试，函数来源，如c:\t1.lua@ main&lt;/li&gt;
+&lt;li&gt;sizeupvalues： upvalues名称的数组长度&lt;/li&gt;
+&lt;li&gt;sizek：常量数组长度&lt;/li&gt;
+&lt;li&gt;sizecode：code数组长度&lt;/li&gt;
+&lt;li&gt;sizelineinfo：lineinfo数组长度&lt;/li&gt;
+&lt;li&gt;sizep：p数组长度&lt;/li&gt;
+&lt;li&gt;sizelocvars：locvars数组长度&lt;/li&gt;
+&lt;li&gt;linedefined：函数定义起始行号，即function语句行号&lt;/li&gt;
+&lt;li&gt;lastlinedefined：函数结束行号，即end语句行号&lt;/li&gt;
+&lt;li&gt;gclist：用于回收&lt;/li&gt;
+&lt;li&gt;nups：upvalue的个数，其实在Closure里也有nupvalues，这里我也不太清楚为什么要弄两个，nups是语法分析时会生成的，而nupvalues是动态计算的。&lt;/li&gt;
+&lt;li&gt;numparams：参数个数&lt;/li&gt;
+&lt;li&gt;is_vararg：是否参数是”…”（可变参数传递）&lt;/li&gt;
+&lt;li&gt;maxstacksize：函数所使用的stacksize&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Proto的所有参数都是在&lt;strong&gt;语法分析和中间代码生成时获取的&lt;/strong&gt;，相当于编译出来的汇编码一样是不会变的，动态性是在Closure中体现的。&lt;/p&gt;
+&lt;h3 id=&quot;四、-闭包运行环境&quot;&gt;&lt;a href=&quot;#四、-闭包运行环境&quot; class=&quot;headerlink&quot; title=&quot;四、 闭包运行环境&quot;&gt;&lt;/a&gt;四、 闭包运行环境&lt;/h3&gt;&lt;p&gt;在前面说到的闭包数据结构中，有一个成员env，是一个Table*指针，用于指向当前闭包运行环境的Table。&lt;/p&gt;
+&lt;p&gt;什么是闭包运行环境呢？以下面代码举例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-15.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面代码中的d = 20，其实就是在&lt;strong&gt;环境变量中取env[“d”]&lt;/strong&gt;，所以env一定是个table，而当定义了本地变量之后，之后的所有变量都对从本地变量中操作。&lt;/p&gt;
+&lt;h3 id=&quot;五、-函数调用信息&quot;&gt;&lt;a href=&quot;#五、-函数调用信息&quot; class=&quot;headerlink&quot; title=&quot;五、 函数调用信息&quot;&gt;&lt;/a&gt;五、 函数调用信息&lt;/h3&gt;&lt;p&gt;函数调用相当于一个&lt;strong&gt;状态信息&lt;/strong&gt;，每次函数调用都会生成一个状态，比如递归调用，则会有一个栈去记录每个函数调用状态信息，比如说下面这段没有意义的代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-16.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;那么每次调用将会生成一个调用状态信息，上面代码会无限生成下去：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-17.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;究竟一个CallInfo要记录哪些状态信息呢？下面来看看CallInfo的数据结构：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-18.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Instruction *savedpc：如果这个调用被中断，则用于记录当前闭包执行到的pc位置&lt;/li&gt;
+&lt;li&gt;nresults：返回值个数，-1为任意返回个数&lt;/li&gt;
+&lt;li&gt;tailcalls：用于调试，记录尾调用次数信息，关于尾调用下面会有详细解释&lt;/li&gt;
+&lt;li&gt;base、func、top：如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-19.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;六、-函数调用的栈操作&quot;&gt;&lt;a href=&quot;#六、-函数调用的栈操作&quot; class=&quot;headerlink&quot; title=&quot;六、 函数调用的栈操作&quot;&gt;&lt;/a&gt;六、 函数调用的栈操作&lt;/h3&gt;&lt;p&gt;上面描述的CallInfo信息，具体整个流程是怎么走的，结合下面代码详细地叙述整个调用过程，栈是怎么变化的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-20.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;假设现在走到了funcA(30, 40)这个语句，在执行前已经存在了global这个闭包和funcA这个闭包，在调用global这个闭包时，已经生成了一个global的CallInfo。&lt;/p&gt;
+&lt;p&gt;1） 函数调用的栈操作：（OP_CALL lvm.c 582-601）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;global的CallInfo信息记录，并把funcA放到栈顶&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-21.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当前虚拟机的pc指针，指向global函数原型中的CALL指令，这时global的CallInfo的savedpc就会保存当前pc。然后会把要执行的funcA的闭包放到栈顶。 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参数分别放到栈顶（从左到右分别进栈），生成funcA的CallInfo，并把完成对应CallInfo栈操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-22.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置虚拟机pc到funcA闭包第一条虚拟机Instruction，并继续执行虚拟机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-23.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2） 函数返回的栈操作：（OP_RETURN lvm.c 635-648）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;记录第一个返回值的位置到firstResult，把栈中的funcA位置设置为base和top&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-24.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把返回值根据nresult参数重新push到栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-25.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从全局CallInfo栈弹出funcA，并还原虚拟机pc到global的savedpc和栈信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-26.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;继续执行虚拟机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;七、-尾调用（TAILCALL）&quot;&gt;&lt;a href=&quot;#七、-尾调用（TAILCALL）&quot; class=&quot;headerlink&quot; title=&quot;七、 尾调用（TAILCALL）&quot;&gt;&lt;/a&gt;七、 尾调用（TAILCALL）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-27.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;尾调用是一种对函数解释的优化方法&lt;/strong&gt;，对于上面代码，改造成下面代码后，则不会出现stack overflow：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-28.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面的Recursion方法不会出现stack overflow错误，也能顺利算出Recursion(20000) = 200010000。尾调用的使用方法十分简单，就是&lt;strong&gt;在return后直接调用函数，不能有其它操作&lt;/strong&gt;，这样的写法即会进入尾调用方式。&lt;/p&gt;
+&lt;p&gt;那究竟lua是如何实现这种尾调用优化的呢？尾调用是在编译时分析出来的，有独立的操作码OP_TAILCALL，在虚拟机中的执行代码在lvm.c 603-634，具体原理如下：&lt;/p&gt;
+&lt;p&gt;1）首先像普通调用一样，准备调用Recursion函数&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-29.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2）关闭Recursion1的调用状态，把Recursion2的对应栈数据下移，然后重新执行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaClosure/lua-closure-30.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;本质优化思想：&lt;strong&gt;先关闭前一个函数，销毁CallInfo，再调用新的CallInfo，这样就会避免全局CallInfo栈溢出&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;八、-总结&quot;&gt;&lt;a href=&quot;#八、-总结&quot; class=&quot;headerlink&quot; title=&quot;八、 总结&quot;&gt;&lt;/a&gt;八、 总结&lt;/h3&gt;&lt;p&gt;本文讨论了闭包、UpVal、函数原型、环境、栈操作、尾调用等相关知识，基本上把大部分的知识点和细节也囊括了，另外还有2大块知识：函数原型的生成和闭包GC可能迟些再分享。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/845&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/845&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面几篇文章已经说明了Lua里面很常用的几个数据结构，这次要分享的也是常用的数据结构之一 – &lt;strong&gt;函数的结构&lt;/strong&gt;。函数在Lua里也是一种变量，但是它却很特殊，能存储执行语句和被执行，本章主要描述Lua是怎么实现这种函数的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lua数据结构 — Table（三）</title>
+    <link href="http://blog.keepmovingxin.com/2016/06/07/Lua-Table/"/>
+    <id>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</id>
+    <published>2016-06-07T14:15:39.000Z</published>
+    <updated>2016-06-13T02:18:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;前面（一）、（二）里面其实已经把一些常用的数据类型（数值、布尔、字符串）说明了，这次要描述的是Table，Table在Lua里是一种常用的数据类型，是Lua里的精髓之一，其效率必须得到保证，而实现这种支持任意类型key和value的Table也是较为复杂的。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;一、-Table的设计思想&quot;&gt;&lt;a href=&quot;#一、-Table的设计思想&quot; class=&quot;headerlink&quot; title=&quot;一、 Table的设计思想&quot;&gt;&lt;/a&gt;一、 Table的设计思想&lt;/h3&gt;&lt;p&gt;1、 首先，讲一下Lua要设计的Table是怎么样子的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Lua就是想做这种支持任意类型的key和任意类型val的table，并且要&lt;strong&gt;高效和节约内存&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;2、 基本的实现（基于链表的实现）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;基于链表的实现是最简单的，其实map就可以了，这样实现是最容易的。但当遇到很多key的数组（如t[0]、t[1]、t[2]。。这种数值索引大数组）时，明明&lt;strong&gt;可以用O(1)查找的，却要O(n)去查找&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;3、 区分数字key和其它类型的key&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;经过改良的Table，除了有key链表之外，还有一个&lt;strong&gt;数组array专门存放key为数值的val&lt;/strong&gt;。但是这种情况下，要保证数值部分是连续且从0开始的，如果出现&lt;strong&gt;t[100000000] = 1&lt;/strong&gt;，则把这个离散的数据放到链表中：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;4、 利用哈希表再度优化&lt;/p&gt;
+&lt;p&gt;区分了array和head之后，始终有个问题，对于链表部分的数据，查找始终是O(n)的，有没有办法优化这部分代码呢，在Lua里，利用哈希表再对这部分的Node进行查找。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;每次计算一个key的哈希值是非常快的，哈希后直接映射到hashlist的某个位置。这里已经很接近Lua Table的最终设计，但是这种方法仍然有个弊端，哈希表的大小无法较好地估计，hashlist的长度可能是一个固定的长度，无法动态扩容。&lt;/p&gt;
+&lt;p&gt;5、 动态扩容的Table设计&lt;/p&gt;
+&lt;p&gt;下面用例子展示一下动态扩容的Table设计&lt;/p&gt;
+&lt;p&gt;1） 如下图，现在初始状态下，只有[0]被使用了，里面放着A，其它都是空：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-06.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2） 现在要&lt;strong&gt;插入一个新的元素B&lt;/strong&gt;，计算出其&lt;strong&gt;哈希值是0&lt;/strong&gt;，即是说应该插入到节点[0]。这个时候发现节点&lt;strong&gt;[0]已经被使用&lt;/strong&gt;，则会分配最后一个空闲块lastfree给这个元素B，然后node[0]的next指向node[3]，即：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-07.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3） 然后再&lt;strong&gt;插入一个新的nodeC&lt;/strong&gt;，计算出其哈希值是3，即是说应该插入到node[3]。这个时候发现&lt;strong&gt;node[3]已经被使用&lt;/strong&gt;，但是&lt;strong&gt;元素B的哈希值是0&lt;/strong&gt;，即本来应该插入到node[0]的，于是&lt;strong&gt;把node[3]的内容移到lastfree&lt;/strong&gt;，然后&lt;strong&gt;再在node[3]插入新的nodeC&lt;/strong&gt;，即：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-08.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;4） 这是如果再往Table插入一个元素D，那么必然最后一个空闲块会被使用完，那么就会把nodelist的大小扩大一倍，并且重新计算每个元素的哈希值并重新插值，可能的结果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-09.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在最后一步的重新计算哈希值，不仅重新计算nodelist的哈希值，也会重新计算arraylist的哈希值，arraylist也是会动态扩大的，这就是lua中table的设计。&lt;/p&gt;
+&lt;h3 id=&quot;二、-Lua里面的实现&quot;&gt;&lt;a href=&quot;#二、-Lua里面的实现&quot; class=&quot;headerlink&quot; title=&quot;二、 Lua里面的实现&quot;&gt;&lt;/a&gt;二、 Lua里面的实现&lt;/h3&gt;&lt;p&gt;Table相关数据结构关系图如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-10.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上图中有Table、Node、TKey这3个数据结构，不用急，我们先从简单的入手，看看&lt;strong&gt;Node数据结构&lt;/strong&gt;：（lobject.h 332-335）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-11.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Node就是设计思想里的key、value数据结构，包含ikey和ival两个成员，这2个成员很好理解，一个就是table的key，另一个就是这个key的value。ival是一般值的TValue类型，而ikey的TKey类型的。可以看到Node并没有next指针，&lt;strong&gt;其实它把next指针藏在TKey下面了&lt;/strong&gt;，请看TKey数据结构：（lobject.h 319-329）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到TKey其实是一个支持TValue的数据结构外，还&lt;strong&gt;多了一个next指针&lt;/strong&gt;。这个next指针就是用作&lt;strong&gt;同一个hash值下冲突时的链表指针&lt;/strong&gt;。明白了Node结构之后，接下来看看Table数据结构：（lobject.h 338-348）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-13.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;每个字段意义如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CommonHeader：与TValue中的GCHeader能对应起来的部分&lt;/li&gt;
+&lt;li&gt;flags：用于元表元方法的一些优化手段，一共有8位用于标记是否没有某个元方法&lt;/li&gt;
+&lt;li&gt;lsizenode：用于表示node的长度，如下图所示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-14.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;node成员其实是上面讨论的hashlist成员，是一个固定长度大小的数组，但是lsizenode的数据类型是lu_byte，只有一个字节长，&lt;strong&gt;表示范围只有0~255&lt;/strong&gt;，一般数组大小都会很大，所以这里lsizenode用于&lt;strong&gt;表示整体长度的log2值&lt;/strong&gt;，同时也表明了，&lt;strong&gt;hashlist的长度是2的幂，每次增长都会×2&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;metatable：元表指针&lt;/li&gt;
+&lt;li&gt;array：这个成员就是上面讨论的array，用于给数值的索引&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-15.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node：上面提到的hashlist成员&lt;/li&gt;
+&lt;li&gt;lastfree：lastfree就是链表的最后一个空元素&lt;/li&gt;
+&lt;li&gt;gclist：用于gc的，以后会有专门对GC的详细讨论&lt;/li&gt;
+&lt;li&gt;sizearray：array数组的大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;离散数值key存储的实现：&lt;/p&gt;
+&lt;p&gt;在luaH_getnum（ltable.c 432-449）函数中，实现了对数值key的获取，可以看到第一个判断：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-16.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;即&lt;strong&gt;如果key在sizearray的范围内，则直接用t-&amp;gt;array成员来存储，如果不是则计算key的哈希值，然后放到node里&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;还有一种情况，就是如果对某个连续数值的table赋值：t[2] = nil，那是否从2到后面的key都会马上放到哈希表里呢？答案是否定的，不会马上做，等到做完gc后，会进行table的resize。&lt;/p&gt;
+&lt;p&gt;Table的Rehash（重新计算大小）：&lt;/p&gt;
+&lt;p&gt;1） &lt;strong&gt;rehash的时机&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;在newkey(ltable.c 399-429)函数中可以看到&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-17.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;n是hashlist中的一个没使用的节点，&lt;strong&gt;当没有空余节点的时候&lt;/strong&gt;，就会调用rehash进行grow table，这个可以参考本文上面说到的动态扩容章节。&lt;/p&gt;
+&lt;p&gt;2） &lt;strong&gt;rehash函数(ltable.c 333-349)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;table的这个rehash操作，代码不多，但是却十分复杂，接下来我们分解一下它所做的事：&lt;/p&gt;
+&lt;p&gt;a． 计算使用数值作为key的元素数量na、计算实际为数组申请的空间大小nasize、计算hashlist的元素数量nhsize。 这里有点模糊，na和nasize的关系，下面写个例子更好说明一下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-18.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;没错，nasize一定要是2的幂，computesizes(ltable.c 189-208)通过特定算法，高效地计算出实际要使用的数组大小，举下面例子说明一下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-19.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;lua其实是用了一个条件来决定数组部分大小的：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果数值key的元素个数大于对应个数幂大小的一半，则生成对应幂长度的数组链表&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;很抽象，还是拿上面的例子来说明：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-20.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;整体算法如上图所示，还是挺精致的，不太懂用语言描述，可以想象一个元素如果拥有tbl[10]到tbl[50]，那么这个arraylist的长度是64，中间可能会多&lt;strong&gt;生成1~10和50~64这个区间的数组&lt;/strong&gt;，但是这种方法既能动态扩容，又能提升效率，牺牲一点点还是值得的。&lt;/p&gt;
+&lt;p&gt;b． resize(ltable.c 300-327)函数，根据前面计算出来的nasize和nhsize，realloc对应数组的大小，并对其中的元素重新计算哈希值和赋值。&lt;/p&gt;
+&lt;p&gt;哈希的实现：&lt;/p&gt;
+&lt;p&gt;主要可以看到mainposition（ltable.c 96-113）函数，用于计算哈希然后快速定位到某个Node上面，可以看到它根据不同类型有不同的哈希计算：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-21.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;元表的实现：&lt;/p&gt;
+&lt;p&gt;元表是metatable，可以绑定metatable的对象在lua中只有table和userdata。这里讨论的是table中的metatable，在userdata中的其实也一样。我们看到Table数据结构里的struct Table* metatable指针，下面以index操作为例，其它的话其实也一样：&lt;/p&gt;
+&lt;p&gt;看luaV_gettable(lvm.c 108-131)，我们可以看到在取一个对应key后会有判断：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/luaTable/lua-table-22.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这个判断其实就是看看返回结果如果是空，就会去&lt;strong&gt;取元表的__index对象&lt;/strong&gt;，取回来之后，下次循环就再次用这个tm来取key，如果在tm上找不到对应key，而且tm又有metatable，&lt;strong&gt;就会一直循环下去&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这里fasttm做了一些优化，其实就是先用h-&amp;gt;metatable的&lt;strong&gt;flags成员去判断是否存在__index元方法&lt;/strong&gt;，如果不存在马上返回。flags只有8位，用于存储常用的元操作，可以在ltm.h 18-37看到，快速操作的常用元方法是&lt;strong&gt;index&lt;/strong&gt; 、newindex、&lt;strong&gt;gc&lt;/strong&gt;、mode、__eq，说明flags还有3位没用到。&lt;/p&gt;
+&lt;p&gt;循环有个MAXTAGLOOP，这里其实限制了元表的深度不能超过100（其实超过5个深度的元表已经很恐怖了）。元操作对象的获取方法其实是luaTgettm（ltm.c 50-58）和luaTgettmbyobj（ltm.c 61-74）&lt;/p&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;p&gt;对于Table，还有个弱表的特性，这个留待在说gc的时候再详细讨论。其实Table的实现还是挺多细节的，不过主要的思想和处理都说了（除了gc）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/787&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/787&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面（一）、（二）里面其实已经把一些常用的数据类型（数值、布尔、字符串）说明了，这次要描述的是Table，Table在Lua里是一种常用的数据类型，是Lua里的精髓之一，其效率必须得到保证，而实现这种支持任意类型key和value的Table也是较为复杂的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://blog.keepmovingxin.com/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Lua" scheme="http://blog.keepmovingxin.com/tags/Lua/"/>
+    
+      <category term="Lua数据结构" scheme="http://blog.keepmovingxin.com/tags/Lua%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Lua数据结构 — TString（二）</title>
@@ -87,11 +529,11 @@
   </entry>
   
   <entry>
-    <title>Lua数据结构 —TValue（一）</title>
+    <title>Lua数据结构 — TValue（一）</title>
     <link href="http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/"/>
     <id>http://blog.keepmovingxin.com/2016/06/05/Lua-TValue/</id>
     <published>2016-06-05T14:06:28.000Z</published>
-    <updated>2016-06-07T11:27:43.000Z</updated>
+    <updated>2016-06-13T04:01:58.000Z</updated>
     
     <content type="html">&lt;p&gt;数据结构的设计，在一定程度上奠定了整个系统的设计，所以决定写一个对Lua主要数据结构的分析文章，本来打算写一篇就好了，但是每个数据类型其实都有点复杂，一篇的话篇幅太长，所以就拆开几篇来写了。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
