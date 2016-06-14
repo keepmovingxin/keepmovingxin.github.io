@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaClosure/lua-closure-29.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaClosure/lua-closure-30.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2016-06-13T02:18:12.000Z">
+<meta property="og:updated_time" content="2016-06-14T09:39:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lua数据结构 — 闭包（四）">
 <meta name="twitter:description" content="前面几篇文章已经说明了Lua里面很常用的几个数据结构，这次要分享的也是常用的数据结构之一 – 函数的结构。函数在Lua里也是一种变量，但是它却很特殊，能存储执行语句和被执行，本章主要描述Lua是怎么实现这种函数的。">
@@ -236,7 +236,7 @@ var _hmt = _hmt || [];
 <li>CommHeader： UpVal也是可回收的类型，一般有的CommHeader也会有</li>
 <li>TValue* v：当函数打开时是指向对应stack位置值，当关闭后则指向自己</li>
 <li>TValue value：函数关闭后保存的值</li>
-<li>UpVal<em> prev、UpVal</em> next：用于GC，全局绑定的一条UpVal回收链表</li>
+<li>UpVal* prev、UpVal* next：用于GC，全局绑定的一条UpVal回收链表</li>
 </ol>
 <h3 id="三、-函数原型"><a href="#三、-函数原型" class="headerlink" title="三、 函数原型"></a>三、 函数原型</h3><p>之前说的，函数原型是表明一段可执行的代码或者操作指令。在绑定到Lua空间的C函数，<strong>函数原型就是lua_CFunction的一个函数指针</strong>，指向用户绑定的C函数。下面描述一下<strong>Lua中的原生函数的函数原型</strong>，即<strong>Proto数据结构</strong>（lobject.h 231-253）：</p>
 <p>引用内容：</p>
@@ -333,7 +333,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/" data-id="cipdhu9nu000e7tw8b4pbefzx" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/" data-id="cipfawak9000b24w820udgfm3" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua数据结构/">Lua数据结构</a></li></ul>
