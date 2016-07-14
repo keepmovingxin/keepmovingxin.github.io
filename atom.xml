@@ -1436,7 +1436,7 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-06-06T02:18:06.000Z</updated>
+    <updated>2016-07-14T03:40:38.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;br&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -1668,6 +1668,20 @@ find . –type d –maxdepth 1 –print
 -d delim 分隔符，默认的xargs分隔符是回车，argument的分隔符是空格，这里修改的是xargs的分隔符
 -x      exit的意思，如果有任何 Command 行大于 -s Size 标志指定的字节数，停止运行 xargs 命令，-L -I -n 默认打开-x参数，主要是配合-s使用
 -P      修改最大的进程数，默认是1，为0时候为as many as it can.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;which-查看可执行文件的位置&quot;&gt;&lt;a href=&quot;#which-查看可执行文件的位置&quot; class=&quot;headerlink&quot; title=&quot;which 查看可执行文件的位置&quot;&gt;&lt;/a&gt;which 查看可执行文件的位置&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;功能说明&lt;/strong&gt;：查找可执行文件。&lt;br&gt;&lt;strong&gt;语　　法&lt;/strong&gt;：which [文件…]&lt;br&gt;&lt;strong&gt;补充说明&lt;/strong&gt;：which指令会在环境变量$PATH设置的目录里查找符合条件的文件。&lt;br&gt;&lt;strong&gt;参　　数&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-n&amp;lt;文件名长度&amp;gt; 　指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。
+-p&amp;lt;文件名长度&amp;gt; 　与-n参数相同，但此处的&amp;lt;文件名长度&amp;gt;包括了文件的路径。
+-w 　指定输出时栏位的宽度。
+-V 　显示版本信息
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;whereis-查看文件的位置&quot;&gt;&lt;a href=&quot;#whereis-查看文件的位置&quot; class=&quot;headerlink&quot; title=&quot;whereis 查看文件的位置&quot;&gt;&lt;/a&gt;whereis 查看文件的位置&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;功能说明&lt;/strong&gt;：查找文件。&lt;br&gt;&lt;strong&gt;语　　法&lt;/strong&gt;：whereis [-bfmsu][-B &amp;lt;目录&amp;gt;…][-M &amp;lt;目录&amp;gt;…][-S &amp;lt;目录&amp;gt;…][文件…]&lt;br&gt;&lt;strong&gt;补充说明&lt;/strong&gt;：whereis指令会在特定目录中查找符合条件的文件。这些文件的属性应属于原始代码，二进制文件，或是帮助文件。&lt;br&gt;&lt;strong&gt;参　　数&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-b 　只查找二进制文件。
+-B&amp;lt;目录&amp;gt; 　只在设置的目录下查找二进制文件。
+-f 　不显示文件名前的路径名称。
+-m 　只查找说明文件。
+-M&amp;lt;目录&amp;gt; 　只在设置的目录下查找说明文件。
+-s 　只查找原始代码文件。
+-S&amp;lt;目录&amp;gt; 　只在设置的目录下查找原始代码文件。
+-u 　查找不包含指定类型的文件。
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 &lt;hr&gt;
