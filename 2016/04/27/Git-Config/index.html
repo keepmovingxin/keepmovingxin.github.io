@@ -13,13 +13,11 @@
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="git config命令的基本使用
 配置文件如何生效对于 git 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的">
-<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Config命令查看配置文件">
 <meta name="twitter:description" content="git config命令的基本使用
 配置文件如何生效对于 git 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的">
-<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -143,13 +141,11 @@ var _hmt = _hmt || [];
 <p>执行这个命令的时候，git 会用配置文件中设定的编辑器打开配置文件。</p>
 <h3 id="增加一个配置项"><a href="#增加一个配置项" class="headerlink" title="增加一个配置项"></a>增加一个配置项</h3><p>参数 –add<br>格式: <code>git config [–local|–global|–system] –add section.key value</code> (默认是添加在 local 配置中)<br>注意 add 后面的 section,key,value 一项都不能少，否则添加失败。比如我们执行：<code>git config –add man.name jim</code></p>
 <h3 id="获取一个配置项"><a href="#获取一个配置项" class="headerlink" title="获取一个配置项"></a>获取一个配置项</h3><p>有时候，我们并不需要查看所有配置的值，而是查看某个配置项的值，怎么做呢？<br>命令参数 –get<br>格式：<code>git config [–local|–global|–system] –get section.key</code> (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 <code>git config –get man.name</code> 看看得到的是什么</p>
-<hr>
-<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="ciqlrs5yv000meqw8xqhr2saf" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="ciqxghmz20003rww8c45yuwfy" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>

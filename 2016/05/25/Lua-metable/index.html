@@ -13,13 +13,11 @@ metatable一个 metatable 可以控制一个对象做数学运算操作、比较
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="参考lua手册，metatable是被译作元表，Lua 中的每个值都可以用一个 metatable。这个 metatable 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。
 metatable一个 metatable 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 userdata 作垃圾收">
-<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-01T03:25:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解Lua metatable 元表">
 <meta name="twitter:description" content="参考lua手册，metatable是被译作元表，Lua 中的每个值都可以用一个 metatable。这个 metatable 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。
 metatable一个 metatable 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 userdata 作垃圾收">
-<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -170,13 +168,11 @@ var _hmt = _hmt || [];
 </ol>
 <p>Read-only table 代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function readOnly(t)</span><br><span class="line">    local proxy = &#123;&#125;</span><br><span class="line">    local mt = &#123;</span><br><span class="line">        __index = t,</span><br><span class="line">        __newindex = function(t, k, v)</span><br><span class="line">            error(&apos;attempt to update a read-only table&apos;, 2)</span><br><span class="line">        end</span><br><span class="line">    &#125;</span><br><span class="line">    setmetatable(proxy, mt)</span><br><span class="line">    return proxy</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">days = readOnly&#123;&apos;Sun&apos;, &apos;Mon&apos;, &apos;Tues&apos;, &apos;Wed&apos;, &apos;Thur&apos;, &apos;Fri&apos;, &apos;Sat&apos;&#125;</span><br><span class="line"></span><br><span class="line">print(days[1])</span><br><span class="line">days[2] = &apos;Noday&apos; --&gt; stdin:1: attempt to update a read-only table</span><br></pre></td></tr></table></figure></p>
 <p>有时候，我们需要为 table 设定一个唯一的 key，那么可以使用这样的技巧，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local key = &#123;&#125; -- unique key</span><br><span class="line">local t = &#123;&#125;</span><br><span class="line">t[key] = value</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/25/Lua-metable/" data-id="ciqlrs5zs001eeqw8xzm70due" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/25/Lua-metable/" data-id="ciqxghn0m0018rww853cno161" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li></ul>
