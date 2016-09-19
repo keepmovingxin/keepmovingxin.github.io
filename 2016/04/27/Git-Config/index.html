@@ -13,11 +13,13 @@
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="git config命令的基本使用
 配置文件如何生效对于 git 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Config命令查看配置文件">
 <meta name="twitter:description" content="git config命令的基本使用
 配置文件如何生效对于 git 来说，配置文件的权重是 仓库&amp;gt;全局&amp;gt;系统。Git 会使用这一系列的配置文件来存储你定义的偏好，它首先会查找 /etc/gitconfig 文件（系统级），该文件含有对系统上所有用户及他们所拥有的仓库都生效的配置值。接下来 Git 会查找每个用户的 ~/.gitconfig 文件（全局级）。最后 Git 会查找由用户定义的">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -26,7 +28,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -141,11 +143,13 @@ var _hmt = _hmt || [];
 <p>执行这个命令的时候，git 会用配置文件中设定的编辑器打开配置文件。</p>
 <h3 id="增加一个配置项"><a href="#增加一个配置项" class="headerlink" title="增加一个配置项"></a>增加一个配置项</h3><p>参数 –add<br>格式: <code>git config [–local|–global|–system] –add section.key value</code> (默认是添加在 local 配置中)<br>注意 add 后面的 section,key,value 一项都不能少，否则添加失败。比如我们执行：<code>git config –add man.name jim</code></p>
 <h3 id="获取一个配置项"><a href="#获取一个配置项" class="headerlink" title="获取一个配置项"></a>获取一个配置项</h3><p>有时候，我们并不需要查看所有配置的值，而是查看某个配置项的值，怎么做呢？<br>命令参数 –get<br>格式：<code>git config [–local|–global|–system] –get section.key</code> (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 <code>git config –get man.name</code> 看看得到的是什么</p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="ciqxghmz20003rww8c45yuwfy" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/27/Git-Config/" data-id="cit9lcm3y000607w8c7zw5af1" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -268,6 +272,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -282,11 +288,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -317,7 +323,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -396,6 +402,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>

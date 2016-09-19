@@ -11,10 +11,12 @@
 <meta property="og:url" content="http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/index.html">
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="1. 实现方法CCGraySprite 继承自 CCSprite 覆盖initWithTexture和draw方法实现置灰。">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocos2d-x使用CCGLProgram和Shader文件实现精灵置灰">
 <meta name="twitter:description" content="1. 实现方法CCGraySprite 继承自 CCSprite 覆盖initWithTexture和draw方法实现置灰。">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -23,7 +25,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -146,11 +148,15 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local nameBgSp = CCGraySprite:create(&quot;images/namebg.png&quot;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local normalSp = CCSprite:create(&quot;images/namebg.png&quot;)</span><br><span class="line">local graySp = CCGraySprite:createWithNodeAndItChild(normalSp)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local frameSp = CCGraySprite:create(&quot;images/frame.png&quot;)</span><br><span class="line">frameSp:setGray(isGray)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+<hr>
+<p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/" data-id="ciqxghn0d000xrww8gk8fx4bo" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/27/cocos2d-x-GraySprite/" data-id="cit9lcm5f001807w87d890d4j" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2d-x/">Cocos2d-x</a></li></ul>
@@ -278,6 +284,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -292,11 +300,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -327,7 +335,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -406,6 +414,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>

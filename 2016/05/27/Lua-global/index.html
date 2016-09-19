@@ -15,12 +15,14 @@
 <meta property="og:description" content="最近项目查了一个问题，最后发现和_G[moduleName]这个置为nil有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。
 全局环境表 _GLua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意_G._G == _G。由于_G是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。
 如_G[varname] = value，更一">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-01T03:24:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lua 全局变量的那些事儿">
 <meta name="twitter:description" content="最近项目查了一个问题，最后发现和_G[moduleName]这个置为nil有关系，找了点资料看看里面的坑还是蛮深的，所以记录一下。
 全局环境表 _GLua把所有的全局变量都放在一个称为全局环境的表_G中，这个表只是个普通的表。注意_G._G == _G。由于_G是一个普通的表，所以提供了以动态名称访问全局变量的形式，这又是Lua的一种对元编程的支持。
 如_G[varname] = value，更一">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -29,7 +31,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -193,11 +195,13 @@ var _hmt = _hmt || [];
 <p>一些有意思的东西是需要你自己摸索的，lua语言自身就很简练，并且所有东西都不是什么神秘的事情，可以通过读源码或者试验摸索得到。</p>
 <p>最后，提一下，<code>lua_state</code>启动后在注册表里<code>LUA_RIDX_GLOBALS</code>下标存放的全局表一定有一个元素是指向自己的，即<code>_G</code>.</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.lua.org/manual/5.1/manual.html" target="_blank" rel="external">https://www.lua.org/manual/5.1/manual.html</a><br><a href="http://www.shouce.ren/api/lua/5/_88.htm" target="_blank" rel="external">http://www.shouce.ren/api/lua/5/_88.htm</a><br><a href="http://blog.csdn.net/leonwei/article/details/7739930" target="_blank" rel="external">http://blog.csdn.net/leonwei/article/details/7739930</a><br><a href="http://blog.aforget.net/shen-ru-luahe-czhi-si/" target="_blank" rel="external">http://blog.aforget.net/shen-ru-luahe-czhi-si/</a></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/27/Lua-global/" data-id="ciqxghn07000nrww83l1o4yjt" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/27/Lua-global/" data-id="cit9lcm4w000t07w8xzdwv6o5" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li></ul>
@@ -325,6 +329,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -339,11 +345,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -374,7 +380,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -453,6 +459,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>

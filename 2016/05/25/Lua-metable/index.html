@@ -13,11 +13,13 @@ metatable一个 metatable 可以控制一个对象做数学运算操作、比较
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="参考lua手册，metatable是被译作元表，Lua 中的每个值都可以用一个 metatable。这个 metatable 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。
 metatable一个 metatable 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 userdata 作垃圾收">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-01T03:25:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解Lua metatable 元表">
 <meta name="twitter:description" content="参考lua手册，metatable是被译作元表，Lua 中的每个值都可以用一个 metatable。这个 metatable 就是一个原始的 Lua table，它用来定义原始值在特定操作下的行为。
 metatable一个 metatable 可以控制一个对象做数学运算操作、比较操作、连接操作、取长度操作、取下标操作时的行为，metatable 中还可以定义一个函数，让 userdata 作垃圾收">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -26,7 +28,7 @@ metatable一个 metatable 可以控制一个对象做数学运算操作、比较
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -168,11 +170,13 @@ var _hmt = _hmt || [];
 </ol>
 <p>Read-only table 代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function readOnly(t)</span><br><span class="line">    local proxy = &#123;&#125;</span><br><span class="line">    local mt = &#123;</span><br><span class="line">        __index = t,</span><br><span class="line">        __newindex = function(t, k, v)</span><br><span class="line">            error(&apos;attempt to update a read-only table&apos;, 2)</span><br><span class="line">        end</span><br><span class="line">    &#125;</span><br><span class="line">    setmetatable(proxy, mt)</span><br><span class="line">    return proxy</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">days = readOnly&#123;&apos;Sun&apos;, &apos;Mon&apos;, &apos;Tues&apos;, &apos;Wed&apos;, &apos;Thur&apos;, &apos;Fri&apos;, &apos;Sat&apos;&#125;</span><br><span class="line"></span><br><span class="line">print(days[1])</span><br><span class="line">days[2] = &apos;Noday&apos; --&gt; stdin:1: attempt to update a read-only table</span><br></pre></td></tr></table></figure></p>
 <p>有时候，我们需要为 table 设定一个唯一的 key，那么可以使用这样的技巧，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local key = &#123;&#125; -- unique key</span><br><span class="line">local t = &#123;&#125;</span><br><span class="line">t[key] = value</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/05/25/Lua-metable/" data-id="ciqxghn0m0018rww853cno161" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/05/25/Lua-metable/" data-id="cit9lcm56001107w88ywr41w5" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li></ul>
@@ -300,6 +304,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -314,11 +320,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -349,7 +355,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -428,6 +434,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>

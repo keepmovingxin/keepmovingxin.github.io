@@ -13,11 +13,13 @@
 <meta property="og:site_name" content="KeepMoving">
 <meta property="og:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
 安装并配置全局变量安装：去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git也可以使用HomeBrew安装：brew install pngquant配置全局变量(使用HomeBrew安装请忽略)：ln –s /下载的位置/pngquant">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-06T02:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用pngquant压缩png图片">
 <meta name="twitter:description" content="项目包体积越来越大，为了压缩包大小找到一个比较好用的png图片压缩工具，在这记录一下。
 安装并配置全局变量安装：去官网下载压缩包 或者 源码: git clone git://github.com/pornel/pngquant.git也可以使用HomeBrew安装：brew install pngquant配置全局变量(使用HomeBrew安装请忽略)：ln –s /下载的位置/pngquant">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
   
@@ -26,7 +28,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -137,11 +139,15 @@ var _hmt = _hmt || [];
 <h3 id="查看帮助信息"><a href="#查看帮助信息" class="headerlink" title="查看帮助信息"></a>查看帮助信息</h3><p>执行 pngquant -h 查看完整选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">--ext new.png</span><br><span class="line">设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。</span><br><span class="line">--quality min-max</span><br><span class="line">使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。</span><br><span class="line">min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。</span><br><span class="line">pngquant --quality=65-80 image.png</span><br><span class="line">--speed N, -sN</span><br><span class="line">速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。</span><br><span class="line">--iebug</span><br><span class="line">在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。</span><br><span class="line">--version</span><br><span class="line">输出版本信息。</span><br><span class="line">-</span><br><span class="line">从标准输入读取图像并输出到标准输出。</span><br><span class="line">--</span><br><span class="line">不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:</span><br></pre></td></tr></table></figure></p>
 <p><code>pngquant $OPTIONS -- &quot;$FILE&quot;</code></p>
 <h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>压缩Downloads目录下所有的png，并替换当前图片<br><code>find /Users/mac/Downloads/ -name &quot;*.png&quot; | while read line; do pngquant --ext .png --force $line; done</code></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+<hr>
+<p><strong>版权声明</strong><br><a href="http://blog.keepmovingxin.com">KeepMoving</a> by <a href="http://blog.keepmovingxin.com/about">KP_小新</a> 采用 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="external">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a><br>Copyright © 2016 <a href="http://blog.keepmovingxin.com">KeepMoving</a>. All rights reserved.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="ciqxghn0r001frww83gtxmkov" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/" data-id="cit9lcm5i001b07w8nxh0oqsm" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pngquant/">pngquant</a></li></ul>
@@ -269,6 +275,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -283,11 +291,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -318,7 +326,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -397,6 +405,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>

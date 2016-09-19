@@ -83,6 +83,8 @@
 &lt;p&gt;上下文数据这一层是脚本最基础，最底层的东西，它决定了这门脚本究竟能做什么。抛开解释器和虚拟机，我们依然可以单纯地通过C接口，在C++这一层就能操作脚本的上下文数据。&lt;/p&gt;
 &lt;p&gt;有空再研究一下Lua的GC，解释器等等。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/795&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/795&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -128,6 +130,8 @@
 &lt;p&gt;这就说明这个成员目前来说是一个用户可以自由操作的table，在&lt;a href=&quot;http://lua-users.org/wiki/UserDataRefinement&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UserDataRefinement&lt;/a&gt;文章中，告诉了我们一些使用的手段。另外一篇文章&lt;a href=&quot;http://lua-users.org/lists/lua-l/2005-08/msg00709.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lua-users.org/lists/lua-l/2005-08/msg00709.html&lt;/a&gt;也对它的使用方法提出了一些建议。&lt;/p&gt;
 &lt;p&gt;我比较赞成后一篇文章的看法，对于Udata来说，metatable是一种静态的类型数据(type-common data)，而env则是实例相关的数据(instance-local data)。当然了，怎么用取决于使用者。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/789&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/789&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -319,6 +323,8 @@
 &lt;p&gt;本质优化思想：&lt;strong&gt;先关闭前一个函数，销毁CallInfo，再调用新的CallInfo，这样就会避免全局CallInfo栈溢出&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&quot;八、-总结&quot;&gt;&lt;a href=&quot;#八、-总结&quot; class=&quot;headerlink&quot; title=&quot;八、 总结&quot;&gt;&lt;/a&gt;八、 总结&lt;/h3&gt;&lt;p&gt;本文讨论了闭包、UpVal、函数原型、环境、栈操作、尾调用等相关知识，基本上把大部分的知识点和细节也囊括了，另外还有2大块知识：函数原型的生成和闭包GC可能迟些再分享。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/845&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/845&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -432,6 +438,8 @@
 &lt;p&gt;总结：&lt;/p&gt;
 &lt;p&gt;对于Table，还有个弱表的特性，这个留待在说gc的时候再详细讨论。其实Table的实现还是挺多细节的，不过主要的思想和处理都说了（除了gc）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/787&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/787&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -500,6 +508,8 @@
 &lt;p&gt;&lt;img src=&quot;/images/luaTstring/lua-tstring-09.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;具体JS Hash算法的冲突性解决和性能上面，我也不懂，具体要找paper看看，但是从数据比较上看，JSHash是属于较好的算法，可也有比JSHash算法更好的字符串哈希算法。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/768&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/768&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -538,6 +548,8 @@
 &lt;p&gt;GCObject也是一个union，存储了一个GCheader，这个GCHeader主要用于&lt;strong&gt;GC回收机制&lt;/strong&gt;使用，GC回收机制超出了这次讨论话题，暂时先忽略。真正存储值的结构是TString、Udata、Closure等等，每个存储数据的结构都会有GCheader，接下来几篇文章将会开始逐个数据类型进行解释。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/luaTValue/lua-tvalue-05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lua数据结构&lt;/strong&gt;系列转自阿里云博客，作者是&lt;strong&gt;罗日健&lt;/strong&gt;。&lt;br&gt;原文链接：&lt;a href=&quot;http://blog.aliyun.com/761&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aliyun.com/761&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -621,6 +633,8 @@
 &lt;p&gt;一些有意思的东西是需要你自己摸索的，lua语言自身就很简练，并且所有东西都不是什么神秘的事情，可以通过读源码或者试验摸索得到。&lt;/p&gt;
 &lt;p&gt;最后，提一下，&lt;code&gt;lua_state&lt;/code&gt;启动后在注册表里&lt;code&gt;LUA_RIDX_GLOBALS&lt;/code&gt;下标存放的全局表一定有一个元素是指向自己的，即&lt;code&gt;_G&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.lua.org/manual/5.1/manual.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.lua.org/manual/5.1/manual.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.shouce.ren/api/lua/5/_88.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.shouce.ren/api/lua/5/_88.htm&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/leonwei/article/details/7739930&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/leonwei/article/details/7739930&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.aforget.net/shen-ru-luahe-czhi-si/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.aforget.net/shen-ru-luahe-czhi-si/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -682,6 +696,8 @@
 &lt;/ol&gt;
 &lt;p&gt;Read-only table 代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function readOnly(t)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local proxy = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local mt = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        __index = t,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        __newindex = function(t, k, v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            error(&amp;apos;attempt to update a read-only table&amp;apos;, 2)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    setmetatable(proxy, mt)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return proxy&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;days = readOnly&amp;#123;&amp;apos;Sun&amp;apos;, &amp;apos;Mon&amp;apos;, &amp;apos;Tues&amp;apos;, &amp;apos;Wed&amp;apos;, &amp;apos;Thur&amp;apos;, &amp;apos;Fri&amp;apos;, &amp;apos;Sat&amp;apos;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(days[1])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;days[2] = &amp;apos;Noday&amp;apos; --&amp;gt; stdin:1: attempt to update a read-only table&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;有时候，我们需要为 table 设定一个唯一的 key，那么可以使用这样的技巧，代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local key = &amp;#123;&amp;#125; -- unique key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local t = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;t[key] = value&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -802,6 +818,8 @@
 &lt;li&gt;&lt;a href=&quot;http://source.android.com/source/developing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://source.android.com/source/developing.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.oschina.net/translate/a-successful-git-branching-model&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.oschina.net/translate/a-successful-git-branching-model&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -906,6 +924,8 @@
 &lt;li&gt;原文：&lt;a href=&quot;http://pm.readthedocs.io/vcs/svn/usage.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://pm.readthedocs.io/vcs/svn/usage.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.subversion.org.cn/svnbook/1.4/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.subversion.org.cn/svnbook/1.4/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1109,6 +1129,8 @@
 &lt;li&gt;运行脚本，生成绑定文件，根据第二步tolua生成方式的不同，生成的绑定也是两个方式：一是生成单独对应的绑定文件.h/.cpp，而是生成的内容分别追加到已有的绑定文件.h/.cpp中&lt;/li&gt;
 &lt;li&gt;载入luabinding接口文件&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1157,6 +1179,10 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-(CCSprite *)spriteWithColor:(ccColor4F)bgColor textureSize:(float)textureSize &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 1: Create new CCRenderTexture&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CCRenderTexture *rt = [CCRenderTexture renderTextureWithWidth:textureSize height:textureSize];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 2: Call CCRenderTexture:begin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[rt beginWithClear:bgColor.r g:bgColor.g b:bgColor.b a:bgColor.a];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 3: Draw into the texture&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// We&amp;apos;ll add this later&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 4: Call CCRenderTexture:end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[rt end];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 5: Create a new Sprite from the texture&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return [CCSprite spriteWithTexture:rt.sprite.texture];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (ccColor4F)randomBrightColor &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    while (true) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        float requiredBrightness = 192;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ccColor4B randomColor = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ccc4(arc4random() % 255,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 arc4random() % 255, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 arc4random() % 255, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 255);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if (randomColor.r &amp;gt; requiredBrightness || &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            randomColor.g &amp;gt; requiredBrightness ||&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            randomColor.b &amp;gt; requiredBrightness) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return ccc4FFromccc4B(randomColor);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)genBackground &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [_background removeFromParentAndCleanup:YES];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ccColor4F bgColor = [self randomBrightColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _background = [self spriteWithColor:bgColor textureWidth:IS_IPHONE_5 ? 1024:512 textureHeight:512];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CGSize winSize = [CCDirector sharedDirector].winSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _background.position = ccp(winSize.width/2, winSize.height/2);        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self addChild:_background z:-1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void) onEnter &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [super onEnter];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self genBackground];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self setTouchEnabled:YES];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self genBackground];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;　　&lt;code&gt;randomBrightColor&lt;/code&gt;方法是一个辅助方法，用来创建一种随机颜色。注意，这里使用ccc4B（因此，我们能够在0-255的范围内指定R/G/B/A值），同时确保至少有一个颜色分量是大于192的，这样的话，我们就不会得到较暗的颜色。&lt;br&gt;　　然后，&lt;code&gt;genBackground&lt;/code&gt;调用我们之前写的&lt;code&gt;spriteWithColor&lt;/code&gt;方法，同时把它加屏幕中央。&lt;br&gt;　　至于&lt;code&gt;init&lt;/code&gt;函数，它调用&lt;code&gt;genBackground&lt;/code&gt;方法，同时激活&lt;code&gt;touches&lt;/code&gt;事件，这样的话，你就可以通过点击屏幕来获得另外的随机背景了。&lt;br&gt;　　编译并运行，这样你每一次点击屏幕，你都可以得到一张不同的单色背景图片啦！&lt;/p&gt;
 &lt;h3 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.raywenderlich.com/33266/how-to-create-dynamic-textures-with-ccrendertexture-in-cocos2d-2-x&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How To Create Dynamic Textures with CCRenderTexture in Cocos2D 2.X&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/andyque/archive/2011/07/01/2095479.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;(译)如何使用CCRenderTexture来创建动态纹理&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1319,6 +1345,10 @@ ass_array[index2]=val2
 &lt;h3 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linux shell “(())” 双括号运算符使用&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1348,6 +1378,10 @@ ass_array[index2]=val2
 &lt;h3 id=&quot;查看帮助信息&quot;&gt;&lt;a href=&quot;#查看帮助信息&quot; class=&quot;headerlink&quot; title=&quot;查看帮助信息&quot;&gt;&lt;/a&gt;查看帮助信息&lt;/h3&gt;&lt;p&gt;执行 pngquant -h 查看完整选项&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--ext new.png&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;设置输出图片的后缀。默认是 -or8.png 或者 -fs8.png 。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--quality min-max&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;使 pngquant 使用最少的颜色达到或超出 max 品质要求。如果转换结果低于 min 品质，图像不会被保存 (如果是输出到标准输出, 24-bit 原图像会被输出) 并且 pngquant 会退出并返回 99。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;min 和 max 范围在 0 (最差) 到 100 (最佳), 和 JPEG 相似。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pngquant --quality=65-80 image.png&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--speed N, -sN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;速度/质量 平衡 从 1 (强制) 到 10 (最快)。默认是 3。速度 10 相比减少图片 5% 质量, 但是 8 倍于默认的速度。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--iebug&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在 IE6 下, 只显示完全不透明的像素。pngquant 会使半透明像素以不透明方式显示并且不生产新的像素。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出版本信息。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;从标准输入读取图像并输出到标准输出。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;不处理对象。允许使用文件名以 - 开头的文件。如果你在脚本中使用 pngquant , 建议在文件名前加上这个:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pngquant $OPTIONS -- &amp;quot;$FILE&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;使用示例&quot;&gt;&lt;a href=&quot;#使用示例&quot; class=&quot;headerlink&quot; title=&quot;使用示例&quot;&gt;&lt;/a&gt;使用示例&lt;/h3&gt;&lt;p&gt;压缩Downloads目录下所有的png，并替换当前图片&lt;br&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1380,6 +1414,8 @@ set fileformats=unix
 set encoding=prc
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fileencodings中utf-8要在前面&lt;br&gt;这样就能正常显示中文了，配合pietty，可以完全正常显示、编辑中文了。&lt;/p&gt;
 &lt;h3 id=&quot;几种去除-M的方法&quot;&gt;&lt;a href=&quot;#几种去除-M的方法&quot; class=&quot;headerlink&quot; title=&quot;几种去除^M的方法&quot;&gt;&lt;/a&gt;几种去除^M的方法&lt;/h3&gt;&lt;p&gt;1、&lt;code&gt;cat filename1 | tr -d &amp;quot;\r&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;br&gt;2、 &lt;code&gt;sed -e &amp;quot;s/^V^M//&amp;quot; filename &amp;gt; outputfilename&lt;/code&gt;&lt;br&gt;3、vi： 用vi打开文件&lt;br&gt;(1) 按ESC键&lt;br&gt;(2) 输入 :&lt;code&gt;%s/^M//g&lt;/code&gt;&lt;br&gt;确定 &lt;code&gt;^M&lt;/code&gt;是使用 &lt;code&gt;&amp;quot;CTRL-V CTRL-M&amp;quot;&lt;/code&gt; 而不是字面上的 &lt;code&gt;^M&lt;/code&gt;。&lt;br&gt;这个正则式将替换所有回车符前的 ^M为空($是为了保证^M出现在行尾)&lt;br&gt;4、用 vim 输入 :&lt;code&gt;set notextmode&lt;/code&gt;&lt;br&gt;可惜，经过上面的处理以后，^M是不存在了，但是换行不成功。所有的东西都在一行上面，看着很费劲。这说明处理的时候文件缺少”\n”，可以在替换的时候添加上即可：&lt;br&gt;&lt;code&gt;cat filename | tr &amp;quot;\r&amp;quot; &amp;quot;\n&amp;quot; &amp;gt; newfile&lt;/code&gt;&lt;br&gt;注: ^M 可以用Sublime Text编辑器查看&lt;br&gt;一些linux版本有 dos2unix 程序，可以用来祛除^M&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1646,7 +1682,11 @@ find . –type d –maxdepth 1 –print
 -s 　只查找原始代码文件。
 -S&amp;lt;目录&amp;gt; 　只在设置的目录下查找原始代码文件。
 -u 　查找不包含指定类型的文件。
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+</content>
     
     <summary type="html">
     
@@ -1686,6 +1726,10 @@ find . –type d –maxdepth 1 –print
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local nameBgSp = CCGraySprite:create(&amp;quot;images/namebg.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local normalSp = CCSprite:create(&amp;quot;images/namebg.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local graySp = CCGraySprite:createWithNodeAndItChild(normalSp)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local frameSp = CCGraySprite:create(&amp;quot;images/frame.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;frameSp:setGray(isGray)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1718,6 +1762,8 @@ find . –type d –maxdepth 1 –print
 &lt;p&gt;执行这个命令的时候，git 会用配置文件中设定的编辑器打开配置文件。&lt;/p&gt;
 &lt;h3 id=&quot;增加一个配置项&quot;&gt;&lt;a href=&quot;#增加一个配置项&quot; class=&quot;headerlink&quot; title=&quot;增加一个配置项&quot;&gt;&lt;/a&gt;增加一个配置项&lt;/h3&gt;&lt;p&gt;参数 –add&lt;br&gt;格式: &lt;code&gt;git config [–local|–global|–system] –add section.key value&lt;/code&gt; (默认是添加在 local 配置中)&lt;br&gt;注意 add 后面的 section,key,value 一项都不能少，否则添加失败。比如我们执行：&lt;code&gt;git config –add man.name jim&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;获取一个配置项&quot;&gt;&lt;a href=&quot;#获取一个配置项&quot; class=&quot;headerlink&quot; title=&quot;获取一个配置项&quot;&gt;&lt;/a&gt;获取一个配置项&lt;/h3&gt;&lt;p&gt;有时候，我们并不需要查看所有配置的值，而是查看某个配置项的值，怎么做呢？&lt;br&gt;命令参数 –get&lt;br&gt;格式：&lt;code&gt;git config [–local|–global|–system] –get section.key&lt;/code&gt; (默认是获取 local 配置中内容) 我们先往 global 配置中写入一个 man .name=jim 的配置项，再使用 &lt;code&gt;git config –get man.name&lt;/code&gt; 看看得到的是什么&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">

@@ -41,6 +41,7 @@
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaClosure/lua-closure-28.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaClosure/lua-closure-29.png">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/luaClosure/lua-closure-30.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
 <meta property="og:updated_time" content="2016-06-14T09:39:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lua数据结构 — 闭包（四）">
@@ -54,7 +55,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
   
   
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   <style id='inline-css' type='text/css'>
@@ -326,11 +327,13 @@ var _hmt = _hmt || [];
 <p>本质优化思想：<strong>先关闭前一个函数，销毁CallInfo，再调用新的CallInfo，这样就会避免全局CallInfo栈溢出</strong>。</p>
 <h3 id="八、-总结"><a href="#八、-总结" class="headerlink" title="八、 总结"></a>八、 总结</h3><p>本文讨论了闭包、UpVal、函数原型、环境、栈操作、尾调用等相关知识，基本上把大部分的知识点和细节也囊括了，另外还有2大块知识：函数原型的生成和闭包GC可能迟些再分享。</p>
 <p><strong>Lua数据结构</strong>系列转自阿里云博客，作者是<strong>罗日健</strong>。<br>原文链接：<a href="http://blog.aliyun.com/845" target="_blank" rel="external">http://blog.aliyun.com/845</a></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/" data-id="ciqxghmzo0009rww8n6yasxr7" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/2016/06/08/Lua-Closure/" data-id="cit9lcm4c000f07w8xn0y1q6b" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua数据结构/">Lua数据结构</a></li></ul>
@@ -458,6 +461,8 @@ var _hmt = _hmt || [];
   <h3 class="widget-title">友情链接</h3>
   <div class="widget">
   <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
   <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
   <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
   <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
@@ -472,11 +477,11 @@ var _hmt = _hmt || [];
   <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
   <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
   <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
-  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
   </ul>
   </div>
 </div>
 <!-- End Friendship link -->
+
   
 </aside>
         
@@ -507,7 +512,7 @@ var _hmt = _hmt || [];
 </nav>
     
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -586,6 +591,7 @@ jQuery(document).ready(function() {
     T.scrollHook(jQuery(window), "#216bcc");
 });
 </script>
+
   </div>
 </body>
 </html>
