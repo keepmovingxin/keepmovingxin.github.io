@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="属性扩展注意：2.3.3.0版本对属性区相关接口进行了调整，详情请见 2.接口变更
+&amp;emsp;&amp;emsp;1.属性区扩展
+&amp;emsp;&amp;emsp;Cocos Studio预置的控件支持扩展，对于控件的属性区同样支持扩展。一些基本类型的属性，编辑器中已经包含对应的属性控件，只需要按照一定规则即可使用。如果使用者想要扩展自定义属性，可以根据自己意愿制作需要的功能(示例代码中有详细介绍)。
+&amp;emsp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/zh.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="属性扩展注意：2.3.3.0版本对属性区相关接口进行了调整，详情请见 2.接口变更
+&amp;emsp;&amp;emsp;1.属性区扩展
+&amp;emsp;&amp;emsp;Cocos Studio预置的控件支持扩展，对于控件的属性区同样支持扩展。一些基本类型的属性，编辑器中已经包含对应的属性控件，只需要按照一定规则即可使用。如果使用者想要扩展自定义属性，可以根据自己意愿制作需要的功能(示例代码中有详细介绍)。
+&amp;emsp">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-26T15:08:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="属性扩展注意：2.3.3.0版本对属性区相关接口进行了调整，详情请见 2.接口变更
+&amp;emsp;&amp;emsp;1.属性区扩展
+&amp;emsp;&amp;emsp;Cocos Studio预置的控件支持扩展，对于控件的属性区同样支持扩展。一些基本类型的属性，编辑器中已经包含对应的属性控件，只需要按照一定规则即可使用。如果使用者想要扩展自定义属性，可以根据自己意愿制作需要的功能(示例代码中有详细介绍)。
+&amp;emsp">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res/image001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter3/Extend/ParamExtend/zh.html" class="article-date">
+  <time datetime="2016-09-29T02:25:36.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="属性扩展"><a href="#属性扩展" class="headerlink" title="属性扩展"></a><strong>属性扩展</strong></h1><p><strong>注意：</strong>2.3.3.0版本对属性区相关接口进行了调整，详情请见 <strong>2.接口变更</strong></p>
+<p>&emsp;&emsp;1.属性区扩展</p>
+<p>&emsp;&emsp;Cocos Studio预置的控件支持扩展，对于控件的属性区同样支持扩展。一些基本类型的属性，编辑器中已经包含对应的属性控件，只需要按照一定规则即可使用。如果使用者想要扩展自定义属性，可以根据自己意愿制作需要的功能(示例代码中有详细介绍)。</p>
+<p>&emsp;&emsp;Cocos Studio预置控件</p>
+<p>&emsp;&emsp;string 类型</p>
+<p><img src="res/image001.png" alt="image"></p>
+<p>&emsp;&emsp;帧事件这个属性是一个string类型，内容是一个可以输入的文本，不限制文本的输入格式，可以随意输入，可为空。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>string customString = string.Empty;
+[UndoPropertyAttribute] //允许撤销回退，不允许则不添加
+[DisplayName(&quot;字符串&quot;)]//Label显示文本
+[Category(&quot;Custom_Plug&quot;)]//属于哪个分组
+[PropertyOrder(0)]//在分组的排序，例如，1在0之后
+[Browsable(true)]//是否显示当前属性，不允许则设置为false 或者不添加这个属性戳
+public string CustomString
+{
+    get { return customString; }
+    set
+    {
+        if (customString != value)
+        {
+            customString = value;
+            //如果允许记录撤销记录，则调用属性通知，如果不需要记录，则不添加
+            this.RaisePropertyChanged(() =&gt; this.CustomString);
+        }
+    }
+}
+</code></pre><p><img src="res/image002.png" alt="image"></p>
+<p>&emsp;&emsp;名称这个属性是一个string类型，内容是一个可以输入的文本，不限制文本的输入格式，可以随意输入，但是不能为空，如果为空，恢复上一次保存的值，若要使用这类文本框，则要调用ValidTextEditor。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>[UndoPropertyAttribute]
+[DisplayName(&quot;ValidTextBox&quot;)]
+[Editor(typeof(ValidTextEditor), typeof(ValidTextEditor))] //这里的Editor是制定特定的类型控件，这些控件属于自己写的，非系统原生
+[Category(&quot;Custom_Plug&quot;)]
+[PropertyOrder(0)]
+[Browsable(true)]
+public string ValidTextBoxString { get; set; }
+</code></pre><p>&emsp;&emsp;int 类型</p>
+<p>&emsp;&emsp;逻辑标签这个属性是一个int类型，内容是一个可以输入数字的控件，限制只能输入数字，最大限制默认是正负9999999，在程序中可以通过SetMaxMin进行设置。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>int customInt = 0;
+[UndoPropertyAttribute]
+[DisplayName(&quot;整数&quot;)]
+[Category(&quot;Custom_Plug&quot;)]
+[PropertyOrder(1)]
+[Browsable(true)]
+public int CustomInt
+{
+    get { return customInt; }
+    set
+    {
+        if (customInt != value)
+        {
+            customInt = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomInt);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;bool 类型</p>
+<p><img src="res/image003.png" alt="image"></p>
+<p>&emsp;&emsp;可见性这个属性是一个bool类型，类型是一个checkbox，可以进行选择和不选择。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>bool customBool = false;
+[UndoPropertyAttribute]
+[DisplayName(&quot;布尔&quot;)]
+[Category(&quot;Custom_Extend&quot;)]
+[PropertyOrder(4)]
+[Browsable(true)]
+public bool CustomBool
+{
+    get { return customBool; }
+    set
+    {
+        if (customBool != value)
+        {
+            customBool = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomBool);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;enum 类型</p>
+<p><img src="res/image004.png" alt="image"></p>
+<p>&emsp;&emsp;水平对齐这个属性是一个enum枚举类型，类型是一个下拉combox，可以选择不同的枚举项。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>// 枚举定义示例，实际使用时请将枚举的定义放到 ViewModel 类外面，和 ViewModel 平级。
+// 参见示例工程中 WeekdayEnum 枚举的定义。
+public enum CocosEnum
+{
+    None,
+    Fir,
+    Sec,
+    Thi
+}
+
+CocosEnum customEnum = CocosEnum.None;
+
+[UndoPropertyAttribute]
+[DisplayName(&quot;枚举&quot;)]
+[Category(&quot;Custom_Plug&quot;)]
+[PropertyOrder(5)]
+[Browsable(true)]
+public CocosEnum CustomEnum
+{
+    get { return customEnum; }
+    set
+    {
+        if (customEnum != value)
+        {
+            customEnum = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomEnum);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;Color 类型</p>
+<p><img src="res/image005.png" alt="image"></p>
+<p>&emsp;&emsp;颜色混合这个属性是一个Color类型，类型是一个组合控件，可以选择不同的颜色。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>System.Drawing.Color customColor = System.Drawing.Color.White;
+[UndoPropertyAttribute]
+[Editor(typeof(ColorEditor), typeof(ColorEditor))]
+[DisplayName(&quot;颜色&quot;)]
+[Category(&quot;Custom_Extend&quot;)]
+[PropertyOrder(6)]
+[Browsable(true)]
+public System.Drawing.Color CustomColor
+{
+    get { return customColor; }
+    set
+    {
+        if (customColor != value)
+        {
+            customColor = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomColor);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;ScaleValue 类型</p>
+<p><img src="res/image006.png" alt="image"></p>
+<p>&emsp;&emsp;倾斜这个属性是一个ScaleValue类型，类型是一个组合控件，可以分别设置X和Y的值，并且可以在属性中设置最大值最小值和每次鼠标滚轮幅度。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>ScaleValue customScaleValue = new ScaleValue(1, 1);
+[UndoPropertyAttribute]
+[Editor(typeof(CustomEditor), typeof(CustomEditor))] // CustomEditor 的源代码可以在示例工程中找到。
+[ValueRange(int.MinValue, int.MaxValue, 1)]//ValueRange属性是设置控件最大值最小值和幅度
+[DisplayName(&quot;ScaleValue&quot;)]
+[Category(&quot;Custom_Extend&quot;)]
+[PropertyOrder(7)]
+[Browsable(true)]
+public ScaleValue CustomScaleValue
+{
+    get { return customScaleValue; }
+    set
+    {
+        if (customScaleValue != value)
+        {
+            customScaleValue = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomScaleValue);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;PointF 类型</p>
+<p><img src="res/image007.png" alt="image"></p>
+<p>&emsp;&emsp;锚点这个属性是一个PointF类型，类型是一个组合控件，可以分别设置XY的值。</p>
+<p>&emsp;&emsp;范例：</p>
+<pre><code>/*PointFEditor和ScaleValueEditor的内容一致，
+只是在其中需要类型的强制转换，Point和ScaleValue两种强类型，
+在控件内做处理太繁杂，单一原则，把这两个类型写成了两个控件*/
+PointF customPointF = new PointF(1, 1);
+[UndoPropertyAttribute]
+[Editor(typeof(PointFEditor), typeof(PointFEditor))]
+[ValueRange(int.MinValue, int.MaxValue, 1)]//ValueRange属性是设置控件最大值最小值和幅度
+[DisplayName(&quot;ScaleValue&quot;)]
+[Category(&quot;Custom_Extend&quot;)]
+[PropertyOrder(7)]
+[Browsable(true)]
+public PointF CustomPointF
+{
+    get { return customPointF; }
+    set
+    {
+        if (customPointF != value)
+        {
+            customPointF = value;
+            this.RaisePropertyChanged(() =&gt; this.CustomScaleValue);
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;CustomObject这个范例文件中，一些已经提供的属性，用户添加了这些属性后，需要在CustomObjectData 类中添加相应的属性，这样属性才能在关闭编辑器后保存起来，下次打开文件读取之前保存的属性。<br>例如：</p>
+<pre><code>[ItemProperty]
+[JsonProperty]
+public int CustomInt { get; set; }
+</code></pre><p>&emsp;&emsp;具体的代码在CustomObjectData已经添加。</p>
+<p>&emsp;&emsp;编写一个自定义控件</p>
+<p>&emsp;&emsp;CustomEditor是一个可以编辑ScaleValue类型的属性编辑器，它继承自BaseEditor，BaseEditor则继承自IPropertyEditor接口。<br>BaseEditor中已对IPropertyEditor接口进行了实现，但子类在继承BaseEditor时，依然需要重写其中的一些方法，其中必须要重写的方法如下：</p>
+<pre><code>protected abstract Gtk.Widget OnCreateWidget();
+protected abstract void void OnSetControl();
+</code></pre><p>&emsp;&emsp;Gtk.Widget OnCreateWidget()方法用于在属性编辑器初始化的时候创建其对应的Gtk部件，例如CustomEditor就创建了一个包含了两个输入框的部件（NoUndoNumEntry是Gtk.Entry的子类，其中封装了一些额外的逻辑）。</p>
+<p>&emsp;&emsp;void OnSetControl()方法用于在属性发生改变的时候同步刷新属性面板上的Gtk部件。对于CustomEditor来说，这个方法的作用就是在属性变更的时候，把最新的属性值显示在输入框中。</p>
+<p>&emsp;&emsp;CustomEditor中的两个输入框在其数值改为的时候会去更新对应属性的值，这一赋值操作是通过BaseEditor中成员属性PropertyItem来进行的。PropertyItem与当前属性编辑器所对应的属性绑定，通过它可以获取或是设置属性的数值。下面的代码便是X值输入框对其内容改变事件的回调方法。</p>
+<pre><code>private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
+{
+    using (GetLock())
+    {
+        for (int i = 0; i &lt; PropertyItem.Objects.Count; i++)
+        {
+            ScaleValue value = PropertyItem.Values[i] as ScaleValue;
+            value.ScaleX = e.Value;
+            PropertyItem.Values[i] = value;
+        }
+    }
+}
+</code></pre><p>&emsp;&emsp;2.接口变更</p>
+<p>&emsp;&emsp;Cocos 2.3.3.0版本对属性区进行了重构，同时对一些相关接口进行了调整。具体的调整包含以下内容：</p>
+<p>&emsp;&emsp;1) CocoStudio.ToolKit项目中的内容被移动至Modules.Communal.PropertyGrid项目。目前属性区的通用类均位于PropertyGrid项目，ToolKit项目已被删除。原本使用CocoStudio.ToolKit命名空间的代码需要将命名空间更改为Modules.Communal.PropertyGrid。</p>
+<p>&emsp;&emsp;2) ITypeEditor接口被重命名为IPropertyEditor。新的接口已经由BaseEditor类统一实现，它的子类无需再声明实现接口，且不需要再进行插件导出。ITypeEditor接口中的原方法与属性均不再使用，新的使用方法以IPropertyEditor中公开的接口为准。</p>
+<p>&emsp;&emsp;3) CatagoryAttribute类被重命名为ControlGroupAttribute，并被移动至CocoStudio.Model。</p>
+<p>&emsp;&emsp;4) PropertyEditorTypeAttribute类已被删除。属性区对于默认类型的支持已内置于自身的框架代码当中，外部无需再使用额外的特性进行标注。</p>
+<p>&emsp;&emsp;3.其它</p>
+<p>&emsp;&emsp;在后续的开发过程中文档的内容会根据反馈持续更新。如有更新，请以新的版本为准。</p>
+<p>&emsp;&emsp;如果您对于Cocos Studio扩展有任何的意见或者是建议，请在论坛或者是开发者群里反馈给我们。感谢您对Cocos Studio的关注和支持，我们将回报您以更好用的产品。</p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/zh.html" data-id="citntilnf0078wfw8kr7gzvmh" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/zh.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>

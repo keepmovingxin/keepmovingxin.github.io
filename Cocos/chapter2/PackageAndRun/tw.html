@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打包與運行環境配置&amp;emsp;&amp;emsp;完成以下操作，才能在編輯器中使用打包功能：
+&amp;emsp;&amp;emsp;1,環境搭建（Win/Mac）
+&amp;emsp;&amp;emsp;2,在編輯器中配置發佈和打包設置
+環境搭建&amp;amp;打包設置&amp;emsp;&amp;emsp;一,Windows平臺
+&amp;emsp;&amp;emsp;注意：JDK,NDK,SDK,Framework的安裝路徑,電腦的系統變數配置,以及編輯器打包設置中這">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter2/PackageAndRun/tw.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="打包與運行環境配置&amp;emsp;&amp;emsp;完成以下操作，才能在編輯器中使用打包功能：
+&amp;emsp;&amp;emsp;1,環境搭建（Win/Mac）
+&amp;emsp;&amp;emsp;2,在編輯器中配置發佈和打包設置
+環境搭建&amp;amp;打包設置&amp;emsp;&amp;emsp;一,Windows平臺
+&amp;emsp;&amp;emsp;注意：JDK,NDK,SDK,Framework的安裝路徑,電腦的系統變數配置,以及編輯器打包設置中這">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0008.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0009.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0010.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0011.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0012.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0013.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image0014.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-29T03:22:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="打包與運行環境配置&amp;emsp;&amp;emsp;完成以下操作，才能在編輯器中使用打包功能：
+&amp;emsp;&amp;emsp;1,環境搭建（Win/Mac）
+&amp;emsp;&amp;emsp;2,在編輯器中配置發佈和打包設置
+環境搭建&amp;amp;打包設置&amp;emsp;&amp;emsp;一,Windows平臺
+&amp;emsp;&amp;emsp;注意：JDK,NDK,SDK,Framework的安裝路徑,電腦的系統變數配置,以及編輯器打包設置中這">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res_tw/image0001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter2/PackageAndRun/tw.html" class="article-date">
+  <time datetime="2016-09-29T03:22:02.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="打包與運行環境配置"><a href="#打包與運行環境配置" class="headerlink" title="打包與運行環境配置"></a>打包與運行環境配置</h1><p>&emsp;&emsp;完成以下操作，才能在編輯器中使用打包功能：</p>
+<p>&emsp;&emsp;1,環境搭建（Win/Mac）</p>
+<p>&emsp;&emsp;2,在編輯器中配置發佈和打包設置</p>
+<h3 id="環境搭建-amp-打包設置"><a href="#環境搭建-amp-打包設置" class="headerlink" title="環境搭建&amp;打包設置"></a>環境搭建&amp;打包設置</h3><p>&emsp;&emsp;一,Windows平臺</p>
+<p>&emsp;&emsp;注意：JDK,NDK,SDK,Framework的安裝路徑,電腦的系統變數配置,以及編輯器打包設置中這些工具的路徑配置一定要都正確，任何一個地方不對，打包很有可能會出現錯誤。</p>
+<p>&emsp;&emsp;1,下載JDK，安裝到英文目錄，非英文尤其中文目錄可能會導致打包出現異常問題。<br>安裝成功後，Java目錄下會生成2個資料夾，分別以jdk和jre開頭。需要將這2個資料夾下的bin路徑配置到系統變數裡面。</p>
+<p>&emsp;&emsp;添加系統變數JAVA_HOME，變數值是jdk資料夾路徑。如下截圖：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0001.png" alt="image"></p>
+<p>&emsp;&emsp;編輯系統變數Path，在後面追加jre資料夾下的bin路徑，注意，需要先輸入一個半形分號，再輸入bin路徑，例如： C:\Program Files\Java\jre1.8.0_45\bin，如下截圖：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0002.png" alt="image"></p>
+<p>&emsp;&emsp;2,下載NDK，按兩下android-ndk-r10d-windows-x86_64.exe，將其安裝到英文目錄，非英文尤其中文目錄可能會導致打包出現異常問題。</p>
+<p>&emsp;&emsp;安裝目錄下的檔截圖：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0003.png" alt="image"></p>
+<p>&emsp;&emsp;編輯系統變數Path，在Path值後面添加android-ndk-r10d,build和platforms的路徑，以半形分號隔開，例如：<br>；D:\Studiowork\sdk\android-ndk-r10d\build\tools；D:\Studiowork\sdk\android-ndk-r10d；D:\Studiowork\sdk\android-ndk-r10d\platforms</p>
+<p>&emsp;&emsp;3,下載SDK，解壓到英文目錄，非英文尤其中文目錄可能會導致打包出現異常問題。</p>
+<p>&emsp;&emsp;編輯系統變數Path，在Path值後面添加platforms,platform-tools和tools的路徑，以半形分號隔開，例如：<br>；D:\Studiowork\sdk\sdk\platforms；D:\Studiowork\sdk\sdk\platform-tools；D:\Studiowork\sdk\sdk\tools</p>
+<p>&emsp;&emsp;4,下載匹配的Framework版本，安裝到英文目錄，非英文尤其中文目錄可能會導致打包出現異常問題。</p>
+<p>&emsp;&emsp;5,創建一個cocos項目，創建過程中一定要選擇一個Framework版本。點擊編輯器功能表列-&gt;編輯-&gt;偏好設置-&gt;平臺。</p>
+<p>&emsp;&emsp;注意：以下路徑設置一定要正確，不然打包會出錯！</p>
+<p>&emsp;&emsp;SDK路徑：設置為SDK資料夾路徑。（該路徑下有platforms,platform-tools和tools等資料夾）</p>
+<p>&emsp;&emsp;NDK路徑：設置為NDK資料夾路徑。（該路徑下有build和platforms等資料夾）</p>
+<p>&emsp;&emsp;ANT路徑：設置為Framework安裝目錄下ant的bin資料夾路徑。請注意，當電腦上安裝了多個Framework版本，打包時選了哪個版本（功能表列點擊項目-&gt;項目設置-&gt;打包-&gt;Cocos Framework版本），ant路徑最好也設置成這個Framework版本的bin資料夾路徑。</p>
+<p>&emsp;&emsp;JDK路徑：設置為jdk的bin路徑。</p>
+<p>&emsp;&emsp;<img src="res_tw/image0004.png" alt="image"></p>
+<p>&emsp;&emsp;6,驗證環境變數和打包配置是否成功</p>
+<p>&emsp;&emsp;點擊功能表列-&gt;項目-&gt;執行打包，打包完成後，點擊編輯器畫布下方的輸出面板，如果顯示打包成功，說明環境已經配置成功。否則需要檢查出錯的地方，重新配置。</p>
+<p>&emsp;&emsp;7,可能引發錯誤的原因： </p>
+<ul>
+<li>電腦上安裝過對應工具，但版本過低。</li>
+</ul>
+<p>&emsp;&emsp;解決辦法：卸載出錯的工具，清除殘留的安裝檔。去掉系統變數Path值中的該工具路徑。下載該工具，按照文檔開頭的步驟安裝,配置。</p>
+<ul>
+<li>安裝目錄含有非英文。</li>
+</ul>
+<p>&emsp;&emsp;解決辦法：參見上一條。</p>
+<ul>
+<li>系統變數配置錯誤。</li>
+</ul>
+<p>&emsp;&emsp;解決辦法：認真,仔細核對一遍所有系統變數。是否同一個工具配置了不同的路徑，是否同一個系統變數值中各個工具的路徑沒有用半形分號隔開（非常土的辦法，將變數值全選複製出來一一核對）</p>
+<ul>
+<li>Ant路徑配置錯誤。</li>
+</ul>
+<p>&emsp;&emsp;解決辦法：檢查電腦上是否安裝了多個Framework版本？ant路徑是否和打包時選擇的Framework版本一致？ </p>
+<h5 id="二-Mac平臺"><a href="#二-Mac平臺" class="headerlink" title="二,Mac平臺"></a>二,Mac平臺</h5><p>&emsp;&emsp;Mac平臺工具安裝相對Windows要簡單，不需要配置環境變數。</p>
+<p>&emsp;&emsp;1,Android打包的環境配置和Windows一樣，不同的是Mac上面需要安裝對應Mac版本的JDK,SDK,NDK。</p>
+<p>&emsp;&emsp;2,iOS打包配置</p>
+<p>&emsp;&emsp;重要提示：你需要有一個蘋果開發者證書（<em>.p12）和配對的金鑰（</em>.cer）</p>
+<p>&emsp;&emsp;（1）配置蘋果開發者證書，按兩下*.p12檔，打開如下圖所示的介面，</p>
+<p>&emsp;&emsp;<img src="res_tw/image0005.png" alt="image"></p>
+<p>&emsp;&emsp;輸入正確的密碼，點擊“好”，打開如下圖所示的介面，</p>
+<p>&emsp;&emsp;<img src="res_tw/image0006.png" alt="image"></p>
+<p>&emsp;&emsp;將*.cer拖動到此介面中。</p>
+<p>&emsp;&emsp;（2）驗證秘鑰是否添加成功。<br>打開終端，運行此命令：security find-identity -v -p codesigning，出現以下截圖說明添加成功了：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0007.png" alt="image"></p>
+<h3 id="打包功能"><a href="#打包功能" class="headerlink" title="打包功能"></a>打包功能</h3><p>&emsp;&emsp;環境搭建成功後，需要在編輯器中配置必要的發佈和打包設置，再執行打包功能。</p>
+<p>&emsp;&emsp;<strong>一,Windows上打包測試：</strong></p>
+<p>&emsp;&emsp;1,C++項目打包舉例</p>
+<p>&emsp;&emsp;比如：希望將一個C++項目發佈成csb格式，打apk包。</p>
+<p>&emsp;&emsp;步驟1：設置C++項目的發佈格式，如下截圖：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0008.png" alt="image"></p>
+<p>&emsp;&emsp;<img src="res_tw/image0009.png" alt="image"> </p>
+<p>&emsp;&emsp;步驟2：執行發佈和打包，如下截圖</p>
+<p>&emsp;&emsp;<img src="res_tw/image0010.png" alt="image"> </p>
+<p>&emsp;&emsp;<img src="res_tw/image0011.png" alt="image">  </p>
+<p>&emsp;&emsp;Apk包存放地址：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0012.png" alt="image">  </p>
+<p>&emsp;&emsp;這是個相對路徑，在專案工程下。</p>
+<p>&emsp;&emsp;2,Lua或JavaScript項目同理。</p>
+<p>&emsp;&emsp;<strong>二,Mac上打包測試：</strong></p>
+<p>&emsp;&emsp;Android打包和Windows上面的一樣。</p>
+<p>&emsp;&emsp;iOS打包：</p>
+<p>&emsp;&emsp;1,創建一個cocos專案（必須選擇一個引擎版本）</p>
+<p>&emsp;&emsp;2,導入專案資源</p>
+<p>&emsp;&emsp;3,發佈專案到Xcode，修改專案的名稱和秘鑰</p>
+<p>&emsp;&emsp;點擊左側的專案，選中“General”，修改Bundle Identifier值為*.p12檔的檔案名。本教程中使用Com.cocosstudio.demo.inhouse作為檔案名。</p>
+<p>&emsp;&emsp;<img src="res_tw/image0013.png" alt="image"> </p>
+<p>選中“Build Settings”-&gt;Code Signing-&gt;Code Signing Identity，選擇設置的密碼。<br>“Build Settings”-&gt;Code Signing-&gt;Provisioning Profile，選擇cocosstudioDemoInhouse<br>設置如下圖所示：</p>
+<p>&emsp;&emsp;<img src="res_tw/image0014.png" alt="image"> </p>
+<p>&emsp;&emsp;4,Cocos編輯器中執行打包</p>
+<p>&emsp;&emsp;功能表列-&gt;項目-&gt;執行打包，選擇iOS或Android。</p>
+<p>&emsp;&emsp;5,打包成功之後安裝到手機上查看效果。</p>
+<h3 id="運行功能"><a href="#運行功能" class="headerlink" title="運行功能"></a>運行功能</h3><p>&emsp;&emsp;運行功能的配置與打包功能的環境配置一樣，不一樣的地方在於運行支持Android手機連上PC或者Mac可以直接把遊戲推送到手機上，直接預覽效果。</p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter2/PackageAndRun/tw.html" data-id="citntil5o0039wfw8hastbs52" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter2/PackageAndRun/tw.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="控制項1.按鈕：
+&amp;emsp;&amp;emsp;按鈕是遊戲中最常用的控制項類型之一，控制使用者點擊事件的開關，有正常,按下,禁用三種狀態，您可以為他們設置樣式及文本。
+&amp;emsp;&amp;emsp;使用場景
+&amp;emsp;&amp;emsp;按鈕的使用十分普遍，以官方示例中的主場景示例為例，畫框的內容均是由按鈕控制群組成 
+
+&amp;emsp;&amp;emsp;在您的專案中，介面上方的等級,鑽石,錢幣也可以由按鈕控制群組成，當使用">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/tw.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="控制項1.按鈕：
+&amp;emsp;&amp;emsp;按鈕是遊戲中最常用的控制項類型之一，控制使用者點擊事件的開關，有正常,按下,禁用三種狀態，您可以為他們設置樣式及文本。
+&amp;emsp;&amp;emsp;使用場景
+&amp;emsp;&amp;emsp;按鈕的使用十分普遍，以官方示例中的主場景示例為例，畫框的內容均是由按鈕控制群組成 
+
+&amp;emsp;&amp;emsp;在您的專案中，介面上方的等級,鑽石,錢幣也可以由按鈕控制群組成，當使用">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image008.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image009.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image010.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image011.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image012.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image013.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image014.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image015.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image016.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image017.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image018.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image019.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image020.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image021.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image022.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image023.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image024.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image025.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image026.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image027.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image028.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image029.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image030.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image031.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image032.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res/image033.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-29T03:54:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="控制項1.按鈕：
+&amp;emsp;&amp;emsp;按鈕是遊戲中最常用的控制項類型之一，控制使用者點擊事件的開關，有正常,按下,禁用三種狀態，您可以為他們設置樣式及文本。
+&amp;emsp;&amp;emsp;使用場景
+&amp;emsp;&amp;emsp;按鈕的使用十分普遍，以官方示例中的主場景示例為例，畫框的內容均是由按鈕控制群組成 
+
+&amp;emsp;&amp;emsp;在您的專案中，介面上方的等級,鑽石,錢幣也可以由按鈕控制群組成，當使用">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res/image001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter3/UI/Widgets/tw.html" class="article-date">
+  <time datetime="2016-09-29T03:54:20.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="控制項"><a href="#控制項" class="headerlink" title="控制項"></a>控制項</h1><h3 id="1-按鈕："><a href="#1-按鈕：" class="headerlink" title="1.按鈕："></a>1.按鈕：</h3><p><img src="res/image001.png" alt="image"></p>
+<p>&emsp;&emsp;按鈕是遊戲中最常用的控制項類型之一，控制使用者點擊事件的開關，有正常,按下,禁用三種狀態，您可以為他們設置樣式及文本。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;按鈕的使用十分普遍，以官方示例中的主場景示例為例，畫框的內容均是由按鈕控制群組成 </p>
+<p><img src="res/image002.png" alt="image"></p>
+<p>&emsp;&emsp;在您的專案中，介面上方的等級,鑽石,錢幣也可以由按鈕控制群組成，當使用者觸摸時，跳轉至相應的介面。</p>
+<p>&emsp;&emsp;按鈕控制項屬性眾多，除了常規屬性外，還包含尺寸屬性和一些特性屬性，我們從經常使用按鈕控制項的幾種場景為您介紹如何更好的使用這種控制項</p>
+<p>&emsp;&emsp;場景1：修改按鈕背景，設置按鈕按下後效果和禁用效果</p>
+<p>&emsp;&emsp;按鈕具有三種狀態，每一種狀態都可以通過圖片來定義。例如實現下圖的按鈕</p>
+<p><img src="res/image003.png" alt="image"></p>
+<p>&emsp;&emsp;您只需要在畫布上添加一個按鈕後，選擇該按鈕控制項，在屬性面板的特性部分會展示按鈕控制項當前的樣式資源，您可以通過按兩下修改按鈕控制項的屬性，也可以將圖片資源拖動到當前的樣式資源上以替換為新的資源。我們為按鈕設置了正常和按下狀態，這樣在遊戲中觸摸該按鈕時，按鈕就會自動切換為按下狀態的圖片。如果有需要，您也可以為按鈕設置禁用狀態。</p>
+<p><img src="res/image004.png" alt="image"></p>
+<p>&emsp;&emsp;除此之外也能通過按鈕控制項的右鍵功能表添加新的資源。</p>
+<p>&emsp;&emsp;場景2：使用按鈕時，需要在按鈕上設置文字</p>
+<p><img src="res/image005.png" alt="image"></p>
+<p>&emsp;&emsp;有時我們在設置按鈕樣式後，還希望給按鈕設置文字，您可以使用修改按鈕文本特性來實現這個需求。您可以自訂按鈕文本的顏色,字體,大小。<br>&emsp;&emsp;修改按鈕文本時只需選中按鈕，在屬性區修改文字屬性，也可以通過“功能表-編輯文本”或按兩下喚出修改文本彈窗。</p>
+<p><img src="res/image006.png" alt="image"></p>
+<p>&emsp;&emsp;場景3：在遊戲中，不希望該按鈕回應使用者的觸摸事件</p>
+<p>&emsp;&emsp;能夠在屬性面板或右鍵功能表設置按鈕是否啟用，按鈕禁用後在最終的遊戲裡將不能回應觸摸事件。</p>
+<h3 id="2-核取方塊："><a href="#2-核取方塊：" class="headerlink" title="2.核取方塊："></a>2.核取方塊：</h3><p><img src="res/image007.png" alt="image"></p>
+<p>&emsp;&emsp;核取方塊是一種可同時選中多項的基礎控制項，您可設置他的各種樣式，以及選中狀態。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;核取方塊最常用的地方莫過於遊戲登錄介面上的“記住用戶名”和“記住密碼”，相信您一定經常見到。</p>
+<p><img src="res/image008.png" alt="image"></p>
+<p>&emsp;&emsp;還有就是一些遊戲的設置介面，控制是否啟用音樂的開關，通常也是核取方塊控制項。核取方塊控制項屬性眾多，除了常規屬性外，還包含尺寸屬性和一些特性屬性，我們從經常使用核取方塊控制項的幾種場景為您介紹如何更好的使用這種控制項。</p>
+<p>&emsp;&emsp;場景1：修改核取方塊樣式</p>
+<p>&emsp;&emsp;核取方塊具有五種狀態：背景正常樣式,背景按下樣式,背景禁用樣式,選中標識樣式,選中標識禁用樣式，每一種狀態都可以通過圖片來定義。如果您要實現常規核取方塊的樣式，如下圖：</p>
+<p><img src="res/image009.png" alt="image"></p>
+<p>&emsp;&emsp;您可以分別設置五個狀態的圖片，以達到您的預期效果，如果您要實現設置介面的音樂開（關）樣式，如下圖：</p>
+<p><img src="res/image010.png" alt="image"></p>
+<p>&emsp;&emsp;您僅需要設置背景正常樣式,背景按下樣式,背景禁用樣式，而將另外兩個狀態設置為不啟用狀態。除此之外也能通過按鈕控制項的右鍵功能表添加新的資源。</p>
+<p>&emsp;&emsp;場景2：遊戲中默認核取方塊是勾選（不勾選）的。</p>
+<p>&emsp;&emsp;當您設置一個核取方塊為選中時，這個核取方塊在遊戲中的初始狀態就為選中的狀態。通過屬性面板或右鍵功能表能夠修改核取方塊的選中狀態。</p>
+<h3 id="3-圖片控制項"><a href="#3-圖片控制項" class="headerlink" title="3.圖片控制項"></a>3.圖片控制項</h3><p><img src="res/image011.png" alt="image"></p>
+<p><img src="res/image012.png" alt="image"></p>
+<p>&emsp;&emsp;添加一張可以設置九宮格的圖片，九宮格是一種能夠使本來拉伸後會失真的圖片，經過一定的處理後，拉伸後不失真的技術。關於九宮格的用法請參考4,九宮格使用.docx</p>
+<p>&emsp;&emsp;圖片控制項相對于精靈控制項，具有以下特性：</p>
+<p>&emsp;&emsp;可改變原圖尺寸，而不出現圖片失真效果。</p>
+<p>&emsp;&emsp;可使用同一資源，通過設定九宮格的參數，達到不同的最終效果。</p>
+<p>&emsp;&emsp;系統開銷比精靈控制項大，建議不要過度使用圖片控制項。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;同樣還是官方示例中的這個介面，您能想像到哪些地方是由圖片控制群組成的麼？</p>
+<p><img src="res/image013.png" alt="image"></p>
+<p>&emsp;&emsp;您可以獲取官方示例後，打開DifficultSelect.csd檔查看我們是如何使用圖片控制項的，也許會對您的項目有所啟發。其中<img src="res/image014.png" alt="image">的背景由一張尺寸為16x32的圖片製作而成的。下面我們為您說明如何使用圖片控制項製作這一背景。</p>
+<p>&emsp;&emsp;場景1：如何使用圖片控制項</p>
+<p><img src="res/image015.png" alt="image"></p>
+<p>&emsp;&emsp;在畫布上添加一個圖片控制項後，設置其“圖片資源”屬性為上圖所示資源，設置方式為在屬性面板的特性部分會展示控制項當前的圖片資源縮略圖，您可以通過按兩下縮略圖修改控制項的圖片資源，也可以將圖片資源拖動到當前的樣式資源上以替換為新的資源。除此之外也能通過九宮格圖片控制項的右鍵功能表添加新的資源。然後開啟“九宮格”屬性，並修改九宮格控制項的上下左右邊距分別為0，0，10，0，而後修改控制項尺寸為70，32，定義的這些邊距會影響九宮格拉伸的效果，並達到預期的效果。關於九宮格的原理和詳細說明，參考4,九宮格使用.docx</p>
+<h3 id="4-文本"><a href="#4-文本" class="headerlink" title="4.文本"></a>4.文本</h3><p><img src="res/image016.png" alt="image"></p>
+<p>&emsp;&emsp;文本也是遊戲中最為常用的控制項之一。添加一個文本，可以設置字體,字型大小,對齊等樣式或屬性。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;在示例中很多地方使用了文本控制項，如主介面：</p>
+<p><img src="res/image017.png" alt="image"></p>
+<p>&emsp;&emsp;場景1：使用不同的字體修改文本樣式</p>
+<p>&emsp;&emsp;如果您需要特殊的字體則需要點擊導入字體按鈕導入一個TTF格式的字體，這個字體將在您發佈遊戲時一起打包。 在修改文本的字體時需要注意，當您沒有指定使用的字體時，使用的字體是所運行設備的預設字體，對於您所製作的遊戲來說就是玩家設備的字體。</p>
+<h3 id="5-FNT字體"><a href="#5-FNT字體" class="headerlink" title="5.FNT字體"></a>5.FNT字體</h3><p><img src="res/image018.png" alt="image"></p>
+<p>&emsp;&emsp;可以通過設置FNT字體檔實現各種藝術字體。和藝術數位比，FNT字體具有以下特性：</p>
+<p>&emsp;&emsp;.    可用資源豐富，支援各類文字，下圖就是一張製作好的FNT字體，不難發現，字體中包含中文，英文，數位以及某些特殊字元。</p>
+<p>&emsp;&emsp;.    製作複雜，需要使用專業軟體進行製作。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p><img src="res/image019.png" alt="image"></p>
+<p>&emsp;&emsp;場景1：使用FNT字體</p>
+<p>&emsp;&emsp;在畫布上添加一個FNT後，選擇該FNT字體控制項，在屬性面板的特性部分會展示該控制項當前的樣式資源，您可以通過按兩下修改按FNT字體的屬性，也可以將FNT資源拖動到當前的樣式資源上以替換為新的資源。除此之外也能通過按鈕控制項的右鍵功能表添加新的資源。修改FNT字體文本時只需選中控制項，在屬性區修改文字屬性，也可以通過“功能表-編輯文本”或按兩下喚出修改文本彈窗。</p>
+<p><img src="res/image020.png" alt="image"></p>
+<p>&emsp;&emsp;當您在輸入框中輸入了FNT中缺少的字元時，這些缺少的字元會被顯示為空格。</p>
+<h3 id="6-進度條"><a href="#6-進度條" class="headerlink" title="6.進度條"></a>6.進度條</h3><p><img src="res/image021.png" alt="image"></p>
+<p>&emsp;&emsp;通過進度條可以顯示處理任務的速度,完成度，您可以設置進度條的樣式。</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;官方示例中，體力恢復功能就使用了進度條控制項，如下圖所示綠色條</p>
+<p><img src="res/image022.png" alt="image"></p>
+<p>&emsp;&emsp;場景1：修改進度條樣式</p>
+<p>&emsp;&emsp;在畫布上添加一個進度條後，選擇該進度條控制項，在屬性面板的特性部分會展示進度條控制項當前的樣式資源，您可以通過按兩下修改進度條控制項的資源圖，也可以將圖片資源拖動到當前的樣式資源上以替換為新的資源。除此之外也能通過進度條控制項的右鍵功能表添加新的資源。如示例中，我們就為其設置了如下背景：</p>
+<p><img src="res/image023.png" alt="image"></p>
+<p>&emsp;&emsp;場景2：設置進度條方向</p>
+<p><img src="res/image024.png" alt="image"></p>
+<p>&emsp;&emsp;實現如上圖所示血條（一個向左，一個向右），只需要設置進度條的屬性“類型”，分別設定為從左至右,從右至左，通過修改進度條方向可以在遊戲中實現對戰時生命值的展示。</p>
+<h3 id="7-滑動條"><a href="#7-滑動條" class="headerlink" title="7.滑動條"></a>7.滑動條</h3><p><img src="res/image025.png" alt="image"></p>
+<p>&emsp;&emsp;滑動條可以設置滑動進度，滑塊樣式式等，使用者可通過移動滑動滑動條在相應的控制項中顯示對應的值</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;滑動條多用於設置某些連貫屬性上，如在很多程式中的設置介面設置音量等，在官方示例中，我們也在設置介面做了滑動條的展示：</p>
+<p><img src="res/image026.png" alt="image"></p>
+<p>&emsp;&emsp;場景1：修改滑動條樣式</p>
+<p>&emsp;&emsp;如上圖，要設置上圖中的進度條，您需要以下五個資源，他們分別用於設置滑動條的背景樣式,內部進度條樣式,滑塊正常樣式,滑塊按下樣式,滑塊禁用樣式，每一種狀態都可以通過圖片來定義。在我們的示例中，禁用狀態沒有設置。</p>
+<p><img src="res/image027.png" alt="image"></p>
+<p>&emsp;&emsp;在畫布上添加一個滑動條後，選擇該滑動條控制項，在屬性面板的特性部分會展示滑動條控制項當前的樣式資源，您可以通過按兩下修改滑動條控制項的屬性，也可以將圖片資源拖動到當前的樣式資源上以替換為新的資源。</p>
+<p>&emsp;&emsp;除此之外也能通過滑動條控制項的右鍵功能表添加新的資源。</p>
+<p><img src="res/image028.png" alt="image"></p>
+<h3 id="8-藝術數字"><a href="#8-藝術數字" class="headerlink" title="8.藝術數字"></a>8.藝術數字</h3><p><img src="res/image029.png" alt="image"></p>
+<p>&emsp;&emsp;可以通過一張包含“./0123456789”的PNG圖片實現藝術數位的效果，每個字元的高為圖片的高，寬為圖片的1/12，通過藝術數位可以實現藝術化效果的數位，能夠簡單有效的豐富遊戲的視覺效果。和FNT字體相比，藝術數位具有以下特性：</p>
+<p>&emsp;&emsp;.    製作方便，FNT字體製作複雜，而藝術數字較簡單</p>
+<p>&emsp;&emsp;.    可用資源少，藝術數字僅支援“.”,“/”,“0-9的數字”</p>
+<p>&emsp;&emsp;使用場景</p>
+<p>&emsp;&emsp;我們的官方示例中，選擇關卡這裡就使用了藝術數位</p>
+<p><img src="res/image030.png" alt="image"></p>
+<p>&emsp;&emsp;場景1：修改藝術數位圖片資源</p>
+<p>&emsp;&emsp;在畫布上添加一個藝術數字後，選擇該藝術數位控制項，在屬性面板的特性部分會展示控制項當前的圖片資源縮略圖，您可以通過按兩下縮略圖修改控制項的圖片資源，也可以將圖片資源拖動到當前的樣式資源上以替換為新的資源。除此之外也能通過藝術數位控制項的右鍵功能表添加新的資源。修改按鈕文本時只需選中按鈕，在屬性區修改文字屬性，也可以通過“功能表-編輯文本”或按兩下喚出修改文本彈窗。</p>
+<p><img src="res/image031.png" alt="image"></p>
+<p>&emsp;&emsp;特別說明</p>
+<p>&emsp;&emsp;製作藝術數位時需要遊戲美術設計人員提供一張包含了“.”,“/”,“0-9的數位”的圖片，確保順序為./0123456789，且按照圖片寬度進行12等分能夠分割出各個獨立的數位。</p>
+<p><img src="res/image032.png" alt="image"></p>
+<p>&emsp;&emsp;一張典型的藝術數位圖片資源</p>
+<p><img src="res/image033.png" alt="image"></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/tw.html" data-id="citntilno007uwfw85mh3uq9k" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/tw.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>

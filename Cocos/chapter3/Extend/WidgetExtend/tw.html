@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="控制項擴展1.文檔要點
+&amp;emsp;&amp;emsp;自訂控制項相關部分的設計思路及技術細節。包括兩種自訂控制項的編寫方法： 
+&amp;emsp;&amp;emsp;A.使用Lua腳本編寫供Cocos Studio使用的自訂控制項；（基礎篇內容）
+&amp;emsp;&amp;emsp;B.使用C#+Lua來編寫供Cocos Studio使用的自訂控制項；（進階篇內容）
+2.文檔的讀者
+&amp;emsp;&amp;emsp;需要更進一步瞭解Coc">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="控制項擴展1.文檔要點
+&amp;emsp;&amp;emsp;自訂控制項相關部分的設計思路及技術細節。包括兩種自訂控制項的編寫方法： 
+&amp;emsp;&amp;emsp;A.使用Lua腳本編寫供Cocos Studio使用的自訂控制項；（基礎篇內容）
+&amp;emsp;&amp;emsp;B.使用C#+Lua來編寫供Cocos Studio使用的自訂控制項；（進階篇內容）
+2.文檔的讀者
+&amp;emsp;&amp;emsp;需要更進一步瞭解Coc">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image008.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_tw/image009.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-26T15:08:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="控制項擴展1.文檔要點
+&amp;emsp;&amp;emsp;自訂控制項相關部分的設計思路及技術細節。包括兩種自訂控制項的編寫方法： 
+&amp;emsp;&amp;emsp;A.使用Lua腳本編寫供Cocos Studio使用的自訂控制項；（基礎篇內容）
+&amp;emsp;&amp;emsp;B.使用C#+Lua來編寫供Cocos Studio使用的自訂控制項；（進階篇內容）
+2.文檔的讀者
+&amp;emsp;&amp;emsp;需要更進一步瞭解Coc">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res_tw/image001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter3/Extend/WidgetExtend/tw.html" class="article-date">
+  <time datetime="2016-09-29T02:25:36.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="控制項擴展"><a href="#控制項擴展" class="headerlink" title="控制項擴展"></a><strong>控制項擴展</strong></h1><p>1.文檔要點</p>
+<p>&emsp;&emsp;自訂控制項相關部分的設計思路及技術細節。包括兩種自訂控制項的編寫方法： </p>
+<p>&emsp;&emsp;A.使用Lua腳本編寫供Cocos Studio使用的自訂控制項；（基礎篇內容）</p>
+<p>&emsp;&emsp;B.使用C#+Lua來編寫供Cocos Studio使用的自訂控制項；（進階篇內容）</p>
+<p>2.文檔的讀者</p>
+<p>&emsp;&emsp;需要更進一步瞭解Cocos Studio，對Cocos Studio有自訂控制項需求的使用者。</p>
+<p>&emsp;&emsp;在此，我們假定讀者有以下的知識技能：</p>
+<p>&emsp;&emsp;熟悉Cocos Studio軟體的使用。</p>
+<p>&emsp;&emsp;對Lua腳本有一定的瞭解。</p>
+<p>&emsp;&emsp;對Cocos 2d-x匯出的Lua介面比較熟悉。</p>
+<p>&emsp;&emsp;對C#語言程式設計有一定的瞭解。（非必需，不影響基礎篇的閱讀。進階篇有此要求）</p>
+<p>3.背景知識</p>
+<p>&emsp;&emsp;本文檔內容會涉及到下列相關的背景知識：</p>
+<p>&emsp;&emsp;1)Lua語言。（詳情請參見：<a href="http://www.lua.org/" target="_blank" rel="external">http://www.lua.org/</a>）</p>
+<p>&emsp;&emsp;2)Cocos2d-Lua綁定。</p>
+<p>&emsp;&emsp;3)Mono.Addins。（詳情請參見：<a href="http://monoaddins.codeplex.com/" target="_blank" rel="external">http://monoaddins.codeplex.com/</a>）</p>
+<p>4)T4 範本。</p>
+<p>&emsp;&emsp;（詳情請參見：<a href="https://msdn.microsoft.com/en-us/library/bb126445.aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/bb126445.aspx</a>）</p>
+<p>&emsp;&emsp;通過閱讀本文檔，你將瞭解到以上和Cocos Studio擴展相關的內容。</p>
+<p>4.目錄位置</p>
+<p>&emsp;&emsp;為方便讀者查閱，在此把文檔中會用到的幾個目錄位置在此匯總一下。</p>
+<p>&emsp;&emsp;Cocos Studio的外掛程式目錄</p>
+<p>&emsp;&emsp;Windows作業系統上文檔位置預設安裝時，這個目錄是%userprofile%\Documents\Cocos\CocosStudio2\Addins。文檔位置自訂安裝時，則在Cocos Studio的文檔安裝目錄中的相應位置。例如：文檔的安裝目錄為 D:\CocosDocuments，則該路徑為D:\CocosDocuments\Cocos\CocosStudio2\Addins。在Mac上，這個目錄為使用者目錄 ~/Library/Application Support/Cocos/CocosStudio2/Addins 。</p>
+<p>&emsp;&emsp;示例工程位置</p>
+<p>&emsp;&emsp;Windows上文檔位置預設安裝時，這個目錄是%userprofile%\Documents\Cocos\CocosStudio2\Samples\Addins。文檔位置自訂安裝時，則在Cocos Studio的文檔安裝目錄中的相應位置。例如，文檔的安裝目錄為D:\CocosDocuments，則該路徑為D:\CocosDocuments\Cocos\CocosStudio2\Samples\Addins。在Mac上，這個目錄為系統目錄/Library/Application Support/Cocos/CocosStudio2/Samples/Addins。<br>在不引起混淆的情況的，以下的目錄位置都是以在Windows作業系統上Cocos Studio的預設安裝為例。</p>
+<p>5.自訂控制項</p>
+<p>&emsp;&emsp;目前Cocos Studio支援兩種編寫自訂控制項的方法：</p>
+<p>&emsp;&emsp;1) 最基本的自訂控制項編寫，只寫Lua代碼。這部分適用於對現在的編輯器支援的控制項進行自訂渲染。</p>
+<p>&emsp;&emsp;2) 更多的定制，需要同時寫C#代碼和Lua代碼。適用於需要更進一步的定制控制項的情況，可以通過添加屬性來動態的調整自訂擴展的控制項。</p>
+<p>&emsp;&emsp;如果工程中含有用 Lua 實現的自訂控制項，在載入場景時就需要使用這些Lua檔。為更方便的使用Lua擴展來完成場景的構建，此次我們為Cocos Studio項目發佈添加了Lua檔案類型，如下圖所示：</p>
+<p><img src="res_tw/image001.png" alt="image"></p>
+<p>&emsp;&emsp;在發佈帶有Lua自訂控制項的Cocos Studio工程時，選擇該選項。否則，自訂控制項不可展示出來。例如，工程發佈為csb檔時，相應的自訂Lua控制項會被跳過從而不可使用。（在Cocos Studio工程不包含Lua自訂控制項時也可以選擇該項來將工程匯出為Lua檔。）<br>如果有其它的特殊的發佈格式需求，請參考自訂資料匯出格式匯出一節。</p>
+<p>&emsp;&emsp;下面針對這兩種情況分析介紹：</p>
+<p>&emsp;&emsp;1) 基礎篇針對基本的自訂控制項的編寫，使用者只需要編寫Lua代碼即可完成操作。</p>
+<p>&emsp;&emsp;2) 進階篇針對的是有更多控制需要的自訂控制項的編寫，使用者需要編寫部分輔助的C#代碼來完成操作。<br>下面我們來看下如何使用Lua腳本編寫供Cocos Studio使用的自訂控制項。</p>
+<p>6.基礎篇</p>
+<p>&emsp;&emsp;Cocos Studio啟動時，會掃描Cocos Studio外掛程式目錄下LuaScript目錄，其中的Lua檔（以尾碼名.lua作為判斷）會被認為是一個用Lua編寫的自訂擴展控制項。檔名作為控制項名字顯示在Cocos Studio控制項區（參見下面的示例）。</p>
+<p>&emsp;&emsp;對於只需要修改或者擴展Cocos Studio控制項的渲染的情況或者給控制項屬性設置預設值，比如要定制一套控制項皮膚或者設置預設的文本字體，可以只編寫Lua代碼來完成操作。在這種情況下，使用者根據我們規定的格式來編寫Lua代碼，在Lua代碼中指定所擴展的Cocos Studio預定義控制項的類型（這也就是下面會提到的GetBaseType的作用。由於這裡是對Cocos Studio 預定義類型的擴展，所以除Lua所擴展的部分之外，其它控制項部分的初始化依然是由Cocos Studio來完成。這也是基礎篇裡對控制項的擴展可以只寫Lua代碼而不需要C#代碼來完成的原因。），完成所擴展的控制項的自訂構建，放在Cocos Studio外掛程式目錄下 LuaScript目錄內，Cocos Studio的啟動時便會載入它。要完成這個操作只需要以下兩步：</p>
+<p>&emsp;&emsp;1） 編寫自訂控制項Lua腳本代碼。</p>
+<p>&emsp;&emsp;2） 將上一步編寫好的Lua腳本代碼放置在Cocos Studio外掛程式目錄下LuaScript目錄內。 </p>
+<p>&emsp;&emsp;下麵來看一個示例：一個自訂的帶文本的精靈控制項。<br>請在示例工程位置處找到Addins.sln，可以在Visual Studio 2013中打開它，下面的示例是位於LuaScript目錄裡的 abc.lua文件。</p>
+<p>7.示例</p>
+<p>&emsp;&emsp;一個自訂帶文本的精靈控制項：即在一個精靈上顯示一行文字。</p>
+<p>&emsp;&emsp;abc.lua 代碼內容如下（其中的注釋部分包含了代碼的解釋和一些注意事項）。</p>
+<p>&emsp;&emsp;片段如下：<br>–[[<br>一個簡單的示例，新建一個精靈，並在精靈上放置了一個文本。<br>當調用CreateCustomNode時，會生成這個精靈並返回。<br>]]</p>
+<pre><code>-- 新建一個table，包含CreateCustomNode和GetBaseType方法。
+local container = {}
+
+-- 新建根節點Node，目前這個方法的名字為固定的，必須為CreateCustomNode。
+-- 方法的最後一句必須是一個return語句，把新建的結點返回。
+function container.CreateCustomNode()
+    -- 新建一個精靈。
+    local rootNode = cc.Sprite:create(&apos;temp.png&apos;) -- 圖片資源位於本檔所在目錄
+
+    -- 新建一個 Label。
+    local label = cc.Label:create()
+    label:setString(&apos;abc Label From Lua&apos;) -- 設置 label 的文本內容。
+    label:setSystemFontSize(24) -- 設置 label 字體大小。
+    label:setPosition(140, 50) -- 設置 label 的位置。
+    label:setName(&apos;labelName&apos;)  -- 設置 label 的名字。
+    label:retain()              -- 保留，以回避垃圾回收。
+
+    rootNode:addChild(label)
+    return rootNode
+end
+</code></pre><p>– 返回該外掛程式所擴展的基礎類型。<br>function container.GetBaseType()<br>    return ‘Sprite’<br>end</p>
+<p>– 返回這個包含CreateCustomNode和GetBaseType方法的表。<br>return container<br>– 片段到這裡結束</p>
+<p>&emsp;&emsp;分析：<br>上面的代碼是一個完整的Lua模組。載入它時會返回一個Lua Table，也就是代碼片段最後的那個container表。<br>方法GetBaseType用以返回這個Lua代碼所擴展的自訂控制項的根節點基礎類型，這裡返回一個字串 ‘Sprite’， 表示自訂擴展的控制項是一個精靈。GetBaseType的具體可用的返回值見下一節中關於GetBaseType方法的描述。<br>方法CreateCustomNode 用以返回一個結點，這裡就是一個擴展的精靈。<br>假設上面的Lua代碼檔abc.lua已經放置Cocos Studio外掛程式目錄下LuaScript目錄內，同時目錄中有圖片temp.png。<br>運行Cocos Studio，可以在控制項面板 “自訂控制項” 分組中看到這個自訂控制項，控制項的名字即Lua檔案名“abc”：</p>
+<p><img src="res_tw/image002.png" alt="image"></p>
+<p>&emsp;&emsp;由於這個自訂控制項是擴展的精靈，所以它在控制項面板中顯示的圖示和精靈一樣。</p>
+<p>&emsp;&emsp;拖動abc圖示到渲染可以看到如下內容（注：背景圖片為temp.png圖片。）：</p>
+<p><img src="res_tw/image003.png" alt="image"></p>
+<p>&emsp;&emsp;在渲染區選中它，可以看到它的類型仍然為Sprite。</p>
+<p><img src="res_tw/image004.png" alt="image"></p>
+<p>&emsp;&emsp;Lua代碼編寫中的常見問題和注意事項，請參考下節。</p>
+<p>&emsp;&emsp;8.常見問題和注意事項</p>
+<p>&emsp;&emsp;使用Lua代碼編寫自訂控制項的一些常見問題及注意事項：</p>
+<p>&emsp;&emsp;1)在自訂控制項欄無法看到所擴展的控制項：代碼檔需要放置在Cocos Studio外掛程式目錄下LuaScript目錄內，同時目錄中有圖片temp.png。寫好的Lua代碼檔必須放置在這個目錄內，否則的話，Cocos Studio啟動時將找不到該Lua檔從而無法載入它。（例如，為了運行上面的示例，可以把示例工程位置中的 LuaScript 目錄拷貝到Cocos Studio外掛程式目錄下，啟動Cocos Studio以觀察效果。）。<br>如果要從另外的地方載入Lua檔，則需要修改C#代碼，這部分請參考進階篇。</p>
+<p>&emsp;&emsp;2)在Lua代碼中需要用到的資源也應該放到這個目錄中去（例如上面示例中的temp.png圖片也是放置在 LuaScript目錄內），以相對路徑載入它LuaScript目錄是載入 Lua 代碼檔時的工作目錄。在發佈的時候，LuaScript目錄會被整個拷貝到Cocos Studio的工程發佈目錄。LuaScript 目錄只會被拷貝一次，如果工程發佈目錄裡已經存在同名的目錄，將不再拷貝。</p>
+<p>&emsp;&emsp;3)一個Lua代碼檔是一個完整的自訂模組。Lua代碼最後會返回一個Lua Table。</p>
+<p>&emsp;&emsp;4)Lua Table必須有一個名為CreateCustomNode的方法，調用它時可以生成自訂控制項並返回。</p>
+<p>&emsp;&emsp;5)Lua Table必須有一個名為GetBaseType的方法，以返回該自訂控制項的根節點，這是一個字串。Cocos Studio所包含的控制項及其名字如下所示（控制項名一列的英文部分表示該控制項在引擎中的名字，即在渲染區選中相應的控制項時在屬性區中的類型顯示；括弧中的中文名字表示其在控制項面板中的中文名字。GetBaseType返回列表示在Lua代碼中應該返回的字串。）：</p>
+<pre><code>      控制項名               GetBaseType返回
+   Sprite（精靈）              Sprite
+ParticleSystemQuad（粒子）    Particle
+ TMXTiledMap（地圖）          GameMap
+   ComAudio（聲音）            SimpleAudio
+    Node（節點）                Node
+   Button（按鈕）               Button
+  CheckBox（核取方塊）             CheckBox
+  ImageView（圖片）              ImageView
+  TextBMFont（FNT 字體）      TextBMFont
+  LoadingBar（進度條）         LoadingBar
+  Slider（滑動條）              Slider
+  Text（文本）                    Text
+  TextField（輸入框）           TextField
+  ScrollView（滾動容器）         ScrollView
+  ListView（列表容器）         ListView
+  PageView（翻頁容器）         PageView
+ Particle3D（3D 粒子）         Particle3D
+   Sprite3D（模型）              Sprite3D                                        
+ UserCamera（攝像機）         UserCamera
+</code></pre><p>&emsp;&emsp;6) 如何在自訂控制項的Lua腳本中調用協力廠商Lua代碼庫? </p>
+<p>&emsp;&emsp;目前Cocos Studio的Lua運行時只支持從Cocos 2d-x匯出的介面，預設沒有載入其它介面。如果需要，請在Lua 代碼中自行載入。例如，如果需要用到Quick-cocos2d-x提供的Lua擴展介面，請在代碼中自行載入相關的庫。</p>
+<p>&emsp;&emsp;7) 只寫Lua代碼的話，可以自訂渲染，對相應的控制項定制渲染。如果需要更深入的控制項（例如需要擴展屬性區），需要寫配對的C#代碼。</p>
+<p>&emsp;&emsp;8) 一個自訂控制項應該只有一個Lua檔來定義。同時，一個Lua檔只應該生成一個自訂控制項。目前Cocos Studio會載入所有的位於LuaScript目錄中的Lua檔。每個Lua檔對應於控制項區的一個控制項圖示，圖示顯示的名字就是檔案名（不帶尾碼的部分）。</p>
+<p>&emsp;&emsp;9) 對於打開一個已經保存的有Lua擴展控制項的工程，如果在打開工程前修改過相應的Lua指令檔的內容，則載入的為新的腳本內容。如果載入過程出錯，則不顯示相應的自訂控制項。</p>
+<p>&emsp;&emsp;最佳實踐：在Cocos Studio中編輯所需控制項，編輯結束後，把工程發佈為Lua檔。基於相應的代碼片段進行修改，可以減少手動編寫代碼的工作量。</p>
+<p>&emsp;&emsp;基礎篇到此結束，對於只使用Lua代碼目前只能完成一個簡單的自訂控制項（即擴展Cocos Studio預定義控制項），如果需要更進一步的擴展，請參見以下幾節。</p>
+<p>&emsp;&emsp;9.進階篇</p>
+<p>&emsp;&emsp;對於需要更多定制的情況，比如要添加屬性的修改，就需要用到Cocos Studio所提供的擴展功能，編寫相應的C#代碼來完成。這裡先簡單的介紹下這個過程（更詳細的細節請參見下麵各節），Cocos Studio是基於Mono.Addins來構建的外掛程式系統，在需要對擴展更進一步的定制時，我們就需要使用這個外掛程式系統（配置程式集）。為了擴展屬性，需要對所擴展類型時行 C#擴展（視圖模型的擴展，即從ViewModel派生一個子類，並添加屬性。由於ViewModel的擴展，從而DataModel也需要相應的擴展。）。擴展的C#屬性需要和Lua腳本進行資料交互（通過運行時從Lua代碼讀寫資料，所以要修改相應的Lua腳本，並在C#裡調用Cocos Studio提供的介面來與Lua腳本時行資料交互）。擴展的控制項需要匯出到Lua檔（通過添加Lua代碼生成範本），相應的Lua代碼生成範本雖然被添加到Cocos Studio的外掛程式系統從而在工程發佈可被應用（添加Lua代碼生成範本的匯出）。在此過程中的幾個概念的關係如下圖所示：</p>
+<p><img src="res_tw/image005.png" alt="image"></p>
+<p>&emsp;&emsp;（說明：Lua Objects為自訂控制項的Lua腳本代碼。Lua Codes從DataModel生成的Lua檔代碼。）<br>一般來說，完成這個操作需要以下幾步：</p>
+<p>&emsp;&emsp;1） 編寫自訂控制項Lua腳本代碼。</p>
+<p>&emsp;&emsp;2） 將上一步編寫好的Lua腳本代碼放置在Cocos Studio的外掛程式目錄。 </p>
+<p>&emsp;&emsp;3） 配置外掛程式AddinConfig.cs。 </p>
+<p>&emsp;&emsp;4） 添加ViewModel和DataModels。 </p>
+<p>&emsp;&emsp;5） 添加Lua代碼生成範本。</p>
+<p>&emsp;&emsp;下麵來看一個示例：一個自訂的帶文本的精靈控制項，該自訂控制項在渲染區選中時，可以通過屬性區修改文本的內容和字體大小。<br>這裡我們已經提供了一個配置好的Visual Studio 2013專案工程，請在示例工程位置處找到Addins.sln，可以在Visual Studio 2013中打開它，下面的內容都是基於該示例工程（示例工程的其它介紹請參見示例工程一節）。</p>
+<p>&emsp;&emsp;自訂控制項部分主要位元於Lua目錄下的LuaScript子目錄內。</p>
+<p>&emsp;&emsp;10.示例</p>
+<p>&emsp;&emsp;因為要控制項精靈上文本的內容和字體大小，先在Lua代碼中添加處理文本內容和字體大小的方法。如下所示：</p>
+<p>&emsp;&emsp;Lua代碼</p>
+<p>&emsp;&emsp;LuaScript目錄中一個可用的sprite0.lua代碼如下所示（其中的注釋部分包含了代碼的解釋和一些注意事項）。</p>
+<p>&emsp;&emsp;片段如下：<br>–[[<br>一個簡單的示例，新建一個精靈，並在精靈上放置了一個文本。<br>當調用CreateCustomNode時，會生成這個精靈並返回。<br>]]</p>
+<pre><code>-- 新建一個精靈。
+-- 新建精靈時傳入了一個圖片路徑作為參數。
+local function CreateSprite()
+    return cc.Sprite:create(&apos;temp.png&apos;) --圖片資源請放在本檔所在目錄 (LuaScript 目錄)
+end
+
+-- 新建一個Label，用以顯示文字
+local function CreateLabel()
+    local label = cc.Label:create()
+    label:setString(&apos;sprite0 Label from Lua&apos;)
+    label:setSystemFontSize(24)
+    label:setPosition(140, 50)
+    label:setName(&apos;labelName&apos;) --設置 label 的名字，這個 label 的名字在下面會用到。
+    label:retain()
+    return label
+end
+
+-- make sure ccslog is not empty
+local ccslog = ccslog
+if not ccslog then
+    ccslog = function(...) end
+end
+
+-- 新建一個table，避免全域變數污染。用以包括腳本中所定義的所有的全域方法。
+local container = {}
+-- 新建根節點 Node，目前這個方法的名字為固定的，必須為CreateCustomNode。
+-- 方法的最後一句必須是一個return語句，把新建的結點返回。
+function container.CreateCustomNode()
+    local rootNode = CreateSprite()
+    rootNode:addChild(CreateLabel())
+    return rootNode
+end
+
+-- 返回該外掛程式所擴展的基礎類型。
+function container.GetBaseType()
+    return &apos;Sprite&apos;
+end
+
+-- 取得精靈上文本的內容。
+-- root 參數即為調用CreateCustomNode時返回的根結點。
+function container.GetLabelText(root)
+    -- 在父控制項中查找名字為 &apos;labelName&apos; 的子控制項。
+    local child = root:getChildByName(&apos;labelName&apos;)
+    return child:getString()
+end
+
+-- 設置精靈上文本的內容。
+-- root 參數即為調用CreateCustomNode時返回的根結點。
+-- value 所賦的字串的值。
+function container.SetLabelText(root, value)
+    -- 在父控制項中查找名字為 &apos;labelName&apos; 的子控制項。
+    local child = root:getChildByName(&apos;labelName&apos;)
+    child:setString(value)
+end
+
+-- 取得精靈上文本的字體大小。
+function container.GetLabelFont(root)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    return child:getSystemFontSize()
+end
+
+-- 設置精靈上文本的字體大小。
+function container.SetLabelFont(root, value)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    child:setSystemFontSize(value)
+end
+
+-- 返回這個包含所有全域方法的表
+return container
+</code></pre><p>– 片段到這裡結束</p>
+<p>&emsp;&emsp;分析：<br>新建精靈部分在上一個示例中已經描述。這裡看下它新添加的兩對Set/Get方法：<br>GetLabelText/SetLabelText（獲取/設置精靈上文本的內容），GetLabelFont/SetLabelFont（獲取/設置精靈上文本字體的大小）。注意這裡的方法名，在下面的C#代碼中會用到。<br>這裡可以看到，在方法內部，是通過Cocos 2d-x匯出的Lua介面完成相應的操作。 </p>
+<p>&emsp;&emsp;在 Cocos Studio 3.10 版本中，新添加了 <code>ccslog</code> 用於向 Cocos Studio 的輸出區輸出資訊。<code>ccslog</code> 的使用方法同 lua 中的 <code>print</code> ，在 3.10 版本的示例工程 sprite0.lua 代碼中可以看到它的使用。</p>
+<p>&emsp;&emsp;為了在Cocos Studio中可以生成它，使它可以展示在渲染區，為它添加ViewModel。如下所示：</p>
+<p>&emsp;&emsp;視圖模型</p>
+<p>&emsp;&emsp;LuaCustomObject視圖模型的代碼片段如下：</p>
+<pre><code>[DisplayName(&quot;Sprite Extend&quot;)]
+[ModelExtension(2)]
+[ControlGroup(ViewObjectCategory.CustomGroupKey, 2)]
+[EngineClassName(&quot;LuaCustom&quot;)]
+public class LuaCustomObject : SpriteObject
+{
+    public LuaCustomObject()
+        : base(GetScriptFileData())
+    {
+        if (System.IO.File.Exists(luaFile))
+            luaValueConverter = new LuaValueConverter(luaFile, this);
+        else
+            throw new System.IO.FileNotFoundException(luaFile + &quot; not found!&quot;);
+    }
+
+    private LuaValueConverter luaValueConverter;
+
+    private static string luaFile = GetLuaFilePath();
+
+    private static ScriptFileData GetScriptFileData()
+    {
+        if (System.IO.File.Exists(luaFile))
+        {
+            CSCocosHelp.AddSearchPath(Path.GetDirectoryName(luaFile));
+            return new ScriptFileData(luaFile, ScriptType.Lua);
+        }
+
+        LogConfig.Output.Info(luaFile + &quot; not exist!&quot;);
+        return null;
+    }
+
+    /// &lt;summary&gt;
+    /// get lua file path according to current running assembly.
+    /// lua script file should in a folder &quot;LuaScript&quot; which is in current running assembly parent folder.
+    /// e.g. current running assembly is in &quot;Addins&quot;, lua file path is &quot;Addins/LuaScript/sprite0.lua&quot;
+    ///
+    ///      Addins
+    ///      ├─Addins.Sample.dll (current running assembly)
+    ///      └─LuaScript
+    ///          ├─ sprite0.lua
+    ///
+    /// you can modify &quot;LuaScript&quot; or lua file name &quot;sprite0.lua&quot; to other name as you like.
+    /// NOTICE: only Addins/LuaScript folder will be copied to target folder. if lua script is in other
+    /// folder, user should write extra codes to copy it to target folder, e.g. use CustomSerializer to do the job.
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;lua file path&lt;/returns&gt;
+    private static string GetLuaFilePath()
+    {
+        string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        string luaScriptFolder = Path.Combine(assemblyFolder, &quot;LuaScript&quot;);
+
+        // make sure luaFile exists, if not, please copy it from source folder to target.
+        // you can find the lua script file in &quot;../LuaScript/&quot; folder as &quot;.&quot;(current folder) is the one
+        // who contains current file LuaCustomObject.cs.(here &quot;.&quot; is &quot;Addins.Sample/Lua/ViewModel&quot;)
+        //  
+        //  ├─LuaScript
+        //  │   ├─ sprite0.lua
+        //  │
+        //  └─ViewModel
+        //      ├─ LuaCustomObject.cs (current file)
+        //
+        string luaFilePath = Path.Combine(luaScriptFolder, &quot;sprite0.lua&quot;);
+
+        return luaFilePath;
+    }
+
+    protected override string GetNamePrefix()
+    {
+        return &quot;LuaSprite_&quot;;
+    }
+
+    [UndoProperty]
+    [DefaultValue(&quot;abc&quot;)]
+    [DisplayName(&quot;Label Text&quot;)]
+    [Category(&quot;Group_Feature&quot;)]
+    [Browsable(true)]
+    [PropertyOrder(0)]
+    public string LabelText
+    {
+        get
+        {
+            return luaValueConverter.GetStringValue(&quot;GetLabelText&quot;);
+        }
+        set
+        {
+            luaValueConverter.SetStringValue(&quot;SetLabelText&quot;, value);
+            this.RaisePropertyChanged(() =&gt; this.LabelText);
+        }
+    }
+
+    [UndoProperty]
+    [DisplayName(&quot;Label Font&quot;)]
+    [Category(&quot;Group_Feature&quot;)]
+    [Description(&quot;Int value description&quot;)]
+    [PropertyOrder(1)]
+    [Browsable(true)]
+    public int LabelFont
+    {
+        get
+        {
+            return luaValueConverter.GetIntValue(&quot;GetLabelFont&quot;);
+        }
+        set
+        {
+            luaValueConverter.SetIntValue(&quot;SetLabelFont&quot;, value);
+            this.RaisePropertyChanged(() =&gt; this.LabelFont);
+        }
+    }
+
+    #region methods for clone
+
+    // set value to the object, used in clone.
+    protected override void SetValue(object cObject)
+    {
+        base.SetValue(cObject);
+
+        LuaCustomObject nObject = cObject as LuaCustomObject;
+        if (nObject == null)
+            return;
+        nObject.LabelText = this.LabelText;
+        nObject.LabelFont = this.LabelFont;
+    }
+
+    #endregion methods for clone
+}
+</code></pre><p>&emsp;&emsp;分析：<br>由於該自訂控制項擴展的是精靈，所以，它繼承自SpriteObject。<br>DisplayName特性：在Cocos Studio控制項欄裡顯示的自訂控制項的名字，這裡顯示為”Sprite Extend”。<br>ModelExtension特性：匯出這個自訂的ViewModel類型，其參數為類型匯出順序，由於添加了這個特性，這個控制項就在 Cocos Studio的自訂控制群組中顯示出來，如下所示：</p>
+<p><img src="res_tw/image006.png" alt="image"></p>
+<p>&emsp;&emsp;（這個自訂控制項的名字即為DisplayName所指定的”Sprite Extend”。）</p>
+<p>&emsp;&emsp;如果所擴展的為3D控制項，這裡使用ModelExtension裡需要多一個表示3D的參數，如下所示（詳見示例工程中的 3D擴展）：</p>
+<pre><code>[ModelExtension(2, EnumModelType.ThreeDimensional)]
+</code></pre><p>&emsp;&emsp;Category特性：<br>分組，以及控制項在分組中的順序。這裡因為給它指定的是名字是 “Control_Custom”， 所示該控制項在控制項區顯示在“自訂控制項”分組中，（注意：這裡用欄位”Control_Custom” 而實際顯示為“自訂控制項”是因為Cocos Studio裡有特殊的處理，如果使用其它的欄位，則會顯示會欄位的名字。）</p>
+<p>&emsp;&emsp;EngineClassName：控制項名，其名字會顯示在屬性面板的類型處。Cocos Studio的控制項此處顯示的是是它在 Cocos 2d-x中類型。自訂控制項沒有對應的引擎類型，所以此處以自己能清晰的分辨所選擇類型為准。</p>
+<p><img src="res_tw/image007.png" alt="image"></p>
+<p>&emsp;&emsp;由於其中添加了LabelText和LabelFont擴展屬性，所以它們在屬性區展示如下：</p>
+<p><img src="res_tw/image008.png" alt="image"></p>
+<p>&emsp;&emsp;（注意屬性的名字和ViewModel屬性上的DisplayName的對應關係。）<br>屬性區擴展及屬性區編輯控制項的擴展，請參考屬性區擴展一節。</p>
+<p>&emsp;&emsp;ViewModel的其它細節請參見DataModel和ViewModel一節。</p>
+<p>&emsp;&emsp;在Cocos Studio中，每個ViewModel對應一個資料模型DataModel用來作數據的持久化，例如保存工程時會將 DataModel進行序列化保存到Cocos Studio的工程檔.csd文件中。所以，為這個ViewModel建立一個對應的DataModel。</p>
+<p>&emsp;&emsp;資料模型</p>
+<p>&emsp;&emsp;LuaCustomObjectData資料模型的代碼片段如下：</p>
+<pre><code>[DataModelExtension(typeof(LuaCustomObject))]
+public class LuaCustomObjectData : SpriteObjectData
+{
+    [ItemProperty]
+    [JsonProperty]
+    public string LabelText { get; set; }
+
+    [ItemProperty]
+    [JsonProperty]
+    public int LabelFont { get; set; }
+}
+</code></pre><p>&emsp;&emsp;分析：</p>
+<p>&emsp;&emsp;由於該自訂控制項擴展的是精靈，所以，它繼承自SpriteObjectData。<br>添加DataModelExtension 特性，其值為相對應的ViewModel的類型LuaCustomObject。<br>DataModel中屬性為需要進行保存的所對應的ViewModel中的欄位。<br>注意，DataModel中的屬性名字需要和ViewModel相應的屬性名字保持一致，比如上面的LabelText，就是對應於ViewModel中的LabelText。<br>DataModel的其它細節請參見DataModel和ViewModel一節。</p>
+<p>&emsp;&emsp;接著，實現ViewModel中所擴展的屬性和Lua代碼的交互。相關的C#代碼如下所示：</p>
+<p>&emsp;&emsp;資料交互<br>&emsp;&emsp;與上面的Lua代碼相對應的C#代碼片段如下所示：</p>
+<pre><code>[UndoPropertyAttribute]
+[DefaultValue(&quot;abc&quot;)]
+[DisplayName(&quot;Label Text&quot;)]
+[Category(&quot;Group_Feature&quot;)]
+[Browsable(true)]
+[PropertyOrder(0)]
+public string LabelText
+{
+    get
+    {
+        return luaValueConverter.GetStringValue(&quot;GetLabelText&quot;);
+    }
+    set
+    {
+        luaValueConverter.SetStringValue(&quot;SetLabelText&quot;, value);
+        this.RaisePropertyChanged(() =&gt; this.LabelText);
+    }
+}
+
+[UndoPropertyAttribute]
+[DisplayName(&quot;Label Font&quot;)]
+[Category(&quot;Group_Feature&quot;)]
+[Description(&quot;Int value description&quot;)]
+[PropertyOrder(1)]
+[Browsable(true)]
+public int LabelFont
+{
+    get
+    {
+        return luaValueConverter.GetIntValue(&quot;GetLabelFont&quot;);
+    }
+    set
+    {
+        luaValueConverter.SetIntValue(&quot;SetLabelFont&quot;, value);
+        this.RaisePropertyChanged(() =&gt; this.LabelFont);
+    }
+}
+</code></pre><p>&emsp;&emsp;分析：</p>
+<p>&emsp;&emsp;其中luaValueConverter.GetStringValue即為從Lua代碼中取得一個字串值，這裡由於傳入的參數為”GetLabelFont” ，從上面的Lua代碼示例中取得精靈上的文本內容。注意這裡的傳入方法名和Lua代碼的對應關係。其它幾個資料交互調用與之類似。<br>屬性的set最後調用this.RaisePropertyChanged是通知這裡的屬性值發生了改變，實現屬性區介面刷新。<br>資料交互部分的其它細節請參見資料交互一節。</p>
+<p>&emsp;&emsp;接著，為了讓這個擴展能被Cocos Studio載入起來。將工程所編譯生成的Addins.Sample.dll拷貝到Cocos Studio外掛程式目錄裡。由於Cocos Studio所使用的外掛程式方案的約定，需要給生成的程式集添加以特性：</p>
+<p>&emsp;&emsp;添加AddinConfig.cs</p>
+<p>&emsp;&emsp;給工程添加AddinConfig.cs檔，內容如下：</p>
+<pre><code>// &quot;3.10&quot; is version of the this Addin. Addin should match its dependency with the same version.
+[assembly: Addin(&quot;Addins.Sample&quot;, &quot;3.10&quot;, Namespace = Option.AddinNamespace)]
+
+// &quot;3.10&quot; is the version of Addin dependency.
+[assembly: AddinDependency(&quot;CocoStudio.Core&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Projects&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model.Lua&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model3D&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model3D.Lua&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;Addins.LuaExtend&quot;, &quot;3.10&quot;)]
+</code></pre><p>&emsp;&emsp;分析：</p>
+<p>&emsp;&emsp;設置外掛程式匯出以及外掛程式的依賴。<br>具體的細節請參見外掛程式技術方案一節。</p>
+<p>&emsp;&emsp;自訂控制項是由Lua生成，我們為了將自訂的擴展屬性匯出到Lua，需要把DataModel轉化為Lua代碼，如下所示。</p>
+<p>&emsp;&emsp;Lua代碼生成範本</p>
+<p>&emsp;&emsp;在Cocos Studio工程中，使用T4範本技術來從DataModel生成Lua代碼。</p>
+<p>&emsp;&emsp;T4範本的代碼如下所示：</p>
+<pre><code>&lt;#@ template debug=&quot;false&quot; inherits=&quot;LuaSpriteObject&quot; language=&quot;C#&quot; linePragmas=&quot;false&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
+&lt;#@ import namespace=&quot;CocoStudio.Model.DataModel&quot; #&gt;
+&lt;#@ import namespace=&quot;Addins.Sample.Lua.DataModel&quot;#&gt;
+&lt;#@ import namespace=&quot;CocoStudio.Model.Lua.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;Mono.Addins&quot; #&gt;
+
+&lt;#+
+public override bool CanSerialize(BaseObjectData objectData)
+{
+    bool isOK = typeof(LuaCustomObjectData) == objectData.GetType();
+    return isOK;
+}
+
+public override void CreateObject(BaseObjectData objectData)
+{
+    LuaCustomObjectData data = objectData as LuaCustomObjectData;
+#&gt;
+local luaScript = require(&quot;&lt;#= CocoStudio.Basic.Option.luaScriptFolderName #&gt;/&lt;#= System.IO.Path.GetFileName(data.ScriptData.RelativeScriptFile) #&gt;&quot;)
+&lt;#= GetNameDeclaration(objectData.Name) #&gt; = luaScript.CreateCustomNode()
+&lt;#+
+}
+
+public override void InitializeObject(BaseObjectData objectData)
+{
+    LuaCustomObjectData data = objectData as LuaCustomObjectData;
+    base.InitializeObject(data);
+#&gt;
+luaScript.SetLabelText(&lt;#= data.Name #&gt;, &quot;&lt;#= data.LabelText #&gt;&quot;)
+luaScript.SetLabelFont(&lt;#= data.Name #&gt;, &lt;#=data.LabelFont#&gt;)
+luaScript.GetLabelVisible(&lt;#= data.Name #&gt;, &lt;#=data.LabelVisible.ToString().ToLower()#&gt;)
+luaScript.SetMixedColor(&lt;#= data.Name #&gt;, &lt;#=data.MixedColor.ToLuaString()#&gt;)
+&lt;#+
+}
+#&gt;
+</code></pre><p>&emsp;&emsp;分析：</p>
+<p>&emsp;&emsp;inherits=”LuaSpriteObject”，設置T4範本生成類繼承自LuaSpriteObject，也就是精靈的Lua T4範本生成類。</p>
+<p>&emsp;&emsp;CanSerialize：確定該T4範本生成類所操作的DataModel為LuaCustomObjectData。</p>
+<p>&emsp;&emsp;CreateObject：生成該自訂控制項的Lua代碼。</p>
+<p>&emsp;&emsp;InitializeObject：生成該自訂控制項的設置屬性代碼。</p>
+<p>&emsp;&emsp;AddChild : 由於該自訂控制項擴展的是精靈，添加子控制項不需要特殊操作，所以不用重寫AddChild方法。</p>
+<p>&emsp;&emsp;通過上面的繼承關係我們可以看出，每一個DataModel會對應到一個Lua代碼生成範本。在對某個控制項進行擴展時，Lua代碼生成範本類需要繼承自控制項的代碼生成範本類。控制項的代碼生成範本類請參見相關類一覽。</p>
+<p>&emsp;&emsp;T4範本的其它細節請參見T4範本一節。</p>
+<p>&emsp;&emsp;Lua代碼生成的T4範本這裡使用的是Monodevelop的外掛程式機制，所以需要為其添加一個Xml匯出檔。Cocos Studio專案在匯出Lua檔時會由其外掛程式機制掃描 “/CocoStudio/Model/Lua/Templates” 擴展點下的所有LuaBaseObject 類（這個類是所有的代碼生成範本類的基類。），所以這裡添加代碼生成範本的匯出類。在進行 Lua 代碼生成的時候，Cocos Studio會以每個要生成的DataModel類為參數來調用CanSerialize來查找該DataModel所對應的代碼範本生成類。</p>
+<p>&emsp;&emsp;Lua代碼生成範本匯出</p>
+<p>&emsp;&emsp;T4範本的關聯檔為ExtensionModel目錄中的LuaObjects.addin.xml。其在 VS2013 中的屬性：“生成操作”為“嵌入的資源”，“複製到輸出目錄”為“不複製”。 </p>
+<p>&emsp;&emsp;這個檔的作用是在”/CocoStudio/Model/Lua/Templates”擴展點添加由T4範本生成的類的全路徑，即：”Addins.Sample.Lua.Lua.LuaCustomObject”，其內容如下所示：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;ExtensionModel&gt;
+&lt;Extension path = &quot;/CocoStudio/Model/Lua/Templates&quot;&gt;
+    &lt;Class class = &quot;Addins.Sample.Lua.Lua.LuaCustomObject&quot;/&gt;
+&lt;/Extension&gt;
+&lt;/ExtensionModel&gt;
+</code></pre><p>&emsp;&emsp;T4範本的其它細節請參見T4範本一節。</p>
+<p>&emsp;&emsp;C#代碼編寫中的常見問題和注意事項，請參考下節。</p>
+<p>&emsp;&emsp;11.常見問題和注意事項</p>
+<p>&emsp;&emsp;利用C#寫擴展的一些常見問題和注意事項。</p>
+<p>&emsp;&emsp;外掛程式技術方案</p>
+<p>&emsp;&emsp;Cocos Studio是基於Mono.Addins來構建的外掛程式系統，具體到代碼上的表現是：在C#工程中添加 AddinConfig.cs檔，給程式集設置Addin特性，及使用AddinDependency給程式集設置相應的依賴。生成的DLL需要放置在%userprofile%\Documents\Cocos\CocosStudio2\Addins目錄下（路徑以在Windows作業系統上的位置為示例）。<br>Mono.Addins的具體細節請參考：<a href="http://monoaddins.codeplex.com/" target="_blank" rel="external">http://monoaddins.codeplex.com/</a></p>
+<p>&emsp;&emsp;DataModel和ViewModel </p>
+<p>&emsp;&emsp;在Cocos Studio中，渲染區所展示的每一個控制項都是一個ViewModel，每一個ViewModel都對應一個 DataModel來管理其資料。</p>
+<p>&emsp;&emsp;根據要擴展的控制項的不同，ViewModel需要繼承自NodeObject或者NodeObject的某個子類。DataModel需要相應的繼承自和ViewModel的基類所配對的NodeObjectData或者NodeObjectData某個子類。<br>DataModel和ViewModel的關聯通過DataModelExtension特性來實現。</p>
+<p>&emsp;&emsp;DataModel和ViewModel中對應的屬性名應該保持一致。</p>
+<p>&emsp;&emsp;序列化方案</p>
+<p>&emsp;&emsp;DataModel中的需要序列化的屬性需要添加[ItemProperty]和[JsonProperty]特性，分別對應於xml和json 的序列化。</p>
+<p>&emsp;&emsp;資料模型的xml序列化採用的是MonoDevelop的解決方案，具體的細節請參考<a href="http://www.monodevelop.com/developers/articles/using-the-data-serializer/" target="_blank" rel="external">http://www.monodevelop.com/developers/articles/using-the-data-serializer/</a></p>
+<p>&emsp;&emsp;資料模型的json序列化採用的是Newtonsoft.Json庫，具體的細節請參考<br><a href="http://www.newtonsoft.com/json" target="_blank" rel="external">http://www.newtonsoft.com/json</a></p>
+<p>&emsp;&emsp;資料交互</p>
+<p>&emsp;&emsp;C#和Lua的資料交互，提供了LuaValueConverter用以在C#層和Lua層來交換資料。LuaValueConverter所提供的方法如下所示：<br>方法簽名說明</p>
+<pre><code>bool GetBoolValue(string funcName)                                從指定的函數名 funcName 返回一個 bool 值。
+void SetBoolValue(string funcName, bool val)                    使用指定的函數名 funcName 設置一個 bool 值。
+int GetIntValue(string funcName)                                從指定的函數名 funcName 返回一個整數。
+void SetIntValue(string funcName, int val)                        使用指定的函數名 funcName 設置一個整數。
+string GetStringValue(string funcName)                            從指定的函數名 funcName 返回一個字串。
+void SetStringValue(string funcName, string val)                使用指定的函數名 funcName 設置一個字串。
+double GetDoubleValue(string funcName)                            從指定的函數名 funcName 返回一個雙精度浮點值。
+void SetDoubleValue(string funcName, double val)                使用指定的函數名 funcName 設置一個雙精度浮點值。
+float GetFloatValue(string funcName)                            從指定的函數名 funcName 返回一個浮點值。
+void SetFloatValue(string funcName, float val)                    使用指定的函數名 funcName 設置一個浮點值。
+System.Drawing.Color GetColorValue(string funcName)                從指定的函數名 funcName 返回一個顏色值。
+void SetColorValue(string funcName, System.Drawing.Color val)    使用指定的函數名 funcName 設置一個顏色值。
+void SetResourceDataValue(string funcName, ResourceData val)    使用指定的函數名 funcName 設置一個資源值。
+</code></pre><p>&emsp;&emsp;注：</p>
+<p>&emsp;&emsp;上面的函數簽名為C#中的方法名。其中的類型均為C#語言定義中的類型。</p>
+<p>&emsp;&emsp;調用時funcName應該傳為方法在Lua中的方法名。</p>
+<p>&emsp;&emsp;資源類型只有Set沒有Get，對於需要取得資源的地方，可以調用GetStringValue方法返回資源的路徑，在C#層進行後續處理。<br>C#和Lua之間資料的交互，目前只支援這幾種預定義的類型，如果有需要其它的複合類型，可通過方法組合和類型轉換來實現。在後續的開發中我們會逐漸豐富所支持的類型。</p>
+<p>&emsp;&emsp;T4範本</p>
+<p>&emsp;&emsp;為資料模型DataModel生成T4範本，以便在匯出Cocos Studio工程時把DataModel內容匯出到Lua檔。</p>
+<p>&emsp;&emsp;T4範本具體實現時的規則：</p>
+<p>&emsp;&emsp;每個要匯出到Lua代碼的控制項都會對應一個T4範本。</p>
+<p>&emsp;&emsp;T4 範本生成的C#檔需要繼承自相應的擴展的控制項類，同時需要重載以下的幾個方法：</p>
+<p>&emsp;&emsp;CanSerialier，用以判斷將要處理的類型是自己的DataModel。</p>
+<p>&emsp;&emsp;CreateObject，根據傳入的DataModel，載入相應的Lua擴展檔。生成Lua代碼，用以新建一個所擴展的控制項。</p>
+<p>&emsp;&emsp;InitializeObject，相應的擴展屬性匯出到Lua代碼。</p>
+<p>&emsp;&emsp;AddChild，如果擴展控制項添加子控制項使用的不是來自NodeObject的AddChild，則需要在此重寫這個方法。例如，容器控制項PageView添加子控制項時使用addPage 。</p>
+<p>&emsp;&emsp;T4範本請參考：<a href="https://msdn.microsoft.com/en-us/library/bb126445.aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/bb126445.aspx </a></p>
+<p>&emsp;&emsp;添加T4範本關聯，以便Cocos Studio工程匯出到Lua時找到該範本。(示例工程ExtensionModel目錄中的 LuaObjects.addin.xml就是這個作用。)</p>
+<p>&emsp;&emsp;相關類一覽</p>
+<p>&emsp;&emsp;Cocos Studio中的ViewModel，DataModel，及T4範本生成的相關類名一覽：</p>
+<p>&emsp;&emsp;ViewModel類DataModel類T4範本類</p>
+<pre><code>SpriteObject             SpriteObjectData           LuaSpriteObject
+ParticleObject             ParticleObjectData           LuaParticleObject
+GameMapObject             GameMapObjectData           LuaGameMapObject
+SimpleAudioObject         SimpleAudioObjectData       LuaSimpleAudioObject
+NodeObject                 NodeObjectData               LuaNodeObject
+ButtonObject             ButtonObjectData           LuaButtonObject
+CheckBoxObject             CheckBoxObjectData           LuaCheckBoxObject
+ImageViewObject             ImageViewObjectData       LuaImageViewObject
+TextBMFontObject         TextBMFontObjectData       LuaTextBMFontObject
+LoadingBarObject         LoadingBarObjecDatat       LuaLoadingBarObject
+SliderObject             SliderObjectData           LuaSliderObject
+TextObject                 TextObjectData               LuaTextObject
+TextFieldObject             TextFieldObjectData       LuaTextFieldObject
+PanelObject                 PanelObjectData           LuaPanelObject
+ScrollViewObject         ScrollViewObjectData       LuaScrollViewObject
+ListViewObject             ListViewObjectData           LuaListViewObject
+PageViewObject             PageViewObjectData           LuaPageViewObject
+Node3DObject             Node3DObjectData           LuaNode3DObject
+Particle3DObject          Particle3DObjectData       LuaParticle3DObject
+Sprite3DObject             Sprite3DObjectData           LuaSprite3DObject
+UserCameraObject         UserCameraObjectData       LuaUserCameraObject
+</code></pre><p>&emsp;&emsp;其它</p>
+<p>&emsp;&emsp;1) Lua代碼或者資源在其它地方（即：不是上面提到的LuaScript目錄 ），Cocos Studio將不再負相應的拷貝，使用者需要自行處理代碼及資源路徑的引用問題。</p>
+<p>&emsp;&emsp;2) 在這裡用到的Lua檔如果也是放置在Cocos Studio外掛程式目錄的LuaScript目錄裡的話。其本身的Lua檔也會以基礎篇裡所定義的基本的自訂控制項形式出現。此時其只表現為基本的自訂控制項而不再包括屬性擴展。如下圖示：</p>
+<p><img src="res_tw/image009.png" alt="image"></p>
+<p>&emsp;&emsp;Sprite Extend控制項是進階篇中提到的帶屬性區擴展的自訂控制項，而sprite0則是基礎篇中的基本的自訂控制項（其表現出來的形式只和abc這個基本的自訂控制項一樣。）。雖然它們所對應的是同一個Lua檔。</p>
+<p>&emsp;&emsp;3)如果自己要新建工程的話，請參照示例。目標框架為.Net Framework4.5，輸出類型為類庫。</p>
+<p>&emsp;&emsp;12.示例工程</p>
+<p>&emsp;&emsp;本節將介紹一些示例工程Addins.Sample的其它細節。</p>
+<p>&emsp;&emsp;1) 示例工程的位置：Windows上文檔位置預設安裝時，這個目錄會是%userprofile%\Documents\Cocos\CocosStudio2\Samples\Addins。文檔位置非默認安裝時，則在Cocos Studio的文檔安裝目錄中的相應位置。例如，如果文檔的安裝目錄為D:\CocosDocuments，則該路徑為D:\CocosDocuments\Cocos\CocosStudio2\Samples\Addins。在Mac 上，這個目錄為系統目錄/Library/Application Support/Cocos/CocosStudio2/Samples/Addins。</p>
+<p>&emsp;&emsp;2) 示例工程的編譯：示例工程是一個Visual Studio 2013的解決方案。在 Windows上直接打開Addins.sln 即可編譯。如果沒有安裝Mono庫及GTK#請自行安裝。在Mac上由於許可權的關係，請把示例工程拷貝到一個使用者有許可權讀寫的目錄時行編譯。在Mac上可以使用Xamarin Studio進行編譯。請自行安裝MonoFramework。</p>
+<p>&emsp;&emsp;3) 編譯後DLL的拷貝。編譯成功後，會得到一個Addins.Sample.dll，請將其拷貝到Addins目錄裡。（Windows 上文檔位置預設安裝時，這個目錄會是%userprofile%\Documents\Cocos\CocosStudio2\Addins。文檔位置非默認安裝時，則在Cocos Studio的文檔安裝目錄中的相應位置。以在Windows上為例，如果文檔的安裝目錄為D:\CocosDocuments，則該路徑為D:\CocosDocuments\Cocos\CocosStudio2\Addins。在Mac上，這個目錄為使用者目錄~/Library/Application Support/Cocos/CocosStudio2/Addins）。</p>
+<p>&emsp;&emsp;4) 示例工程後續如有更新，請參考新版本示例工程。示例工程的修改記錄請參見示例工程Lua目錄內的 修改記錄.txt 文件。</p>
+<p>&emsp;&emsp;13.其它</p>
+<p>&emsp;&emsp;1) 文檔所描述的內容適用於Cocos Studio 2.2.5及其以上的版本 所附帶的示例工程。</p>
+<p>&emsp;&emsp;2)Cocos Studio工程中控制項的名字應為合法的Lua變數，否則發佈到Lua檔後程式Lua程式不可以正常執行。這個可以Cocos Studio的工程設定檔中開啟命名規則檢查（注：工程設定檔即是Cocos Studio工程檔同目錄的以.cfg為尾碼的檔，將其中的欄位IsNameStandardized置為“True”即可）。另外，不合法的變數名在發佈Lua檔時會在Cocos Studio輸出區列印相應的提示。</p>
+<p>&emsp;&emsp;3)這是編輯器第一階段的開放，上面只是針對控制項擴展部分，給出了幾個必要的類。在編輯器後續的開發過程中，我們會逐步開放編輯器擴展相關的介面和類。並給出相關的文檔說明，敬請期待。</p>
+<p>&emsp;&emsp;在後續的開發過程中文檔的內容會根據回饋持續更新。如有更新，請以新的版本為准。<br>如果您對於Cocos Studio擴展有任何的意見或者是建議，請在論壇或者是開發者群裡回饋給我們。感謝您對Cocos Studio的關注和支持，我們將回報您以更好用的產品。</p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html" data-id="citntilnf0076wfw8dufzdzt7" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>

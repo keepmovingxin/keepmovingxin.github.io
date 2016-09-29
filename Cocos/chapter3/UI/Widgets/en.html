@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Widgets1 Button
+Button is a frequently used widget. It can be pressed or clicked to perform an action, containing three states, normal, pressed and disabled. You can set style and texts for it. In the">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/en.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="Widgets1 Button
+Button is a frequently used widget. It can be pressed or clicked to perform an action, containing three states, normal, pressed and disabled. You can set style and texts for it. In the">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image008.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image009.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image010.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image011.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image012.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image013.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image014.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image015.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image016.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image017.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image018.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image019.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image020.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image021.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image022.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image023.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image024.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image025.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image026.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image027.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image028.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image029.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image030.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image031.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image032.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image033.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-29T03:54:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="Widgets1 Button
+Button is a frequently used widget. It can be pressed or clicked to perform an action, containing three states, normal, pressed and disabled. You can set style and texts for it. In the">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res_en/image001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter3/UI/Widgets/en.html" class="article-date">
+  <time datetime="2016-09-29T03:54:40.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="Widgets"><a href="#Widgets" class="headerlink" title="Widgets"></a>Widgets</h1><h3 id="1-Button"><a href="#1-Button" class="headerlink" title="1 Button"></a>1 Button</h3><p><img src="res_en/image001.png" alt="image"></p>
+<p>Button is a frequently used widget. It can be pressed or clicked to perform an action, containing three states, normal, pressed and disabled. You can set style and texts for it. In the following example, the contents of the scene are composed of Buttons.</p>
+<p><img src="res_en/image002.png" alt="image"></p>
+<p>Mostly game levels, diamonds, and coins are composed of Buttons. Touching these buttons, you will see popup windows.</p>
+<p>Button has a lot of features. The following section will introduce you the button widget through several scenes.</p>
+<p><strong>Scenario 1: Modify button background, and set the button pressed style and disabled style.</strong></p>
+<p>Button has three states. Each state can be defined by an image. See the official Main Scene Demo.</p>
+<p><img src="res_en/image003.png" alt="image"></p>
+<p>First, you need to add a Button to the canvas. After selecting the Button, the Properties panel will show the current button style, you can modify the properties by double-clicking the Button, you can also drag an image to the property. We set up a normal state and a pressed state. When touch the button in the game, the button will automatically switch to the state picture. If necessary, you can also set the disabled state of the button. </p>
+<p><img src="res_en/image004.png" alt="image"></p>
+<p>Replace resource by right-click the button.</p>
+<p><strong>Scenario 2: When using the buttons, you need to add texts for the button.</strong> </p>
+<p><img src="res_en/image005.png" alt="image"></p>
+<p>Customize the text of the button, font, and size, Properties -&gt; Feature -&gt; Text. When you modify the button text, select the button -&gt; modify text attributes in the Properties area. You can also use right mouse or double-click the node to modify the text popups.</p>
+<p><img src="res_en/image006.png" alt="image"></p>
+<p><strong>Scenario 3: Set a Button not to respond to a click event.</strong> </p>
+<p>Set the button as Disable. When the button is disabled, it will not respond to touch events in the game.</p>
+<h3 id="2-Checkbox"><a href="#2-Checkbox" class="headerlink" title="2  Checkbox"></a>2  Checkbox</h3><p><img src="res_en/image007.png" alt="image"></p>
+<p>Checkbox is a basic widget that can be checked or unchecked, and multiple selection is available. Checkbox is mostly used on a login screen as “Remember User Name” or “Remember Password”.</p>
+<p><img src="res_en/image008.png" alt="image"></p>
+<p>It is also used in the setting interface in some games to switch the music or sound effects. Checkbox widget has many properties, in addition to general properties, it includes some features properties, we will introduce you the checkbox widget by several scenarios that checkbox features are used.</p>
+<p><strong>Scenario 1: Modify checkbox style</strong></p>
+<p>Checkbox has five states: normal background style, background pressed style, background disabled styles, selected check style, selected disabled check style, each state can be defined with image. If you want to implement conventional style check box, as shown below:</p>
+<p><img src="res_en/image009.png" alt="image"></p>
+<p>You can set the images of each of the five states to reach your requirements. Below is an example of turning on/off music by using a checkbox:</p>
+<p> <img src="res_en/image010.png" alt="image"></p>
+<p>You only need to set the background normal style, background pressed style, background disabled style. You can also replace resource by right-clicking the button.</p>
+<p><strong>Scenario 2: Checkbox is checked (or not checked) by default.</strong></p>
+<p>When you set a checkbox selected, the checkbox’s initial state is selected. You can modify it through the properties panel or right-click menu.</p>
+<h3 id="3-Image"><a href="#3-Image" class="headerlink" title="3 Image"></a>3 Image</h3><p><img src="res_en/image011.png" alt="image">          </p>
+<p><img src="res_en/image012.png" alt="image"></p>
+<p>Add an image with 9-slice property. 9-Slice is a way to stretch the image without making it look too distorted. About 9-slice usage, please refer to <strong>How to Use the 9-Slice</strong>. </p>
+<p>Image has the following characteristics with respect to the Sprite: </p>
+<ul>
+<li><p>Change the original size without image distortion.</p>
+</li>
+<li><p>Use one resource to achieve different effects by setting various 9-slice values. </p>
+</li>
+<li><p>Cost more performance than sprite widgets; it is recommended not to overuse image widget.</p>
+</li>
+</ul>
+<p>Can you point out which are made with Image in the following example?</p>
+<p><img src="res_en/image013.png" alt="image"></p>
+<p>Get the official example, and open <strong>DifficultSelect.csd</strong> to see how we  use image widget.One of the background is made by a size of 16x32 image. <img src="res_en/image014.png" alt="image"> Here we show you how to use the image widgets make this background.</p>
+<p><strong>Scenario 1: Use an Image</strong></p>
+<p><img src="res_en/image015.png" alt="image"></p>
+<p>Modify a widget by double-clicking the thumbnail, or drag the image onto the properties panel to replace the current style. You can also replace an image through the properties panel or right-click menu. Modify margins of the “9-slice” to 0,0,10,0, and then modify the widget size to 70,32. These margins will affect the 9-slice effect. For more information about 9-slice, please see <strong>How to Use the 9-Slice</strong>. </p>
+<h3 id="4-Label"><a href="#4-Label" class="headerlink" title="4 Label"></a>4 Label</h3><p><img src="res_en/image016.png" alt="image"></p>
+<p>Label is also one of the most commonly used widgets in the game. You can set fonts, size, alignment, etc. for a label widget. </p>
+<p>Usage: In the example there are many Labels, such as the main menu. </p>
+<p><img src="res_en/image017.png" alt="image"></p>
+<p><strong>Scenario 1: modify the text using different font styles</strong></p>
+<p>If you need a special font you need to import a TTF font, the font will be packaged and exported when you publish a game. Default font in users’ mobile phone will be used if you do not specify a font. </p>
+<h3 id="5-FNT-Font"><a href="#5-FNT-Font" class="headerlink" title="5 FNT Font"></a>5 FNT Font</h3><p><img src="res_en/image018.png" alt="image"></p>
+<p>You can achieve a variety of artistic fonts by setting FNT font. Compared to Atlas Label, FNT font has the following features: </p>
+<ul>
+<li><p>Support all kinds of text. Following is an example of FNT fonts, which support various characters. </p>
+</li>
+<li><p>Hard to create. It requires professional software to create FNT font.</p>
+</li>
+</ul>
+<p><img src="res_en/image019.png" alt="image"></p>
+<p><strong>Scenario 1: Use FNT Font</strong></p>
+<p>Add a FNT font to Canvas, and then select the FNT. In the Properties panel, you can modify its values. You can also replace resource by right-clicking the button. To change the text, you can either double click, right click, or modify the properties. When you enter characters that’s not in the fnt file, these missing characters will be displayed as spaces. When you enter characters which are not in the FNT file, the missing characters will be displayed as spaces.</p>
+<p><img src="res_en/image020.png" alt="image"></p>
+<h3 id="6-Progress-Bar"><a href="#6-Progress-Bar" class="headerlink" title="6 Progress Bar"></a>6 Progress Bar</h3><p><img src="res_en/image021.png" alt="image"></p>
+<p>A progress bar is used to represent progression. In the official example, the HP bar is an example of progress bar. </p>
+<p><img src="res_en/image022.png" alt="image"></p>
+<p><strong>Scenario 1: Modify the progress bar style</strong></p>
+<p>Create a progress bar on canvas, select the progress bar, then double click or drag ‘n’ drop to change the resources for the progress bar. You can also use right-click menu to add new resources. Here is an example of setting the background:</p>
+<p><img src="res_en/image023.png" alt="image"></p>
+<p><strong>Scenario 2: Set the progress bar direction</strong></p>
+<p><img src="res_en/image024.png" alt="image"></p>
+<p>See HP bar shown above (one left, one right). Set the “type” property of the progress bar, choosing from “left to right” and “right to left” to change the direction of the progress bar.</p>
+<h3 id="7-Slider"><a href="#7-Slider" class="headerlink" title="7 Slider"></a>7 Slider</h3><p><img src="res_en/image025.png" alt="image"></p>
+<p>Move the slider to display status of a task. Slider is great for observing degrees of changes, such as setting volume, etc. In the official example, we use Slider in the setting screen. </p>
+<p><img src="res_en/image026.png" alt="image"></p>
+<p><strong>Scenario 1: Modify the slider style</strong></p>
+<p>To create a slider, you need 5 images. We didn’t set the disabled state in this example. Add a slider on the canvas, select the slider, double click or drag and drop to replace the images. You can also use right-click menu to add new resources. </p>
+<p><img src="res_en/image027.png" alt="image"></p>
+<p><img src="res_en/image028.png" alt="image"></p>
+<h3 id="8-Atlas-Label"><a href="#8-Atlas-Label" class="headerlink" title="8 Atlas Label"></a>8 Atlas Label</h3><p><img src="res_en/image029.png" alt="image"></p>
+<p>Atlas Label can be realized by a PNG image including “./0123456789”. Each character has the same height as the image, the width of 1/12 of the image, atlas label can be used to display numbers in game. It is a very simple visual effect. Compared to FNT fonts, atlas label has the following features. In the official example, atlas label is used in selecting level. </p>
+<ul>
+<li><p>Easy to make. </p>
+</li>
+<li><p>Limited functionality, supporting “.”, “/“, and number 0-9.</p>
+</li>
+</ul>
+<p><img src="res_en/image030.png" alt="image"></p>
+<p><strong>Scenario 1: Modify the image resources for Atlas label</strong></p>
+<p>Adding an atlas label on canvas, select the atlas label, properties will display the current resource thumbnail, you can modify it by double-clicking a thumbnail, as well as drag image to it. In addition you can also use right mouse. When you modify the button text simply select the button, modify text attributes in the Properties, same can be done though right mouse. </p>
+<p><img src="res_en/image031.png" alt="image"></p>
+<p><strong>*Note</strong> To create atlas label, designers need to provide an image containing “.”, “/“, or number 0-9. Make sure the order is ./0123456789 and spaces between numbers need to be equal.*</p>
+<p><img src="res_en/image032.png" alt="image"></p>
+<p>A typical atlas label image. </p>
+<p><img src="res_en/image033.png" alt="image"></p>
+<hr>
+<p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/en.html" data-id="citntilnn007swfw8gh47fp3c" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter3/UI/Widgets/en.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>

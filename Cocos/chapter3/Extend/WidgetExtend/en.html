@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KeepMoving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Widgets Extension#
+OverviewThis section introduces two ways to create widgets: 
+
+(basic level) Create widgets for Cocos Studio in Lua; 
+
+(advanced level) Create widgets for Cocos Studio in C# + Lua.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KeepMoving">
+<meta property="og:url" content="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/en.html">
+<meta property="og:site_name" content="KeepMoving">
+<meta property="og:description" content="#Widgets Extension#
+OverviewThis section introduces two ways to create widgets: 
+
+(basic level) Create widgets for Cocos Studio in Lua; 
+
+(advanced level) Create widgets for Cocos Studio in C# + Lua.">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image001.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image002.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image003.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image004.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image005.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image006.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image007.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image008.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/res_en/image009.png">
+<meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
+<meta property="og:updated_time" content="2016-09-29T03:42:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeepMoving">
+<meta name="twitter:description" content="#Widgets Extension#
+OverviewThis section introduces two ways to create widgets: 
+
+(basic level) Create widgets for Cocos Studio in Lua; 
+
+(advanced level) Create widgets for Cocos Studio in C# + Lua.">
+<meta name="twitter:image" content="http://blog.keepmovingxin.com/res_en/image001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="KeepMoving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style id='inline-css' type='text/css'>
+  #backtoTop{background-color:#eee;border-radius:100%;bottom:10%;height:48px;position:fixed;right:-100px;width:48px;transition:0.5s;-webkit-transition:0.5s}
+  #backtoTop.button--show{right:10px}
+  .per{font-size:16px;height:48px;line-height:48px;position:absolute;text-align:center;top:0;width:48px;color:#555;cursor:pointer}
+  .per:before{content:attr(data-percent)}
+  .per:hover:before{content:"^";font-size:20px}
+  </style>
+  
+
+  
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?df7496bfc0547022767a74dd2d455eab";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KeepMoving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">KP_小新的技术Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/Cocos">Cocos</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a class="nav-icon" href="http://www.keepmovingxin.com" title="主站" target="_blank">&#61612;</a>
+        <a class="nav-icon" href="http://weibo.com/keepmovingxin" title="微博" target="_blank">&#61834;</a>
+        <a class="nav-icon" href="https://github.com/keepmovingxin" title="GitHub" target="_blank">&#61595;</a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.keepmovingxin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Cocos/chapter3/Extend/WidgetExtend/en.html" class="article-date">
+  <time datetime="2016-09-29T03:42:05.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>#Widgets Extension#</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>This section introduces two ways to create widgets: </p>
+<ul>
+<li><p>(basic level) Create widgets for Cocos Studio in Lua; </p>
+</li>
+<li><p>(advanced level) Create widgets for Cocos Studio in C# + Lua. </p>
+</li>
+</ul>
+<h3 id="About-Readers"><a href="#About-Readers" class="headerlink" title="About Readers"></a>About Readers</h3><p>This section assumes the reader has the following knowledge: </p>
+<ul>
+<li><p>Have good knowledge of Cocos Studio.</p>
+</li>
+<li><p>Be familiar with Lua scripts.</p>
+</li>
+<li><p>Proficiency in Lua interface exported from Cocos 2d-x. </p>
+</li>
+<li><p>Have basic knowledge of C# (high requirement necessary for advanced articles). </p>
+</li>
+</ul>
+<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>To understand the contents of this document, you need to understand the following concepts:</p>
+<ul>
+<li><p><a href="http://www.lua.org/" target="_blank" rel="external">Lua</a></p>
+</li>
+<li><p>Cocos 2d-x Lua Binding. </p>
+</li>
+<li><p><a href="http://monoaddins.codeplex.com/" target="_blank" rel="external">Mono.Addins</a></p>
+</li>
+<li><p><a href="https://msdn.microsoft.com/en-us/library/bb126445.aspx" target="_blank" rel="external">T4 templates</a></p>
+</li>
+</ul>
+<h3 id="Directory-Path"><a href="#Directory-Path" class="headerlink" title="Directory Path"></a>Directory Path</h3><p>The directory paths which used in this document are listed below for easy reference. All the paths are the default path of Cocos Studio on Window. </p>
+<ul>
+<li><p>Addins Path</p>
+<p>  By default samples are installed to  <strong>%userprofile%\Documents\Cocos\CocosStudio2\Addins</strong> on the computer. If the default installation folder is changed, samples are in the same folder with Documents. For example, if document is installed to <strong>D:\CocosDocuments</strong>, samples are in <strong>D:\CocosDocuments\Cocos\CocosStudio2\Addins</strong>. On Mac, samples are installed to <strong>/Library/Application Support/Cocos/CocosStudio2/Addins</strong>.</p>
+</li>
+<li><p>Sample Path</p>
+<p>  By default samples are installed to  <strong>%userprofile%\Documents\Cocos\CocosStudio2\Samples\Addins</strong> on the computer. If the default installation folder is changed, samples are in the same folder with Documents. For example, if document is installed to <strong>D:\CocosDocuments</strong>, samples are in <strong> D:\CocosDocuments\Cocos\CocosStudio2\Samples\Addins</strong>. On Mac, samples are installed to <strong>/Library/Application Support/Cocos/CocosStudio2/Samples/Addins</strong>. </p>
+</li>
+</ul>
+<h3 id="Custom-Widgets"><a href="#Custom-Widgets" class="headerlink" title="Custom Widgets"></a>Custom Widgets</h3><p>Currently there are two ways to create custom widgets for Cocos Studio. The following will explore how they are used to create custom widgets. </p>
+<ul>
+<li><p>Only Lua codes, it is a fundamental method to create custom widgets. This method can be applied to edit existing widgets in Cocos Studio. </p>
+</li>
+<li><p>C# and Lua, it offers more possibilities to create custom widgets. </p>
+</li>
+</ul>
+<p>If there are custom widgets created with Lua, these Lua files are necessary when loading scenes. Lua data format is added in Cocos Studio for developers to easily create scenes in Lua. </p>
+<p><img src="res_en/image001.png" alt="image"></p>
+<p>You need to select Lua File (Beta) when publishing projects with Lua custom widgets. Otherwise, custom widgets will not show. For example, if a project is published as <em>.csb</em> file, its Lua widget is not usable. If other data format is required, see <strong>Customizing Export Data Formats</strong>.  </p>
+<h3 id="1-Basic-Level-Lua"><a href="#1-Basic-Level-Lua" class="headerlink" title="1 Basic Level (Lua)"></a>1 Basic Level (Lua)</h3><p>When Cocos Studio starts, it scans the LuaScript directory under plugin directory. Lua files will be recognized as custom widgets edited in Lua. Custom widgets will be displayed in Objects panel with the same name as Lua files’ name. </p>
+<p>To modify, expand or set default values to a widget, you can use Lua scripts to accomplish this acquirements. For example, to set the default text font. </p>
+<ul>
+<li><p>Create Lua scripts for custom widgets. </p>
+</li>
+<li><p>Put the codes in the LuaScript folder under plugin directory.  </p>
+</li>
+</ul>
+<p>Following is a sample: A custom Sprite widget with text. The sample below is <strong>abc.lua</strong> in LuaScript directory. </p>
+<h4 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h4><p><strong>TextSprite</strong>:  to display some texts on top of the Sprite. </p>
+<p>Following are the codes of <strong>abc.lua</strong>.  </p>
+<pre><code>local container = {}
+
+function container.CreateCustomNode()
+    local rootNode = cc.Sprite:create(&apos;temp.png&apos;) 
+    local label = cc.Label:create()
+    label:setString(&apos;abc Label From Lua&apos;) 
+    label:setSystemFontSize(24) 
+    label:setPosition(140, 50)
+    label:setName(&apos;labelName&apos;) 
+    label:retain() 
+
+rootNode:addChild(label)
+return rootNode
+end
+
+function container.GetBaseType()
+return &apos;Sprite&apos;
+end
+
+return container
+</code></pre><p><strong>Analysis</strong>: </p>
+<p>The example above is a complete Lua template. Loading the template will return a Lua Table, which is the container table at the end of the above codes. </p>
+<p>The method <code>GetBaseType</code> is  used to return the extended widget type. In this case, “Sprite” is returned, which means the extended widget is “sprite”. </p>
+<p>The method <code>CreateCustomNode</code> is used to return a node, which is an extended widget in this example. </p>
+<p>Supposed the file <strong>abc.lua</strong> has been copied into LuaScript directory under Plugin directory, and meanwhile <strong>temp.png</strong> is in that directory. </p>
+<p>Start Cocos Studio, and then you will see the custom widget, with the name “abc”, in the Objects panel. </p>
+<p><img src="res_en/image002.png" alt="image"></p>
+<p>The widget’s icon is same as Sprite, for this custom widget is extended based on Sprite. </p>
+<p>Drag and drop “abc” to rendering section, you can see the following (background picture is temp.png).  </p>
+<p><img src="res_en/image003.png" alt="image"></p>
+<p>Selecting it in the rendering section, we can see that its type is Sprite. </p>
+<p><img src="res_en/image004.png" alt="image"></p>
+<h4 id="FAQ-amp-Notes"><a href="#FAQ-amp-Notes" class="headerlink" title="FAQ &amp; Notes"></a>FAQ &amp; Notes</h4><ul>
+<li><p>What to do if custom widgets do not display on Panel?</p>
+<p>  Solution: The codes and a picture named temp.png should be in the LuaScript folder under plugin directory. Otherwise, this Lua file cannot be loaded when Cocos Studio starts. </p>
+<p>  Resources used in Lua scripts should also be put in LuaScript directory, and be loaded in relative path. When publish a project, LuaScript directory will be copied to publish directory. LuaScript directory is just copied once, if there is a directory with the same name in publish directory, LuaScript directory will not be copied.</p>
+<p>   A Lua file is a complete Lua template. Loading the template will return a Lua Table</p>
+<p>  The method <code>CreateCustomNode</code> has to be used to return a node.</p>
+<p>  “Lua Table” must include a method <code>GetBaseType</code>, which is used to return a widget’s node. Widgets in Cocos Studio and their GetBaseType are listed below:</p>
+<pre><code> 控件名                                 GetBaseType返回
+Sprite                                 Sprite
+ParticleSystemQuad                  Particle
+TMXTiledMap                         GameMap
+ComAudio                             SimpleAudio
+Node                                 Node
+Button                                 Button
+CheckBox                            CheckBox
+ImageView                             ImageView
+TextBMFont                             TextBMFont
+LoadingBar                             LoadingBar
+Slider                                 Slider
+Text                                 Text
+TextField                           TextField
+ScrollView                             ScrollView
+ListView                             ListView
+PageView                            PageView
+Particle3D                             Particle3D
+Sprite3D                              Sprite3D                                
+UserCamera                          UserCamera
+</code></pre></li>
+<li><p>How to call third party’s Lua codes library from custom widget’s Lua codes library?  </p>
+<p>  Solution: Currently Lua runtime of Cocos Studio only supports interfaces exported from Cocos 2d-x. If other interfaces need to be loaded, please load it in Lua codes. For example, if you need lua interface provided by Quick-cocos2d-x, load the  required library in the codes. </p>
+</li>
+<li><p>A custom widget should be defined by one Lua file. A Lua file should define only one custom widget. Cocos Studio will load all the Lua files in LuaScript directory, and each Lua file is represented by a widget’s icon in Objects’ panel. Name of the icon is same with files’ names. </p>
+</li>
+<li><p>There is a project having Lua custom widgets. If Lua scripts have been modified, it will be opened with new scripts. If there is any mistake during the loading process, the corresponding widget will not be displayed. </p>
+</li>
+<li><p>Best Practice: create required widgets in Cocos Studio, and then publish the project as Lua file. </p>
+</li>
+</ul>
+<p>Above is the introduction of creating custom widgets in Lua. However, you can only create a simple custom widget in Lua. </p>
+<h3 id="2-Advanced-Level-C-amp-Lua"><a href="#2-Advanced-Level-C-amp-Lua" class="headerlink" title="2 Advanced Level (C# &amp; Lua)"></a>2 Advanced Level (C# &amp; Lua)</h3><p>To modify widgets’ properties, you need to write codes in C#. </p>
+<p>Cocos Studio build its addin system based on Mono.Addins, which is helpful when we want to expand properties.   </p>
+<p>Export the expanded widget to Lua file (generated by adding a template to generate Lua codes). A concept diagram about this process is listed below:</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="res_en/image005.png" alt="image"></p>
+<p><strong>*Note</strong> Lua Objects are the Lua scripts of custom widgets. Lua Codes are exported from Data Model.* </p>
+<p>Generally speaking, following are steps to implement this operation: </p>
+<ul>
+<li><p>Create scripts for custom widgets. </p>
+</li>
+<li><p>Put the scripts created in previous step in LuaScript folder under plugin directory. </p>
+</li>
+<li><p>Configure AddinConfig.cs.  </p>
+</li>
+<li><p>Add ViewModel and DataModels.</p>
+</li>
+<li><p>Add a template to generate Lua codes.</p>
+</li>
+</ul>
+<p>Here is an example: </p>
+<p>There is a TextSprite widget, when selected, you can modify the contents and font size of the text. </p>
+<p>Find Addins.sln in Samples folder. Open Addins.sln in Visual Studio 2013. </p>
+<p>The Samples and Analysis below are based on this example. </p>
+<h4 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h4><p>Add a method to deal with text contents and font size in Lua scripts. In LuaScript directory, scripts of sprite0.lua are listed below: </p>
+<pre><code>--[[
+   ]]
+
+
+    local function CreateSprite()
+        return cc.Sprite:create(&apos;temp.png&apos;) 
+    end
+
+    local function CreateLabel()
+        local label = cc.Label:create()
+        label:setString(&apos;sprite0 Label from Lua&apos;)
+        label:setSystemFontSize(24)
+        label:setPosition(140, 50)
+        label:setName(&apos;labelName&apos;) 
+        label:retain()
+        return label
+    end
+
+    -- make sure ccslog is not empty
+    local ccslog = ccslog
+    if not ccslog then
+        ccslog = function(...) end
+    end
+
+    local container = {}
+
+    function container.CreateCustomNode()
+        local rootNode = CreateSprite()
+        rootNode:addChild(CreateLabel())
+        return rootNode
+    end
+
+    function container.GetBaseType()
+    return &apos;Sprite&apos;
+    end
+
+
+    function container.GetLabelText(root)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    return child:getString()
+    end
+
+
+    function container.SetLabelText(root, value)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    child:setString(value)
+    end
+
+    function container.GetLabelFont(root)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    return child:getSystemFontSize()
+    end
+
+    function container.SetLabelFont(root, value)
+    local child = root:getChildByName(&apos;labelName&apos;)
+    child:setSystemFontSize(value)
+    end
+
+    return container
+</code></pre><p><strong>Analysis</strong></p>
+<p>We have discussed how to create TextSprite in basic level section. Now let’s see two methods of Set/Get, which will be used in C#: </p>
+<ul>
+<li><p>GetLabelText/SetLabelText: to get/ set text contents on Sprite. </p>
+</li>
+<li><p>GetLabelFont/SetLabelFont: to get/ set font size on Sprite. </p>
+</li>
+</ul>
+<p>Some operations are implemented by Lua interface exported from Cocos 2d-x.  </p>
+<p>In Cocos Studio version 3.10, add a <code>ccslog</code> function for print message to Cocos Studio output area。The usage of <code>ccslog</code> is the same as <code>print</code> in lua, you can find a sample in sprite0.lua code in the sample project of Cocos Studio 3.10。</p>
+<p>Scripts of LuaCustomObject: </p>
+<pre><code>[DisplayName(&quot;Sprite Extend&quot;)]
+[ModelExtension(2)]
+[ControlGroup(ViewObjectCategory.CustomGroupKey, 2)]
+[EngineClassName(&quot;LuaCustom&quot;)]
+public class LuaCustomObject : SpriteObject
+{
+    public LuaCustomObject()
+        : base(GetScriptFileData())
+    {
+        if (System.IO.File.Exists(luaFile))
+            luaValueConverter = new LuaValueConverter(luaFile, this);
+        else
+            throw new System.IO.FileNotFoundException(luaFile + &quot; not found!&quot;);
+    }
+
+    private LuaValueConverter luaValueConverter;
+
+    private static string luaFile = GetLuaFilePath();
+
+    private static ScriptFileData GetScriptFileData()
+    {
+        if (System.IO.File.Exists(luaFile))
+        {
+            CSCocosHelp.AddSearchPath(Path.GetDirectoryName(luaFile));
+            return new ScriptFileData(luaFile, ScriptType.Lua);
+        }
+
+        LogConfig.Output.Info(luaFile + &quot; not exist!&quot;);
+        return null;
+    }
+
+    /// &lt;summary&gt;
+    /// get lua file path according to current running assembly.
+    /// lua script file should in a folder &quot;LuaScript&quot; which is in current running assembly parent folder.
+    /// e.g. current running assembly is in &quot;Addins&quot;, lua file path is &quot;Addins/LuaScript/sprite0.lua&quot;
+    ///
+    ///      Addins
+    ///      ├─Addins.Sample.dll (current running assembly)
+    ///      └─LuaScript
+    ///          ├─ sprite0.lua
+    ///
+    /// you can modify &quot;LuaScript&quot; or lua file name &quot;sprite0.lua&quot; to other name as you like.
+    /// NOTICE: only Addins/LuaScript folder will be copied to target folder. if lua script is in other
+    /// folder, user should write extra codes to copy it to target folder, e.g. use CustomSerializer to do the job.
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;lua file path&lt;/returns&gt;
+    private static string GetLuaFilePath()
+    {
+        string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        string luaScriptFolder = Path.Combine(assemblyFolder, &quot;LuaScript&quot;);
+
+        // make sure luaFile exists, if not, please copy it from source folder to target.
+        // you can find the lua script file in &quot;../LuaScript/&quot; folder as &quot;.&quot;(current folder) is the one
+        // who contains current file LuaCustomObject.cs.(here &quot;.&quot; is &quot;Addins.Sample/Lua/ViewModel&quot;)
+        //  
+        //  ├─LuaScript
+        //  │   ├─ sprite0.lua
+        //  │
+        //  └─ViewModel
+        //      ├─ LuaCustomObject.cs (current file)
+        //
+        string luaFilePath = Path.Combine(luaScriptFolder, &quot;sprite0.lua&quot;);
+
+        return luaFilePath;
+    }
+
+    protected override string GetNamePrefix()
+    {
+        return &quot;LuaSprite_&quot;;
+    }
+
+    [UndoProperty]
+    [DefaultValue(&quot;abc&quot;)]
+    [DisplayName(&quot;Label Text&quot;)]
+    [Category(&quot;Group_Feature&quot;)]
+    [Browsable(true)]
+    [PropertyOrder(0)]
+    public string LabelText
+    {
+        get
+        {
+            return luaValueConverter.GetStringValue(&quot;GetLabelText&quot;);
+        }
+        set
+        {
+            luaValueConverter.SetStringValue(&quot;SetLabelText&quot;, value);
+            this.RaisePropertyChanged(() =&gt; this.LabelText);
+        }
+    }
+
+    [UndoProperty]
+    [DisplayName(&quot;Label Font&quot;)]
+    [Category(&quot;Group_Feature&quot;)]
+    [Description(&quot;Int value description&quot;)]
+    [PropertyOrder(1)]
+    [Browsable(true)]
+    public int LabelFont
+    {
+        get
+        {
+            return luaValueConverter.GetIntValue(&quot;GetLabelFont&quot;);
+        }
+        set
+        {
+            luaValueConverter.SetIntValue(&quot;SetLabelFont&quot;, value);
+            this.RaisePropertyChanged(() =&gt; this.LabelFont);
+        }
+    }
+
+    #region methods for clone
+
+    // set value to the object, used in clone.
+    protected override void SetValue(object cObject)
+    {
+        base.SetValue(cObject);
+
+        LuaCustomObject nObject = cObject as LuaCustomObject;
+        if (nObject == null)
+            return;
+        nObject.LabelText = this.LabelText;
+        nObject.LabelFont = this.LabelFont;
+    }
+
+    #endregion methods for clone
+}
+</code></pre><p><strong>Analysis</strong></p>
+<p>Since this custom widget is Sprite, it inherits from SpriteObject. </p>
+<p>DisplayName Property: widget’s name is displayed in Objects panel, while here “Sprite Extend” is displayed. </p>
+<p>ModelExtension Property: export ViewModel of the custom widget, with Type as its parameter. The custom widget will show on Custom Widget panel with name “Sprite Extend”. </p>
+<p><img src="res_en/image006.png" alt="image"></p>
+<p>If the extended custom widget is a 3D widget, a 3D parameter should be added in ModelExtension. </p>
+<pre><code>[ModelExtension(2, EnumModelType.ThreeDimensional)]
+</code></pre><p>Category Properties: <code>Control_Custom</code> means that to show the widget on Custom Widgets panel. </p>
+<p>EngineClassName: a widget name, which will show as Type on Properties panel. Here widgets will show their type the same as what they are in Cocos 2d-x. </p>
+<p><img src="res_en/image007.png" alt="image"></p>
+<p>LabelText and LabelFont have been added to extended properties, and they are displayed on Properties panel as following: </p>
+<p><img src="res_en/image008.png" alt="image"></p>
+<p>In Cocos Studio, each ViewModel has a DataModel that contains all the data information. For example, DataModel will be serialized and saved to .csd files. </p>
+<p><strong>Data Model</strong></p>
+<p>Scripts of LuaCustomObjectData: </p>
+<pre><code>[DataModelExtension(typeof(LuaCustomObject))]
+public class LuaCustomObjectData : SpriteObjectData
+{
+    [ItemProperty]
+    [JsonProperty]
+    public string LabelText { get; set; }
+
+    [ItemProperty]
+    [JsonProperty]
+    public int LabelFont { get; set; }
+}
+</code></pre><p><strong>Analysis</strong></p>
+<p>Since this custom widget is Sprite, it inherits from SpriteObjectData.</p>
+<p>Add DataModelExtension property, with its value LuaCustomObject. </p>
+<p><strong>*Note</strong> DataModel and ViewModel should have same name.* </p>
+<p>Now let’s see how to realize the interaction between expanded properties and Lua codes of ViewModel. C# codes are listed below: </p>
+<p><strong>Data Interaction</strong></p>
+<pre><code>[UndoPropertyAttribute]
+[DefaultValue(&quot;abc&quot;)]
+[DisplayName(&quot;Label Text&quot;)]
+[Category(&quot;Group_Feature&quot;)]
+[Browsable(true)]
+[PropertyOrder(0)]
+public string LabelText
+{
+    get
+    {
+        return luaValueConverter.GetStringValue(&quot;GetLabelText&quot;);
+    }
+    set
+    {
+        luaValueConverter.SetStringValue(&quot;SetLabelText&quot;, value);
+        this.RaisePropertyChanged(() =&gt; this.LabelText);
+    }
+}
+
+[UndoPropertyAttribute]
+[DisplayName(&quot;Label Font&quot;)]
+[Category(&quot;Group_Feature&quot;)]
+[Description(&quot;Int value description&quot;)]
+[PropertyOrder(1)]
+[Browsable(true)]
+public int LabelFont
+{
+    get
+    {
+        return luaValueConverter.GetIntValue(&quot;GetLabelFont&quot;);
+    }
+    set
+    {
+        luaValueConverter.SetIntValue(&quot;SetLabelFont&quot;, value);
+        this.RaisePropertyChanged(() =&gt; this.LabelFont);
+    }
+}
+</code></pre><p><strong>Analysis</strong></p>
+<p>The <code>luaValueConverter.GetStringValue</code> is a string value obtained from Lua codes. The parameter “GetLabelFont” means to get the texts on Sprite. Pay attention to the correspondent relationship between method and Lua codes, which is similar to the interaction among other data. </p>
+<p><code>Set</code> in properties will call <code>this.RaisePropertyChanged</code> at last, to notify the properties’ values have been changed and to refresh Properties panel. </p>
+<p>Copy <code>Addins.Sample.dll</code> to Addins directory of Cocos Studio. Follow the rules for Cocos Studio’s Addins, we need to add the following features to the project.  </p>
+<p>Since the convention Cocos Studio plug- scheme used, the need to generate an assembly , add the following features:</p>
+<p><strong>Add AddinConfig.cs</strong></p>
+<p>Add AddinConfig.cs to project: </p>
+<pre><code> // &quot;3.10&quot; is version of the this Addin. Addin should match its dependency with the same version.
+[assembly: Addin(&quot;Addins.Sample&quot;, &quot;3.10&quot;, Namespace = Option.AddinNamespace)]
+
+// &quot;3.10&quot; is the version of Addin dependency.
+[assembly: AddinDependency(&quot;CocoStudio.Core&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Projects&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model.Lua&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model3D&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;CocoStudio.Model3D.Lua&quot;, &quot;3.10&quot;)]
+[assembly: AddinDependency(&quot;Addins.LuaExtend&quot;, &quot;3.10&quot;)]
+</code></pre><p><strong>Analysis</strong></p>
+<p>Addin export and addin dependence settings. </p>
+<p>Custom widgets are created in Lua. In order to export the expanded properties to Lua, we need to transfer DataModel to Lua codes. </p>
+<p><strong>Template to generate Lua codes</strong></p>
+<p>We can use T4 template to transfer Datamedel to Lua codes. </p>
+<p>T4 template</p>
+<pre><code>&lt;#@ template debug=&quot;false&quot; inherits=&quot;LuaSpriteObject&quot; language=&quot;C#&quot; linePragmas=&quot;false&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
+&lt;#@ import namespace=&quot;CocoStudio.Model.DataModel&quot; #&gt;
+&lt;#@ import namespace=&quot;Addins.Sample.Lua.DataModel&quot;#&gt;
+&lt;#@ import namespace=&quot;CocoStudio.Model.Lua.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;Mono.Addins&quot; #&gt;
+
+&lt;#+
+public override bool CanSerialize(BaseObjectData objectData)
+{
+    bool isOK = typeof(LuaCustomObjectData) == objectData.GetType();
+    return isOK;
+}
+
+public override void CreateObject(BaseObjectData objectData)
+{
+    LuaCustomObjectData data = objectData as LuaCustomObjectData;
+#&gt;
+local luaScript = require(&quot;&lt;#= CocoStudio.Basic.Option.luaScriptFolderName #&gt;/&lt;#= System.IO.Path.GetFileName(data.ScriptData.RelativeScriptFile) #&gt;&quot;)
+&lt;#= GetNameDeclaration(objectData.Name) #&gt; = luaScript.CreateCustomNode()
+&lt;#+
+}
+
+public override void InitializeObject(BaseObjectData objectData)
+{
+    LuaCustomObjectData data = objectData as LuaCustomObjectData;
+    base.InitializeObject(data);
+#&gt;
+luaScript.SetLabelText(&lt;#= data.Name #&gt;, &quot;&lt;#= data.LabelText #&gt;&quot;)
+luaScript.SetLabelFont(&lt;#= data.Name #&gt;, &lt;#=data.LabelFont#&gt;)
+luaScript.GetLabelVisible(&lt;#= data.Name #&gt;, &lt;#=data.LabelVisible.ToString().ToLower()#&gt;)
+luaScript.SetMixedColor(&lt;#= data.Name #&gt;, &lt;#=data.MixedColor.ToLuaString()#&gt;)
+&lt;#+
+}
+#&gt;
+</code></pre><p><strong>Analysis</strong></p>
+<p>inherits=”LuaSpriteObject”: to set T4 template to inherit from LuaSpriteObject. </p>
+<p>CanSerialize：to make sure DataModel is LuaCustomObjectData.</p>
+<p>CreateObject: to create Lua codes for the custom widget. </p>
+<p>InitializeObject: to create property codes for the custom widget. </p>
+<p>AddChild: the custom widget is a Sprite, and adding child widget does not require special operation, therefore no need to rewrite AddChild method. </p>
+<p>Each DataModel will correspond to a Lua code template. When extending a widget, Lua code generation template class needs to inherit from widgets’ code generation template class.</p>
+<p>T4 template uses Monodevelop addin mechanism. It needs a xml export file. When exporting Lua files, the addin mechanism will scan all LuaBaseObject class under <strong>/CocoStudio/Model/Lua/Templates</strong>. When generating Lua codes, Cocos Studio will call CanSerialize to find the corresponding code templates to generate classes. DataModel class will be taken as parameter. </p>
+<p><strong>Export Template</strong></p>
+<p>T4 template is associated with <strong>LuaObjects.addin.xml</strong> in ExtensionModel directory. In VS2013, <strong>LuaObjects.addin.xml</strong>‘s “Build Action” property is “Embedded Resource”, and its “Copy to Output Directory” property is “Do not Copy”. </p>
+<p>In the extension point of <strong>/CocoStudio/Model/Lua/Templates</strong>, <strong>Addins.Sample.Lua.Lua.LuaCustomObject</strong> the full path generated by T4 template class will be added. Codes are as follows: </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;ExtensionModel&gt;
+&lt;Extension path = &quot;/CocoStudio/Model/Lua/Templates&quot;&gt;
+    &lt;Class class = &quot;Addins.Sample.Lua.Lua.LuaCustomObject&quot;/&gt;
+&lt;/Extension&gt;
+&lt;/ExtensionModel&gt;
+</code></pre><h4 id="FAQ-amp-Notes-1"><a href="#FAQ-amp-Notes-1" class="headerlink" title="FAQ &amp; Notes"></a>FAQ &amp; Notes</h4><p><strong>About Addins</strong></p>
+<p>Cocos Studio build its addin system based on Mono.Addins. Add  AddinConfig.cs in C# project, and set Addin features, and use AddinDependency to set dependence. Put the DLL in <strong>%userprofile%\Documents\Cocos\CocosStudio2\Addins</strong> (Windows file path)。</p>
+<p>For more information about Mono.Addins, please see <a href="http://monoaddins.codeplex.com/" target="_blank" rel="external">http://monoaddins.codeplex.com/</a>. </p>
+<p><strong>DataModel and ViewModel</strong></p>
+<p>In Cocos Studio, each widget is a ViewModel, and each ViewModel has a DataModel to manage its data. </p>
+<p>ViewModel need to inherit from NodeObject or some subclass of NodeObject depending on the different widgets. Correspondingly, DataModel need to inherit from NodeObjectData and the subclass of NodeObjectData respectively. The interaction between DataModel and ViewModel is realized through DataModelExtension. </p>
+<p>Attribute names for DataModel and ViewModel  should be same. </p>
+<p><strong>About Serialization</strong></p>
+<p>Serialization in DataModel need to add ItemProperty and JsonProperty, which respectively correspond to XML Serialization and JSON Serialization.    </p>
+<p>XML Serialization is handled by MonoDevelop. For details, please see <a href="http://www.monodevelop.com/developers/articles/using-the-data-serializer/" target="_blank" rel="external">http://www.monodevelop.com/developers/articles/using-the-data-serializer/</a>. </p>
+<p>JSON Serialization is handled by <strong>Newtonsoft.Json Library</strong>. For more information about Newtonsoft, please see <a href="http://www.newtonsoft.com/json" target="_blank" rel="external">http://www.newtonsoft.com/json</a>. </p>
+<p><strong>Data Interaction</strong></p>
+<p>LuaValueConverter can be used to transfer data between C# and Lua. </p>
+<p>Methods provided by <strong>LuaValueConverter</strong> are listed below: </p>
+<pre><code>Method Name                                                       
+
+bool GetBoolValue(string funcName)                              
+void SetBoolValue(string funcName, bool val)                   
+int GetIntValue(string funcName)                              
+void SetIntValue(string funcName, int val)                       
+string GetStringValue(string funcName)                           
+void SetStringValue(string funcName, string val)              
+double GetDoubleValue(string funcName)                           
+void SetDoubleValue(string funcName, double val)               
+float GetFloatValue(string funcName)                           
+void SetFloatValue(string funcName, float val)                   
+System.Drawing.Color GetColorValue(string funcName)               
+void SetColorValue(string funcName, System.Drawing.Color val)    
+void SetResourceDataValue(string funcName, ResourceData val)    
+</code></pre><p><strong><em>Notes</em></strong> </p>
+<p><em>The above function signature is the method name in C#. Types are same as C# language types.</em> </p>
+<p><em>When calling funName, it should be changed to the method name in Lua.</em> </p>
+<p><em>Only set but get can be performed on resources. You can call GetStringValue to return to resources’ path and perform subsequent processing in C# layer.</em> </p>
+<p><em>For interaction between C# and Lua, Cocos Studio currently only supports several predefined types. If there is a need for complex types, try to combine methods and convert types. In subsequent development, we will gradually enrich supported types.</em> </p>
+<p><strong>T4 Template</strong></p>
+<p>Create T4 template for DataModel. Export DataModel to Lua files when exporting Cocos Studio projects. </p>
+<p>Rules of T4 template: </p>
+<p>Each widget that needs to be exported to Lua codes corresponds to a T4 template. </p>
+<p>C# files created by T4 template need to inherit from corresponding expanded widget classes. Meanwhile, override the following methods:  </p>
+<p>CanSerialier: to judge DataModel type. </p>
+<p>CreateObject: to load the appropriate Lua extension file based on the imported DataModel.  Lua code is generated for a new extension of the widget. </p>
+<p>InitializeObject: to export expanded properties to Lua codes. </p>
+<p>AddChild: If AddChild from NodeObject is not used to add childwidget, you will need to override this method. For example, when adding child widgets for PageView, you need to use AddPage. </p>
+<p>T4 template: <a href="https://msdn.microsoft.com/en-us/library/bb126445.aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/bb126445.aspx </a>.</p>
+<p>Adding association in T4 template, to find this template when Cocos Studio exporting projects to Lua. </p>
+<p><strong>Related Class Names</strong></p>
+<p>Following are some class names in ViewModel, DataModel and what generated by T4 model: </p>
+<pre><code>ViewModel Class             DataModel Class           T4 Model Class
+
+SpriteObject             SpriteObjectData           LuaSpriteObject
+ParticleObject             ParticleObjectData           LuaParticleObject
+GameMapObject             GameMapObjectData           LuaGameMapObject
+SimpleAudioObject         SimpleAudioObjectData       LuaSimpleAudioObject
+NodeObject                 NodeObjectData               LuaNodeObject
+ButtonObject             ButtonObjectData           LuaButtonObject
+CheckBoxObject             CheckBoxObjectData           LuaCheckBoxObject
+ImageViewObject             ImageViewObjectData       LuaImageViewObject
+TextBMFontObject         TextBMFontObjectData       LuaTextBMFontObject
+LoadingBarObject         LoadingBarObjecDatat       LuaLoadingBarObject
+SliderObject             SliderObjectData           LuaSliderObject
+TextObject                 TextObjectData               LuaTextObject
+TextFieldObject             TextFieldObjectData       LuaTextFieldObject
+PanelObject                 PanelObjectData           LuaPanelObject
+ScrollViewObject         ScrollViewObjectData       LuaScrollViewObject
+ListViewObject             ListViewObjectData           LuaListViewObject
+PageViewObject             PageViewObjectData           LuaPageViewObject
+Node3DObject             Node3DObjectData           LuaNode3DObject
+Particle3DObject          Particle3DObjectData       LuaParticle3DObject
+Sprite3DObject             Sprite3DObjectData           LuaSprite3DObject
+UserCameraObject         UserCameraObjectData       LuaUserCameraObject
+</code></pre><p><strong>*Note</strong> Lua codes or resources are not in LuaScript directory. You need to handle the directory path issue manually. If Lua files are in LuaScript directory, they will be implemented as basic custom widgets without extended properties.* </p>
+<pre><code>Sprite Extend is a custom widget with extended properties, but sprite0 is the basic custom widget.
+</code></pre><p>&emsp;&emsp;<img src="res_en/image009.png" alt="image"></p>
+<ul>
+<li>If you need to create a project, take this tutorial as an example. Target framework is .Net Framework4.5 and output type is Class Library. </li>
+</ul>
+<p>###Samples</p>
+<ul>
+<li><p>Sample Path</p>
+<p>  By default samples are installed to  <strong>%userprofile%\Documents\Cocos\CocosStudio2\Samples\Addins</strong> on the computer. If the default installation folder is changed, samples are in the same folder with Documents. For example, if document is installed to <strong>D:\CocosDocuments</strong>, samples are in <strong>D:\CocosDocuments\Cocos\CocosStudio2\Samples\Addins</strong>. On Mac, samples are installed to <strong>/Library/Application Support/Cocos/CocosStudio2/Samples/Addins</strong>. </p>
+</li>
+<li><p>Compiling Samples </p>
+<p>  Sample is a solution of Visual Studio 2013. You can directly compile Addins.sln on Windows. Mono library and GTK# are essential. Please install them on your computer. </p>
+<p>  On Mac, you need to copy samples to a directory which users have permission to compile. On Mac, you can choose Xamarin Studio to compile. MonoFramework is necessary. </p>
+</li>
+<li><p>Copying DLL</p>
+<p>  After successful compile, you will get <strong>Addins.Sample.dll</strong>. Copy it to Addins directory.</p>
+<p>  By default samples are installed to  <strong>%userprofile%\Documents\Cocos\CocosStudio2\Addins</strong> on the computer. If the default installation folder is changed, samples are in the same folder with Documents. For example, if document is installed to <strong>D:\CocosDocuments</strong>, samples are in <strong>D:\CocosDocuments\Cocos\CocosStudio2\Addins</strong>. On Mac, samples are installed to <strong>/Library/Application Support/Cocos/CocosStudio2/Addins</strong>.</p>
+</li>
+<li><p>If there is any update on Samples, please check the latest version for reference.  For more information about Samples’ </p>
+</li>
+<li>For changes, see ChangeLog.txt in Lua folder under Samples directory.  </li>
+</ul>
+<h3 id="Other-Important-Information"><a href="#Other-Important-Information" class="headerlink" title="Other Important Information"></a>Other Important Information</h3><ul>
+<li><p>This document applies to Samples of Cocos Studio v2.2.5+. </p>
+</li>
+<li><p>Names of custom widgets should be given legal Lua variable. Otherwise, the published Lua file cannot be implemented properly. You can enable naming convention in Cocos Studio’s configurations. If you give a variable an illegal name, there will be a notification “XX is not a valid Lua variable name” in the output section. </p>
+</li>
+<li><p>In the subsequent development of Cocos Studio, we will extend more interfaces and classes, and provide document for reference. </p>
+</li>
+</ul>
+<h2 id="Note-The-contents-of-the-document-are-under-continuous-update-based-on-users’-feedback-Please-check-the-latest-version-for-reference-If-you-have-any-suggestions-or-comments-on-the-extensions-of-Cocos-Studio-please-let-us-know-Thanks-for-your-interest-and-support-for-Cocos-Studio-and-for-helping-us-make-a-better-product"><a href="#Note-The-contents-of-the-document-are-under-continuous-update-based-on-users’-feedback-Please-check-the-latest-version-for-reference-If-you-have-any-suggestions-or-comments-on-the-extensions-of-Cocos-Studio-please-let-us-know-Thanks-for-your-interest-and-support-for-Cocos-Studio-and-for-helping-us-make-a-better-product" class="headerlink" title="*Note The contents of the document are under continuous update based on users’ feedback. Please check the latest version for reference. If you have any suggestions or comments on the extensions of Cocos Studio, please let us know. Thanks for your interest and support for Cocos Studio, and for helping us make a better product.*  "></a><strong>*Note</strong> The contents of the document are under continuous update based on users’ feedback. Please check the latest version for reference. If you have any suggestions or comments on the extensions of Cocos Studio, please let us know. Thanks for your interest and support for Cocos Studio, and for helping us make a better product.*  </h2><p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/en.html" data-id="citntilne0074wfw8k0o40nmd" class="article-share-link">分享到</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+ <section id="comments">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/en.html"></div>
+   <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:'keepmovingxin'};
+     (function() {
+       var ds = document.createElement('script');
+       ds.type = 'text/javascript';ds.async = true;
+       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+       ds.charset = 'UTF-8';
+       (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+     </script>
+   <!-- 多说公共JS代码 end -->
+ </section>
+ </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具-效率/">工具/效率</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏开发/">游戏开发</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cocos2d-x/" style="font-size: 15px;">Cocos2d-x</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lua/" style="font-size: 20px;">Lua</a> <a href="/tags/Lua数据结构/" style="font-size: 17.5px;">Lua数据结构</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/pngquant/" style="font-size: 10px;">pngquant</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/tolua/" style="font-size: 10px;">tolua</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/10/Lua-lua_State/">Lua数据结构 — lua_State（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/09/Lua-Udata/">Lua数据结构 — Udata（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/Lua-Closure/">Lua数据结构 — 闭包（四）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/07/Lua-Table/">Lua数据结构 — Table（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/Lua-TString/">Lua数据结构 — TString（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <!-- Weibo Show -->
+  <div class="widget-wrap">
+    <h3 class="widget-title">微博</h3>
+    <div class="widget">
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2351842870&verifier=bf02a52d&dpc=1"></iframe>
+    </div>
+  </div>
+<!-- End Weibo Show -->
+  
+    <!-- Friendship link -->
+<div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+  <ul class="entry">
+  <li><a href="http://keepmovingxin.com" target="_blank" title="KeepMoving">KeepMoving</a>：书写游戏人生</li>
+  <li><a href="http://idev.iwoce.com" target="_blank" title="骇客软件">骇客软件</a>：执着于前行</li>
+  <li><a href="http://www.dtgames.top" target="_blank" title="进击的大头">进击的大头_老巢</a>：Keep and carry on.</li>
+  <li><a href="http://zilongshanren.com" target="_blank" title="@子龙山人">子龙山人</a>：Game PROgrammer and Geek</li>
+  <li><a href="http://www.jellythink.com" target="_blank" title="@果冻想">果冻想</a>：一个原创技术文章分享网站</li>
+  <li><a href="http://blog.ibireme.com" target="_blank" title="@ibireme">Garan no dou</a>：一只魔法师的工坊</li>
+  <li><a href="http://blog.sunnyxx.com" target="_blank" title="@我就叫Sunny怎么了">sunnyxx</a>：sunnyxx的技术博客</li>
+  <li><a href="http://adad184.com" target="_blank" title="@里脊串">里脊串的开发随笔</a>：途有境而观无垠</li>
+  <li><a href="https://onevcat.com/#blog" target="_blank" title="@onevcat">OneV's Den</a>：上善若水，人淡如菊</li>
+  <li><a href="http://blog.devtang.com" target="_blank" title="@唐巧_boy">唐巧的技术博客</a>：记录下自己学习的点滴</li>
+  <li><a href="http://yulingtianxia.com" target="_blank" title="@杨萧玉HIT">玉令天下的博客</a>：yulingtianxia's blog</li>
+  <li><a href="http://xiongzenghuidegithub.github.io" target="_blank" title="熊曾辉的技术博客">熊曾辉的技术博客</a>：一个iOS菜菜的...</li>
+  <li><a href="http://tutuge.me" target="_blank" title="@土土哥tutuge">土土哥的技术Blog</a>：iOS，Android...</li>
+  <li><a href="http://kuangqi.me" target="_blank" title="况琪的个人博客">The Bloom of Youth</a>：锦瑟华年</li>
+  <li><a href="http://blanboom.org" target="_blank" title="Blanboom">Blanboom</a>：折腾不止，是为创客</li>
+  <li><a href="http://www.devchen.com" target="_blank" title="陈十七的技术博客">十七的空指针</a>：时间会给我答案</li>
+  </ul>
+  </div>
+</div>
+<!-- End Friendship link -->
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 KP_小新<br>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Cocos" class="mobile-nav-link">Cocos</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var bigfa_scroll = {
+    drawCircle: function(id, percentage, color) {
+        var width = jQuery(id).width();
+        var height = jQuery(id).height();
+        var radius = parseInt(width / 2.20);
+        var position = width;
+        var positionBy2 = position / 2;
+        var bg = jQuery(id)[0];
+        id = id.split("#");
+        var ctx = bg.getContext("2d");
+        var imd = null;
+        var circ = Math.PI * 2;
+        var quart = Math.PI / 2;
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineCap = "square";
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 3;
+        imd = ctx.getImageData(0, 0, position, position);
+        var draw = function(current, ctxPass) {
+            ctxPass.putImageData(imd, 0, 0);
+            ctxPass.beginPath();
+            ctxPass.arc(positionBy2, positionBy2, radius, -(quart), ((circ) * current) - quart, false);
+            ctxPass.stroke();
+        }
+        draw(percentage / 100, ctx);
+    },
+    backToTop: function($this) {
+        $this.click(function() {
+            jQuery("body,html").animate({
+                scrollTop: 0
+            },
+            800);
+            return false;
+        });
+    },
+    scrollHook: function($this, color) {
+        color = color ? color: "#000000";
+        $this.scroll(function() {
+            var docHeight = (jQuery(document).height() - jQuery(window).height()),
+            $windowObj = $this,
+            $per = jQuery(".per"),
+            percentage = 0;
+            defaultScroll = $windowObj.scrollTop();
+            percentage = parseInt((defaultScroll / docHeight) * 100);
+            var backToTop = jQuery("#backtoTop");
+            if (backToTop.length > 0) {
+                if ($windowObj.scrollTop() > 200) {
+                    backToTop.addClass("button--show");
+                } else {
+                    backToTop.removeClass("button--show");
+                }
+                $per.attr("data-percent", percentage);
+                bigfa_scroll.drawCircle("#backtoTopCanvas", percentage, color);
+            }
+
+        });
+    }
+}
+
+jQuery(document).ready(function() {
+    jQuery("body").contents().append('<div id="backtoTop" data-action="gototop" style="z-index:999"><canvas id="backtoTopCanvas" width="48" height="48"></canvas><div class="per"></div></div>');
+    var T = bigfa_scroll;
+    T.backToTop(jQuery("#backtoTop"));
+    T.scrollHook(jQuery(window), "#216bcc");
+});
+</script>
+
+  </div>
+</body>
+</html>
