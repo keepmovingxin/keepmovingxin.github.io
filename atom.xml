@@ -1436,7 +1436,7 @@ set encoding=prc
     <link href="http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/"/>
     <id>http://blog.keepmovingxin.com/2016/04/28/Linux-Commond/</id>
     <published>2016-04-28T08:02:52.000Z</published>
-    <updated>2016-07-14T03:40:38.000Z</updated>
+    <updated>2016-10-08T04:01:14.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;同步时间&quot;&gt;&lt;a href=&quot;#同步时间&quot; class=&quot;headerlink&quot; title=&quot;同步时间&quot;&gt;&lt;/a&gt;同步时间&lt;/h3&gt;&lt;p&gt;以管理员身份执行如下命令，可以自动与网络时间同步：&lt;br&gt;time.nist.gov 是一个时间服务器&lt;br&gt;&lt;code&gt;$ rdate -s time.nist.gov&lt;/code&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -1682,7 +1682,15 @@ find . –type d –maxdepth 1 –print
 -s 　只查找原始代码文件。
 -S&amp;lt;目录&amp;gt; 　只在设置的目录下查找原始代码文件。
 -u 　查找不包含指定类型的文件。
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Zip-压缩&quot;&gt;&lt;a href=&quot;#Zip-压缩&quot; class=&quot;headerlink&quot; title=&quot;Zip 压缩&quot;&gt;&lt;/a&gt;Zip 压缩&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;功能说明&lt;/strong&gt;：文件压缩(打包)。&lt;br&gt;&lt;strong&gt;语　　法&lt;/strong&gt;：最通俗的用法&lt;br&gt;&lt;code&gt;zip -q -r -e -m -o [yourName].zip someThing&lt;/code&gt;&lt;br&gt;&lt;strong&gt;参　　数&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-q 表示不显示压缩进度状态
+-r 表示子目录子文件全部压缩为zip  //这部比较重要，不然的话只有something这个文件夹被压缩，里面的没有被压缩进去
+-e 表示你的压缩文件需要加密，终端会提示你输入密码的
+// 还有种加密方法，这种是直接在命令行里做的，比如zip -r -P Password01! modudu.zip SomeDir, 就直接用Password01!来加密modudu.zip了。
+-m 表示压缩完删除原文件
+-o 表示设置所有被压缩文件的最后修改时间为当前压缩时间
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当跨目录的时候是这么操作的&lt;br&gt;&lt;code&gt;zip -q -r -e -m -o &amp;#39;\user\someone\someDir\someFile.zip&amp;#39; &amp;#39;\users\someDir&amp;#39;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2016 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
