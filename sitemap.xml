@@ -1241,28 +1241,21 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/tw.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/zh.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/UIHelperGetNode/en.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/tw.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/UIHelperGetNode/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
@@ -1276,7 +1269,35 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/tw.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/tw.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter6/ReleaseNote/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
@@ -1284,27 +1305,6 @@
   
   <url>
     <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/en.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/tw.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/LuaPluginUpdateError/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
@@ -1325,28 +1325,21 @@
   </url>
   
   <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/tw.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.keepmovingxin.com/Cocos/chapter4/HowToUseFBX/en.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter6/ReleaseNote/tw.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/tw.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/UIHelperGetNode/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
@@ -1360,6 +1353,27 @@
   </url>
   
   <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/LuaPluginUpdateError/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/tw.html</loc>
+    
+    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.keepmovingxin.com/Cocos/chapter4/FWNoLog/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
@@ -1367,35 +1381,21 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/UIHelperGetNode/en.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/CallBack/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:49.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/CallBack/tw.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html</loc>
     
     <lastmod>2016-09-26T15:08:49.000Z</lastmod>
     
@@ -1423,21 +1423,21 @@
   </url>
   
   <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/tw.html</loc>
+    
+    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/AddFrameEvents/tw.html</loc>
-    
-    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/AddFrameEvents/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/res_tw/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:49.000Z</lastmod>
     
@@ -1472,28 +1472,28 @@
   </url>
   
   <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/res/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/res_tw/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/AddFrameEvents/zh.html</loc>
+    
+    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/en.html</loc>
-    
-    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/tw.html</loc>
-    
-    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/zh.html</loc>
-    
-    <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:49.000Z</lastmod>
     
@@ -1535,7 +1535,7 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/res/zh.html</loc>
+    <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/zh.html</loc>
     
     <lastmod>2016-09-26T15:08:49.000Z</lastmod>
     
@@ -1605,14 +1605,14 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</loc>
     
     <lastmod>2016-06-13T02:18:12.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
     
     <lastmod>2016-06-13T02:18:12.000Z</lastmod>
     
@@ -1647,14 +1647,14 @@
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
+    <loc>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</loc>
     
     <lastmod>2016-06-06T02:18:06.000Z</lastmod>
     
