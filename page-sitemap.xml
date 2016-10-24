@@ -1253,13 +1253,6 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/HowToUseFBX/tw.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
         <loc>http://blog.keepmovingxin.com/Cocos/chapter4/HowToUseFBX/zh.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1267,56 +1260,7 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/tw.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/LuaPluginUpdateError/zh.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/zh.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/tw.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/tw.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/zh.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/zh.html</loc>
-        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/tw.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/HowToUseFBX/tw.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1330,6 +1274,20 @@
     </url>
     
     <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/LuaPluginUpdateError/zh.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/tw.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://blog.keepmovingxin.com/Cocos/chapter4/OnePixelBug/zh.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1337,14 +1295,28 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/tw.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/tw.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/zh.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PluginLoadError/zh.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/zh.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/NoCreateCPPProject/tw.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1372,7 +1344,28 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter6/ReleaseNote/zh.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/tw.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/TextAuto/zh.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/tw.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter4/PreloadRes/zh.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1381,6 +1374,55 @@
     <url>
         <loc>http://blog.keepmovingxin.com/Cocos/chapter6/ReleaseNote/tw.html</loc>
         <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter6/ReleaseNote/zh.html</loc>
+        <lastmod>2016-09-26T15:08:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/CustomExport/tw.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/CustomExport/zh.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/tw.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/zh.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/zh.html</loc>
+        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1400,14 +1442,14 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/tw.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/en.html</loc>
         <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/en.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Animation/InsertKeyframe/tw.html</loc>
         <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1456,20 +1498,6 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/LoadExportData/zh.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/CustomExport/tw.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
         <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/UserData/en.html</loc>
         <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1477,14 +1505,7 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/CustomExport/zh.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/UserData/zh.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/LoadExportData/zh.html</loc>
         <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1498,28 +1519,7 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/tw.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/ParamExtend/zh.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/tw.html</loc>
-        <lastmod>2016-09-26T15:08:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/Extend/WidgetExtend/zh.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter3/HowToCode/UserData/zh.html</loc>
         <lastmod>2016-09-26T15:08:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1561,7 +1561,7 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter0/cocos2d-x-api/zh.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter0/cocos2d-x/tw.html</loc>
         <lastmod>2016-09-26T15:08:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -1575,7 +1575,7 @@
     </url>
     
     <url>
-        <loc>http://blog.keepmovingxin.com/Cocos/chapter0/cocos2d-x/tw.html</loc>
+        <loc>http://blog.keepmovingxin.com/Cocos/chapter0/cocos2d-x-api/zh.html</loc>
         <lastmod>2016-09-26T15:08:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
