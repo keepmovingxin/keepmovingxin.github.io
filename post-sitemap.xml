@@ -31,6 +31,14 @@
     </url>
 
     <url>
+        <loc>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</loc>
+        <lastmod>2016-06-13T02:18:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -40,14 +48,6 @@
 
     <url>
         <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
-        <lastmod>2016-06-13T02:18:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://blog.keepmovingxin.com/2016/06/09/Lua-Udata/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +95,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
         <lastmod>2016-06-06T02:18:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -111,7 +111,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/04/30/pngquant-compress-png/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/05/20/SVN-Workflow/</loc>
         <lastmod>2016-06-06T02:18:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
