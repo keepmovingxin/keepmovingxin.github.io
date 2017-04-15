@@ -1432,7 +1432,7 @@ ass_array[index2]=val2
     <link href="http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/"/>
     <id>http://blog.keepmovingxin.com/2016/04/29/vi-vim-delete-M/</id>
     <published>2016-04-29T05:39:31.000Z</published>
-    <updated>2016-06-06T02:18:06.000Z</updated>
+    <updated>2017-04-15T03:24:11.000Z</updated>
     
     <content type="html">&lt;p&gt;处理项目xml配置时vim打开经常会碰到中文显示不正常的现象，也就是传说中的乱码，搜索找到一个解决办法，记录一下，但是gbk编码的正常了，utf8的又不对了，于是稍微改了一点。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
