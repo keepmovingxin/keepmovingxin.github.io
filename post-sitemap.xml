@@ -47,7 +47,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,7 +63,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -87,7 +87,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/04/27/Git-Config/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</loc>
         <lastmod>2016-06-06T02:18:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +95,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/05/09/Cocos2dx-CCRenderTexture/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/04/27/Git-Config/</loc>
         <lastmod>2016-06-06T02:18:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
