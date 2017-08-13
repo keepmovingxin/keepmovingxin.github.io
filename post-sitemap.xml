@@ -47,7 +47,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,7 +63,7 @@
     </url>
 
     <url>
-        <loc>http://blog.keepmovingxin.com/2016/06/07/Lua-Table/</loc>
+        <loc>http://blog.keepmovingxin.com/2016/06/10/Lua-lua_State/</loc>
         <lastmod>2016-06-13T02:18:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
