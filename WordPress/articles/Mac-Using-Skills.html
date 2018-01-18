@@ -18,7 +18,7 @@ sudo spctl --master-disable
 2. 用预览(Preview)来查看命令手册(manpage)man -t cal | open -a Preview -f
 3. 剪切文件OSX中只有Copy，没有">
 <meta property="og:image" content="http://blog.keepmovingxin.com/images/qrcode.jpg">
-<meta property="og:updated_time" content="2017-04-15T01:58:20.000Z">
+<meta property="og:updated_time" content="2018-01-18T13:38:23.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KeepMoving">
 <meta name="twitter:description" content="Mac OS 使用技巧1. 找回 macOS Sierra允许“任何来源” 的应用如果需要恢复允许“任何来源”的选项，即关闭Gatekeeper，请在终端中使用spctl命令：
@@ -111,7 +111,7 @@ var _hmt = _hmt || [];
         <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/WordPress/articles/Mac-Using-Skills.html" class="article-date">
-  <time datetime="2017-04-15T01:58:20.000Z" itemprop="datePublished">2017-04-15</time>
+  <time datetime="2018-01-18T13:38:23.657Z" itemprop="datePublished">2018-01-18</time>
 </a>
     
   </div>
@@ -135,13 +135,14 @@ var _hmt = _hmt || [];
 <h4 id="10-运行日常维护脚本"><a href="#10-运行日常维护脚本" class="headerlink" title="10. 运行日常维护脚本"></a>10. 运行日常维护脚本</h4><p><code>sudo periodic 脚本名 回车</code></p>
 <p>脚本名应该是<code>daily</code>、<code>weekly</code>或<code>monthly</code>。如果要同时运行三个维护脚本，则可输入：</p>
 <p><code>sudo periodic daily weekly monthly</code></p>
+<h4 id="11-修改Launchpad显示图标数量"><a href="#11-修改Launchpad显示图标数量" class="headerlink" title="11. 修改Launchpad显示图标数量"></a>11. 修改Launchpad显示图标数量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.dock springboard-columns -int 9;</span><br><span class="line">defaults write com.apple.dock springboard-rows -int 9;</span><br><span class="line">defaults write com.apple.dock ResetLaunchPad -bool TRUE;</span><br><span class="line">killall Dock</span><br></pre></td></tr></table></figure>
 <hr>
 <p>扫描二维码或在微信中搜索 KeepMovingXin<br><img src="/images/qrcode.jpg" alt="欢迎关注微信公众号！"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.keepmovingxin.com/WordPress/articles/Mac-Using-Skills.html" data-id="cjckjc2j9002qu7744gf0isrr" class="article-share-link">分享到</a>
+      <a data-url="http://blog.keepmovingxin.com/WordPress/articles/Mac-Using-Skills.html" data-id="cjckjnoxv002qyw74xbjs4rwa" class="article-share-link">分享到</a>
       
       
     </footer>
