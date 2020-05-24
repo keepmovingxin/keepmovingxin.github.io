@@ -1212,9 +1212,8 @@
 &lt;p&gt;　　&lt;code&gt;randomBrightColor&lt;/code&gt;方法是一个辅助方法，用来创建一种随机颜色。注意，这里使用ccc4B（因此，我们能够在0-255的范围内指定R/G/B/A值），同时确保至少有一个颜色分量是大于192的，这样的话，我们就不会得到较暗的颜色。&lt;br&gt;　　然后，&lt;code&gt;genBackground&lt;/code&gt;调用我们之前写的&lt;code&gt;spriteWithColor&lt;/code&gt;方法，同时把它加屏幕中央。&lt;br&gt;　　至于&lt;code&gt;init&lt;/code&gt;函数，它调用&lt;code&gt;genBackground&lt;/code&gt;方法，同时激活&lt;code&gt;touches&lt;/code&gt;事件，这样的话，你就可以通过点击屏幕来获得另外的随机背景了。&lt;br&gt;　　编译并运行，这样你每一次点击屏幕，你都可以得到一张不同的单色背景图片啦！&lt;/p&gt;
 &lt;h3 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.raywenderlich.com/33266/how-to-create-dynamic-textures-with-ccrendertexture-in-cocos2d-2-x&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How To Create Dynamic Textures with CCRenderTexture in Cocos2D 2.X&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/andyque/archive/2011/07/01/2095479.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;(译)如何使用CCRenderTexture来创建动态纹理&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Copyright-©-2018-KeepMoving-All-rights-reserved&quot;&gt;&lt;a href=&quot;#Copyright-©-2018-KeepMoving-All-rights-reserved&quot; class=&quot;headerlink&quot; title=&quot;Copyright © 2018 KeepMoving. All rights reserved.&quot;&gt;&lt;/a&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/h2&gt;&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1378,9 +1377,8 @@ ass_array[index2]=val2
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/chengmo/archive/2010/10/19/1855577.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linux shell “(())” 双括号运算符使用&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Copyright-©-2018-KeepMoving-All-rights-reserved&quot;&gt;&lt;a href=&quot;#Copyright-©-2018-KeepMoving-All-rights-reserved&quot; class=&quot;headerlink&quot; title=&quot;Copyright © 2018 KeepMoving. All rights reserved.&quot;&gt;&lt;/a&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/h2&gt;&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1411,9 +1409,8 @@ ass_array[index2]=val2
 &lt;p&gt;&lt;code&gt;pngquant $OPTIONS -- &amp;quot;$FILE&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;使用示例&quot;&gt;&lt;a href=&quot;#使用示例&quot; class=&quot;headerlink&quot; title=&quot;使用示例&quot;&gt;&lt;/a&gt;使用示例&lt;/h3&gt;&lt;p&gt;压缩Downloads目录下所有的png，并替换当前图片&lt;br&gt;&lt;code&gt;find /Users/mac/Downloads/ -name &amp;quot;*.png&amp;quot; | while read line; do pngquant --ext .png --force $line; done&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Copyright-©-2018-KeepMoving-All-rights-reserved&quot;&gt;&lt;a href=&quot;#Copyright-©-2018-KeepMoving-All-rights-reserved&quot; class=&quot;headerlink&quot; title=&quot;Copyright © 2018 KeepMoving. All rights reserved.&quot;&gt;&lt;/a&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/h2&gt;&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1759,9 +1756,8 @@ find . –type d –maxdepth 1 –print
 &lt;pre&gt;&lt;code&gt;scp /opt/soft/nginx-0.5.38.tar.gz root@192.168.120.204:/opt/soft/scptest
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;说明：&lt;br&gt;上传本地目录 /opt/soft/mongodb到远程机器192.168.120.204上/opt/soft/scptest的目录中去&lt;/p&gt;
 &lt;h3 id=&quot;未完待续…&quot;&gt;&lt;a href=&quot;#未完待续…&quot; class=&quot;headerlink&quot; title=&quot;未完待续…&quot;&gt;&lt;/a&gt;未完待续…&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Copyright-©-2018-KeepMoving-All-rights-reserved&quot;&gt;&lt;a href=&quot;#Copyright-©-2018-KeepMoving-All-rights-reserved&quot; class=&quot;headerlink&quot; title=&quot;Copyright © 2018 KeepMoving. All rights reserved.&quot;&gt;&lt;/a&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/h2&gt;&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1803,9 +1799,8 @@ find . –type d –maxdepth 1 –print
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local normalSp = CCSprite:create(&amp;quot;images/namebg.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local graySp = CCGraySprite:createWithNodeAndItChild(normalSp)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local frameSp = CCGraySprite:create(&amp;quot;images/frame.png&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;frameSp:setGray(isGray)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
-&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;br&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版权声明&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt; by &lt;a href=&quot;http://blog.keepmovingxin.com/about&quot;&gt;KP_小新&lt;/a&gt; 采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创作共用保留署名-非商业-禁止演绎4.0国际许可证&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Copyright-©-2018-KeepMoving-All-rights-reserved&quot;&gt;&lt;a href=&quot;#Copyright-©-2018-KeepMoving-All-rights-reserved&quot; class=&quot;headerlink&quot; title=&quot;Copyright © 2018 KeepMoving. All rights reserved.&quot;&gt;&lt;/a&gt;Copyright © 2018 &lt;a href=&quot;http://blog.keepmovingxin.com&quot;&gt;KeepMoving&lt;/a&gt;. All rights reserved.&lt;/h2&gt;&lt;p&gt;扫描二维码或在微信中搜索 KeepMovingXin&lt;br&gt;&lt;img src=&quot;/images/qrcode.jpg&quot; alt=&quot;欢迎关注微信公众号！&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
