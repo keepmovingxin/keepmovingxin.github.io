@@ -3,4 +3,4 @@ Allow: /
 Disallow: /css
 Disallow: /fancybox
 Disallow: /js
-Sitemap: http://blog.keepmovingxin.com/sitemap.xml
+Sitemap: https://keepmovingxin.github.io/sitemap.xml
